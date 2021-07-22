@@ -1,0 +1,107 @@
+#becomeAnAgent {
+  #tblMainContent .tdSX {
+    display: none !important;
+  }
+  #tblMainContent .tdCN {
+    width: 788px;
+    background-color: #ffffff!important;
+  }
+  #tblMainContent .tdCN #MainContent {
+    margin-top: 0px !important;
+  }
+  .aqx-a {
+    flex: 0;
+    .pagesmenu {
+      //padding-left: 5px;
+      //padding-top: 5px;
+      width: 200px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      min-height: 477px;
+      background: #fff;
+    }
+
+    .pagesmenu .pagemenu {
+      padding-top: 0px;
+      padding-right: 0px;
+      padding-bottom: 0px;
+      padding-left: 0px;
+      height: 29px;
+      list-style-type: none;
+      vertical-align: middle;
+      display: block;
+      text-align: left;
+      line-height: 29px;
+    }
+
+    .pagemenu li {
+      display: block;
+      list-style-type: none;
+      margin-top: 0px;
+      margin-right: 0px;
+      margin-bottom: 0px;
+      margin-left: 0px;
+      text-indent: 0px;
+      list-style-position: outside;
+    }
+
+    .pagemenu a {
+      text-decoration: none;
+      display: block;
+      color: #75767A;
+      border-bottom: 1px solid #D4D8D9;
+      padding: 25px 0 25px 74px;
+      line-height: 35px;
+      font-family: roboto-medium;
+      font-size: 14px;
+    }
+
+    .pagemenu li:first-child a {
+      background: url(../img/become-an-agent.png) 10px no-repeat;
+    }
+
+    .pagemenu li:nth-child(2) a {
+      background: url(../img/benefits.png) 10px no-repeat;
+    }
+
+    .pagemenu li:nth-child(3) a {
+      background: url(../img/easy-step-to-start.png) 10px no-repeat;
+    }
+
+    .pagemenu li:nth-child(4) a {
+      background: url(../img/gallery.png) 10px no-repeat;
+    }
+  }
+  .aqx-b {
+    height: auto;
+    min-height: 477px;
+    border-left: 1px solid #D4D8D9;
+    background: #fff;
+
+    .pagescontent {
+      padding: 5px
+    }
+  }
+
+  .bttn {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 9px 43px;
+    color: #fff;
+    border: 0;
+    text-decoration: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    text-transform: uppercase;
+    font-family: roboto-bold;
+    font-size: 14px;
+    -webkit-box-shadow: inset 0 -1px 0 0 rgba(0,0,0,.37),inset 0 1px 0 0 hsla(0,0%,100%,.36)!important;
+    box-shadow: inset 0 -1px 0 0 rgba(0,0,0,.37),inset 0 1px 0 0 hsla(0,0%,100%,.36)!important;
+    background: #014fa2;
+    background: -webkit-gradient(linear,left top, left bottom,color-stop(0, #014fa2),to(#4c54f0));
+    background: -webkit-linear-gradient(top,#014fa2 0,#4c54f0);
+    background: -o-linear-gradient(top,#014fa2 0,#4c54f0);
+    background: linear-gradient(180deg,#014fa2 0,#4c54f0);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#209947",endColorstr="#20813f",GradientType=0);
+  }
+}

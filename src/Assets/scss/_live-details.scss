@@ -1,0 +1,329 @@
+#live-root {
+  ol, ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 1em;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+  }
+  .col-2 {
+    width: 50%;
+  }
+  .col-3 {
+    width: 33.3%;
+  }
+  .col-4 {
+    width: 12.5%;
+  }
+  .Ellipsed {
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  h4 {
+    padding: 0 33px 0 0;
+  }
+  .Relative, .LiveSection .Relative {
+    position: relative;
+  }
+  #eventContainer {
+    .headerItem {
+      background-color: #01366f;
+      border: 0;
+      border-bottom: 1px solid #3558bd;
+      height: 90px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      position: relative;
+      color: #fff;
+      .arrow-icon {
+        background-color: #000;
+        color: #fff;
+        font-size: 12px;
+        width: 31px;
+        height: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .breadcrumb {
+        padding: 5px 10px;
+        position: absolute;
+        left: 31px;
+        font-size: 10px;
+      }
+      .event-details {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        width: 100%;
+        .time-status {
+          font-weight: 700;
+        }
+
+        .event-name-score {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          width: 100%;
+          .event-name {
+            font-size: 19px;
+            font-weight: 700;
+            -webkit-box-flex: 40%;
+            -ms-flex: 40%;
+            flex: 40%;
+
+            &.home {
+              text-align: right;
+              padding-right: 6px;
+            }
+
+            &.away {
+              padding-left: 6px;
+            }
+          }
+          .score {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffbd00;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+    #live-bets-grid {
+      li#live-bets-empty {
+        background: #1d302c;
+      }
+
+      li.Bet {
+        color: #ffd200;
+        display: inline-block;
+        vertical-align: top;
+        height: 100%;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        width: 100%;
+        letter-spacing: normal;
+
+        //.BetContainer {
+        //  margin-right: 2px;
+        //  margin-left: 1px;
+        //}
+
+        .Header {
+          background: #3f444e;
+          margin-top: 1px;
+
+          > .Content {
+            padding: 0 10px;
+          }
+
+          h4 {
+            line-height: 24px;
+            height: 24px;
+            font-weight: 400;
+            color: #fff;
+          }
+        }
+
+        li.Odds {
+          display: inline-block;
+          color: #434343;
+          line-height: 22px;
+          height: 22px;
+          font-size: 11px;
+          font-family: 'Segoe UI', Arial, sans-serif;
+          padding-left: 0px;
+          padding-right: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          letter-spacing: normal;
+          cursor: pointer;
+
+          .Steady {
+            background-image: none;
+          }
+
+          .Single {
+            background-image: url(../img/sports/live/playability_single.png);
+            padding: 0 0 0 16px;
+            background-position: 2px center;
+            background-repeat: no-repeat;
+          }
+          .Animate {
+            -moz-animation: fadeIn .2s alternate-reverse 6;
+            -o-animation: fadeIn .2s alternate-reverse 6;
+            -webkit-animation: fadeIn .2s alternate-reverse 6;
+            animation: fadeIn .2s alternate-reverse 6;
+          }
+          .Trend {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: inline-block;
+            text-align: right;
+
+            > h6 {
+              padding: 0 8px 0 12px;
+            }
+
+            .Increased {
+              background-image: url(../img/sports/live/increased2.png);
+              padding-left: 10px;
+              background-position: left center;
+              background-repeat: no-repeat;
+            }
+
+            .Decreased {
+              background-image: url(../img/sports/live/decreased2.png);
+              padding-left: 10px;
+              background-position: left center;
+              background-repeat: no-repeat;
+            }
+          }
+
+          > .Content {
+            background: #fff;
+            position: relative;
+            border-right: 1px solid #e8e9eb;
+            height: 22px;
+
+            &:hover {
+              background-color: #ebedf0;
+            }
+          }
+          &.sel {
+            >.Content {
+              background-color: #1d5d30;
+              color: #fff;
+              box-shadow: inset 1px 1px 5px #000;
+            }
+          }
+          > .Lock {
+            cursor: default;
+
+            .Trend {
+              display: none;
+            }
+          }
+
+          .Playability {
+            position: absolute;
+            width: 50%;
+            top: 0;
+            left: 0;
+
+            > h5 {
+              padding: 0 8px 0 18px;
+            }
+          }
+
+        }
+      }
+
+      .ToggleButton {
+        width: 16px;
+        position: absolute;
+        right: 32px;
+        top: 0;
+        height: 24px;
+        cursor: pointer;
+        background: transparent url(../img/sports/live/minify2.png) center center no-repeat;
+
+        &:hover {
+          background-image: url(../img/sports/live/minify2_active.png);
+        }
+      }
+
+      .Toggled {
+        background-image: url(../img/sports/live/minify2_active.png);
+      }
+
+      .FavoriteButton {
+        width: 24px;
+        position: absolute;
+        right: 8px;
+        top: 0;
+        height: 24px;
+        cursor: pointer;
+        background: transparent url(../img/sports/live/star3.png) center center no-repeat;
+
+        &:hover {
+          background-image: url(../img/sports/live/star3_active.png);
+        }
+      }
+    }
+  }
+  @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+
+  @-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+
+  @-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+
+  @-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+
+  @-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+}
+
+.timeFlash {
+  animation: blinker 1s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
