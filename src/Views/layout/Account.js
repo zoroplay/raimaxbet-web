@@ -6,9 +6,10 @@ import DepositModal from "../Components/Modals/DepositModal";
 import "react-datepicker/dist/react-datepicker.css";
 import {NavLink, withRouter} from "react-router-dom";
 import {SHOW_DEPOSIT_MODAL} from "../../Redux/types";
+import ConfirmBonusWithdrawal from "../Components/Modals/ConfirmBonusWithdrawal";
 
 const Account = ({children, history}) => {
-    const {depositModal} = useSelector((state) => state.sportsData);
+    const {depositModal, bonusModal} = useSelector((state) => state.sportsData);
     const dispatch = useDispatch();
     const {user} = useSelector(state => state.auth);
 
@@ -24,6 +25,10 @@ const Account = ({children, history}) => {
                                 <li className="uxr-li-link"><NavLink title="Bet List" to="/Account/BetList">Bet List</NavLink></li>
                                 <li className="uxr-li-link"><NavLink title="Bet List" to="/Account/JackpotBets">Jackpot Bet List</NavLink></li>
                                 <li className="uxr-li-link"><NavLink title="Transactions List" to="/Account/TransactionList">Transactions List</NavLink></li>
+
+                                <li className="uxr-li-link"><NavLink title="Transactions List" to="/Account/Bonuses">Bonuses</NavLink></li>
+                                <li className="uxr-li-link"><NavLink title="Transactions List" to="/Account/BonusTransactionList">Bonus Transaction List</NavLink></li>
+
                                 {(user.role === 'Master Agent' || user.role === 'Super Agent' || user.role === 'Agent' || user.role === 'Shop') &&
                                 <li className="uxr-li-link">
                                     <NavLink to="/Account/SportFinancial" className="level-2">
@@ -32,7 +37,7 @@ const Account = ({children, history}) => {
                                 </li>}
                                 {user.role !== 'Cashier' &&
                                 <>
-                                    <li className="uxr-li-link"><a title="Deposit" href="javascript:;" onClick={() => dispatch({type: SHOW_DEPOSIT_MODAL})}>Deposit</a></li>
+                                    <li className="uxr-li-link"><NavLink title="Deposit" to="/Account/Deposit">Deposit</NavLink></li>
                                     <li className="uxr-li-link"><NavLink title="Withdraw" to="/Account/Withdraw">Withdraw</NavLink></li>
                                     <li className="uxr-li-link"><NavLink title="Messages" to="/Account/Messages">Messages</NavLink></li>
                                 </>
@@ -92,6 +97,7 @@ const Account = ({children, history}) => {
             {/*<div className="coupon-popup-wrapper" id="reservedCoupon"></div>
             <div className="coupon-popup-wrapper" id="searchEvents"></div>*/}
             {depositModal && <DepositModal dispatch={dispatch}  />}
+            {bonusModal.show && <ConfirmBonusWithdrawal dispatch={dispatch} amount={bonusModal.amount}  />}
 
         </Fragment>
     )

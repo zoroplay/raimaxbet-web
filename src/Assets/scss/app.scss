@@ -1,0 +1,164 @@
+.bonus {
+  &.indent {
+    background-color: #d8dbe0;
+  }
+
+  .accordion__item {
+    border-radius: 3px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.08), 0 2px 3px 0 rgba(0, 0, 0, 0.10);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.08), 0 2px 3px 0 rgba(0, 0, 0, 0.10);
+  }
+  .accordion__item+.accordion__item {
+    margin-top: 1px;
+  }
+  .accordion__header {
+    padding: 15px;
+  }
+  .accordion__header.collapsible {
+    position: relative;
+  }
+  .accordion__header.collapsible .accordion-toggle {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background-image: url(../img/arrow-right.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50%;
+    height: 14px;
+    width: 14px;
+    border: 0;
+    background-color: transparent;
+  }
+  .accordion__item.opened .collapsible .accordion-toggle {
+    background-image: url(../img/arrow-down.svg);
+  }
+  .accordion__cnt {
+    display: table;
+    height: 100%;
+    width: 100%;
+    table-layout: fixed;
+  }
+  .accordion__header.collapsible .accordion__cnt {
+    padding-left: 20px;
+  }
+  .accordion__cnt-item {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .accordion__body {
+    padding: 0;
+    -webkit-transition: padding-top .3s ease;
+    -o-transition: padding-top .3s ease;
+    transition: padding-top .3s ease;
+  }
+  .accordion__item.opened .accordion__body {
+    padding: 20px;
+    border-top: 1px solid #e6e8eb;
+  }
+  .accordion__content {
+    display: none;
+  }
+  .accordion__item.opened .accordion__content {
+    display: block;
+  }
+  .progress__bar {
+    border-radius: 100px;
+    height: 30px;
+    background-color: #f0f2f5;
+    overflow: hidden;
+  }
+  .progress__bar, .progress__fill {
+    -webkit-box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  }
+  .progress__fill {
+    border-radius: 100px 0 0 100px;
+    background: #dadcde;
+    background: -webkit-gradient(linear,left top, left bottom,color-stop(0, #dadcde),to(#d7d8da));
+    background: -o-linear-gradient(top,#dadcde 0,#d7d8da);
+    background: linear-gradient(
+                    180deg
+            ,#dadcde 0,#d7d8da);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#dadcde,endColorstr=#d7d8da,GradientType=0);
+    position: relative;
+    width: 0;
+    -webkit-transition: all .6s ease;
+    -o-transition: all .6s ease;
+    transition: all .6s ease;
+    height: 100%;
+  }
+  .progress__fill:before {
+    height: 104%;
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .progress.green .progress__fill {
+    -webkit-box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.20);
+    box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.20);
+    background: #379f56;
+    background: -webkit-gradient(linear,left top, left bottom,color-stop(0, #379f56),to(#2d944b));
+    background: -o-linear-gradient(top,#379f56 0,#2d944b);
+    background: linear-gradient(
+                    180deg
+            ,#379f56 0,#2d944b);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#379f56,endColorstr=#2d944b,GradientType=0);
+  }
+  .progress__percent {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 105%;
+    color: #111;
+  }
+  .progress__percent:before {
+    height: 104%;
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .progress.green .progress__percent {
+    color: #111;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    width: 100%;
+  }
+  table.default {
+    border: 1px solid #d8dbe0;
+    table-layout: fixed;
+  }
+  table.default thead tr th {
+    height: 34px;
+    background-color: #f5f7fa;
+    border: 1px solid #d8dbe0;
+    padding: 0 11px;
+    background-clip: padding-box;
+  }
+  table.default thead tr th:first-child {
+    text-align: left;
+  }
+  table.default tbody tr td {
+    height: 35px;
+    border: 1px solid #d8dbe0;
+    padding: 0 11px;
+  }
+  table.default tbody tr td:first-child {
+    padding-right: 0;
+    text-align: left;
+  }
+  table.default tbody tr td:nth-child(2) {
+    padding-left: 0;
+    text-align: right;
+  }
+  table.default tbody tr td:nth-child(3) {
+    padding-left: 0;
+    text-align: right;
+  }
+}

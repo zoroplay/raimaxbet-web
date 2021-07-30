@@ -10,10 +10,9 @@ import {
     SET_GLOBAL_VAR,
     SHOW_MODAL,
     SHOW_DEPOSIT_MODAL,
-    SHOW_REGISTER_MODAL,
     SHOW_PASSWORD_MODAL,
     SHOW_LOGIN_MODAL,
-    SHOW_TIPSTER_MODAL, SHOW_TIPSTER_BET,
+    SHOW_TIPSTER_MODAL, SHOW_TIPSTER_BET, SHOW_BONUS_CONFIRM,
 } from '../types'
 import {persistReducer} from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -30,6 +29,10 @@ const initialState = {
     SportsbookGlobalVariable: {},
     modal: {},
     depositModal: false,
+    bonusModal: {
+        show: false,
+        amount: 0,
+    },
     loginModal: false,
     tipsterBet: false,
     tipsterModal: {
@@ -95,6 +98,9 @@ export const sportsData = (state = initialState, action) => {
 
         case SHOW_PASSWORD_MODAL:
             return {...state, passwordModal: action.payload};
+
+        case SHOW_BONUS_CONFIRM:
+            return {...state, bonusModal: action.payload};
 
         case SHOW_TIPSTER_MODAL:
             return {

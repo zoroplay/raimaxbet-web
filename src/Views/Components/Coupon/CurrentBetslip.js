@@ -93,21 +93,11 @@ export default function CurrentBetslip({coupon, dispatch, user}) {
                             {
                                'Combo' : <table id="couponWinningCompositeSystem" >
                                    <tbody>
-                                   <tr>
+                                  {/* <tr>
                                        <td colSpan="2">
-                                           Total stake <span id="totalStake">{coupon.totalStake || 0}</span>
+                                           Stake <span id="totalStake">{coupon.stake || 0}</span>
                                        </td>
-                                   </tr>
-                                   <tr>
-                                       <td colSpan="2">
-                                           Excise Duty <span id="totalStake">{coupon.exciseDuty || 0}</span>
-                                       </td>
-                                   </tr>
-                                   <tr>
-                                       <td colSpan="2">
-                                           Net stake <span id="totalStake">{coupon.stake || 0}</span>
-                                       </td>
-                                   </tr>
+                                   </tr>*/}
                                    <tr>
                                        <td className="colored" colSpan="2">Potential Winnings</td>
                                    </tr>
@@ -133,7 +123,7 @@ export default function CurrentBetslip({coupon, dispatch, user}) {
                                </table>,
                                'Split' : <table id="couponWinningCompositeIntegral"  >
                                    <tbody>
-                                   <tr>
+                                   {/*<tr>
                                        <td colSpan="2">
                                            Total stake <span id="totalStake">{coupon.totalStake || 0}</span>
                                        </td>
@@ -147,7 +137,7 @@ export default function CurrentBetslip({coupon, dispatch, user}) {
                                        <td colSpan="2">
                                            Net stake <span id="totalStake">{coupon.stake || 0}</span>
                                        </td>
-                                   </tr>
+                                   </tr>*/}
                                    <tr>
                                        <td className="colored" colSpan="2">Potential Winnings</td>
                                    </tr>
@@ -179,35 +169,17 @@ export default function CurrentBetslip({coupon, dispatch, user}) {
                                 <tbody>
                                 <tr>
                                     <td>
-                                        Total stake <span id="totalStake">{coupon.totalStake || 0}</span>
+                                        Stake <span id="totalStake">{coupon.totalStake || 0}</span>
                                     </td>
-                                </tr>
-                                <tr>
                                     <td>
-                                        Excise Duty <span id="totalStake">{coupon.exciseDuty || 0}</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Net stake <span id="totalStake">{coupon.stake || 0}</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Total Odds <span className="maxodd">{coupon.totalOdds}</span>
+                                        Odds <span className="maxodd">{coupon.totalOdds}</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td className="colored" colSpan="2">Potential Winnings</td>
                                 </tr>
                                 <tr>
-                                    <td colSpan="2">Winnings (Gross) <span id="taxPercentageSimple">{formatNumber(coupon.grossWin)}</span></td>
-                                </tr>
-                                <tr>
                                     <td colSpan="2">Bonus <span id="multipleBonus">{formatNumber(coupon.maxBonus)}</span></td>
-                                </tr>
-                                <tr>
-                                    <td colSpan="2">WTH Tax <span id="taxOnWinSimple">{formatNumber(coupon.wthTax)}</span></td>
                                 </tr>
 
                                 </tbody>
@@ -241,7 +213,9 @@ export default function CurrentBetslip({coupon, dispatch, user}) {
                             {/*                            <span id="potentialWinIntegral">42825.83</span>
                             <span id="potentialWinSystem" >0</span>*/}
                         </div>
-                        {user && user?.bonus_balance >= coupon.stake && <div className="bonus-btn">
+                        {user && user?.bonus_balance >= coupon.stake && parseFloat(coupon.totalOdds) >= process.env.REACT_APP_MIN_BONUS_ODD
+                        && coupon.bet_type !== 'Split' && coupon.bet_type !== 'Combo' &&
+                        <div className="bonus-btn">
                             <a href="javascript:void(0)" className="genBtn" onClick={async (e) => {
                                 await dispatch({type: SET_USE_BONUS})
                                 dispatch({type: CONFIRM_BET, payload: true})

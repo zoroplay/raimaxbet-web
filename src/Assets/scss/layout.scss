@@ -752,7 +752,7 @@ input, select, textarea{
 
 // Sport Page CSS Start -------------------------------------------------------------------------------------
 .main-content{
-  background-color: darken($primary, 4%);
+  //background-color: darken($primary, 4%);
   //background-image: url(#{$imagesPath}/main-banner-3.png);
   background-attachment: scroll;
   background-position: center 0;
@@ -2617,13 +2617,13 @@ input, select, textarea{
   font-size: 14px;
   font-weight: 700;
   color: $textcolor-dr;
-  background-color: $accent;
+  background-color: $yellow;
   width: 100%;
   text-align: center;
   padding: 10px;
   transition: background-color .2s ease-in-out;
   &:hover{
-    background-color: darken($accent, 10%);
+    background-color: darken($yellow, 10%);
   }
 }
 
@@ -7338,6 +7338,12 @@ input, select, textarea{
           color: $white;
         }
       }
+      &.disabled {
+        .SEOddLnk {
+          opacity: 0.8;
+          cursor: not-allowed;
+        }
+      }
     }
     &.c3 {
       .SEOdd {
@@ -8995,7 +9001,7 @@ ul, ul li {
               }
               &.colored {
                 padding: 0 8px;
-                color: $accent;
+                color: $pure-white;
                 font-size: 11px;
                 font-weight: 500;
                 background: $secondary;
@@ -10628,7 +10634,7 @@ ul, ul li {
 }
 .dgHdrStyle, .RisultatiGruppiStyle {
   font-size: 12px;
-  background-color: #01366f;
+  background-color: #1d843f;
   color: #ffffff;
   height: 29px;
   text-align: left;
@@ -10687,7 +10693,7 @@ ul, ul li {
   border-bottom: 1px solid #ffffff;
 }
 .dgPagerStyle {
-  background-color: #01366f;
+  background-color: #1d843f;
 }
 .dgPagerStyle td span {
   text-decoration: none;
@@ -11713,7 +11719,7 @@ ul, ul li {
     border: 2px solid #d5cccc;
     display: inline-block;
     width: 25%;
-    background: $primary;
+    background: $accent;
     box-sizing: border-box;
     padding: 0;
     ul {
@@ -11726,7 +11732,7 @@ ul, ul li {
           border-bottom: none;
         }
         &:hover,&.open,&.active {
-          background-color: lighten($primary,10%);
+          background-color: lighten($accent-alt,10%);
         }
         a,span {
           font-size: 13px;
@@ -11740,7 +11746,7 @@ ul, ul li {
             margin-right: 10px;
           }
           &.active {
-            background-color: lighten($primary,10%);
+            background-color: lighten($accent-alt,10%);
           }
         }
         span {
@@ -12018,13 +12024,13 @@ ul, ul li {
                 pointer-events: none;
                 &:hover {
                   ~ .checkmark {
-                    background-color: rgba($primary,0.2);
+                    background-color: rgba($accent,0.2);
                   }
                 }
                 &:checked {
                   ~ .checkmark {
-                    border-color: darken($primary,5%);
-                    background-color: darken($primary,5%);
+                    border-color: darken($accent,5%);
+                    background-color: darken($accent,5%);
                     width: 100%;
                     height: 100%;
                     &:after {
@@ -12033,7 +12039,7 @@ ul, ul li {
                   }
                   &:hover {
                     ~ .checkmark {
-                      background-color: rgba($primary,0.8);
+                      background-color: rgba($accent,0.8);
                     }
                   }
                 }
@@ -12191,7 +12197,7 @@ ul, ul li {
               width: 100%;
               &:hover {
                 ~ .checkmark {
-                  background-color: rgba($primary,0.2);
+                  background-color: rgba($accent,0.2);
                 }
               }
               &:checked {
@@ -12199,12 +12205,12 @@ ul, ul li {
                   border-color: $accent;
                   background-color: $accent;
                   &:after {
-                    border-color: $white;
+                    border-color: $accent;
                   }
                 }
                 &:hover {
                   ~ .checkmark {
-                    background-color: rgba($primary,0.8);
+                    background-color: rgba($accent,0.8);
                   }
                 }
               }
@@ -30033,7 +30039,7 @@ span.ui-icon.ui-icon-circle-triangle-e {
     .nxmob{
       display: flex;
       &-select{
-        background-color: $primary;
+        background-color: $accent;
         color: $white;
         outline: 0;
         width: 60px;
@@ -30212,7 +30218,7 @@ span.ui-icon.ui-icon-circle-triangle-e {
   border: 0;
   min-width: 100px;
   height: 34px;
-  background-color: $darkblue;
+  background-color: $accent;
   color: $pure-white;
   display: grid;
   place-content: center;
@@ -30432,13 +30438,13 @@ span.ui-icon.ui-icon-circle-triangle-e {
   //border-top: 1px solid #62bb7d;
   border-radius: 1px;
   background: $accent;
-  background: -moz-linear-gradient(top,$accent 0,$col-9 100%);
-  background: -webkit-gradient(linear,left top,left bottom,color-stop(0,$accent),color-stop(100%,$col-9));
-  background: -webkit-linear-gradient(top,$accent 0,$col-9 100%);
-  background: -o-linear-gradient(top,$accent 0,$col-9 100%);
-  background: -ms-linear-gradient(top,$accent 0,$col-9 100%);
-  background: linear-gradient(to bottom,$accent 0,$col-9 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$accent, endColorstr=$col-9, GradientType=0);
+  background: -moz-linear-gradient(top,$accent 0,$col-10 100%);
+  background: -webkit-gradient(linear,left top,left bottom,color-stop(0,$accent),color-stop(100%,$col-10));
+  background: -webkit-linear-gradient(top,$accent 0,$col-10 100%);
+  background: -o-linear-gradient(top,$accent 0,$col-10 100%);
+  background: -ms-linear-gradient(top,$accent 0,$col-10 100%);
+  background: linear-gradient(to bottom,$accent 0,$col-10 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$accent, endColorstr=$col-10, GradientType=0);
 }
 .btn-blue {
   background: #5b9fd2 !important;
@@ -30557,4 +30563,12 @@ body .sr-widget .sr-pills .sr-pill.sr-active,
       display: block;
     }
   }
+}
+.info-box {
+  text-align: center;
+  padding: 12px 0;
+  background-color: #2c914a;
+  font-size: 12px;
+  line-height: 14px;
+  color: #ffffff;
 }

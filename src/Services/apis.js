@@ -53,7 +53,7 @@ export const authDetails = () =>
     Http.get(`auth/details`);
 
 export const register = (data) =>
-    Http.post(`auth/register?client=mobile`, data );
+    Http.post(`auth/register?client=website`, data );
 
 export const sendVerification = (data) =>
     Http.post(`auth/send-verification-code`, data);
@@ -75,6 +75,15 @@ export const cancelTicket = (ticket) =>
 
 export const getTransactions = (data, page) =>
     Http.post(`user/account/get-transactions?page=${page}`, data);
+
+export const getBonusTransactions = (data, page) =>
+    Http.post(`user/account/get-bonus-transactions?page=${page}`, data);
+
+export const getBonuses = () =>
+    Http.get(`user/account/get-bonuses`);
+
+export const redeemBonus = () =>
+    Http.get(`user/account/redeem-bonus?source=website`);
 
 export const getWithdrawalInfo = () =>
     Http.get(`user/account/withdrawal-info` );

@@ -1,13 +1,12 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect} from 'react';
 import Others from "../layout/Others";
 import * as Yup from "yup";
 import {useState} from "react";
 import {Field, Form, Formik} from "formik";
-import {confirmVerification, login, register, sendVerification} from "../../Services/apis";
+import { login, register} from "../../Services/apis";
 import {toast} from "react-toastify";
 import {useDispatch, useSelector} from "react-redux";
 import {SET_USER_DATA} from "../../Redux/types";
-import {formattedPhoneNumber} from "../../Utils/helpers";
 import useSWR from "swr/esm/use-swr";
 
 const error = {
@@ -19,6 +18,10 @@ const RegisterSchema = Yup.object().shape({
 
     username: Yup.string()
         .min(3, "Minimum 3 letters")
+        .required("Enter a username"),
+    full_name: Yup.string()
+        .required("Enter a username"),
+    phone: Yup.string()
         .required("Enter a username"),
     password: Yup.string()
         .min(3, "Minimum 3 letters")
@@ -32,15 +35,11 @@ const RegisterSchema = Yup.object().shape({
 });
 
 export default function Register({history}) {
-    const [sending, setSending] = useState(false);
-    const [otpStatus, setOtpStatus] = useState({loading: false, status: ''});
-    const [otp, setOtp] = useState('');
-    const [username, setUsername] = useState('');
     const dispatch = useDispatch();
     const {isAuthenticated} = useSelector((state) => state.auth);
     const [bg, setBg] = useState(null);
 
-    const {data: res, error} = useSWR('/utilities/bg-image?type=registration&position=background');
+    const {data: res, error: errorData} = useSWR('/utilities/bg-image?type=registration&position=background');
 
     useEffect(() => {
         if (res && res.image_path) {
@@ -52,72 +51,6 @@ export default function Register({history}) {
         if (isAuthenticated)
             history.push('/Sport/Default');
     }, [isAuthenticated]);
-
-    const [otpRef, setOtpRef] = useState({
-        otp1: useRef(),
-        otp2: useRef(),
-        otp3: useRef(),
-        otp4: useRef(),
-        otp5: useRef(),
-        otp6: useRef()
-    });
-
-    const sendSMS = async (username) => {
-        if (username !== '') {
-            setSending(true);
-            await sendVerification({username}).then(res => {
-                setSending(false);
-                setUsername(username);
-                console.log(res);
-            }).catch(err => {
-                setSending(false);
-
-                toast.error('Unable to send SMS. Please try again');
-            });
-        }
-    }
-
-    const confirmOtp = async (otp) => {
-        setOtpStatus({...otpStatus, loading: true});
-        await confirmVerification({otp, username}).then(res => {
-            setOtpStatus({...otpStatus, loading: false});
-            if (res.success) {
-                setOtpStatus({...otpStatus, status: 'true'});
-            } else {
-                setOtpStatus({...otpStatus, status: 'false'});
-                toast.error(res.message);
-            }
-        }).catch(err => {
-            setOtpStatus({...otpStatus, loading: false});
-            toast.error('Invalid verification code.');
-        });
-    }
-
-    const otpController = (e, next, prev, index) => {
-
-        if (e.target.value.length < 1 && prev) {
-            const code = otp.slice(0, -1);
-            if (index === 1) {
-                setOtp(code);
-            } else {
-                setOtp('');
-            }
-            prev.current.focus();
-        } else if (next && e.target.value.length > 0) {
-            const code = otp + e.target.value;
-            // add value to code
-            setOtp(code);
-            next.current.focus();
-        } else {
-            const code = otp + e.target.value;
-            // add value to code
-            setOtp(code);
-            if (index === 5) {
-                confirmOtp(parseInt(code));
-            }
-            return 0;
-        }
-    }
 
     return (
         <Others>
@@ -142,47 +75,48 @@ export default function Register({history}) {
                             <h3 className="aqx-b-head-txt">Registration</h3>
                         </div>
                         <Formik
-                            initialValues={{ username: '', password: '', confirm_password: '' }}
+                            initialValues={{
+                                full_name: '',
+                                username: '',
+                                phone: '',
+                                password: '',
+                                confirm_password: ''
+                            }}
                             validationSchema={RegisterSchema}
                             onSubmit={(values, { setSubmitting }) => {
-                                if (otpStatus.status === 'true') {
-
-                                    values.username = formattedPhoneNumber(values.username);
-
-                                    register(values).then(res => {
-                                        setSubmitting(false);
-                                        if(res.success) {
-                                            const {username, password} = res.credentials;
-                                            login(username, password).then(res => {
-                                                dispatch({
-                                                    type: SET_USER_DATA,
-                                                    payload: {
-                                                        user: res.user,
-                                                        access_token: res.token,
-                                                        isAuthenticated: true
-                                                    }
-                                                });
-                                                history.push('/Sport/Default');
-
-                                            }).catch(err => {
-                                                if (err.response.status === 401) {
-                                                    toast.error(err.message);
-                                                }
-                                            })
-                                        }
-                                    }).catch(err=> {
-                                        setSubmitting(false);
-                                        if (err.response.status === 422){
-                                            let errors = Object.values(err.response.data.errors);
-                                            errors = errors.flat();
-                                            toast.error(errors);
-                                        }
-                                    })
-                                } else {
+                                register(values).then(res => {
                                     setSubmitting(false);
+                                    if(res.success) {
+                                        const {username, password} = res.credentials;
+                                        login(username, password).then(res => {
+                                            dispatch({
+                                                type: SET_USER_DATA,
+                                                payload: {
+                                                    user: res.user,
+                                                    access_token: res.token,
+                                                    isAuthenticated: true
+                                                }
+                                            });
+                                            history.push('/Sport/Default');
 
-                                    toast.error('Please enter a valid verification code')
-                                }
+                                        }).catch(err => {
+                                            if (err.response.status === 401) {
+                                                toast.error(err.message);
+                                            }
+                                        })
+                                    }
+                                }).catch(err=> {
+                                    setSubmitting(false);
+                                    if (err.response.status === 422){
+                                        let errors = Object.values(err.response.data.errors);
+                                        errors = errors.flat();
+                                        errors.forEach(error => {
+                                            toast.error(error);
+                                        })
+                                    } else {
+                                        toast.error(err.message);
+                                    }
+                                })
                             }}
                         >
                             {({ isSubmitting, touched, errors, values }) => (
@@ -191,7 +125,33 @@ export default function Register({history}) {
                                     <div className="aqx-b-content-inner">
 
                                         <div className="aqx-loax-a">
-
+                                            <div className="dnxreg-box">
+                                                <div className="dnxreg-box-a">
+                                                    <label htmlFor="" className="nxlabel">Username *</label>
+                                                </div>
+                                                <div className="dnxreg-box-b">
+                                                    <Field
+                                                        style={errors.username ? error : null}
+                                                        type="text"
+                                                        className="nxfield"
+                                                        name="username"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="dnxreg-box">
+                                                <div className="dnxreg-box-a">
+                                                    <label htmlFor="" className="nxlabel">Full Name *</label>
+                                                </div>
+                                                <div className="dnxreg-box-b">
+                                                    <Field
+                                                        style={errors.full_name ? error : null}
+                                                        type="text"
+                                                        className="nxfield"
+                                                        placeholder=""
+                                                        name="full_name"
+                                                    />
+                                                </div>
+                                            </div>
                                             <div className="dnxreg-box">
                                                 <div className="dnxreg-box-a">
                                                     <label htmlFor="" className="nxlabel">Mobile Number*</label>
@@ -199,57 +159,21 @@ export default function Register({history}) {
                                                 <div className="dnxreg-box-b">
                                                     <div className="nxmob">
                                                         <select name="" id="" className="nxmob-select">
-                                                            <option value="+254">+254</option>
+                                                            <option value="+234">+234</option>
                                                         </select>
                                                         <Field
-                                                            style={errors.username ? error : null}
+                                                            style={errors.phone ? error : null}
                                                             type="text"
                                                             className="nxmob-num"
-                                                            placeholder="e.g 12345678"
-                                                            name="username"
+                                                            placeholder="08181234567"
+                                                            name="phone"
                                                         />
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <p className="aqx-loax-a-info">
-                                                <i className="fa fa-info-circle aqx-loax-a-info-ico" /> Do not include 0 when
-                                                entering your number; start with 7 or 1</p>
-                                        </div>
-
-                                        <div className="aqx-loax-b">
-                                            <button
-                                                className="aqx-loax-btn"
-                                                onClick={() => sendSMS(formattedPhoneNumber(values.username))}
-                                                disabled={sending}
-                                            >Send code {sending && <i className="fa fa-spin fa-spinner" /> }</button>
                                         </div>
 
                                         <div className="aqx-loax-c">
-
-                                            <div className="dnxreg-box">
-                                                <div className="dnxreg-box-a">
-                                                    <label htmlFor="" className="nxlabel">Code from SMS*</label>
-                                                </div>
-                                                <div className="dnxreg-box-b smsx-code">
-                                                    <input type="text" ref={otpRef.otp1} className="nxfield" onChange={(e) => otpController(e, otpRef.otp2, '', 0)} placeholder="-" maxLength={1} />
-                                                    <input type="text" ref={otpRef.otp2} className="nxfield" onChange={(e) => otpController(e, otpRef.otp3, otpRef.otp1, 1)} placeholder="-" maxLength={1} />
-                                                    <input type="text" ref={otpRef.otp3} className="nxfield" onChange={(e) => otpController(e, otpRef.otp4, otpRef.otp2, 2)} placeholder="-" maxLength={1} />
-                                                    <input type="text" ref={otpRef.otp4} className="nxfield" onChange={(e) => otpController(e, otpRef.otp5, otpRef.otp3, 3)} placeholder="-" maxLength={1} />
-                                                    <input type="text" ref={otpRef.otp5} className="nxfield" onChange={(e) => otpController(e, otpRef.otp6, otpRef.otp4, 4)} placeholder="-" maxLength={1} />
-                                                    <input type="text" ref={otpRef.otp6} className="nxfield" onChange={(e) => otpController(e, '', otpRef.otp5, 5)} placeholder="-" maxLength={1} />
-                                                    <div style={{margin: 'auto'}}>
-                                                        {otpStatus.loading ?
-                                                        <i className="fa fa-spin fa-spinner" style={{color: 'white'}} />
-                                                        :
-                                                            {
-                                                                'true': <i className="fa fa-check" style={{color: 'green'}} />,
-                                                                'false': <i className="fa fa-times" style={{color: 'red'}} />
-                                                            }[otpStatus.status]
-                                                        }
-                                                    </div>
-                                                </div>
-                                            </div>
 
                                             <div className="dnxreg-box">
                                                 <div className="dnxreg-box-a">

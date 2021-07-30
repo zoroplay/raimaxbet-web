@@ -10,7 +10,6 @@ import {createID} from "../Utils/couponHelpers";
 export default function EventDetails({location}) {
     const urlParam = new URLSearchParams(location.search);
     const eventID = urlParam.get('EventID');
-    const {tournaments } = useSelector(state => state.sportsData);
     const [fixture, setFixture] = useState(null);
     const dispatch = useDispatch();
     const coupon = useSelector(({couponData}) => couponData.coupon);
@@ -113,7 +112,9 @@ export default function EventDetails({location}) {
                                 </div>
                                 <div className={`SEOdds ${getClass(row.selections.length)}`}>
                                     {row.selections.map((selection, s) =>
-                                        <div title="Singles" className={`SEOdd g1 ${(isSelected(createID(fixture.provider_id, row.market?.id, selection.name, selection.id), coupon)) ? 'sel' : ''}`}
+                                        <div title="Singles" className={`SEOdd g1 
+                                            ${(selection.odds === '-' || selection.odds == null) ? 'disabled' : ''}
+                                            ${(isSelected(createID(fixture.provider_id, row.market?.id, selection.name, selection.id), coupon)) ? 'sel' : ''}`}
                                              key={`selection-${s}`}>
                                             <div className="SEOddsTQ ">{selection.name}</div>
                                             <div className="SEOddLnk"

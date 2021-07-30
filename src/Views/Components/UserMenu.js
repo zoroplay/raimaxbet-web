@@ -9,6 +9,9 @@ export default function UserMenu({user}) {
                 <li className="uxr-li-link"><NavLink title="Bet List" to="/Account/BetList">Bet List</NavLink></li>
                 <li className="uxr-li-link"><NavLink title="Jackpot Bet List" to="/Account/JackpotBets">Jackpot Bet List</NavLink></li>
                 <li className="uxr-li-link"><NavLink title="Transactions List" to="/Account/TransactionList">Transactions List</NavLink></li>
+                <li className="uxr-li-link"><NavLink title="Active Bonus" to="/Account/Bonuses">Bonuses</NavLink></li>
+                <li className="uxr-li-link"><NavLink title="Transactions List" to="/Account/BonusTransactionList">Bonus Transaction List</NavLink></li>
+
                 {(user.role === 'Master Agent' || user.role === 'Super Agent' || user.role === 'Agent' || user.role === 'Shop') &&
                 <li className="uxr-li-link">
                     <NavLink to="/Account/SportFinancial" className="level-2">

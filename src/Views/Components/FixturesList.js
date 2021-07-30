@@ -65,7 +65,7 @@ export default function FixturesList({
                              onClick={(e) => openWidget(fixture, "matchhead2head")}>
                         </div>
                         <div className="brStarted tableLeague"
-                             onClick={(e) => openWidget(fixture, "livetable")}>
+                             onClick={() => window.open(`https://s5.sir.sportradar.com/betradar/en/match/${fixture.provider_id}`, 'stats', 'width=1078,height=768')}>
                         </div>
                     </div>
                     <div className="odds">
@@ -76,7 +76,10 @@ export default function FixturesList({
                                         <span>{market.name}</span>
                                         {getPredictions(market).map((prediction, p) =>
                                             <div
-                                                className={`odd r1 c1 g1 ${(predictions.length > 9 && (p % 6) === 0) ? 'firstInRow' : ''} ${(isSelected(createID(fixture.provider_id, prediction.market_id, prediction.odd_name, prediction.odd_id), coupon)) ? 'sel' : ''}`}
+                                                className={`odd r1 c1 g1 
+                                                ${(predictions.length > 9 && (p % 6) === 0) ? 'firstInRow' : ''} 
+                                                ${(getOdds(prediction, fixture.odds) === '-' || getOdds(prediction, fixture.odds) == null) ? 'disabled' : ''}
+                                                ${(isSelected(createID(fixture.provider_id, prediction.market_id, prediction.odd_name, prediction.odd_id), coupon)) ? 'sel' : ''}`}
                                                 key={`prediction-${p}`}
                                                 onClick={() => dispatch(addToCoupon(fixture, prediction.market_id, prediction.market_name, getOdds(prediction, fixture.odds), prediction.odd_id, prediction.odd_name,
                                                     createID(fixture.provider_id, prediction.market_id, prediction.odd_name, prediction.odd_id), fixture.fixture_type))}

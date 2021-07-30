@@ -22,7 +22,8 @@ export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddna
         // grab current state
         const state = getState();
 
-        // console.log(odds);
+        if (odds === '-' || odds === null)
+            return false;
 
         dispatch({type: SET_BET_PLACED, payload: ''});
 
@@ -240,7 +241,7 @@ export function fastAdd(amount){
         }
 
         coupondata.totalStake = coupondata.totalStake + amount;
-        coupondata.exciseDuty = coupondata.totalStake * 6.98 / 100;
+        coupondata.exciseDuty = coupondata.totalStake * 0 / 100;
         coupondata.stake = coupondata.totalStake - coupondata.exciseDuty;
 
         //calculate Winnings
@@ -270,7 +271,7 @@ export function updateWinnings(stake){
         coupondata.totalStake = stake;
 
         if (stake !== '') {
-            coupondata.exciseDuty = coupondata.totalStake * 6.98 / 100;
+            coupondata.exciseDuty = coupondata.totalStake * 0 / 100;
             coupondata.stake = coupondata.totalStake - coupondata.exciseDuty;
             //calculate Winnings
             let winnings = calculateWinnings(coupondata, globalVars, bonusList);
@@ -296,7 +297,7 @@ export function updateComboWinningsFromTotal (stake) {
 
         coupondata.totalStake = stake ? stake : coupondata.totalStake;
 
-        coupondata.exciseDuty = coupondata.totalStake * 6.98 / 100;
+        coupondata.exciseDuty = coupondata.totalStake * 0 / 100;
         coupondata.stake = coupondata.totalStake - coupondata.exciseDuty;
         if(stake !== '') {
             for (let x = 0; x < coupondata.combos.length; x++) {

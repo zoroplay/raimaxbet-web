@@ -11,7 +11,7 @@ export const Split = ({couponData, dispatch, globalVar, bonusList}) => {
 
         if(stake !== '') {
 
-            coupondata.exciseDuty = coupondata.totalStake * 6.98 / 100;
+            coupondata.exciseDuty = coupondata.totalStake * 0 / 100;
             coupondata.stake = coupondata.totalStake - coupondata.exciseDuty;
             coupondata.minStake = parseFloat(stake) / coupondata.noOfCombos;
 

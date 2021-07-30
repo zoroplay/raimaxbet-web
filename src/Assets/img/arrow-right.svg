@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="7px" height="12px" viewBox="0 0 7 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>Continue Icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.8">
+        <g id="Deposit-::-My-Account" transform="translate(-298.000000, -317.000000)" fill="#2D3033">
+            <g id="Accordian" transform="translate(0.000000, 86.000000)">
+                <g id="Row" transform="translate(0.000000, 230.000000)">
+                    <g id="Continue-Icon" transform="translate(298.000000, 1.000000)">
+                        <g transform="translate(1.000000, 6.000000) rotate(-135.000000) translate(-1.000000, -6.000000) translate(-3.000000, 2.000000)">
+                            <rect id="Rectangle-10" x="0" y="7.10542736e-15" width="2" height="8" rx="1"></rect>
+                            <rect id="Rectangle-11" x="0" y="6" width="8" height="2" rx="1"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

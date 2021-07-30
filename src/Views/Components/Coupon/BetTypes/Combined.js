@@ -57,7 +57,7 @@ export const Combined = ({couponData, dispatch, globalVar, bonusList}) => {
             coupondata.wthTax = (coupondata.grossWin - coupondata.stake) * process.env.REACT_APP_WTH_PERC / 100;
             coupondata.maxWin = coupondata.grossWin - coupondata.wthTax;
             coupondata.totalStake =  total;
-            coupondata.exciseDuty = coupondata.totalStake * 6.98 / 100;
+            coupondata.exciseDuty = coupondata.totalStake * 0 / 100;
             coupondata.stake = coupondata.totalStake - coupondata.exciseDuty;
             coupondata.comboSelection = comboLength;
             coupondata.noOfCombos = noOfCombos;

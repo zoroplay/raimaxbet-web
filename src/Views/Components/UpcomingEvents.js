@@ -84,7 +84,10 @@ export default function UpcomingEvents() {
                                         <td key={`prediction-${row.odd_id}`}>
                                             <span
                                                 onClick={() => dispatch(addToCoupon(match, row.market_id, row.market_name, getOdds(row, match.odds), row.odd_id, row.odd_name, createID(match.provider_id, row.market_id, row.odd_name, row.odd_id), match.fixture_type))}
-                                                className={`match-value odd quote ${(isSelected(createID(match.provider_id, row.market_id, row.odd_name, row.odd_id), coupon)) ? 'selected' : ''}`}>{getOdds(row, match.odds)}</span>
+                                                className={`match-value odd quote 
+                                                ${(getOdds(row, match.odds) === null || getOdds(row, match.odds) === '-') ? 'disabled' : ''}
+                                                ${(isSelected(createID(match.provider_id, row.market_id, row.odd_name, row.odd_id), coupon)) ? 'selected' : ''}`}
+                                            >{getOdds(row, match.odds)}</span>
                                         </td>
                                     )}
                                 </tr>

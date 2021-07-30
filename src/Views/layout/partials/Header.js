@@ -202,7 +202,7 @@ export default function Header() {
                     <div className="uxr-container">
                         <div className="uxr-inner">
                             <div className="uxr-a">
-                                <a href="#" onClick={() => dispatch({type: SHOW_DEPOSIT_MODAL})} className="uxr-a-link">Deposit</a>
+                                <NavLink to="/Account/Deposit" className="uxr-a-link">Deposit</NavLink>
                             </div>
                             <div className="uxr-b">
                                 <span className="uxr-b-text">My Account</span>

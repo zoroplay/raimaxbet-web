@@ -30,7 +30,7 @@ export default function Footer() {
 
                         <div className="footer-img">
                             <span className="footer-copy">
-                                Pitch90Bet is licensed and regulated by the Betting Control and Licensing Board under License number BK 0000183
+                                {process.env.REACT_APP_NAME} is licensed and regulated by the Betting Control and Licensing Board under License number BK 0000183
                             </span>
                         </div>
                     </div>
