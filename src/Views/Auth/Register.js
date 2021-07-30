@@ -23,6 +23,8 @@ const RegisterSchema = Yup.object().shape({
         .required("Enter a username"),
     phone: Yup.string()
         .required("Enter a username"),
+    email: Yup.string().email()
+        .required(),
     password: Yup.string()
         .min(3, "Minimum 3 letters")
         .required("Enter a password"),
@@ -79,6 +81,7 @@ export default function Register({history}) {
                                 full_name: '',
                                 username: '',
                                 phone: '',
+                                email: '',
                                 password: '',
                                 confirm_password: ''
                             }}
@@ -149,6 +152,20 @@ export default function Register({history}) {
                                                         className="nxfield"
                                                         placeholder=""
                                                         name="full_name"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="dnxreg-box">
+                                                <div className="dnxreg-box-a">
+                                                    <label htmlFor="" className="nxlabel">Email *</label>
+                                                </div>
+                                                <div className="dnxreg-box-b">
+                                                    <Field
+                                                        style={errors.email ? error : null}
+                                                        type="email"
+                                                        className="nxfield"
+                                                        placeholder=""
+                                                        name="email"
                                                     />
                                                 </div>
                                             </div>
