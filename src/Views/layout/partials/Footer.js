@@ -24,7 +24,7 @@ export default function Footer() {
                                 <li className="footer-links-list-li"><a href="/BecomeAnAgent">Become an Agent</a></li>
                                 <li className="footer-links-list-li"><a href="#">Web Affillates</a></li>
                                 <li className="footer-links-list-li"><a href="#">Results</a></li>
-                                <li className="footer-links-list-li"><a href="#" onClick={() => goTo('/Sport/contact-us')}>Contact Us</a></li>
+                                <li className="footer-links-list-li"><a href="#" onClick={() => goTo('/Sport/Pages/contact-us')}>Contact Us</a></li>
                             </ul>
                         </div>
 
