@@ -103,7 +103,9 @@ export default function TopBets() {
                                             <div className="match-teams-content-b">
                                                 <span className="match-date">{match.event_id}</span>
                                                 <span className="match-time">{formatDate(match.schedule, 'HH:mm')}</span>
-                                                <a className="match-grap" onClick={() => getStats(match)} href="#" />
+                                                <a className="match-grap"
+                                                   onClick={() => window.open(`https://s5.sir.sportradar.com/betradar/en/match/${match.provider_id}`, 'stats', 'width=1078,height=768')}
+                                                   href="#" />
                                                 <a className="head-grap"  href="#" />
                                             </div>
                                         </div>

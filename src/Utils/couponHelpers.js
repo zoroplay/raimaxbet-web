@@ -58,6 +58,9 @@ export const checkBetType = (coupon) => {
                 return false;
             }
         })
+        if (item.fixtures.length === 1){
+            betType = 'Single'
+        }
     })
     return betType;
 };

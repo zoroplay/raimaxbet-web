@@ -1,7 +1,7 @@
 import React, { useState} from "react";
 import {Formik, Field} from "formik";
 import * as Yup from "yup";
-import { sendWithdrawal} from "../../Services/apis";
+import {postWithdrawal} from "../../Services/apis";
 import {UPDATE_USER_BALANCE} from "../../Redux/types";
 import {useDispatch, useSelector} from "react-redux";
 import '../../Assets/scss/_payments.scss';
@@ -18,7 +18,7 @@ export function Withdrawal({history}) {
     const dispatch = useDispatch();
 
     const submitForm = (values, {setSubmitting, resetForm}) => {
-        sendWithdrawal(values).then(res => {
+        postWithdrawal(values).then(res => {
             setSubmitting(false);
             if (res.success) {
 
