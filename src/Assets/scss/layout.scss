@@ -16128,7 +16128,7 @@ input:checked + .ed-slider:before {
     }
   }
   .title {
-    background: darken($primary, 4%);
+    background: darken($accent, 4%);
     height: 36px;
     display: inline-block;
     width: 100%;
@@ -16299,13 +16299,13 @@ input:checked + .ed-slider:before {
                   height: 13px;
                   width: 13px;
                   background-color: transparent;
-                  border: 1px solid $primary;
+                  border: 1px solid $accent;
                   &:after {
                     left: 3px;
                     top: 1px;
                     width: 3px;
                     height: 6px;
-                    border: solid $primary;
+                    border: solid $accent;
                     border-width: 0 2px 2px 0;
                   }
                 }
@@ -16321,7 +16321,7 @@ input:checked + .ed-slider:before {
               height: 13px;
               width: 13px;
               background-color: transparent;
-              border: 1px solid lighten($primary,25%);
+              border: 1px solid lighten($accent,25%);
               border-radius: 3px;
               &:after {
                 content: "";
@@ -16341,7 +16341,7 @@ input:checked + .ed-slider:before {
             &:hover {
               input {
                 ~ .checkmark {
-                  background: rgba($primary, 0.05);
+                  background: rgba($accent, 0.05);
                 }
               }
             }
@@ -16810,7 +16810,7 @@ input:checked + .ed-slider:before {
               width: 100%;
             }
             &:hover input ~ .checkmark {
-              background-color: rgba($primary,0.2);
+              background-color: rgba($accent,0.2);
             }
           }
           .check-label {
@@ -17149,7 +17149,7 @@ input:checked + .ed-slider:before {
               width: 100%;
             }
             &:hover input ~ .checkmark {
-              background-color: rgba($primary,0.2);
+              background-color: rgba($accent,0.2);
             }
           }
           .check-label {
@@ -18983,7 +18983,7 @@ input:checked + .ed-slider:before {
                   margin-top: 9px;
                   &:hover {
                     input ~ .checkmark {
-                      background-color: rgba($primary,0.10);
+                      background-color: rgba($accent,0.10);
                     }
                   }
                 }
@@ -20738,7 +20738,7 @@ input:checked + .ed-slider:before {
   &:hover {
     input {
       ~ .checkmark {
-        background: lighten($primary, 5%);
+        background: lighten($accent, 5%);
       }
     }
   }
@@ -23013,7 +23013,7 @@ input:checked + .ed-slider:before {
       &:hover {
         input {
           ~ .checkmark {
-            background: lighten($primary, 5%);
+            background: lighten($accent, 5%);
           }
         }
       }
@@ -23437,7 +23437,7 @@ input:checked + .ed-slider:before {
                 height: calc(100% - 2px);
                 width: calc(100% - 2px);
                 background-color: transparent;
-                border: 1px solid $pure-white;
+                border: 1px solid $accent;
                 &:after {
                   left: 3px;
                   top: 1px;
@@ -23459,7 +23459,7 @@ input:checked + .ed-slider:before {
             height: calc(100% - 2px);
             width: calc(100% - 2px);
             background-color: transparent;
-            border: 1px solid $pure-white;
+            border: 1px solid $accent;
             border-radius: 3px;
             &:after {
               content: "";
@@ -23479,7 +23479,7 @@ input:checked + .ed-slider:before {
           &:hover {
             input {
               ~ .checkmark {
-                background: lighten($primary, 5%);
+                background: lighten($accent, 5%);
               }
             }
           }

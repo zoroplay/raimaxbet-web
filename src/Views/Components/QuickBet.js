@@ -65,7 +65,11 @@ export default function QuickBet() {
                            onKeyUp={findEvent}
                     />
                     <input type="submit" id="entercode3" name="entercode3" onClick={findEvent} />
-                    <select id="segni3" name="pronostico3" onChange={(e) => selectOutcome(e.target.value)}>
+                    <select id="segni3" name="pronostico3" onChange={(e) => {
+                        if (e.target.value !== '')
+                            selectOutcome(e.target.value)
+                    }}>
+                        <option value="">--select option--</option>
                         {outcomes.map(outcome => <option key={outcome.odd_id} value={JSON.stringify(outcome)}>{outcome.odd_name + ' ('+outcome.market_name+')'}</option> )}
                     </select>
                 </form>
