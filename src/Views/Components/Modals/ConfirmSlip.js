@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {formatDate, formatNumber} from "../../../Utils/helpers";
 import {useDispatch, useSelector} from "react-redux";
 import {CANCEL_BET, CONFIRM_BET, SET_BET_PLACED, SHOW_LOGIN_MODAL, SHOW_TIPSTER_MODAL} from "../../../Redux/types";
@@ -10,6 +10,7 @@ import {NavLink} from "react-router-dom";
 export default function ConfirmSlip({couponData}) {
     const dispatch = useDispatch();
     const [giftCode, setGiftCode] = useState(null);
+    const [printing, setPrinting] = useState(false);
     const {coupon, betPlaced, confirm} = couponData;
     const {isAuthenticated, user} = useSelector(state => state.auth);
     const {SportsbookGlobalVariable, SportsbookBonusList} = useSelector((state) => state.sportsBook);
@@ -213,7 +214,18 @@ export default function ConfirmSlip({couponData}) {
                             }
                             {betPlaced && betPlaced.type === 'bet' &&
                                 <div className="txt-c">
-                                    <button className="button px-5 btn-blue" onClick={()=>printTicket(betPlaced.coupon.betslip_id)}>Print Ticket</button>
+                                    <button className="button px-5 btn-blue"
+                                            disabled={printing}
+                                            onClick={()=> {
+                                                setPrinting(true)
+                                                setTimeout(() => {
+                                                    printTicket(betPlaced.coupon.betslip_id)
+                                                    setPrinting(false);
+                                                }, 5000);
+                                            }}
+                                    >
+                                        { printing ? 'Printing...' : 'Print Ticket' }
+                                    </button>
 
                                     <button className="button px-5" onClick={close}>Bet Again (+)</button>
 

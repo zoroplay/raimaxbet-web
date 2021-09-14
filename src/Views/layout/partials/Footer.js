@@ -16,7 +16,7 @@ export default function Footer() {
 
                     <div className="footer-links">
                         <div className="footer-links-inner">
-                            <span className="footer-links-head"><h3>Pitch 90</h3></span>
+                            <span className="footer-links-head"><h3>{process.env.REACT_APP_NAME}</h3></span>
 
                             <ul className="footer-links-list">
                                 <li className="footer-links-list-li"><a href="#" onClick={() => goTo('/')}>Home</a></li>
@@ -28,11 +28,11 @@ export default function Footer() {
                             </ul>
                         </div>
 
-                        <div className="footer-img">
-                            <span className="footer-copy">
-                                {process.env.REACT_APP_NAME} is licensed and regulated by the Betting Control and Licensing Board under License number BK 0000183
-                            </span>
-                        </div>
+                        {/*<div className="footer-img">*/}
+                        {/*    <span className="footer-copy">*/}
+                        {/*        {process.env.REACT_APP_NAME} is licensed and regulated by the Betting Control and Licensing Board under License number BK 0000183*/}
+                        {/*    </span>*/}
+                        {/*</div>*/}
                     </div>
 
                     <div className="paymeth-container">
