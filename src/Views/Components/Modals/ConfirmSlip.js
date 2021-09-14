@@ -221,7 +221,7 @@ export default function ConfirmSlip({couponData}) {
                                                 setTimeout(() => {
                                                     printTicket(betPlaced.coupon.betslip_id)
                                                     setPrinting(false);
-                                                }, 10000);
+                                                }, 6000);
                                             }}
                                     >
                                         { printing ? 'Printing...' : 'Print Ticket' }
