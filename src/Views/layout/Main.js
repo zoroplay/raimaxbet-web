@@ -30,7 +30,7 @@ export default function Main({children, history}) {
                         <div className="side2">
                             <div className="sports-book">
                                 <div className="title">
-                                    <img src="//atlantiq1.brlgcs.com/atlantiq1/images/soccer-icon.png" alt=""
+                                    <img src="/img/soccer-icon.png" alt=""
                                          className="title-icon" />
                                         SPORTSBOOK
                                 </div>

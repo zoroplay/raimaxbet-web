@@ -65,7 +65,7 @@ export default function TipsterBet({dispatch, betslip, reset}) {
                     <i className="fa fa-times" aria-hidden="true" /></div>
                 <div className="login-content">
                     <div className="title">
-                        <img src="//atlantiq1.brlgcs.com/atlantiq1/images/check-icon.png" alt=""
+                        <img src="/img/check-icon.png" alt=""
                              className="title-icon" />
                         <span>Place Tipster Bet</span>
                     </div>

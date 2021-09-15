@@ -55,7 +55,7 @@ export default function DepositModal({dispatch}) {
                     <i className="fa fa-times" aria-hidden="true" /></div>
                 <div className="login-content">
                     <div className="title">
-                        <img src="//atlantiq1.brlgcs.com/atlantiq1/images/check-icon.png" alt=""
+                        <img src="/img/check-icon.png" alt=""
                              className="title-icon" />
                         <span>Deposit</span>
                     </div>

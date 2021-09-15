@@ -57,7 +57,7 @@ export default function Footer() {
 
                         <div className="resp-img">
                             <img className="resp-img-src"
-                                 src="//atlantiq1.brlgcs.com/atlantiq1/images/logo/play-responsibly.png" alt="" />
+                                 src="/img/logo/play-responsibly.png" alt="" />
                         </div>
                         <span className="footer-copy">
                             This site is open strictly to persons over the age of 18 years. Gambling may have adverse effects if not taken in moderation.

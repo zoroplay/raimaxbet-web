@@ -408,7 +408,7 @@ export default function Jackpot() {
                     </div>
                     <div className="bet-confirm-content">
                         <div className="title">
-                            <img src="//atlantiq1.brlgcs.com/atlantiq1/images/bet-confirm-info.png" alt="" />
+                            <img src="/img/bet-confirm-info.png" alt="" />
                             <span>You are about to place a jackpot bet for <b>{coupon.stake}Kes</b>, please confirm that you would like to proceed.</span>
                         </div>
                         <div className="buttons">

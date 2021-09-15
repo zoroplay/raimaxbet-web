@@ -34,7 +34,7 @@ export default function ConfirmBonusWithdrawal({amount, dispatch}) {
                 </div>
                 <div className="login-content">
                     <div className="title">
-                        <img src="//atlantiq1.brlgcs.com/atlantiq1/images/check-icon.png" alt=""
+                        <img src="/img/check-icon.png" alt=""
                              className="title-icon" />
                         <span>Redeem your bonus Winnings</span>
                     </div>

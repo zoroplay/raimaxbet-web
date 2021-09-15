@@ -49,7 +49,7 @@ export default function QuickBet() {
     return (
         <div className="single-block closed">
             <div className="block-title toggle-title">
-                <img src="//atlantiq1.brlgcs.com/atlantiq1/images/arrow-down.png" alt=""
+                <img src="/img/arrow-down.png" alt=""
                      className="title-icon closed" />
                 <span>QUICKBET</span>
                 <div className="quick-btn">

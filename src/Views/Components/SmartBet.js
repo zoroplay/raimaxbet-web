@@ -60,7 +60,7 @@ export default function SmartBet() {
     return (
         <div className="single-block closed">
             <div className="block-title toggle-title">
-                <img src="//atlantiq1.brlgcs.com/atlantiq1/images/arrow-down.png" alt=""
+                <img src="/img/arrow-down.png" alt=""
                      className="title-icon closed" />
                 <span>SMARTBET</span>
                 <div className="quick-btn">

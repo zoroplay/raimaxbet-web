@@ -52,7 +52,7 @@ export default function TipsterForm({betslip, dispatch}) {
                 </div>
                 <div className="login-content">
                     <div className="title">
-                        <img src="//atlantiq1.brlgcs.com/atlantiq1/images/check-icon.png" alt=""
+                        <img src="/img/check-icon.png" alt=""
                              className="title-icon" />
                         <span>Add betslip to tipster</span>
                     </div>

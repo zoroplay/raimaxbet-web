@@ -219,7 +219,7 @@ export default function BetList({match, history}) {
                 </div>
                 <div className="bet-confirm-content">
                     <div className="title">
-                        <img src="//atlantiq1.brlgcs.com/atlantiq1/images/bet-confirm-info.png" alt="" />
+                        <img src="/img/bet-confirm-info.png" alt="" />
                         <span>Are you sure you want to cancel this ticket?<br />
                         <small style={{color: 'red'}}>Note: You can only cancel tickets within 5 mins after registering the ticket</small>
                         </span>

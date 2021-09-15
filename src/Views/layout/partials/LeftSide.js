@@ -81,7 +81,7 @@ export default function LeftSide() {
                 <button className="search-btn" type="submit">
                     <img
                         className="search-icon"
-                        src="//atlantiq1.brlgcs.com/atlantiq1/images/icons/search.png"
+                        src="/img/icons/search.png"
                         alt="search icon"
                     />
                 </button>
@@ -97,7 +97,7 @@ export default function LeftSide() {
                     <div className="smx-card-list">
                         {topbets && topbets.map(row =>
                             <NavLink to={`/Sport/Odds?tid=${row.tournament_id}&sid=1`} key={row.id} className="smx-card" >
-                                <span className="smx-item-art-wrap" style={{backgroundImage: 'url(//atlantiq1.brlgcs.com/atlantiq1/images/sports-icon/1.png)'}} />
+                                <span className="smx-item-art-wrap" style={{backgroundImage: 'url(/img/sports-icon/1.png)'}} />
                                 <div className="smx-card-details">
                                     <div className="smx-card-name">{row.tournament.name}</div>
                                 </div>

@@ -26,7 +26,7 @@ export default function CouponCheck() {
     return (
         <div className="single-block">
             <div className="block-title">
-                <img src="//atlantiq1.brlgcs.com/atlantiq1/images/check-icon.png" alt="" className="title-icon" />
+                <img src="/img/check-icon.png" alt="" className="title-icon" />
                 <span>VERIFY COUPON</span>
             </div>
             <div className="block-content verify-coupon">

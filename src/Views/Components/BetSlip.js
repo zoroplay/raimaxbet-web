@@ -63,7 +63,7 @@ export default function BetSlip() {
     return (
         <div className="single-block betslip-holder active">
             <div className="block-title">
-                <img src="//atlantiq1.brlgcs.com/atlantiq1/images/list-icon.png" alt="" className="title-icon" />
+                <img src="/img/list-icon.png" alt="" className="title-icon" />
                 <div className="match-count selectionss">{coupon.selections.length}</div>
                 <span>Betslip</span>
             </div>

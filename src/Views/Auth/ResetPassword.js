@@ -56,7 +56,7 @@ export default function ResetPassword({history}) {
                 <div className="grid">
                     <div className="forgot-password-holder">
                         <div className="block-title">
-                            <img src="//atlantiq1.brlgcs.com/atlantiq1/images/arrow-down.png" alt="" className="title-icon" />
+                            <img src="/img/arrow-down.png" alt="" className="title-icon" />
                             <span>Reset your Password</span>
                         </div>
                         <div className="forgot-password-content">

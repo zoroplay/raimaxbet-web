@@ -63,7 +63,7 @@ export default function Register({history}) {
 
                         <div className="aqx-banner">
                             <a href="#" className="aqx-banner-link">
-                                <div className="aqx-banner-img" style={{backgroundImage: bg ? `url(${bg})` : 'http://atlantiq1.brlgcs.com/atlantiq1/images/aqx-reg-banner.jpg'}} />
+                                <div className="aqx-banner-img" style={{backgroundImage: bg ? `url(${bg})` : 'http:/img/aqx-reg-banner.jpg'}} />
                             </a>
                         </div>
 

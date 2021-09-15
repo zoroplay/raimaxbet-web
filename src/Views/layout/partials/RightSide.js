@@ -44,11 +44,11 @@ export default function RightSide() {
             </a>}
 
             <a href="/Sport/cms?mid=29&amp;sid=0" className="mb">
-                <img src="//atlantiq1.brlgcs.com/atlantiq1/images/CONTACT-US.png" alt="contact us" />
+                <img src="/img/CONTACT-US.png" alt="contact us" />
             </a>
 
             <div className="lucky-container">
-                <img src="//atlantiq1.brlgcs.com/atlantiq1/images/LUCKYPICK-1.jpg" alt="LUCKYPICK" />
+                <img src="/img/LUCKYPICK-1.jpg" alt="LUCKYPICK" />
                 <div className="lucky-content">
                     <div className="lucky-left lucky">
                         <p>To win</p>

@@ -32,7 +32,7 @@ export default function CurrentBetslip({coupon, dispatch, user}) {
                                     <div className="selected-bet" key={`selection-${selection.odd_id}`}>
                                         <div className="remove-icon" onClick={() => dispatch(removeSelection(selection))}>
                                             <div className="icon-holder">
-                                                <img src="//atlantiq1.brlgcs.com/atlantiq1/images/cross-red.png" alt="" />
+                                                <img src="/img/cross-red.png" alt="" />
                                             </div>
                                         </div>
                                         <div className="bet"><span>{coupon?.tipster_id ? '***' : selection.market_name}: {coupon?.tipster_id ? '**' : selection.oddname}</span>
