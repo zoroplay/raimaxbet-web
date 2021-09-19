@@ -65,7 +65,7 @@ export default function ViewCoupon({betslip}) {
                                         </tr>
                                         <tr>
                                             <td className="cellaSx">Bet Type</td>
-                                            <td className="cellaDx" style={{textAlign: 'right'}}>{betslip?.event_type === 'jackpot' ? 'Jackpot' : betslip?.bet_type}</td>
+                                            <td className="cellaDx" style={{textAlign: 'right'}}>{betslip?.event_type === 'jackpot' ? 'Jackpot' : betslip?.bet_type_desc}</td>
                                         </tr>
                                         </tbody>
                                     </table>
