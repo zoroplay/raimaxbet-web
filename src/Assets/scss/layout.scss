@@ -25051,9 +25051,9 @@ input:checked + .ed-slider:before {
 }
 
 .explore-matches-page {
-  background: darken($primary, 10%);
+  background: darken($accent, 10%);
   .title {
-    border-bottom: 1px solid $primary;
+    border-bottom: 1px solid $accent;
     line-height: 36px;
     width: calc(100% - 0px);
     padding: 5px 15px;
@@ -25095,9 +25095,9 @@ input:checked + .ed-slider:before {
       float: left;
       cursor: pointer;
       &.active,&:hover {
-        color: $textcolor-dr;
-        background: $accent;
-        border-color: $accent;
+        color: $textcolor-li;
+        background: $accent-alt;
+        border-color: $accent-alt;
       }
     }
   }

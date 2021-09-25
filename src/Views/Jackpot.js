@@ -304,7 +304,7 @@ export default function Jackpot() {
                     <div className="jkban-inner">
 
                         <div className="jkban-amt" id="jackpotTotal">{formatNumber(activeJackpot?.amount)}</div>
-                        <h2 className="jkban-txt">KES</h2>
+                        <h2 className="jkban-txt">NGN</h2>
                     </div>
                 </div>
 
@@ -363,7 +363,7 @@ export default function Jackpot() {
                         <div className="jkpt-cta-b">
                             <span className="totstk">Stake:</span>
                             <div className="totstk-box">
-                                <div className="totstk-cur">KES</div>
+                                <div className="totstk-cur">NGN</div>
                                 <div className="totstk-amt" id="price">{activeJackpot?.stake}</div>
                             </div>
                         </div>
@@ -376,7 +376,7 @@ export default function Jackpot() {
                         <div className="jkpt-cta-b">
                             <span className="totstk">total stake:</span>
                             <div className="totstk-box">
-                                <div className="totstk-cur">KES</div>
+                                <div className="totstk-cur">NGN</div>
                                 <div className="totstk-amt" id="total">{coupon?.stake}</div>
                             </div>
                         </div>
@@ -409,7 +409,7 @@ export default function Jackpot() {
                     <div className="bet-confirm-content">
                         <div className="title">
                             <img src="/img/bet-confirm-info.png" alt="" />
-                            <span>You are about to place a jackpot bet for <b>{coupon.stake}Kes</b>, please confirm that you would like to proceed.</span>
+                            <span>You are about to place a jackpot bet for <b>{coupon.stake}NGN</b>, please confirm that you would like to proceed.</span>
                         </div>
                         <div className="buttons">
                             <div className="cancel-button button" onClick={closeConfirm}>
