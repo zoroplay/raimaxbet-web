@@ -448,6 +448,7 @@ export function removeSelection(selection){
                 // couponData.combos = await getCombos(couponData);
                 //calculate and get pot winnings with bonus
                 if (coupondata.bet_type === 'Combo') {
+                    dispatch({type: SET_COUPON_DATA, payload: coupondata})
                     if (coupondata.Groupings && coupondata.Groupings.length) {
                         const calculatedCoupon = couponCalculation.calcPotentialWins(coupondata, bonusList);
                         coupondata = coupondata.updateFromCalculatedCoupon(coupondata, calculatedCoupon);
@@ -461,7 +462,9 @@ export function removeSelection(selection){
                                 }
                             }
                         })
-                        return dispatch(updateComboWinningsFromTotal());
+                        setTimeout(() => {
+                            return dispatch(updateComboWinningsFromTotal());                            
+                        }, 500);
                     }
                 } else {
                     const winnings = calculateWinnings(coupondata, globalVars, bonusList);
@@ -469,7 +472,6 @@ export function removeSelection(selection){
                     coupondata.maxBonus = winnings.maxBonus;
                     coupondata.wthTax = winnings.wthTax;
                     coupondata.grossWin = winnings.grossWin;
-
                     return dispatch({type: SET_COUPON_DATA, payload: coupondata});
                 }
             }
