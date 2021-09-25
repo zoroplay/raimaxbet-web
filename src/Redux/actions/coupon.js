@@ -16,12 +16,15 @@ import * as _ from 'lodash';
 import {toast} from "react-toastify";
 import {getCombos, getSplitProps} from "../../Services/apis";
 import {calculateExclusionPeriod, formatDate} from "../../Utils/helpers";
+import CouponCalculation from "../../Utils/CouponCalculation";
+
+const couponCalculation = new CouponCalculation();
+
 
 export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddname, ele_id, type='pre') {
     return async (dispatch, getState) => {
         // grab current state
         const state = getState();
-
         if (odds === '-' || odds === null)
             return false;
 
@@ -41,7 +44,8 @@ export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddna
             tournament: type === 'live' ? fixture.TournamentName : fixture.sport_tournament_name,
             category: type === 'live' ? fixture.CategoryName : fixture.sport_category_name,
             sport: type === 'live' ? fixture.SportName : fixture.sport_name,
-            type:type
+            type:type,
+            fixed: false
         };
         if (type === 'live') {
             data.in_play_time = fixture.MatchTime;
@@ -99,7 +103,8 @@ export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddna
                         const prevBetType = couponData.bet_type;
                         //group selections by match
                         couponData.tournaments = groupTournament(couponData.selections);
-                        // couponData.fixtures = groupSelections(couponData.selections);
+                         // check if has live
+                         couponData.hasLive  = checkIfHasLive(couponData.selections);
                         //check bet type
                         couponData.bet_type = checkBetType(couponData);
 
@@ -118,25 +123,35 @@ export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddna
                             couponData.wthTax = (couponData.grossWin - couponData.stake) * process.env.REACT_APP_WTH_PERC / 100;
                             couponData.maxWin = couponData.grossWin - couponData.wthTax;
                         } else {
+                            
                             // recalculate totalOdds if prev bet type was Split
                             if (prevBetType === 'Split') {
                                 couponData.totalOdds = calculateTotalOdds(couponData.selections);
                             } else { // else remove selection from total odds
                                 couponData.totalOdds = (parseFloat(couponData.totalOdds) / parseFloat(data.odds)).toFixed(2);
                             }
+                            const calculatedGroup   = couponCalculation.calcCombinations(couponData);
+                            couponData.combos       = calculatedGroup.Groups;
+                            console.log(couponData);
+                            // couponData.combos = await getCombos(couponData);
                             //calculate and get pot winnings with bonus
-                            const winnings = calculateWinnings(couponData, globalVars, bonusList);
-                            couponData.maxWin = winnings.maxWin;
-                            couponData.maxBonus = winnings.maxBonus;
-                            couponData.wthTax = winnings.wthTax;
-                            couponData.grossWin = winnings.grossWin;
+                            if (couponData.bet_type === 'Combo') {
+                                dispatch({type: SET_COUPON_DATA, payload: couponData});
+                                if (couponData.Groupings && couponData.Groupings.length) {
+                                    setTimeout(() => {
+                                        return dispatch(updateComboWinningsFromTotal());                            
+                                    }, 500);
+                                }
+                            } else {
+                                const winnings = calculateWinnings(couponData, globalVars, bonusList);
+                                couponData.maxWin = winnings.maxWin;
+                                couponData.maxBonus = winnings.maxBonus;
+                                couponData.wthTax = winnings.wthTax;
+                                couponData.grossWin = winnings.grossWin;
 
-                            couponData.combos = await getCombos(couponData);
-                            // check if has live
-                            couponData.hasLive  = checkIfHasLive(couponData.selections);
+                                return dispatch({type: SET_COUPON_DATA, payload: couponData});
+                            }  
                         }
-
-                        return dispatch({type: SET_COUPON_DATA, payload: couponData});
                     } else {
                         return dispatch({type: CANCEL_BET})
                     }
@@ -187,6 +202,7 @@ export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddna
             //check bet type
             couponData.bet_type = checkBetType(couponData);
             // check if event is live
+
             if (type === 'live')
                 couponData.hasLive = true;
 
@@ -207,17 +223,30 @@ export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddna
                 const wthTax = (couponData.grossWin - couponData.stake) * process.env.REACT_APP_WTH_PERC / 100;
                 couponData.wthTax = wthTax < 1 ? 0 : wthTax;
                 couponData.maxWin = couponData.grossWin - couponData.wthTax;
-            } else {
-                couponData.combos = await getCombos(couponData);
-                //calculate and get pot winnings with bonus
-                const winnings = calculateWinnings(couponData, globalVars, bonusList);
-                couponData.maxWin = winnings.maxWin;
-                couponData.maxBonus = winnings.maxBonus;
-                couponData.wthTax = winnings.wthTax;
-                couponData.grossWin = winnings.grossWin;
-            }
 
-            return dispatch({type: SET_COUPON_DATA, payload: couponData});
+                return dispatch({type: SET_COUPON_DATA, payload: couponData});
+            } else {
+                const calculatedGroup   = couponCalculation.calcCombinations(couponData);
+                couponData.combos       = calculatedGroup.Groups;
+                // couponData.combos = await getCombos(couponData);
+                //calculate and get pot winnings with bonus
+                if (couponData.bet_type === 'Combo') {
+                    dispatch({type: SET_COUPON_DATA, payload: couponData});
+                    if (couponData.Groupings && couponData.Groupings.length) {
+                        setTimeout(() => {
+                            return dispatch(updateComboWinningsFromTotal());                            
+                        }, 500);
+                    }
+                } else {
+                    const winnings = calculateWinnings(couponData, globalVars, bonusList);
+                    couponData.maxWin = winnings.maxWin;
+                    couponData.maxBonus = winnings.maxBonus;
+                    couponData.wthTax = winnings.wthTax;
+                    couponData.grossWin = winnings.grossWin;
+
+                    return dispatch({type: SET_COUPON_DATA, payload: couponData});
+                }
+            }
         }
     }
 }
@@ -231,32 +260,35 @@ export function fastAdd(amount){
 
         const bonusList = [...state.sportsBook.SportsbookBonusList];
 
-        const  coupondata = {...state.couponData.coupon};
-        console.log(amount, coupondata.totalStake);
+        let coupondata = {...state.couponData.coupon};
+
         if (amount === 0) {
             return dispatch({type: RESET_COUPON_AMOUNT})
         }
+
         if(coupondata.totalStake === '') {
             coupondata.totalStake = 0;
         }
-
         coupondata.totalStake = coupondata.totalStake + amount;
         coupondata.exciseDuty = coupondata.totalStake * 0 / 100;
         coupondata.stake = coupondata.totalStake - coupondata.exciseDuty;
 
-        //calculate Winnings
-        let winnings = calculateWinnings(coupondata, globalVars, bonusList);
-        coupondata.maxWin       = winnings.maxWin;
-        coupondata.maxBonus     = winnings.maxBonus;
-        coupondata.grossWin     = winnings.grossWin;
-        coupondata.wthTax       = winnings.wthTax;
-
-        if (coupondata.bet_type === 'Combo') {
-            // console.log(coupondata);
-            return dispatch(updateComboWinningsFromTotal(coupondata.stake));
+        if (coupondata.bet_type !== 'Combo') {
+            //calculate Winnings
+            let winnings = calculateWinnings(coupondata, globalVars, bonusList);
+            coupondata.maxWin       = winnings.maxWin;
+            coupondata.maxBonus     = winnings.maxBonus;
+            coupondata.grossWin     = winnings.grossWin;
+            coupondata.wthTax       = winnings.wthTax;
+        } else {
+            if (coupondata.Groupings && coupondata.Groupings.length) {
+                
+                return dispatch(updateComboWinningsFromTotal(coupondata.stake));
+            }
         }
         //set coupon data in redux
         return dispatch({type: SET_COUPON_DATA, payload: coupondata});
+
     }
 };
 
@@ -288,76 +320,81 @@ export function updateWinnings(stake){
 export function updateComboWinningsFromTotal (stake) {
     return (dispatch, getState) => {
         const state = getState();
-        // console.log('updating');
 
         let noOfCombos = 0
         let coupondata = {...state.couponData.coupon};
-        const globalVars = {...state.sportsBook.SportsbookGlobalVariable};
+        // const globalVars = {...state.sportsBook.SportsbookGlobalVariable};
         const bonusList = [...state.sportsBook.SportsbookBonusList];
 
         coupondata.totalStake = stake ? stake : coupondata.totalStake;
-
+        const Groupings = [];
         coupondata.exciseDuty = coupondata.totalStake * 0 / 100;
         coupondata.stake = coupondata.totalStake - coupondata.exciseDuty;
-        if(stake !== '') {
+
+        if(coupondata.stake !== '' && coupondata.stake !== 0) {
             for (let x = 0; x < coupondata.combos.length; x++) {
-                const checkBox = document.getElementById('comb_'+x);
-                if(checkBox.checked){
-                    coupondata.combos[x].checked = true;
-                    // document.getElementById('combo-'+x).classList.add('sel');
-                    noOfCombos += coupondata.combos[x].numberOfCombos
+                if (coupondata.combos.length - 1 !== x) {
+                    const checkBox = document.getElementById('comb_'+x);
+                    if(checkBox.checked){
+                        coupondata.combos[x].checked = true;
+                        // document.getElementById('combo-'+x).classList.add('sel');
+                        noOfCombos += coupondata.combos[x].Combinations
+                    }
                 }
             }
             let minStake = parseFloat(coupondata.stake) / noOfCombos;
-            let max = 0
-            let min_t = 0;
-            let tmp_min = 10000000;
-            let comboLength = 0;
-            // console.log(minStake)
+            // let max = 0
+            // let min_t = 0;
+            // let tmp_min = 10000000;
+            // let comboLength = 0;
+
             for (let x = 0; x < coupondata.combos.length; x++) {
-                const checkBox = document.getElementById('comb_'+x);
-                if(checkBox.checked){
-                    coupondata.combos[x].checked = true;
-                    comboLength += coupondata.combos[x].comboLength;
+                if (coupondata.combos.length - 1 !== x) {
 
-                    let minWin = parseFloat(coupondata.combos[x].minOdds) * parseFloat(minStake);
-                    let maxWin = parseFloat(coupondata.combos[x].maxOdds) * parseFloat(minStake);
-
-                    max += maxWin;
-                    if (minWin < tmp_min && minWin !== 0)
-                        tmp_min = minWin;
-                    coupondata.combos[x].minStake = minStake.toFixed(2);
-                    coupondata.combos[x].minWins = minWin;
-                    coupondata.combos[x].maxWins = maxWin;
-
-                }else{
-                    // document.getElementById('combo-'+x).classList.remove('sel');
-
-                    coupondata.combos[x].minStake =  '';
-                    coupondata.combos[x].checked = false;
-                    coupondata.combos[x].minWins = 0
-                    coupondata.combos[x].maxWins = 0
-                    // document.getElementById('min_max_'+x).innerText = 0;
+                    const checkBox = document.getElementById('comb_'+x);
+                    if(checkBox.checked){
+                        coupondata.combos[x].checked = true;
+                        coupondata.combos[x].Stake = minStake;
+                        // comboLength += coupondata.combos[x].comboLength;
+                        Groupings.push(coupondata.combos[x]);
+                    }else{
+                        coupondata.combos[x].Stake =  '';
+                        coupondata.combos[x].checked = false;
+                        coupondata.combos[x].minWin = 0
+                        coupondata.combos[x].maxWin = 0
+                    }
                 }
             }
-            min_t = tmp_min;
-            if (min_t === 100000000)
-                min_t = 0;
-            coupondata.comboSelection = comboLength;
-            coupondata.noOfCombos = noOfCombos;
-            coupondata.minStake = minStake;
-            // coupondata.bet_type = 'Combo';
-            //calculate bonus
-            coupondata.minBonus = calculateBonus((Math.round(min_t * 100) / 100), coupondata, globalVars, bonusList);
-            coupondata.maxBonus = calculateBonus(max, coupondata, globalVars, bonusList);
-            coupondata.minGrossWin = parseFloat(coupondata.minBonus) + Math.round(min_t * 100) / 100;
-            coupondata.minWTH = (coupondata.minGrossWin - coupondata.stake) * process.env.REACT_APP_WTH_PERC / 100;
-            coupondata.minWin = coupondata.minGrossWin - coupondata.minWTH;
-            coupondata.grossWin = parseFloat(coupondata.maxBonus) + max;
-            coupondata.wthTax = (coupondata.grossWin - coupondata.stake) * process.env.REACT_APP_WTH_PERC / 100;
-            coupondata.maxWin = coupondata.grossWin - coupondata.wthTax;
+            coupondata.Groupings = Groupings;
+            
+            if (coupondata.Groupings && coupondata.Groupings.length) {
+                const calculatedCoupon = couponCalculation.calcPotentialWins(coupondata, bonusList);
+                coupondata = couponCalculation.updateFromCalculatedCoupon(coupondata, calculatedCoupon);
+                // update combos with max win
+                coupondata.combos.forEach(combo => {
+                    for (let i = 0; i < coupondata.Groupings.length; i++) {
+                        if (combo.Grouping === coupondata.Groupings[i].Grouping) {
+                            combo.minWIn = coupondata.Groupings[i].minWin;
+                            combo.maxWin = coupondata.Groupings[i].maxWin;
+                            combo.Stake  = coupondata.Groupings[i].Stake;
+                        }
+                    }
+                })
+            }
+            return dispatch({type: SET_COUPON_DATA, payload: coupondata});
+        } else {
+            for (let x = 0; x < coupondata.combos.length; x++) {
+                if (coupondata.combos.length - 1 !== x) {
+                    const checkBox = document.getElementById('comb_'+x);
+                    if(checkBox.checked){
+                        coupondata.combos[x].checked = false;
+                        // document.getElementById('combo-'+x).classList.add('sel');
+                        noOfCombos += coupondata.combos[x].Combinations
+                    }
+                }
+            }
+            return dispatch({type: SET_COUPON_DATA, payload: coupondata});
         }
-        return dispatch({type: SET_COUPON_DATA, payload: coupondata});
     }
 }
 
@@ -403,21 +440,39 @@ export function removeSelection(selection){
                 } else { // else remove selection from total odds
                     coupondata.totalOdds = (parseFloat(coupondata.totalOdds) / parseFloat(selection.odds)).toFixed(2);
                 }
-                //calculate and get pot winnings with bonus
-                const winnings = calculateWinnings(coupondata, globalVars, bonusList);
-
-                coupondata.maxWin = winnings.maxWin;
-                coupondata.maxBonus = winnings.maxBonus;
-                coupondata.wthTax = winnings.wthTax;
-                coupondata.grossWin = winnings.grossWin;
-
-                coupondata.combos = await getCombos(coupondata);
-
                 // check if has live
                 coupondata.hasLive  = checkIfHasLive(coupondata.selections);
-            }
 
-            return dispatch({type: SET_COUPON_DATA, payload: coupondata});
+                const calculatedGroup   = couponCalculation.calcCombinations(coupondata);
+                coupondata.combos       = calculatedGroup.Groups;
+                // couponData.combos = await getCombos(couponData);
+                //calculate and get pot winnings with bonus
+                if (coupondata.bet_type === 'Combo') {
+                    if (coupondata.Groupings && coupondata.Groupings.length) {
+                        const calculatedCoupon = couponCalculation.calcPotentialWins(coupondata, bonusList);
+                        coupondata = coupondata.updateFromCalculatedCoupon(coupondata, calculatedCoupon);
+                        // update combos with max win
+                        coupondata.combos.forEach(combo => {
+                            for (let i = 0; i < coupondata.Groupings.length; i++) {
+                                if (combo.Grouping === coupondata.Groupings[i].Grouping) {
+                                    combo.minWIn = coupondata.Groupings[i].minWin;
+                                    combo.maxWin = coupondata.Groupings[i].maxWin;
+                                    combo.Stake  = coupondata.Groupings[i].Stake;
+                                }
+                            }
+                        })
+                        return dispatch(updateComboWinningsFromTotal());
+                    }
+                } else {
+                    const winnings = calculateWinnings(coupondata, globalVars, bonusList);
+                    coupondata.maxWin = winnings.maxWin;
+                    coupondata.maxBonus = winnings.maxBonus;
+                    coupondata.wthTax = winnings.wthTax;
+                    coupondata.grossWin = winnings.grossWin;
+
+                    return dispatch({type: SET_COUPON_DATA, payload: coupondata});
+                }
+            }
         } else {
             return dispatch({type: CANCEL_BET})
         }

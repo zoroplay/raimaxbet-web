@@ -9227,7 +9227,7 @@ ul, ul li {
     height: calc(100% - 2px);
     width: calc(100% - 2px);
     background-color: transparent;
-    border: 1px solid lighten($primary,20%);
+    border: 1px solid lighten($accent,20%);
     border-radius: 3px;
     &:after {
       content: "";
@@ -29109,7 +29109,7 @@ span.ui-icon.ui-icon-circle-triangle-e {
       .cxbtn{
         text-transform: capitalize;
         cursor: pointer;
-        background-color: $primary;
+        background-color: #014fa2;
         color: $white;
         border-radius: 3px;
         padding: 0 10px 0 6px;
@@ -29221,7 +29221,7 @@ span.ui-icon.ui-icon-circle-triangle-e {
 
 .jkpp-mid{
   height: 54px;
-  background-color: darken($primary, 10%);
+  background-color: darken($accent, 10%);
   &-list{
     display: flex;
     align-items: center;
@@ -29245,9 +29245,9 @@ span.ui-icon.ui-icon-circle-triangle-e {
           font-size: 12px;
         }
         &.active, &:hover{
-          background-color: $accent;
+          background-color: $accent-alt;
           border-radius: 3px;
-          color: $black;
+          color: $white;
         }
       }
     }

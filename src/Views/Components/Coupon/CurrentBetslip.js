@@ -93,31 +93,25 @@ export default function CurrentBetslip({coupon, dispatch, user}) {
                             {
                                'Combo' : <table id="couponWinningCompositeSystem" >
                                    <tbody>
-                                  {/* <tr>
+                                   <tr>
                                        <td colSpan="2">
                                            Stake <span id="totalStake">{coupon.stake || 0}</span>
                                        </td>
-                                   </tr>*/}
+                                   </tr>
                                    <tr>
                                        <td className="colored" colSpan="2">Potential Winnings</td>
                                    </tr>
                                    <tr>
-                                       <td>Min Odd <span className="minodd">{coupon.combos[0]?.minOdds?.toFixed(2)}</span></td>
-                                       <td>Max Odd <span className="maxodd">{coupon.combos[coupon.combos.length - 1]?.minOdds?.toFixed(2)}</span></td>
+                                       <td>Min Odd <span className="minodd">{coupon.minOdds}</span></td>
+                                       <td>Max Odd <span className="maxodd">{coupon.maxOdds}</span></td>
                                    </tr>
                                    <tr>
                                        <td>Mn Bonus <span id="minBonus">{formatNumber(coupon.minBonus)}</span></td>
                                        <td>Mx Bonus <span id="maxBonus">{formatNumber(coupon.maxBonus)}</span></td>
                                    </tr>
                                    <tr>
-                                       <td>Mn Win <span id="minWin">{formatNumber(coupon.minGrossWin)}</span></td>
-                                       <td>Mx Win <span id="maxWin">{formatNumber(coupon.grossWin)}</span></td>
-                                   </tr>
-                                   <tr>
-                                       <td colSpan="2">Winning Tax Percentage <span id="taxPercentageSystem">20%</span></td>
-                                   </tr>
-                                   <tr>
-                                       <td colSpan="2">WTH <span id="taxOnWinSystem">{formatNumber(coupon.wthTax)}</span></td>
+                                       <td>Mn Win <span id="minWin">{formatNumber(coupon.minWin)}</span></td>
+                                       <td>Mx Win <span id="maxWin">{formatNumber(coupon.maxWin)}</span></td>
                                    </tr>
                                    </tbody>
                                </table>,
@@ -132,12 +126,12 @@ export default function CurrentBetslip({coupon, dispatch, user}) {
                                        <td colSpan="2">
                                            Excise Duty <span id="totalStake">{coupon.exciseDuty || 0}</span>
                                        </td>
-                                   </tr>
+                                   </tr>*/}
                                    <tr>
                                        <td colSpan="2">
-                                           Net stake <span id="totalStake">{coupon.stake || 0}</span>
+                                        stake <span id="totalStake">{coupon.stake || 0}</span>
                                        </td>
-                                   </tr>*/}
+                                   </tr>
                                    <tr>
                                        <td className="colored" colSpan="2">Potential Winnings</td>
                                    </tr>
@@ -153,13 +147,13 @@ export default function CurrentBetslip({coupon, dispatch, user}) {
                                        <td>Mn Win <span id="minWinIntegral">{formatNumber(coupon.minGrossWin)}</span></td>
                                        <td>Mx Win <span id="maxWinIntegral">{formatNumber(coupon.grossWin)}</span></td>
                                    </tr>
-                                   <tr>
+                                   {/* <tr>
                                        <td colSpan="2">Winning Tax Percentage :<span id="taxPercentageIntegral">20%</span></td>
                                    </tr>
                                    <tr>
                                        <td colSpan="2">WTH <span id="taxOnWinIntegral">{formatNumber(coupon.wthTax)}</span></td>
                                    </tr>
-                                   {/*<tr>
+                                   <tr>
 
                                        <td colSpan="2">Max Win Full<span id="maxWinIntegralFull">0.00</span></td>
                                    </tr>*/}

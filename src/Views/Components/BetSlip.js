@@ -45,20 +45,6 @@ export default function BetSlip() {
         }
     }, [isAuthenticated]);
 
-    const reloadCoupon = (id) => {
-        loadCoupon(id, 'rebet').then(res => {
-
-            if (res.message === 'found' && res.coupon.selections.length) {
-                let couponData = res.coupon;
-                couponData.tournaments = groupTournament(couponData.selections);
-                // couponData.fixtures = groupSelections(couponData.selections);
-                dispatch({type: SET_COUPON_DATA, payload: couponData});
-            } else {
-                toast.error('Unable to rebet the selected coupon because all the events are expired');
-                // dispatch({type: SHOW_MODAL, payload: {show: true, type: 'error', message: 'Coupon not found'}})
-            }
-        }).catch(err => {});
-    }
 
     return (
         <div className="single-block betslip-holder active">
