@@ -5489,7 +5489,7 @@ input, select, textarea{
 }
 
 .odds-less-wrapper .ranges .range:first-child {
-  border-right: 1px solid $accent;
+  border-right: 1px solid $pure-white;
 }
 
 .odds-less-wrapper .ranges .range .label {
@@ -5535,7 +5535,7 @@ input, select, textarea{
 }
 
 .odds-less-wrapper .sports {
-  border-top: 1px solid $accent;
+  border-top: 1px solid $pure-white;
   width: 100%;
   display: inline-block;
   padding: 10px;
@@ -14430,7 +14430,7 @@ ul, ul li {
     }
   }
   .odds-less-wrapper {
-    background: darken($primary,10%);
+    background: darken($accent,10%);
     color: lighten($white, 20%);
     .ranges {
       width: 100%;
@@ -14474,8 +14474,8 @@ ul, ul li {
               background: darken(#aa6ee6,5%);
             }
             &.selected {
-              background: $secondary;
-              color: lighten($white, 20%);
+              background: $accent-alt;
+              color: $pure-white;
               font-weight: bold;
             }
           }
@@ -14540,8 +14540,8 @@ ul, ul li {
           }
           &.selected {
             span {
-              background: $secondary;
-              color: lighten($white, 20%);
+              background: $accent-alt;
+              color: $pure-white;
               font-weight: bold;
             }
             img {
