@@ -346,7 +346,7 @@ export function updateComboWinningsFromTotal (stake) {
             // let max = 0
             // let min_t = 0;
             // let tmp_min = 10000000;
-            // let comboLength = 0;
+            let comboLength = 0;
 
             for (let x = 0; x < coupondata.combos.length; x++) {
                 if (coupondata.combos.length - 1 !== x) {
@@ -355,7 +355,7 @@ export function updateComboWinningsFromTotal (stake) {
                     if(checkBox.checked){
                         coupondata.combos[x].checked = true;
                         coupondata.combos[x].Stake = minStake;
-                        // comboLength += coupondata.combos[x].comboLength;
+                        comboLength += coupondata.combos[x].comboLength;
                         Groupings.push(coupondata.combos[x]);
                     }else{
                         coupondata.combos[x].Stake =  '';
@@ -365,6 +365,8 @@ export function updateComboWinningsFromTotal (stake) {
                     }
                 }
             }
+            coupondata.comboSelection = comboLength;
+            coupondata.noOfCombos = noOfCombos;
             coupondata.Groupings = Groupings;
             
             if (coupondata.Groupings && coupondata.Groupings.length) {

@@ -20,6 +20,7 @@ export default function SportOdds({location, history}) {
             }
         }
     }, [dispatch, sid, tid]);
+    
 
     return (
         <>
