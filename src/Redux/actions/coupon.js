@@ -365,9 +365,10 @@ export function updateComboWinningsFromTotal (stake) {
                     }
                 }
             }
-            coupondata.comboSelection = comboLength;
-            coupondata.noOfCombos = noOfCombos;
-            coupondata.Groupings = Groupings;
+            coupondata.comboSelection   = comboLength;
+            coupondata.noOfCombos       = noOfCombos;
+            coupondata.Groupings        = Groupings;
+            coupondata.minStake         = parseFloat(coupondata.stake) / noOfCombos;
             
             if (coupondata.Groupings && coupondata.Groupings.length) {
                 const calculatedCoupon = couponCalculation.calcPotentialWins(coupondata, bonusList);
