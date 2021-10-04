@@ -27,6 +27,9 @@ export default function RightSide() {
                 :
                 user.role !== 'Cashier' && <a href="javascript:;" onClick={() => dispatch({type: SHOW_DEPOSIT_MODAL})} className="depositBtn">DEPOSIT NOW!</a>
             }
+            {/* SMART BET*/}
+            <SmartBet />
+            
             {/* BET SELECTION */}
             <BetSlip />
 
@@ -36,8 +39,6 @@ export default function RightSide() {
             {/* QUICK BET */}
             <QuickBet />
 
-            {/* SMART BET*/}
-            <SmartBet />
             {image &&
             <a href="/Sport/cms?mid=29&amp;sid=0" className="mb">
                 <img src={image} alt="contact us" />
