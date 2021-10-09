@@ -134,7 +134,7 @@ $si-8: #00a651;
 
 // General Styles below
 
-*{
+*, :after, :before {
   box-sizing: border-box;
 }
 

@@ -10,8 +10,8 @@ export const fetchBonusList = () =>
 export const getGatewayKeys = (gateway) =>
     Http.get(`utilities/get-gateway-keys/${gateway}`);
 
-export const getSportMenu = period =>
-    Http.get(`/sports/get-menu?period=${period}`);
+export const getSportMenu = (period, start=null, end=null) =>
+    Http.get(`/sports/get-menu?period=${period}&start=${start}&end=${end}`);
 
 export const getBanners = () =>
     Http.get(`/sports/banners?banner_type=web`);

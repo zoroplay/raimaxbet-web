@@ -4,6 +4,8 @@ import * as _ from 'lodash';
 import moment from "moment";
 import {getSportMenu} from "../Services/apis";
 import {LOADING} from "../Redux/types";
+import '../Assets/scss/_print-fixtures.scss';
+import DatePicker from "react-datepicker";
 
 const listType = [
     {value: 'today', label: 'Today'},
@@ -12,11 +14,23 @@ const listType = [
     {value: 'all', label: 'All'},
 ];
 export default function TournamentSelector({history}) {
-    const {sports: data} = useSelector((state) => state.sportsData);
     const [sports, setSports] = useState([]);
     const [selections, setSelections] = useState([]);
-    const [viewType, setViewType] = useState('all');
     const dispatch = useDispatch();
+    const [filterData, setFilterData] = useState({
+        from: moment().toDate(),
+        to: moment().toDate(),
+        period: 'all'
+    });
+
+    useEffect(() => {
+        const dayINeed = 0; // for Thursday
+        const today = moment().isoWeekday();
+
+        if (today > dayINeed) {
+            setFilterData({...filterData, to: moment().add(1, 'weeks').isoWeekday(dayINeed).toDate()});
+        }
+    }, []);
 
     const checkAll = () => {
         const container = document.getElementById('tournaments');
@@ -37,24 +51,16 @@ export default function TournamentSelector({history}) {
         })
     }
 
-    const getSports = (period) => {
-        setViewType(period);
-
+    const getSports = () => {
         dispatch({type: LOADING});
 
-        getSportMenu(period).then(res => {
+        getSportMenu(filterData.period, moment(filterData.from).format('YYYY-MM-DD'), moment(filterData.to).format('YYYY-MM-DD')).then(res => {
             dispatch({type: LOADING});
             setSports(res.menu);
         }).catch(err => {
             dispatch({type: LOADING});
         })
     }
-
-    useEffect(() => {
-        if (data) {
-            setSports(data);
-        }
-    }, [data]);
 
     const checkChild = (cid) => {
         const container = document.getElementById(cid);
@@ -105,18 +111,78 @@ export default function TournamentSelector({history}) {
 
     return (
         <Fragment>
-            <div className="iSBox ctrl_ViewModeSelector">
-                <div className="viewModeSelector">
-                    <div className="typeVisbutton">
-                        <ul className="labelSteps">
-                            {listType.map((step, index) =>
-                                <li className={`s${index} ${step.value === viewType ? 'sel' : ''}`} key={`step-${index}`}
-                                    onClick={() => getSports(step.value)}
-                                >
-                                    <div >{step.label}</div>
-                                </li>
-                            )}
-                        </ul>
+            <div className="header-container" style={{background: '#145a2b'}}>
+                <div className="row choose-sports">
+                    <div className="col-sm-12">
+                        <div className="col-sm-12">
+                            <div className="form-group">
+                                <div id="dateRange-checkBox"  className="row">
+                                {listType.map((row, i) =>
+                                    <div className="col-sm-3" key={`date-range-${i}`}>
+                                        <div className="date-range">
+                                            <input
+                                                type="checkbox"
+                                                id={`checkboxd${i}`}
+                                                value={row.value}
+                                                checked={filterData.period === row.value}
+                                                onChange={(e) => {
+                                                    if (e.target.checked) {
+                                                        setFilterData({...filterData, period: row.value})
+                                                    } else {
+                                                        setFilterData({...filterData, period: 'custom'})
+                                                    }
+                                                }}
+                                            />
+                                            <label htmlFor={`checkboxd${i}`}>{row.label}</label>
+                                        </div>
+                                    </div>
+                                )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-12" style={{paddingLeft: '0px'}}>
+                        <div className="col-sm-3">
+                            <div className="costumRange-checbox">
+                                <input
+                                    type="checkbox"
+                                    id="checkboxCustom"
+                                    value="custom" checked={filterData.period === 'custom'}
+                                    onChange={(e) => {
+                                        if (e.target.checked) {
+                                            setFilterData({...filterData, period: 'custom'})
+                                        } else {
+                                            setFilterData({...filterData, period: 'all'})
+                                        }
+                                    }}
+                                />
+                                <label htmlFor="checkboxCustom">Custom Range</label>
+                            </div>
+                        </div>
+                        <div className="col-sm-7">
+                            <DatePicker
+                                dateFormat="dd/MM/yyyy"
+                                selected={filterData.from}
+                                className="textbox"
+                                style={{width:'75px' }}
+                                disabled={filterData.period !== 'custom'}
+                                onChange={date => setFilterData({...filterData, from: date})} />
+                            <DatePicker
+                                dateFormat="dd/MM/yyyy"
+                                selected={filterData.to}
+                                className="textbox"
+                                disabled={filterData.period !== 'custom'}
+                                style={{width:'75px' }}
+                                onChange={date => setFilterData({...filterData, to: date})} />
+                        </div>
+                        <div className="col-sm-2">
+                            <div className="form-group">
+                                <button type="button" onClick={getSports} className="palimpsest-btn-button btn-block">Search
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
