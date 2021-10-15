@@ -79,8 +79,7 @@ export default function ConfirmSlip({couponData}) {
                                 <div>
                                     <span className="title">
                                         <span style={{ color: '#264d22' }}>
-                                            Excellent news!
-                                            Your bet has been booked.
+                                            Excellent news! Your bet has been booked.
                                         </span>
                                     </span>
                                     <span className="content">

@@ -229,7 +229,7 @@ export default function Register({history}) {
                                             <div className="dnxreg-age">
                                                 <div className="check">
                                                     <Field className="check-term" id="check-term" type="checkbox" name="term" />
-                                                    <span className="checkmark"></span>
+                                                    <span className="checkmark" />
                                                 </div>
                                                 <label htmlFor="check-term" className="dnxreg-age-txt">I accept the
                                                     <a href="#">Terms of use.</a>
@@ -242,7 +242,7 @@ export default function Register({history}) {
                                             <div className="dnxreg-age">
                                                 <div className="check">
                                                     <Field className="check-age" id="check-age" type="checkbox" name="age" />
-                                                    <span className="checkmark"></span>
+                                                    <span className="checkmark" />
                                                 </div>
                                                 <label htmlFor="check-age" className="dnxreg-age-txt">I am over 18 years old.
                                                     {errors.age ? (

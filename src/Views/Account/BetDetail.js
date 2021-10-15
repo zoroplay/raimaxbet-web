@@ -215,8 +215,6 @@ export default function BetDetail({match, history}) {
                                                                 settled ?
                                                                     <span className="txt-darkgreen">Settled</span>
                                                                     :
-
-                                                                    user.role !== 'Cashier' ?
                                                                         <div id="ac_w_PC_PC_pnlCashout"
                                                                              className="cashout">
                                                                             <div>
@@ -231,8 +229,7 @@ export default function BetDetail({match, history}) {
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        :
-                                                                        <span>{formatNumber(betslip?.cashout)}</span>
+                                                                        
                                                             }
                                                         </td>
                                                     </tr>}
