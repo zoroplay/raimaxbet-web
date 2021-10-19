@@ -1,5 +1,5 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import * as _ from 'lodash';
 import moment from "moment";
 import {getSportMenu} from "../Services/apis";

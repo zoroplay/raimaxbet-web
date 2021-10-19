@@ -16,6 +16,7 @@ export default function Main({children, history}) {
             setBg(res.image_path);
         }
     }, [res]);
+
     return (
         <Fragment>
             <Header />
