@@ -14,7 +14,7 @@ import {
 import {Http} from "../../Utils";
 import * as _ from 'lodash';
 import {toast} from "react-toastify";
-import {getCombos, getSplitProps} from "../../Services/apis";
+import {getSplitProps} from "../../Services/apis";
 import {calculateExclusionPeriod, formatDate} from "../../Utils/helpers";
 import CouponCalculation from "../../Utils/CouponCalculation";
 
@@ -123,7 +123,7 @@ export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddna
                             couponData.wthTax = (couponData.grossWin - couponData.stake) * process.env.REACT_APP_WTH_PERC / 100;
                             couponData.maxWin = couponData.grossWin - couponData.wthTax;
                         } else {
-                            
+
                             // recalculate totalOdds if prev bet type was Split
                             if (prevBetType === 'Split') {
                                 couponData.totalOdds = calculateTotalOdds(couponData.selections);
@@ -139,7 +139,7 @@ export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddna
                                 dispatch({type: SET_COUPON_DATA, payload: couponData});
                                 if (couponData.Groupings && couponData.Groupings.length) {
                                     setTimeout(() => {
-                                        return dispatch(updateComboWinningsFromTotal());                            
+                                        return dispatch(updateComboWinningsFromTotal());
                                     }, 500);
                                 }
                             } else {
@@ -150,7 +150,7 @@ export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddna
                                 couponData.grossWin = winnings.grossWin;
 
                                 return dispatch({type: SET_COUPON_DATA, payload: couponData});
-                            }  
+                            }
                         }
                     } else {
                         return dispatch({type: CANCEL_BET})
@@ -234,7 +234,7 @@ export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddna
                     dispatch({type: SET_COUPON_DATA, payload: couponData});
                     if (couponData.Groupings && couponData.Groupings.length) {
                         setTimeout(() => {
-                            return dispatch(updateComboWinningsFromTotal());                            
+                            return dispatch(updateComboWinningsFromTotal());
                         }, 500);
                     }
                 } else {
@@ -282,7 +282,7 @@ export function fastAdd(amount){
             coupondata.wthTax       = winnings.wthTax;
         } else {
             if (coupondata.Groupings && coupondata.Groupings.length) {
-                
+
                 return dispatch(updateComboWinningsFromTotal(coupondata.stake));
             }
         }
@@ -369,7 +369,7 @@ export function updateComboWinningsFromTotal (stake) {
             coupondata.noOfCombos       = noOfCombos;
             coupondata.Groupings        = Groupings;
             coupondata.minStake         = parseFloat(coupondata.stake) / noOfCombos;
-            
+
             if (coupondata.Groupings && coupondata.Groupings.length) {
                 const calculatedCoupon = couponCalculation.calcPotentialWins(coupondata, bonusList);
                 coupondata = couponCalculation.updateFromCalculatedCoupon(coupondata, calculatedCoupon);
@@ -466,7 +466,7 @@ export function removeSelection(selection){
                             }
                         })
                         setTimeout(() => {
-                            return dispatch(updateComboWinningsFromTotal());                            
+                            return dispatch(updateComboWinningsFromTotal());
                         }, 500);
                     }
                 } else {

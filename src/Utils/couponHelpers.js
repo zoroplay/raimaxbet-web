@@ -50,6 +50,7 @@ export const calculateBonus = (maxWin, coupondata, globalVars, bonusList) => {
 };
 
 export const checkBetType = (coupon) => {
+
     let betType = coupon.bet_type === 'Combo' ? 'Combo' : 'Multiple';
     coupon.tournaments.forEach((item) => {
         item.fixtures.forEach(fixture => {
@@ -57,10 +58,7 @@ export const checkBetType = (coupon) => {
                 betType = 'Split';
                 return false;
             }
-        })
-        if (item.fixtures.length === 1){
-            betType = 'Single'
-        }
+        });
     })
     return betType;
 };
