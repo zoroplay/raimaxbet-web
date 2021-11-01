@@ -355,7 +355,7 @@ export function updateComboWinningsFromTotal (stake) {
                     if(checkBox.checked){
                         coupondata.combos[x].checked = true;
                         coupondata.combos[x].Stake = minStake;
-                        comboLength += coupondata.combos[x].comboLength;
+                        comboLength += coupondata.combos[x].Grouping;
                         Groupings.push(coupondata.combos[x]);
                     }else{
                         coupondata.combos[x].Stake =  '';
