@@ -10743,6 +10743,17 @@ ul, ul li {
   height: 29px;
   font-weight: bold;
 }
+.SectionTitle i {
+  width: 20px;
+  height: 20px;
+  opacity: .8;
+  padding: 3px 0 0;
+  font-size: 14px;
+  margin: 0 6px 0 10px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: $accent;
+}
 .cellaSx {
   background-color: #ffffff;
   padding-left: 10px;

@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {findCoupon, loadCoupon, processCashout} from "../../Services/apis";
+import {findCoupon, processCashout} from "../../Services/apis";
 import {formatDate, formatNumber} from "../../Utils/helpers";
 import BetListOutcome from "../Components/BetListOutcome";
-import { groupTournament, printTicket} from "../../Utils/couponHelpers";
+import { printTicket} from "../../Utils/couponHelpers";
 import {useDispatch, useSelector} from "react-redux";
-import {SET_COUPON_DATA} from "../../Redux/types";
+import {reloadCoupon} from "../../Redux/actions";
 
 export default function BetDetail({match, history}) {
     const betslip_id = match.params.betslip;
@@ -31,21 +31,6 @@ export default function BetDetail({match, history}) {
             getBetslip();
         }
     }, [betslip_id]);
-
-    const reloadCoupon = () => {
-        loadCoupon(betslip?.betslip_id, 'rebet').then(res => {
-
-            if (res.message === 'found' && res.coupon.selections.length) {
-                let couponData = res.coupon;
-                couponData.tournaments = groupTournament(couponData.selections);
-                dispatch({type: SET_COUPON_DATA, payload: couponData});
-                history.push('/');
-            } else {
-                alert('Unable to rebet the selected coupon because all the events are expired');
-                // dispatch({type: SHOW_MODAL, payload: {show: true, type: 'error', message: 'Coupon not found'}})
-            }
-        }).catch(err => {});
-    }
 
     const doCashout = () => {
         setProcessing(true);
@@ -75,7 +60,12 @@ export default function BetDetail({match, history}) {
                                                 <table cellSpacing="1" cellPadding="0" width="100%" align="center">
                                                     <tbody>
                                                     <tr>
-                                                        <td className="SectionTitle" colSpan="4">Betslip</td>
+                                                        <td className="SectionTitle" colSpan="3">Betslip</td>
+                                                        <td className="SectionTitle" style={{textAlign: "right"}}>
+                                                            <a href="javascript:;" onClick={() => history.goBack()} >
+                                                                <i className="fa fa-caret-left fa-2x fa-fw" />
+                                                            </a>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td className="cellaSx" width="40%">Betslip ID</td>
@@ -229,7 +219,7 @@ export default function BetDetail({match, history}) {
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        
+
                                                             }
                                                         </td>
                                                     </tr>}
@@ -261,7 +251,50 @@ export default function BetDetail({match, history}) {
                                     </div>
                                     <div className="Cnt">
                                         <div>
-
+                                            {betslip?.system_bets.length > 0 &&
+                                                <>
+                                                    <table cellSpacing="1" cellPadding="0" width="100%" align="center"
+                                                           border="0">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td className="SectionTitle">Bets</td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <table className="dgStyle" cellSpacing="0" align="Center" border="0"
+                                                           id="ac_w_PC_PC_dg_ElencoEventi"
+                                                           style={{
+                                                               borderWidth: '0px',
+                                                               borderStyle: 'None',
+                                                               width: '100%',
+                                                               borderCollapse: 'collapse'
+                                                           }}>
+                                                        <tbody>
+                                                        <tr className="dgSubHdrStyle">
+                                                            <th><span>Combination Type</span></th>
+                                                            <th><span>No of Combinations</span></th>
+                                                            <th><span>Amount</span></th>
+                                                            <th><span>Pot. Winnings</span></th>
+                                                            <th><span>Status</span></th>
+                                                            <th><span>Pot. Bonus</span></th>
+                                                            <th><span>Winning</span></th>
+                                                            <th><span>Payment Date</span></th>
+                                                        </tr>
+                                                        {betslip?.system_bets.map(combo =>
+                                                        <tr key={`combo-${combo.id}`} style={{textAlign: "center"}}>
+                                                            <td><span>{combo.combination_type}</span></td>
+                                                            <td><span>{combo.no_of_combos}</span></td>
+                                                            <td><span><span>{combo.no_of_combos}</span> x <span>₦{combo.min_stake}</span></span></td>
+                                                            <td><span className="cell-content ng-isolate-scope">₦{formatNumber(combo.min_win)}</span></td>
+                                                            <td><span><BetListOutcome outcome={betslip.status} /></span></td>
+                                                            <td><span>₦{formatNumber(combo?.min_bonus)}</span></td>
+                                                            <td><span>{combo.status === 0 ? ' - ' : formatNumber(combo?.winnings)}</span></td>
+                                                            <td><span>{combo.payment_date ? formatDate(combo.payment_date, 'MMM DD, YYYY') : '-'}</span></td>
+                                                        </tr>)}
+                                                        </tbody>
+                                                    </table>
+                                                </>
+                                            }
                                             <table cellSpacing="1" cellPadding="0" width="100%" align="center"
                                                    border="0">
                                                 <tbody>
@@ -281,14 +314,14 @@ export default function BetDetail({match, history}) {
                                                        }}>
                                                     <tbody>
                                                     <tr className="dgSubHdrStyle">
-                                                        <th scope="col">Event</th>
-                                                        <th scope="col">Start Date</th>
-                                                        <th scope="col">Quota Class</th>
-                                                        <th scope="col">Type</th>
-                                                        <th scope="col">Odds</th>
-                                                        <th className="BetDetailRisultato" scope="col">HT Score</th>
-                                                        <th className="BetDetailRisultato" scope="col">Result</th>
-                                                        <th scope="col">Outcome</th>
+                                                        <th >Event</th>
+                                                        <th >Start Date</th>
+                                                        <th >Quota Class</th>
+                                                        <th >Type</th>
+                                                        <th >Odds</th>
+                                                        <th className="BetDetailRisultato" >HT Score</th>
+                                                        <th className="BetDetailRisultato" >Result</th>
+                                                        <th >Outcome</th>
                                                     </tr>
                                                     {betslip?.selections.map((selection, i) =>
                                                         <tr className="dgItemStyle" key={selection.provider_id}>
@@ -320,13 +353,15 @@ export default function BetDetail({match, history}) {
                                                 <tbody>
                                                 <tr>
                                                     <td className="tdSrcSX">
+                                                        {betslip?.event_type !== 'jackpot' && !betslip?.tipster_id && betslip?.active_selections_count !== 0 &&
+
                                                         <input
                                                             type="button"
                                                             name="ac$w$PC$PC$btnTorna"
                                                             value="Print Ticket"
                                                             id="ac_w_PC_PC_btnTorna"
                                                             onClick={() => printTicket(betslip?.betslip_id)}
-                                                            className="button" />
+                                                            className="button" /> }
                                                     </td>
 
                                                     <td className="tdSrcDX">
@@ -348,7 +383,7 @@ export default function BetDetail({match, history}) {
                                                     type="button"
                                                     name="ac$w$PC$PC$btnRebet"
                                                     value="Rebet"
-                                                    onClick={reloadCoupon}
+                                                    onClick={() => dispatch(reloadCoupon(betslip?.betslip_id, 'rebet')) | history.push('/')}
                                                     id="ac_w_PC_PC_btnRebet" className="button"/>
                                                 }
                                             </div>

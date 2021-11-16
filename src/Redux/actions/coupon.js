@@ -2,7 +2,7 @@ import {
     CANCEL_BET,
     SET_BET_PLACED,
     SET_COUPON_DATA,
-    RESET_COUPON_AMOUNT, UPDATE_USER_BALANCE, LOADING, SET_TODAYS_BET, SHOW_LOGIN_MODAL,
+    RESET_COUPON_AMOUNT, UPDATE_USER_BALANCE, LOADING, SET_TODAYS_BET, SHOW_LOGIN_MODAL, SET_BETSLIP_DATA,
 } from "../types";
 import {
     calculateBonus, calculateTotalOdds,
@@ -14,7 +14,7 @@ import {
 import {Http} from "../../Utils";
 import * as _ from 'lodash';
 import {toast} from "react-toastify";
-import {getSplitProps} from "../../Services/apis";
+import {getSplitProps, loadCoupon} from "../../Services/apis";
 import {calculateExclusionPeriod, formatDate} from "../../Utils/helpers";
 import CouponCalculation from "../../Utils/CouponCalculation";
 
@@ -333,13 +333,12 @@ export function updateComboWinningsFromTotal (stake) {
 
         if(coupondata.stake !== '' && coupondata.stake !== 0) {
             for (let x = 0; x < coupondata.combos.length; x++) {
-                if (coupondata.combos.length - 1 !== x) {
-                    const checkBox = document.getElementById('comb_'+x);
-                    if(checkBox.checked){
-                        coupondata.combos[x].checked = true;
-                        // document.getElementById('combo-'+x).classList.add('sel');
-                        noOfCombos += coupondata.combos[x].Combinations
-                    }
+
+                const checkBox = document.getElementById('comb_'+x);
+                if(checkBox.checked){
+                    coupondata.combos[x].checked = true;
+                    // document.getElementById('combo-'+x).classList.add('sel');
+                    noOfCombos += coupondata.combos[x].Combinations
                 }
             }
             let minStake = parseFloat(coupondata.stake) / noOfCombos;
@@ -349,21 +348,20 @@ export function updateComboWinningsFromTotal (stake) {
             let comboLength = 0;
 
             for (let x = 0; x < coupondata.combos.length; x++) {
-                if (coupondata.combos.length - 1 !== x) {
 
-                    const checkBox = document.getElementById('comb_'+x);
-                    if(checkBox.checked){
-                        coupondata.combos[x].checked = true;
-                        coupondata.combos[x].Stake = minStake;
-                        comboLength += coupondata.combos[x].Grouping;
-                        Groupings.push(coupondata.combos[x]);
-                    }else{
-                        coupondata.combos[x].Stake =  '';
-                        coupondata.combos[x].checked = false;
-                        coupondata.combos[x].minWin = 0
-                        coupondata.combos[x].maxWin = 0
-                    }
+                const checkBox = document.getElementById('comb_'+x);
+                if(checkBox.checked){
+                    coupondata.combos[x].checked = true;
+                    coupondata.combos[x].Stake = minStake;
+                    comboLength += coupondata.combos[x].Grouping;
+                    Groupings.push(coupondata.combos[x]);
+                }else{
+                    coupondata.combos[x].Stake =  '';
+                    coupondata.combos[x].checked = false;
+                    coupondata.combos[x].minWin = 0
+                    coupondata.combos[x].maxWin = 0
                 }
+
             }
             coupondata.comboSelection   = comboLength;
             coupondata.noOfCombos       = noOfCombos;
@@ -387,13 +385,11 @@ export function updateComboWinningsFromTotal (stake) {
             return dispatch({type: SET_COUPON_DATA, payload: coupondata});
         } else {
             for (let x = 0; x < coupondata.combos.length; x++) {
-                if (coupondata.combos.length - 1 !== x) {
-                    const checkBox = document.getElementById('comb_'+x);
-                    if(checkBox.checked){
-                        coupondata.combos[x].checked = false;
-                        // document.getElementById('combo-'+x).classList.add('sel');
-                        noOfCombos += coupondata.combos[x].Combinations
-                    }
+                const checkBox = document.getElementById('comb_'+x);
+                if(checkBox.checked){
+                    coupondata.combos[x].checked = false;
+                    // document.getElementById('combo-'+x).classList.add('sel');
+                    noOfCombos += coupondata.combos[x].Combinations
                 }
             }
             return dispatch({type: SET_COUPON_DATA, payload: coupondata});
@@ -640,3 +636,27 @@ export function placeBet(e, type, giftCode){
         });
     }
 };
+
+export function reloadCoupon (betslip_id, action) {
+    return async (dispatch, getState) => {
+        loadCoupon(betslip_id, action).then(res => {
+            dispatch({type: LOADING});
+
+            if (res.message === 'found' && res.coupon.selections.length) {
+                let couponData = res.coupon;
+                couponData.totalStake = couponData.stake;
+                // couponData.tipster_id = betslip.tipster_id;
+                // couponData.fixtures = groupSelections(couponData.selections);
+                couponData.tournaments = groupTournament(couponData.selections);
+
+                const calculatedGroup   = couponCalculation.calcCombinations(couponData);
+                couponData.combos       = calculatedGroup.Groups;
+
+                dispatch({type: SET_COUPON_DATA, payload: couponData});
+                dispatch({type: SET_BETSLIP_DATA, payload: null});
+            } else {
+                alert('Unable to rebet the selected coupon because all the events are expired');
+            }
+        }).catch(err => dispatch({type: LOADING}));
+    }
+}

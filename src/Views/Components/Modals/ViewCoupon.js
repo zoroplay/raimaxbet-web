@@ -1,33 +1,14 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {loadCoupon} from "../../../Services/apis";
-import {groupTournament} from "../../../Utils/couponHelpers";
-import {LOADING, SET_BETSLIP_DATA, SET_COUPON_DATA} from "../../../Redux/types";
+import {SET_BETSLIP_DATA} from "../../../Redux/types";
 import {formatBetslipId, formatDate, formatNumber} from "../../../Utils/helpers";
 import BetListOutcome from "../BetListOutcome";
+import {reloadCoupon} from "../../../Redux/actions";
 
 export default function ViewCoupon({betslip}) {
     const dispatch = useDispatch();
     const {loading} = useSelector(state => state.login)
     const {SportsbookGlobalVariable} = useSelector((state) => state.sportsBook);
-    console.log(betslip)
-    const reloadCoupon = () => {
-        dispatch({type: LOADING});
-
-        loadCoupon(betslip?.betslip_id, 'rebet').then(res => {
-            dispatch({type: LOADING});
-
-            if (res.message === 'found' && res.coupon.selections.length) {
-                let couponData = res.coupon;
-                couponData.tipster_id = betslip.tipster_id;
-                couponData.tournaments = groupTournament(couponData.selections);
-                dispatch({type: SET_COUPON_DATA, payload: couponData});
-                dispatch({type: SET_BETSLIP_DATA, payload: null});
-            } else {
-                alert('Unable to rebet the selected coupon because all the events are expired');
-            }
-        }).catch(err => {        dispatch({type: LOADING})});
-    }
 
     return (
         <>
@@ -215,8 +196,9 @@ export default function ViewCoupon({betslip}) {
                                         {betslip?.event_type !== 'jackpot' && !betslip?.tipster_id &&
                                         <input type="button" name="popUp$PC$btnRebet"
                                                value={loading ? 'Loading Games...' : 'Rebet'} id="popUp_PC_btnRebet"
-                                               onClick={reloadCoupon}
-                                               className="button"/>
+                                               onClick={() => dispatch(reloadCoupon(betslip?.betslip_id, 'rebet'))}
+                                               className="button"
+                                        />
                                         }
                                     </div>
                                 </div>
