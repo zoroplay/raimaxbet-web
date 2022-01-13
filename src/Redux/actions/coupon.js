@@ -499,6 +499,12 @@ export function placeBet(e, type, giftCode){
             return;
         }
 
+        if (coupondata.selections.length === 2 && coupondata.stake > 2000){
+            dispatch({type: LOADING});
+            toast.error('Maximum stake for 2 selections is N2,000');
+            return;
+        }
+
         if (coupondata.hasLive)
             ele = document.getElementById('placeBetBtn');
 
