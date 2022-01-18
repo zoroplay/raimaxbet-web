@@ -21,11 +21,11 @@ export default function Virtual() {
 
     useEffect(() => {
         if (user.role === 'Player') {
-            setVirtuaUrl(`https://sportsbookengine-test.virtual-horizon.net/engine/web/autologin/account?login=${user.username}-P90&code=${user.auth_code}&webRedirectTo=/responsive/ext/skinbs/vspro-headless.jsp%3Flocale=en_US%26agent=P90_WEB`);
+            setVirtuaUrl(`https://sportsbookengine-test.virtual-horizon.net/engine/web/autologin/account?login=${user.username}-BTK&code=${user.auth_code}&webRedirectTo=/responsive/ext/skinbs/vspro-headless.jsp%3Flocale=en_US%26agent=BTK_SHOP`);
         } else if (user.role === 'Cashier') {
-            window.open(`https://sportsbookengine-test.virtual-horizon.net/engine/shop/autologin/account?login=${user.username}-P90&code=${user.auth_code}&shopRedirectTo=/client/shop.jsp%3Flocale=en_US`);
+            window.open(`https://sportsbookengine-test.virtual-horizon.net/engine/shop/autologin/account?login=${user.username}-BTK&code=${user.auth_code}&shopRedirectTo=/client/shop.jsp%3Flocale=en_US`);
         } else {
-            setVirtuaUrl(`https://sportsbookengine-test.virtual-horizon.net/engine/web/autologin/account?webRedirectTo=/responsive/ext/skinbs/vspro-headless.jsp%3Flocale=en_US%26agent=P90_WEB`);
+            setVirtuaUrl(`https://sportsbookengine-test.virtual-horizon.net/engine/web/autologin/account?webRedirectTo=/responsive/ext/skinbs/vspro-headless.jsp%3Flocale=en_US%26agent=BTK_SHOP`);
         }
     }, [user]);
 
