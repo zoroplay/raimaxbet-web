@@ -183,7 +183,7 @@ export default function Header() {
                             {user.role === 'Cashier' ?
                                 <a
                                     target="_blank"
-                                    href={`https://sportsbookengine.virtual-horizon.com/engine/shop/autologin/account?login=${user.username}-BTK&code=${user.auth_code}&shopRedirectTo=/client/shop.jsp%3Flocale=en_US`}>
+                                    href={`${process.env.REACT_APP_GLOBALBET_PROD}/engine/shop/autologin/account?login=${user.username}-BTK&code=${user.auth_code}&shopRedirectTo=/client/shop.jsp%3Flocale=en_US`}>
                                     <h1>Virtual</h1>
                                 </a>
                                 :
