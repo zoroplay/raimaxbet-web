@@ -15,7 +15,7 @@ import {Http} from "../../Utils";
 import * as _ from 'lodash';
 import {toast} from "react-toastify";
 import {getSplitProps, loadCoupon} from "../../Services/apis";
-import {calculateExclusionPeriod, formatDate} from "../../Utils/helpers";
+import {calculateExclusionPeriod, checkNoOfDraws, formatDate} from "../../Utils/helpers";
 import CouponCalculation from "../../Utils/CouponCalculation";
 
 const couponCalculation = new CouponCalculation();
@@ -502,6 +502,13 @@ export function placeBet(e, type, giftCode){
         if (coupondata.selections.length === 2 && coupondata.stake > 2000){
             dispatch({type: LOADING});
             toast.error('Maximum stake for 2 selections is N2,000');
+            return;
+        }
+
+        const hasMoreDraws = checkNoOfDraws(coupondata.selections);
+
+        if (hasMoreDraws) {
+            toast.error(`You cannot play more than 2 draws in one ticket`);
             return;
         }
 
