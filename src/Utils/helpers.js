@@ -195,5 +195,5 @@ export const checkNoOfDraws = (selections) => {
         if (selection.oddname === 'X')
             no_of_draws++
     })
-    return no_of_draws === selections.length && no_of_draws > 2;
+    return no_of_draws === selections.length && no_of_draws > 5;
 }
