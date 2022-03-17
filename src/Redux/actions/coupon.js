@@ -508,7 +508,7 @@ export function placeBet(e, type, giftCode){
         const hasMoreDraws = checkNoOfDraws(coupondata.selections);
 
         if (hasMoreDraws) {
-            toast.error(`You cannot play more than 2 draws in one ticket`);
+            toast.error(`You cannot play more than 5 draws in one ticket`);
             return;
         }
 
