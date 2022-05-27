@@ -201,3 +201,9 @@ export const saveTipsterBet = (data) =>
 
 export const rebetTipster = (data) =>
     Http.post('/sports/tipsters/rebet', data);
+
+export const getPoolTickets = (data, page) =>
+    Http.post(`/user/account/pool-tickets?page=${page}`, data);
+
+export const getCouponTickets = (data, page) =>
+    Http.post(`/user/account/coupon-tickets?page=${page}`, data);

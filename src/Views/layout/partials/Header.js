@@ -224,11 +224,12 @@ export default function Header() {
                         <li className="nav-bottom-list-li"><a href="https://ls.sir.sportradar.com/netbetuof" target="_blank"><h2>Livescore</h2></a></li>
                         <li className="nav-bottom-list-li"><a href="./contact.html"><h2>Contact Us</h2></a></li>*/}
                         <li className="nav-bottom-list-li"><NavLink title="Home" to="/">Home</NavLink></li>
+                        <li className="nav-bottom-list-li"><NavLink to={`/Sport/Pool`}>Pool Fixtures</NavLink></li>
+                        <li className="nav-bottom-list-li"><NavLink to={`/Sport/Coupon`}>Weekly Coupon</NavLink></li>
                         <li className="nav-bottom-list-li"><NavLink title="FAQ" to="/Sport/Pages/faq">FAQ</NavLink></li>
                         <li className="nav-bottom-list-li"><NavLink title="How to Deposit / Withdraw" to="/Sport/Pages/how-to-deposit">How to Deposit / Withdraw</NavLink></li>
-                        <li className="nav-bottom-list-li"><NavLink title="Tutorials" to="/Sport/Pages/how-to-play">Tutorials</NavLink></li>
-                        <li className="nav-bottom-list-li"><a className="free" href={`${process.env.REACT_APP_BASEURL}/Sport/weekly-coupons`} target="_blank">Weekly Coupon</a></li>
-                        <li className="nav-bottom-list-li"><a title="Results">Results</a></li>
+                        {/*<li className="nav-bottom-list-li"><NavLink title="Tutorials" to="/Sport/Pages/how-to-play">Tutorials</NavLink></li>*/}
+                        {/*<li className="nav-bottom-list-li"><a title="Results">Results</a></li>*/}
                         <li className="nav-bottom-list-li"><NavLink title="Contact Us" to="/Sport/Pages/contact-us" >Contact Us</NavLink></li>
                         <li className="nav-bottom-list-li new"><NavLink title="Become An Agent" to="/BecomeAnAgent" >Become an Agent</NavLink></li>
                     </ul>

@@ -24,8 +24,29 @@ const initialState = {
         exciseDuty: 0,
         useBonus: false,
     },
+    weeklyCoupon:{
+        selections: [],
+        totalOdds: 1,
+        maxWin: 0,
+        stake: 0,
+    },
+    poolCoupon: {
+        selections:[],
+        stake: 0,
+        gameType: 'PERM3',
+        gameWeek: '',
+        odd: '100-1'
+    },
     betslip: null,
-    todaysBets: []
+    todaysBets: [],
+    couponModal: {
+        show: false,
+        betslip: null
+    },
+    cashoutModal: {
+        show: false,
+        betslip: null
+    },
 }
 
 const couponData = persistReducer(
@@ -34,6 +55,12 @@ const couponData = persistReducer(
         switch (action.type) {
             case types.SET_COUPON_DATA:
                 return { ...state, coupon: action.payload };
+
+            case types.SET_POOL_COUPON_DATA:
+                return { ...state, poolCoupon: action.payload };
+
+            case types.SET_WEEKLY_COUPON_DATA:
+                return { ...state, weeklyCoupon: action.payload };
 
             case types.SET_BET_PLACED:
                 return { ...state, betPlaced: action.payload };
@@ -64,13 +91,28 @@ const couponData = persistReducer(
                     selections: [],
                     combos:[],
                     totalOdds: 1,
-                    bonus: 0,
+                    minWin: 0,
                     maxWin: 0,
+                    maxBonus: 0,
+                    minBonus: 0,
                     stake: 0,
                     totalStake: 0,
                     useBonus: false
                 };
-                return {...state, coupon};
+                let poolCoupon = {
+                    selections:[],
+                    stake: 0,
+                    gameType: 'PERM3',
+                    gameWeek: '',
+                    odd: '100-1'
+                };
+                let weeklyCoupon = {
+                    selections: [],
+                    totalOdds: 1,
+                    maxWin: 0,
+                    stake: 0,
+                };
+                return {...state, coupon, poolCoupon, weeklyCoupon};
 
             case types.RESET_COUPON_AMOUNT:
                 return {

@@ -78,8 +78,19 @@ export const createID = (event_id, market_id, odd_name, odd_id) => {
     return event_id+'_'+market_id+'_'+oddname+'_'+odd_id
 };
 
-export const printTicket = (ticket) => {
-    let url = process.env.REACT_APP_BASEURL+'/print-ticket/'+ticket;
+export const printTicket = (ticket, type) => {
+    let url;
+    switch (type) {
+        case 'pool':
+            url = process.env.REACT_APP_BASEURL+'/print-pool-ticket/'+ticket;
+            break;
+        case 'coupon':
+            url = process.env.REACT_APP_BASEURL+'/print-coupon-ticket/'+ticket
+            break;
+        default:
+            url =  process.env.REACT_APP_BASEURL+'/print-ticket/'+ticket
+            break;
+    }
     window.open(url, 'mywin','left=350,top=250,width=250,height=300,toolbar=1,resizable=0');
 }
 

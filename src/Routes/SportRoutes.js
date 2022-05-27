@@ -14,6 +14,8 @@ import PrintFixtures from "../Views/PrintFixtures";
 import CMSPages from "../Views/CMSPages";
 import Tipsters from "../Views/Tipsters";
 import TipsterBetslips from "../Views/TipsterBetslips";
+import PoolFixtures from "../Views/PoolFixtures";
+import WeeklyCoupon from "../Views/WeeklyCoupon";
 
 
 export default function SportRoutes() {
@@ -25,6 +27,8 @@ export default function SportRoutes() {
           <Route exact path="/Sport/Explore" component={ExploreEvents} />
           <Route exact path="/Sport/PreMatch/:sport" component={TournamentSelector} />
           <Route exact path="/Sport/Pages/:slug" component={CMSPages} />
+          <Route exact path="/Sport/Pool" component={PoolFixtures} />
+          <Route exact path="/Sport/Coupon" component={WeeklyCoupon} />
           <Route exact path="/Sport/Odds" component={SportOdds} />
           <Route exact path="/Sport/EventDetail" component={EventDetails} />
           <Route exact path="/Sport/SearchResults" component={SearchResults} />

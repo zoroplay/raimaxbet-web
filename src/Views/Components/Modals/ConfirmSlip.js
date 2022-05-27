@@ -212,7 +212,7 @@ export default function ConfirmSlip({couponData}) {
                             }
                             {betPlaced && betPlaced.type === 'bet' &&
                                 <div className="txt-c">
-                                    <button className="button px-5 btn-blue" onClick={()=>printTicket(betPlaced.coupon.betslip_id)}>Print Ticket</button>
+                                    <button className="button px-5 btn-blue" onClick={()=>printTicket(betPlaced.coupon.betslip_id, betPlaced.ticketType)}>Print Ticket</button>
 
                                     <button className="button px-5" onClick={close}>Bet Again (+)</button>
 

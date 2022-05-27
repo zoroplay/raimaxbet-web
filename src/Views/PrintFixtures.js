@@ -13,7 +13,7 @@ const listType = [
     {value: 'week', label: 'Week'},
     {value: 'all', label: 'All'},
 ];
-export default function TournamentSelector({history}) {
+export default function PrintFixtures({history}) {
     const [sports, setSports] = useState([]);
     const [selections, setSelections] = useState([]);
     const dispatch = useDispatch();

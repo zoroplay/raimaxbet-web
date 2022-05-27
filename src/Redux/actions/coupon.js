@@ -2,7 +2,14 @@ import {
     CANCEL_BET,
     SET_BET_PLACED,
     SET_COUPON_DATA,
-    RESET_COUPON_AMOUNT, UPDATE_USER_BALANCE, LOADING, SET_TODAYS_BET, SHOW_LOGIN_MODAL, SET_BETSLIP_DATA,
+    RESET_COUPON_AMOUNT,
+    UPDATE_USER_BALANCE,
+    LOADING,
+    SET_TODAYS_BET,
+    SHOW_LOGIN_MODAL,
+    SET_BETSLIP_DATA,
+    SET_WEEKLY_COUPON_DATA,
+    SET_POOL_COUPON_DATA
 } from "../types";
 import {
     calculateBonus, calculateTotalOdds,
@@ -251,6 +258,104 @@ export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddna
     }
 }
 
+export function addToPoolCoupon(sn, fixture, gameWeek) {
+    return async (dispatch, getState) => {
+        // grab current state
+        const state = getState();
+        let couponData = {...state.couponData.poolCoupon};
+        // const globalVars = {...state.sportsBook.SportsbookGlobalVariable};
+        // const bonusList = [...state.sportsBook.SportsbookBonusList];
+        // const game = {
+        //     name: fixture.event_name,
+        //     id: sn,
+        // }
+        if(!couponData.selections.length) {
+            couponData.selections.push(sn);
+            // couponData.fixtures.push(game);
+            couponData.gameWeek = gameWeek;
+            return dispatch({type: SET_POOL_COUPON_DATA, payload: couponData});
+        } else {
+            for (let i = 0; i < couponData.selections.length; i++) {
+                //check if it's same event selected and remove it
+                if (couponData.selections[i] === sn) {
+                    const index = couponData.selections.findIndex(item => item === sn);
+                    //remove item
+                    couponData.selections.splice(index, 1);
+                    return dispatch({type: SET_POOL_COUPON_DATA, payload: couponData});
+                }
+            }
+            couponData.selections.push(sn);
+            // couponData.fixtures.push(game);
+            return dispatch({type: SET_POOL_COUPON_DATA, payload: couponData});
+        }
+    }
+}
+
+export function addToWeeklyCoupon(fixture, gameWeek, ele_id) {
+    return async (dispatch, getState) => {
+        // grab current state
+        const state = getState();
+        let couponData = {...state.couponData.weeklyCoupon};
+
+        const data = {
+            event_id: fixture.id,
+            element_id: ele_id,
+            event_name: fixture.home_team + ' ' + fixture.away_team,
+            odds: fixture.odds,
+            start_date: fixture.event_date + ' ' + fixture.event_time,
+        };
+
+        const globalVars = {...state.sportsBook.SportsbookGlobalVariable};
+
+        if(!couponData.selections.length){
+            couponData.selections = [];
+            couponData.totalOdds = 1;
+            couponData.maxWin = 0;
+
+            couponData.selections.push(data);
+            couponData.totalOdds = (parseFloat(couponData.totalOdds) * parseFloat(data.odds)).toFixed(2);
+            //calculate and get pot winnings with bonus
+            if (couponData.stake > 0) {
+                const winnings = calculateWinnings(couponData, globalVars, []);
+                couponData.maxWin = winnings.maxWin;
+            }
+            //update bets state in redux
+            return dispatch({type: SET_WEEKLY_COUPON_DATA, payload: couponData});
+
+        }else{
+            for (let i = 0; i < couponData.selections.length; i++) {
+                //check if it's same event selected and remove it
+                if (couponData.selections[i].event_id === data.event_id) {
+                    //remove item
+                    const index = couponData.selections.findIndex(item => item.event_id === data.event_id);
+                    //remove item
+                    couponData.selections.splice(index, 1);
+                    couponData.totalOdds = (parseFloat(couponData.totalOdds) / parseFloat(data.odds)).toFixed(2);
+
+                    if (couponData.selections.length > 0) {
+                        if (couponData.stake > 0) {
+                            const winnings = calculateWinnings(couponData, globalVars, []);
+                            couponData.maxWin = winnings.maxWin;
+                        }
+                        return dispatch({type: SET_WEEKLY_COUPON_DATA, payload: couponData});
+                    } else {
+                        return dispatch({type: CANCEL_BET})
+                    }
+                }
+            }
+
+            couponData.totalOdds = (parseFloat(couponData.totalOdds) * parseFloat(data.odds)).toFixed(2);
+            //add selection to selections list
+            couponData.selections.push(data);
+            if (couponData.stake > 0) {
+                const winnings = calculateWinnings(couponData, globalVars, []);
+                couponData.maxWin = winnings.maxWin;
+            }
+            return dispatch({type: SET_WEEKLY_COUPON_DATA, payload: couponData});
+        }
+    }
+}
+
 export function fastAdd(amount){
     return (dispatch, getState) => {
         // grab current state
@@ -314,6 +419,27 @@ export function updateWinnings(stake){
         }
         //set coupon data in redux
         return dispatch({type: SET_COUPON_DATA, payload: coupondata});
+    }
+};
+
+export function updateCouponWinnings(stake){
+    return (dispatch, getState) => {
+        // const stake = e.target.value;
+        // grab current state
+        const state = getState();
+        const coupondata = {...state.couponData.coupon};
+        const globalVars = {...state.sportsBook.SportsbookGlobalVariable};
+        coupondata.stake = stake;
+
+        if (stake !== '' && coupondata.selections.length) {
+            // coupondata.exciseDuty = coupondata.totalStake * 0 / 100;
+            // coupondata.stake = coupondata.totalStake - coupondata.exciseDuty;
+            //calculate Winnings
+            let winnings = calculateWinnings(coupondata, globalVars, []);
+            coupondata.maxWin = winnings.maxWin;
+        }
+        //set coupon data in redux
+        return dispatch({type: SET_WEEKLY_COUPON_DATA, payload: coupondata});
     }
 };
 
@@ -649,6 +775,108 @@ export function placeBet(e, type, giftCode){
         });
     }
 };
+
+export function placePoolBet(e) {
+    return (dispatch, getState) => {
+        let ele = e.target;
+        // grab current state
+        const state = getState();
+
+        const coupondata = {...state.couponData.poolCoupon};
+        ele.disabled = true;
+        ele.innerHTML = 'Submitting...';
+        Http.post(`/sports/pool/place-bet?channel=website`, coupondata).then(res => {
+            ele.disabled = false;
+            ele.innerHTML = 'Place Bet';
+            if (res.success) {
+                // update user balance
+                dispatch({type: UPDATE_USER_BALANCE, payload: res.balance});
+
+                dispatch({type: CANCEL_BET});
+                window.scrollTo({
+                    top: 100,
+                    left: 100,
+                    behavior: 'smooth'
+                });
+                return dispatch({type: SET_BET_PLACED, payload: {
+                        type: 'bet',
+                        ticketType: 'pool',
+                        coupon: {
+                            betslip_id: res.coupon.coupon_no
+                        }
+                    }});
+            } else if (res.message === 'auth_fail') {
+                ele.innerHTML = 'Place Bet';
+                return dispatch({type: SHOW_LOGIN_MODAL})
+            } else {
+                dispatch({type: LOADING});
+
+                ele.disabled = false;
+                ele.innerHTML = 'Place Bet';
+                toast.error(res.message || 'Something went wrong. We were unable to accept betslip.');
+            }
+        }).catch(err => {
+
+            ele.disabled = false;
+            ele.innerHTML = 'Place Bet';
+            if(err.response.status === 401){
+                toast.error('Please login to place bets');
+            }
+            // console.log(err);
+        });
+    }
+}
+
+export function placeCouponBet(e) {
+    return (dispatch, getState) => {
+        let ele = e.target;
+        // grab current state
+        const state = getState();
+
+        const coupondata = {...state.couponData.weeklyCoupon};
+        ele.disabled = true;
+        ele.innerHTML = 'Submitting...';
+        Http.post(`/sports/pool/place-coupon-bet?channel=website`, coupondata).then(res => {
+            ele.disabled = false;
+            ele.innerHTML = 'Place Bet';
+            if (res.success) {
+                // update user balance
+                dispatch({type: UPDATE_USER_BALANCE, payload: res.balance});
+
+                dispatch({type: CANCEL_BET});
+                window.scrollTo({
+                    top: 100,
+                    left: 100,
+                    behavior: 'smooth'
+                });
+                return dispatch({type: SET_BET_PLACED, payload: {
+                        type: 'bet',
+                        ticketType: 'coupon',
+                        coupon: {
+                            betslip_id: res.coupon.coupon_no
+                        }
+                    }});
+            } else if (res.message === 'auth_fail') {
+                ele.innerHTML = 'Place Bet';
+                return dispatch({type: SHOW_LOGIN_MODAL})
+            } else {
+                dispatch({type: LOADING});
+
+                ele.disabled = false;
+                ele.innerHTML = 'Place Bet';
+                toast.error(res.message || 'Something went wrong. We were unable to accept betslip.');
+            }
+        }).catch(err => {
+
+            ele.disabled = false;
+            ele.innerHTML = 'Place Bet';
+            if(err.response.status === 401){
+                toast.error('Please login to place bets');
+            }
+            // console.log(err);
+        });
+    }
+}
 
 export function reloadCoupon (betslip_id, action) {
     return async (dispatch, getState) => {
