@@ -300,7 +300,7 @@ export function addToWeeklyCoupon(fixture, gameWeek, ele_id) {
         const data = {
             event_id: fixture.id,
             element_id: ele_id,
-            event_name: fixture.home_team + ' ' + fixture.away_team,
+            event_name: fixture.home_team + ' - ' + fixture.away_team,
             odds: fixture.odds,
             start_date: fixture.event_date + ' ' + fixture.event_time,
         };
