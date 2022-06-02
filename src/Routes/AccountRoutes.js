@@ -18,6 +18,7 @@ import {useSelector} from "react-redux";
 import {Deposit} from "../Views/Account/Deposit";
 import BonusTransactionList from "../Views/Account/BonusTransactionList";
 import {Bonuses} from "../Views/Account/Bonuses";
+import CouponTicket from "../Views/Account/CouponTicket";
 
 const AccountRoutes = ({history}) => {
     const {isAuthenticated} = useSelector(state => state.auth);
@@ -38,6 +39,7 @@ const AccountRoutes = ({history}) => {
         <Route exact path="/Account/BetDetail/:betslip" component={BetDetail} />
         <Route exact path="/Account/BetList" component={BetList} />
         <Route exact path="/Account/JackpotBets" component={JackpotBetList} />
+        <Route exact path="/Account/CouponBets" component={CouponTicket} />
         <Route exact path="/Account/PersonalInfo" component={PersonalData} />
         <Route exact path="/Account/ChangePassword" component={ChangePassword} />
         <Route exact path="/Account/Withdraw" component={Withdrawal} />
