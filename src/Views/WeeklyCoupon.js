@@ -48,6 +48,11 @@ export default function WeeklyCoupon({history}) {
             toast.error('Please enter a stake amount');
             return;
         }
+        if(coupon.selections.length < 3) {
+            toast.error('You must select at least 3 games');
+            return;
+        }
+
         dispatch(placeCouponBet(e))
     }
 
