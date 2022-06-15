@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 import {
     REMOVE_USER_DATA,
     SET_USER_DATA,
-    SHOW_DEPOSIT_MODAL, UPDATE_USER_BALANCE,
+    UPDATE_USER_BALANCE,
     UPDATE_USER_DATA,
     UPDATE_USERNAME
 } from "../../../Redux/types";
@@ -26,6 +26,12 @@ export default function Header() {
     const [refreshing, setRefresh] = useState(false);
     const dispatch = useDispatch();
     const history = useHistory();
+    const [mode, setMode] = useState(0);
+    const [token, setToken] = useState('111111');
+    const [hash, setHash] = useState('');
+    const backurl = process.env.REACT_APP_URL;
+    const privateKey = process.env.REACT_APP_XPRESS_PRIVATE_KEY;
+    const group = process.env.REACT_APP_SITE_KEY;
 
     useEffect(() => {
         if (isAuthenticated) {
@@ -35,8 +41,20 @@ export default function Header() {
                     dispatch({type: UPDATE_USER_BALANCE, payload: e.user.balance});
                     toast.success('Your deposit request was successful')
                 })
+
+            setToken(user.auth_code+'-'+group);
+            setMode(1);
+        } else {
+            setToken('111111');
+            setMode(0);
         }
     }, [isAuthenticated]);
+
+    useEffect(() => {
+
+        setHash(MD5(`${token}10100${backurl}${mode}${group}${privateKey}`).toString())
+
+    }, [token, mode]);
 
     const submitForm = (e) => {
         e.preventDefault();
