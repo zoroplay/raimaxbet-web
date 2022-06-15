@@ -52,9 +52,7 @@ export default function Header() {
     }, [isAuthenticated]);
 
     useEffect(() => {
-
         setHash(MD5(`${token}10100${backurl}${mode}${group}${privateKey}`).toString())
-
     }, [token, mode]);
 
     const submitForm = (e) => {
@@ -199,7 +197,7 @@ export default function Header() {
                         </li>
                         <li className="nav-mid-list-li"><NavLink id="indexLive" to="/Live/LiveDefault"><h1>In-Play</h1></NavLink></li>
                         <li className="nav-mid-list-li">
-                            {user.role === 'Cashier' ?
+                            {/* {user.role === 'Cashier' ?
                                 <a
                                     target="_blank"
                                     href={`${process.env.REACT_APP_GLOBALBET_PROD}/engine/shop/autologin/account?login=${user.username}-BTK&code=${user.auth_code}&shopRedirectTo=/client/shop.jsp%3Flocale=en_US`}>
@@ -209,7 +207,12 @@ export default function Header() {
                                 <NavLink to="/Sport/Virtual">
                                     <h1>Virtual</h1>
                                 </NavLink>
-                            }
+                            } */}
+                            <a
+                                target="_blank"
+                                href={`${process.env.REACT_APP_XPRESS_LAUNCH_URL}?token=${token}&game=10100&backurl=${backurl}&mode=${mode}&group=${group}&h=${hash}`}>
+                                <h1>Virtual</h1>
+                            </a>
                         </li>
                         <li className="nav-mid-list-li"><NavLink id="indexCasino" to="/Sport/PrintFixtures"><h1>Print Fixtures</h1></NavLink></li>
                         <li className="nav-mid-list-li"><NavLink  id="indexJackpot" to="/Sport/Jackpot"><h1>Jackpot</h1></NavLink></li>
