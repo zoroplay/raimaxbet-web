@@ -14,6 +14,7 @@ import {formatNumber, formattedPhoneNumber} from "../../../Utils/helpers";
 import UserMenu from "../../Components/UserMenu";
 import {toast} from "react-toastify";
 import moment from "moment";
+import { MD5 } from 'crypto-js';
 import {LEcho} from "../../../Utils/laravel-echo";
 
 export default function Header() {
