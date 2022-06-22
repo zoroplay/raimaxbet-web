@@ -5,9 +5,10 @@ import {formatDate, isSelected} from "../Utils/helpers";
 import {NavLink} from "react-router-dom";
 import {addToCoupon} from "../Redux/actions";
 import {createID} from "../Utils/couponHelpers";
+import {toast} from "react-toastify";
 
 
-export default function EventDetails({location}) {
+export default function EventDetails({location, history}) {
     const urlParam = new URLSearchParams(location.search);
     const eventID = urlParam.get('EventID');
     const [fixture, setFixture] = useState(null);
@@ -16,7 +17,12 @@ export default function EventDetails({location}) {
 
     const fetchFixture = useCallback(() => {
         getFixture(eventID).then(res => {
-            setFixture(res);
+            if (res.success) {
+                setFixture(res.data);
+            } else {
+                toast.error(res.message, {position: 'top-right'});
+                history.goBack();
+            }
         }).catch(err => {
             // setLoading(false)
         })
