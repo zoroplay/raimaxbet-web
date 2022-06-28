@@ -67,7 +67,7 @@ export default function TopBets() {
                         <th className="match">Match</th>
                         <th colSpan="3">1X2</th>
                         <th colSpan="3">Double Chance</th>
-                        <th colSpan="2">Over/Under 2.5</th>
+                        <th colSpan="2">GG/NG</th>
                     </tr>
                     <tr className="stat-bottom">
                         <th></th>
@@ -77,8 +77,8 @@ export default function TopBets() {
                         <th>1X</th>
                         <th>12</th>
                         <th>X2</th>
-                        <th>Over</th>
-                        <th>Under</th>
+                        <th>GG</th>
+                        <th>NG</th>
                     </tr>
                     {loading ?
                         <tr>
