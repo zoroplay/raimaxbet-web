@@ -65,6 +65,39 @@ export const groupBy = (data, field) => {
     }
 }
 
+export const groupLiveSports = (data) => {
+    let ArrKeyHolder = [];
+    let Arr = [];
+    data.forEach(function(item){
+        ArrKeyHolder[item.sport_tournament_id] = ArrKeyHolder[item.sport_tournament_id]||{};
+        let obj = ArrKeyHolder[item.sport_tournament_id];
+
+        if(Object.keys(obj).length === 0)
+            Arr.push(obj);
+
+        obj.sport_id = item.sport_id;
+        obj.sport_name = item.sport_name;
+        obj.category = item.sport_category_name;
+        obj.Id = item.sport_tournament_id;
+        obj.Name = item.sport_tournament_name;
+        obj.Events  = obj.Events || [];
+
+        obj.Events.push(item);
+    });
+    return Arr;
+}
+
+export const liveScore = (score, team) => {
+    if (score) {
+        const scoreArray = score.split(':');
+        if(team === 'home') {
+            return scoreArray[0];
+        } else {
+            return scoreArray[1];
+        }
+    }
+}
+
 export const formatDate = (str, format = 'YYYY-MM-DD HH:mm') =>
     moment(str).format(format);
 
@@ -117,12 +150,12 @@ export const getOdds = (prediction, outcomes) => {
 
 export const getLiveOdds = (eventMarkets, market, selection) => {
     let odd = 0;
-    if (eventMarkets.length) {
+    if (eventMarkets && eventMarkets.length) {
         _.each(eventMarkets, function (value, key) {
-            if (value.TypeId === market.id) {
-                _.each(value.Selections, function (item, index) {
-                    if (item.TypeId === selection.id && item.Name === selection.name) {
-                        item.MarketId = value.Id;
+            if (value.active === '1' && value.type_id === market.id) {
+                _.each(value.odds, function (item, index) {
+                    if (item.active === '1' && item.type === selection.type) {
+                        item.MarketId = value.type_id;
                         odd = item;
                     }
                 });
@@ -134,15 +167,14 @@ export const getLiveOdds = (eventMarkets, market, selection) => {
 }
 
 export const getSpread = (eventMarkets, market) => {
-    let specialValue = 0;
+    let specialValue = '';
     if (eventMarkets.length) {
         _.each(eventMarkets, function (value, key) {
-            if (value.TypeId === market.id) {
-                specialValue = value.SpecialValue;
+            if (value.type_id === market.id && value.active === '1') {
+                specialValue = value.specialOddsValue;
             }
         });
     }
-
     return specialValue;
 }
 

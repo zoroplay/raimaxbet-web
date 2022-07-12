@@ -13,29 +13,29 @@ export const LiveEventsOverview = [
         id: 1,
         markets: [
             {
-                id: 110,
+                id: '2',
                 name: '1X2',
                 outcomes: [
-                    {name: '1', id: 1},
-                    {name: 'X', id: 2},
-                    {name: '2', id: 3},
+                    {name: '1', id: 1, type: '1'},
+                    {name: 'X', id: 2, type: 'x'},
+                    {name: '2', id: 3, type: '2'},
                 ]
             },
             {
-                id: 302,
+                id: '8',
                 name: 'GG/NG',
                 outcomes: [
-                    {name: 'GG', id: 1},
-                    {name: 'NG', id: 2},
+                    {name: 'GG', id: 1, type: '1'},
+                    {name: 'NG', id: 2, type: '2'},
                 ]
             },
             {
-                id: 160,
+                id: '5',
                 name: 'Over/Under',
                 hasSpread: true,
                 outcomes: [
-                    {name: 'Over', id: 1},
-                    {name: 'Under', id: 2},
+                    {name: 'Over', id: 1, type: 'o'},
+                    {name: 'Under', id: 2, type: 'u'},
                 ]
             }
         ]
@@ -390,68 +390,59 @@ export const LiveEventsOverview = [
 
 export const matchStatus = (status) => {
     switch (status) {
-        case 0:
-            return 'Not Set';
-            break;
-        case 3:
+        case 'not_started':
+            return 'Not Started';
+        case '1p':
             return '1st Period';
-            break;
-        case 4:
+        case '2p':
             return '2nd Period';
-            break;
-        case 8:
+        case '1set':
             return '1st Set';
-            break;
-        case 9:
+        case '2set':
             return '2nd Set';
-            break;
-        case 10:
+        case '3set':
             return '3rd Set';
-            break;
-        case 11:
+        case '4set':
             return '4th Set';
-            break;
-        case 15:
+        case '5set':
+            return '5th Set';
+        case '6set':
+            return '6th Set';
+        case '7set':
+            return '7th Set';
+        case '1q':
             return '1st Quarter';
-            break;
-        case 16:
+        case '2q':
             return '2nd Quarter';
-            break;
-        case 17:
+        case '3q':
             return '3rd Quarter';
-            break;
-        case 18:
+        case '4q':
             return '4th Quarter';
-        case 26:
+        case 'ot':
             return 'Overtime';
-        case 30:
+        case '2p_ot':
             return '2nd Period Overtime';
-            break;
-        case 90:
+        case 'in_progress':
             return 'In Progress';
-            break;
-        case 104:
+        case 'lunch_break':
             return 'Lunch Break';
-        case 107:
+        case 'injury_break':
             return 'Injury Break';
-            break;
-        case 118:
+        case '1g':
             return '1st Game';
-            break;
-        case 119:
+        case '2g':
             return '2nd Game';
-            break;
-        case 120:
+        case '3g':
             return '3rd Game';
-            break;
+        case '4g':
+            return '4th Game';
+        case '5g':
+            return '5th Game';
+        case 'paused':
+            return 'Paused';
+        case 'ended':
+            return 'Ended';
         default:
             break;
-    }
-    if(status === 3){
-        return '1st Half';
-    }else if(status === 4){
-        return '2nd Half';
-    }else{
-        return 'Not Set';
     }
 }

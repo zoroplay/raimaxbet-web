@@ -9,15 +9,15 @@ export const LiveOdd = ({newOdds, outcome, market, fixture, tournament, sport, c
     const [oddChangeUp, setOddChangeUp] = useState(false);
     const [oddChangeDown, setOddChangeDown] = useState(false);
     const dispatch = useDispatch();
-
+    
     useEffect(() => {
         if (newOdds !== 0) {
             if(oddsData !== 0) {
-                if (newOdds.Odds[0].Value > oddsData.Odds[0].Value) {
+                if (parseFloat(newOdds.odds) > parseFloat(oddsData.odds)) {
                     setOddChangeDown(false);
                     setOddChangeUp(true);
                     setOddsData(newOdds);
-                } else if (newOdds.Odds[0].Value < oddsData.Odds[0].Value) {
+                } else if (parseFloat(newOdds.odds) < parseFloat(oddsData.odds)) {
                     setOddChangeUp(false);
                     setOddChangeDown(true);
                     setOddsData(newOdds);
@@ -42,21 +42,21 @@ export const LiveOdd = ({newOdds, outcome, market, fixture, tournament, sport, c
         if (oddsData !== 0) {
             fixture.TournamentName = tournament;
             fixture.SportName = sport;
-            dispatch(addToCoupon(fixture, oddsData.MarketId, market.name + ' '+ getSpread(fixture.Markets, market), oddsData.Odds[0].Value, oddsData.Id, outcome.name,
-                createID(fixture.ProviderId, oddsData.MarketId, outcome.name, oddsData.Id),'live'))
+            dispatch(addToCoupon(fixture, oddsData.market_id, market.name + ' '+ getSpread(fixture.Markets, market), oddsData.odds, oddsData.id, outcome.name,
+                createID(fixture.provider_id, oddsData.market_id, outcome.name, oddsData.id),'live'))
         }
     }
 
     return (
         <div
-            className={`${(oddsData === 0 || (oddsData.Odds && oddsData.Odds[0].Value === 0)) ? 'blank' : 'oddItem'} ${oddChangeUp ? 'trend_2' : ''} ${oddChangeDown ? 'trend_4' : ''}
-        ${(isSelected(createID(fixture.ProviderId, oddsData.MarketId, outcome.name, oddsData.Id), coupon)) ? 'sel' : ''}
+            className={`${(oddsData === 0 || (oddsData.Odds && oddsData.odds === 0)) ? 'blank' : 'oddItem'} ${oddChangeUp ? 'trend_2' : ''} ${oddChangeDown ? 'trend_4' : ''}
+        ${(isSelected(createID(fixture.provider_id, oddsData.market_id, outcome.name, oddsData.id), coupon)) ? 'sel' : ''}
         `}
             onClick={selectOdds}
         >
             <div className="oddsTQ">{outcome.name}</div>
-            {oddsData !== 0 && oddsData.Odds[0].Value !== 0 && <div className="oddsQ">
-                <a><span>{formatOdd(oddsData.Odds[0].Value)}</span></a>
+            {oddsData !== 0 && oddsData.odds !== 0 && <div className="oddsQ">
+                <a><span>{formatOdd(parseFloat(oddsData.odds))}</span></a>
             </div>}
         </div>
     )

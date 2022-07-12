@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {getLiveFixtures} from "../Services/apis";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTrophy} from '@fortawesome/free-solid-svg-icons'
-import {getLiveOdds, getSpread, slugify} from "../Utils/helpers";
+import {getLiveOdds, getSpread, groupLiveSports, liveScore, slugify} from "../Utils/helpers";
 import {LiveEventsOverview, matchStatus} from "../Utils/constants";
 import {LiveOdd} from "./Components/LiveOdd";
 import {useSelector} from "react-redux";
@@ -17,14 +17,19 @@ export function LiveBetting ({history}) {
 
     const getData = () => {
         getLiveFixtures().then(response => {
-            // console.log(response);
-            setAvailableSports(response.AvailableSports);
-            let sports = response.Sports;
+            setAvailableSports(response.data.sports);
+            let tournaments = groupLiveSports(response.data.fixtures);
+            let sports = response.data.sports;
             if(sports.length > 0){
                 sports.forEach((item, key) => {
+                    item.Tournaments = []
                     item.headers = LiveEventsOverview.find(sport => sport.id === item.Id);
+                    tournaments.forEach(tournament => {
+                        if(tournament.sport_id === item.Id) item.Tournaments.push(tournament);
+                    })
                 });
-                setSports(sports)
+                console.log(sports);
+                setSports(sports);
             }else{
 
             }
@@ -33,12 +38,18 @@ export function LiveBetting ({history}) {
 
     useEffect(() => {
         getLiveFixtures().then(response => {
-            setAvailableSports(response.AvailableSports)
-            let sports = response.Sports;
+            setAvailableSports(response.data.sports || []);
+            let tournaments = groupLiveSports(response.data.fixtures);
+            let sports = response.data.sports;
             if(sports.length > 0){
                 sports.forEach((item, key) => {
+                    item.Tournaments = []
                     item.headers = LiveEventsOverview.find(sport => sport.id === item.Id);
+                    tournaments.forEach(tournament => {
+                        if(tournament.sport_id === item.Id) item.Tournaments.push(tournament);
+                    })
                 });
+                console.log(sports);
                 setSports(sports);
             }else{
 
@@ -119,7 +130,7 @@ export function LiveBetting ({history}) {
                                             <div className="groups" key={tournament.Id}>
                                                 <div className="group">
                                                     <div className="titleGroup" onClick={togglePanel}>
-                                                        {tournament.Name}
+                                                        {tournament.category + ' - ' + tournament.Name}
                                                         <span className="arrow"  />
                                                         <div className="count">({tournament.Events.length})</div>
                                                     </div>
@@ -128,17 +139,17 @@ export function LiveBetting ({history}) {
                                                             <div className="item" key={match.Id}>
                                                                 <a className="codPub">{match.SelectionCount} </a>
                                                                 <div className="evento">
-                                                                    <span onClick={() => history.push(`/Live/LiveEventDetail?EventID=${match.Id}`)}>
-                                                                        {match.Name}
+                                                                    <span onClick={() => history.push(`/Live/LiveEventDetail?EventID=${match.provider_id}`)}>
+                                                                        {match.event_name}
                                                                     </span>
                                                                 </div>
                                                                 <div className="time">
-                                                                    {match.MatchTime !== 0 && <span className="min">{match.MatchTime} min </span> }
-                                                                    <span className="fase">{matchStatus(match.MatchStatus)}</span>
+                                                                    {match.live_data?.match_time !== 0 && <span className="min">{match.live_data?.match_time} min </span> }
+                                                                    <span className="fase">{matchStatus(match.match_status)}</span>
                                                                 </div>
                                                                 <div className="risultato over">
-                                                                    <span className="c1">{match.HomeGameScore}</span>&nbsp;-&nbsp;
-                                                                    <span className="c2">{match.AwayGameScore}</span>
+                                                                    <span className="c1">{liveScore(match.score, 'home')}</span>&nbsp;-&nbsp;
+                                                                    <span className="c2">{liveScore(match.score, 'away')}</span>
                                                                 </div>
                                                                 <div className="pnlQuote">
                                                                     <div className="container">
@@ -147,18 +158,19 @@ export function LiveBetting ({history}) {
                                                                             <div className={`mainSE o${market.outcomes.length}`} key={`${slugify(sport.Name)}-${market.id}`}>
                                                                                 <div className="SE">{market.name}</div>
                                                                                 <div className={market.hasSpread ? 'hndItem' : ''}>
-                                                                                    {market.hasSpread &&
+                                                                                    {market.hasSpread && match.live_data.markets &&
                                                                                     <div className="hnd">
-                                                                                        <div className="hndTitle">hnd
-                                                                                        </div>
-                                                                                        <div className="hndValue">{getSpread(match.Markets, market)}
+                                                                                        <div className="hndTitle">hnd</div>
+                                                                                        <div className="hndValue">
+                                                                                            {getSpread(match.live_data.markets, market)}
                                                                                         </div>
                                                                                     </div>
                                                                                     }
                                                                                     {market.outcomes.map(outcome =>
                                                                                     <div className={`OddsQuotaItemStyleTQ ${market.hasSpread ? 'hndItem' : ''} g1`} key={`${slugify(sport.Name)}-${market.id}-${outcome.id}`}>
                                                                                         <LiveOdd
-                                                                                            newOdds={getLiveOdds(match.Markets, market, outcome)}
+                                                                                            newOdds={getLiveOdds(match.live_data.markets, market, outcome)}
+                                                                                            // newOdds={0.0}
                                                                                             outcome={outcome}
                                                                                             market={market}
                                                                                             fixture={match}

@@ -170,13 +170,13 @@ export const getSplitProps = async (couponData) => {
 }
 
 export const getLiveFixtures = () =>
-    Http.get(`https://sportsapicdn-desktop.betking.com/api/feeds/live/areaOddsByLayout/en/0/3/0/false/false/true/true`);
+    Http.get(`/sports/live`);
 
 export const getLiveFixtureData = (eventId) =>
-    Http.get(`https://sb-btk-sportapi-cdn-micro-prod.azureedge.net/api/feeds/live/${eventId}/en`);
+    Http.get(`sports/live/${eventId}/en`);
 
 export const getUpcomingLive = () =>
-    Http.get('https://sportsapicdn-desktop.betking.com/api/feeds/live/upcoming');
+    Http.get('/sports/live/upcoming');
 
 export const getOddsChange = (data) =>
     Http.post(`https://sb-btk-sportapi-cdn-micro-prod.azureedge.net/api/feeds/oddschanged/en`, data);
