@@ -158,11 +158,11 @@ export function LiveBetting ({history}) {
                                                                             <div className={`mainSE o${market.outcomes.length}`} key={`${slugify(sport.Name)}-${market.id}`}>
                                                                                 <div className="SE">{market.name}</div>
                                                                                 <div className={market.hasSpread ? 'hndItem' : ''}>
-                                                                                    {market.hasSpread && match.live_data.markets &&
+                                                                                    {market.hasSpread && match.live_data?.markets &&
                                                                                     <div className="hnd">
                                                                                         <div className="hndTitle">hnd</div>
                                                                                         <div className="hndValue">
-                                                                                            {getSpread(match.live_data.markets, market)}
+                                                                                            {getSpread(match.live_data?.markets, market)}
                                                                                         </div>
                                                                                     </div>
                                                                                     }
