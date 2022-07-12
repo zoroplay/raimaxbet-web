@@ -169,7 +169,7 @@ export function LiveBetting ({history}) {
                                                                                     {market.outcomes.map(outcome =>
                                                                                     <div className={`OddsQuotaItemStyleTQ ${market.hasSpread ? 'hndItem' : ''} g1`} key={`${slugify(sport.Name)}-${market.id}-${outcome.id}`}>
                                                                                         <LiveOdd
-                                                                                            newOdds={getLiveOdds(match.live_data.markets, market, outcome)}
+                                                                                            newOdds={getLiveOdds(match.live_data?.markets, market, outcome)}
                                                                                             // newOdds={0.0}
                                                                                             outcome={outcome}
                                                                                             market={market}
