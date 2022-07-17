@@ -488,6 +488,9 @@
                                 .OddsQuotaItemStyleTQ {
                                   float: left;
                                   width: calc(35% - 2px);
+                                  &.noOdd:first-child {
+                                    margin-left: 28%;
+                                  }
                                   .blank {
                                     background-color: #eaebee;
                                     height: 32px;

@@ -24,7 +24,8 @@ export default function CurrentBetslip({coupon, dispatch, user}) {
                             {tournament.fixtures.map(fixture =>
                             <div className="single-event" key={`group-event-${fixture.provider_id}`}>
                                 <div className="match-info">
-                                    <div className="id">{fixture.event_id}</div>
+                                    {fixture.type === 'pre' && <div className="id">{fixture.event_id}</div>}
+                                    {fixture.type === 'live' && <div className="isLive">Live</div>}
                                     <div className="team-names">{fixture.event_name}</div>
                                     <div id="f_23204141" className="bonus " style={{ display: 'none' }}>B</div>
                                 </div>

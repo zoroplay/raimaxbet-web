@@ -38,26 +38,26 @@ export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddna
         dispatch({type: SET_BET_PLACED, payload: ''});
 
         const data = {
-            provider_id: type === 'live' ? fixture.ProviderId : fixture.provider_id,
-            event_id: type === 'live' ? fixture.Id : fixture.event_id,
-            event_name: type === 'live' ? fixture.Name : fixture.event_name,
+            provider_id: fixture.provider_id,
+            event_id: fixture.event_id,
+            event_name: fixture.event_name,
             market_id: market_id,
             market_name: market_name,
             oddname,
             odd_id: odd_id,
             odds: odds,
             element_id: ele_id,
-            start_date: type === 'live' ? formatDate(fixture.Date, 'YYYY-MM-DD HH:mm') : fixture.schedule,
-            tournament: type === 'live' ? fixture.TournamentName : fixture.sport_tournament_name,
-            category: type === 'live' ? fixture.CategoryName : fixture.sport_category_name,
-            sport: type === 'live' ? fixture.SportName : fixture.sport_name,
-            type:type,
+            start_date: fixture.schedule,
+            tournament: fixture.sport_tournament_name,
+            category: fixture.sport_category_name,
+            sport: fixture.sport_name,
+            type,
             fixed: false
         };
         if (type === 'live') {
-            data.in_play_time = fixture.MatchTime;
-            data.score = fixture.Score;
-            data.ht_score = fixture.SetScores;
+            data.in_play_time = fixture.live_data?.match_time;
+            data.score = fixture.score;
+            // data.ht_score = fixture.setscores;
         }
 
         let couponData = {...state.couponData.coupon};

@@ -4,7 +4,7 @@ import {createID} from "../../Utils/couponHelpers";
 import {addToCoupon} from "../../Redux/actions";
 import {useDispatch} from "react-redux";
 
-export const LiveOdd = ({newOdds, outcome, market, fixture, tournament, sport, coupon, globalVars, bonusList}) => {
+export const LiveOdd = ({newOdds, outcome, market, fixture, coupon, globalVars, bonusList}) => {
     const [oddsData, setOddsData] = useState(newOdds);
     const [oddChangeUp, setOddChangeUp] = useState(false);
     const [oddChangeDown, setOddChangeDown] = useState(false);
@@ -32,25 +32,20 @@ export const LiveOdd = ({newOdds, outcome, market, fixture, tournament, sport, c
             setOddChangeUp(false);
             setOddChangeDown(false);
         }
-        // // check if current selection has event in it and update
-        // if (coupon.selections.length) {
-        //     checkOddsChange(coupon, fixture, newOdds, dispatch, globalVars, bonusList);
-        // }
     }, [newOdds]);
 
     const selectOdds = () => {
         if (oddsData !== 0) {
-            fixture.TournamentName = tournament;
-            fixture.SportName = sport;
-            dispatch(addToCoupon(fixture, oddsData.market_id, market.name + ' '+ getSpread(fixture.Markets, market), oddsData.odds, oddsData.id, outcome.name,
-                createID(fixture.provider_id, oddsData.market_id, outcome.name, oddsData.id),'live'))
+
+            dispatch(addToCoupon(fixture, oddsData.market_id, market.name + ' '+ (getSpread(fixture.live_data?.markets, market) !== undefined ? getSpread(fixture.live_data?.markets, market) : ''), oddsData.odds, outcome.id, oddsData.type,
+                createID(fixture.provider_id, oddsData.market_id, oddsData.type, outcome.id),'live'))
         }
     }
 
     return (
         <div
-            className={`${(oddsData === 0 || (oddsData.Odds && oddsData.odds === 0)) ? 'blank' : 'oddItem'} ${oddChangeUp ? 'trend_2' : ''} ${oddChangeDown ? 'trend_4' : ''}
-        ${(isSelected(createID(fixture.provider_id, oddsData.market_id, outcome.name, oddsData.id), coupon)) ? 'sel' : ''}
+            className={`${(oddsData === 0 || (oddsData.odds && oddsData.odds === 0)) ? 'blank' : 'oddItem'} ${oddChangeUp ? 'trend_2' : ''} ${oddChangeDown ? 'trend_4' : ''}
+        ${(isSelected(createID(fixture.provider_id, oddsData.market_id, oddsData.type, outcome.id), coupon)) ? 'sel' : ''}
         `}
             onClick={selectOdds}
         >

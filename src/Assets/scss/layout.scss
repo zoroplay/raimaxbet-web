@@ -8589,6 +8589,15 @@ ul, ul li {
               max-width: 38px;
               text-align: center;
             }
+            .isLive {
+              color: #fff !important;
+              background-color: #2da050;
+              border-radius: 2px;
+              text-transform: uppercase;
+              font-size: 10px;
+              padding: 1px 3px;
+              margin-right: 1px;
+            }
             .team-names	{
               color: $textcolor-dr;
               font-size: 11px;
@@ -8658,6 +8667,39 @@ ul, ul li {
                   margin-top: 6px;
                   user-select: none;
                 }
+              }
+              &.valueChanged:after {
+                position: absolute;
+                content: '';
+                right: 0;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                -webkit-transition: -webkit-transform .5s;
+                -o-transition: transform .5s;
+                transition: transform .5s;
+                transition: transform .5s,-webkit-transform .5s;
+                &.valueDecreased:after {
+                  bottom: 0;
+                  border-width: 0 0 10px 10px;
+                  border-color: transparent transparent #ff423d;
+                }
+                &.valueIncreased:after {
+                  top: 0;
+                  border-width: 0 10px 10px 0;
+                  border-color: transparent #2da050 transparent transparent;
+                }
+              }
+              &.flashSuccess:before, &.flashDanger:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 2;
+                pointer-events: none;
+                color: #fff;
               }
             }
             .bet {
@@ -18672,6 +18714,16 @@ input:checked + .ed-slider:before {
                 margin-top: 1px;
                 max-width: 38px;
                 text-align: center;
+              }
+              .isLive {
+                color: #fff;
+                background-color: #2da050;
+                font-weight: 700;
+                border-radius: 2px;
+                text-transform: uppercase;
+                font-size: 11px;
+                padding: 1px 3px;
+                margin-right: 1px;
               }
               .team-names	{
                 // color: #1f0b33;

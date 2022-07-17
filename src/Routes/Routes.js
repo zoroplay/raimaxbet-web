@@ -28,6 +28,7 @@ import Index from "../Views/BecomeAnAgent/Index";
 import Benefits from "../Views/BecomeAnAgent/Benefits";
 import EasySteps from "../Views/BecomeAnAgent/EasySteps";
 import Virtual from "../Views/Virtual";
+import Casino from "../Views/Casino";
 // import LiveRoutes from "./LiveRoutes";
 // import Live from "../Views/Layout/Live";
 
@@ -91,6 +92,7 @@ export default function Routes() {
           <Route path="/Auth/ResetPassword" component={ResetPassword} />
           <Route path="/Sport/Jackpot" component={Jackpot} />
           <Route path="/Sport/Virtual" component={Virtual} />
+          <Route path="/Casino" component={Casino} />
           <Route path="/Sport/:path?/:extra?" exact>
             <Main>
               <SportRoutes />

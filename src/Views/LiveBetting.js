@@ -5,7 +5,8 @@ import {faTrophy} from '@fortawesome/free-solid-svg-icons'
 import {getLiveOdds, getSpread, groupLiveSports, liveScore, slugify} from "../Utils/helpers";
 import {LiveEventsOverview, matchStatus} from "../Utils/constants";
 import {LiveOdd} from "./Components/LiveOdd";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import { checkOddsChange } from "../Utils/couponHelpers";
 
 export function LiveBetting ({history}) {
     const [availableSports, setAvailableSports] = useState([]);
@@ -14,7 +15,7 @@ export function LiveBetting ({history}) {
     const [activeSport, setActiveSport] = useState('all');
     const coupon = useSelector(({couponData}) => couponData.coupon);
     const {SportsbookGlobalVariable, SportsbookBonusList} = useSelector((state) => state.sportsBook);
-
+    const dispatch = useDispatch();
     const getData = () => {
         getLiveFixtures().then(response => {
             setAvailableSports(response.data.sports);
@@ -28,8 +29,13 @@ export function LiveBetting ({history}) {
                         if(tournament.sport_id === item.Id) item.Tournaments.push(tournament);
                     })
                 });
-                console.log(sports);
+                // console.log(sports);
                 setSports(sports);
+                // check if current selection has event in it and update
+                if (coupon.selections.length) {
+                    console.log('checking odds update')
+                    checkOddsChange(coupon, response.data.fixtures, dispatch, SportsbookGlobalVariable, SportsbookBonusList);
+                }
             }else{
 
             }
@@ -49,7 +55,7 @@ export function LiveBetting ({history}) {
                         if(tournament.sport_id === item.Id) item.Tournaments.push(tournament);
                     })
                 });
-                console.log(sports);
+                // console.log(sports);
                 setSports(sports);
             }else{
 
@@ -158,7 +164,7 @@ export function LiveBetting ({history}) {
                                                                             <div className={`mainSE o${market.outcomes.length}`} key={`${slugify(sport.Name)}-${market.id}`}>
                                                                                 <div className="SE">{market.name}</div>
                                                                                 <div className={market.hasSpread ? 'hndItem' : ''}>
-                                                                                    {market.hasSpread && match.live_data?.markets &&
+                                                                                    {market.hasSpread && match.live_data?.markets && getSpread(match.live_data?.markets, market) !== undefined &&
                                                                                     <div className="hnd">
                                                                                         <div className="hndTitle">hnd</div>
                                                                                         <div className="hndValue">
@@ -167,15 +173,19 @@ export function LiveBetting ({history}) {
                                                                                     </div>
                                                                                     }
                                                                                     {market.outcomes.map(outcome =>
-                                                                                    <div className={`OddsQuotaItemStyleTQ ${market.hasSpread ? 'hndItem' : ''} g1`} key={`${slugify(sport.Name)}-${market.id}-${outcome.id}`}>
+                                                                                    <div 
+                                                                                        className={`OddsQuotaItemStyleTQ 
+                                                                                        ${market.hasSpread ? 'hndItem' : ''} 
+                                                                                        ${getSpread(match.live_data?.markets, market) === undefined ? 'noOdd' : ''}
+                                                                                        g1`} 
+                                                                                        key={`${slugify(sport.Name)}-${market.id}-${outcome.id}`}
+                                                                                    >
                                                                                         <LiveOdd
                                                                                             newOdds={getLiveOdds(match.live_data?.markets, market, outcome)}
                                                                                             // newOdds={0.0}
                                                                                             outcome={outcome}
                                                                                             market={market}
                                                                                             fixture={match}
-                                                                                            tournament={tournament.Name}
-                                                                                            sport={sport.Name}
                                                                                             coupon={coupon}
                                                                                             globalVars={SportsbookGlobalVariable}
                                                                                             bonusList={SportsbookBonusList}

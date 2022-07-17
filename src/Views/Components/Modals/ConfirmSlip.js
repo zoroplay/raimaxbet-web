@@ -40,16 +40,16 @@ export default function ConfirmSlip({couponData}) {
             ele.innerHTML = 'Verifying...';
 
             try {
-                const oddsChanged = await checkOddsChange(coupon, dispatch, SportsbookGlobalVariable, SportsbookBonusList);
+                // const oddsChanged = await checkOddsChange(coupon, dispatch, SportsbookGlobalVariable, SportsbookBonusList);
 
-                if (oddsChanged) { // if odds have changed, close modal
-                    ele.disabled = false;
-                    ele.innerHTML = 'Place Bet';
-                    close();
-                    toast.error('Some odds have changed. Please confirm your bets to proceed');
-                } else {
+                // if (oddsChanged) { // if odds have changed, close modal
+                //     ele.disabled = false;
+                //     ele.innerHTML = 'Place Bet';
+                //     close();
+                //     toast.error('Some odds have changed. Please confirm your bets to proceed');
+                // } else {
                     dispatch(placeBet(ele, 'bet', giftCode));
-                }
+                // }
             } catch (e) {
                 ele.disabled = false;
                 ele.innerHTML = 'Place Bet';

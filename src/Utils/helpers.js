@@ -152,10 +152,17 @@ export const getLiveOdds = (eventMarkets, market, selection) => {
     let odd = 0;
     if (eventMarkets && eventMarkets.length) {
         _.each(eventMarkets, function (value, key) {
-            if (value.active === '1' && value.type_id === market.id) {
+            if (value.active === '1' && value.id === market.id && !market.hasSpread) {
                 _.each(value.odds, function (item, index) {
                     if (item.active === '1' && item.type === selection.type) {
-                        item.MarketId = value.type_id;
+                        item.market_id = value.id;
+                        odd = item;
+                    }
+                });
+            } else if (value.active === '1' && value.type_id === market.id && market.hasSpread) {
+                _.each(value.odds, function (item, index) {
+                    if (item.active === '1' && item.type === selection.type) {
+                        item.market_id = value.id;
                         odd = item;
                     }
                 });
@@ -167,11 +174,11 @@ export const getLiveOdds = (eventMarkets, market, selection) => {
 }
 
 export const getSpread = (eventMarkets, market) => {
-    let specialValue = '';
-    if (eventMarkets.length) {
-        _.each(eventMarkets, function (value, key) {
-            if (value.type_id === market.id && value.active === '1') {
-                specialValue = value.specialOddsValue;
+    let specialValue;
+    if (eventMarkets && eventMarkets.length) {
+        _.each(eventMarkets, (value, key) => {
+            if (value.specialOddsValue && value.type_id === market.id && value.active === '1') {
+                if(value.specialOddsValue > 0) specialValue = value.specialOddsValue;
             }
         });
     }

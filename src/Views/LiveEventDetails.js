@@ -88,8 +88,8 @@ export function LiveEventDetails ({location, history}) {
 
 
     const selectOdds = (market, selection) => {
-        dispatch(addToCoupon(fixture, market.Id, market.Name, selection.Odds[0].Value, selection.Id, selection.Name,
-                createID(fixture.ProviderId, market.Id, selection.Name, selection.Id),'live'))
+        dispatch(addToCoupon(fixture, market.id, market.name, selection.odds, selection.id, selection.name,
+                createID(fixture.provider_id, market.id, selection.name, selection.id),'live'))
     }
     console.log(liveData);
     return (

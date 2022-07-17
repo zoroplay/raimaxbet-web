@@ -13,8 +13,9 @@ export const LiveEventsOverview = [
         id: 1,
         markets: [
             {
-                id: '2',
+                id: '1',
                 name: '1X2',
+                hasSpread: false,
                 outcomes: [
                     {name: '1', id: 1, type: '1'},
                     {name: 'X', id: 2, type: 'x'},
@@ -22,11 +23,12 @@ export const LiveEventsOverview = [
                 ]
             },
             {
-                id: '8',
+                id: '14',
                 name: 'GG/NG',
+                hasSpread: false,
                 outcomes: [
-                    {name: 'GG', id: 1, type: '1'},
-                    {name: 'NG', id: 2, type: '2'},
+                    {name: 'GG', id: 41, type: 'goal'},
+                    {name: 'NG', id: 42, type: 'nogoal'},
                 ]
             },
             {
@@ -125,11 +127,11 @@ export const LiveEventsOverview = [
                 ]
             },
             {
-                name: 'Set 2: Who Wins the Game',
-                id: 305,
+                name: 'Who Wins the Set?',
+                id: '7',
                 outcomes: [
-                    {name: '1 H', id: 1},
-                    {name: '2 H', id: 2},
+                    {name: '1 H', id: 1, type: '1'},
+                    {name: '2 H', id: 2, type: '2'},
                 ]
             },
         ]
