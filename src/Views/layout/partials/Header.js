@@ -217,7 +217,7 @@ export default function Header() {
                         <li className="nav-mid-list-li">
                             <a
                                 target="_blank"
-                                href={`https://ui.io.co.ke/?cid=1&token=${user?.auth_code | 'dasfdsafweqrweq'}-${process.env.REACT_APP_SITE_KEY}`}>
+                                href={`https://ui.io.co.ke/?cid=1&token=${user?.auth_code || 'dasfdsafweqrweq'}-${process.env.REACT_APP_SITE_KEY}`}>
                                 <h1>Casino</h1>
                             </a>
                         </li>
