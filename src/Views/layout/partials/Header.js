@@ -214,7 +214,13 @@ export default function Header() {
                                 <h1>Virtual</h1>
                             </a>
                         </li>
-                        <li className="nav-mid-list-li"><NavLink id="indexCasino" to="/Casino"><h1>Casino</h1></NavLink></li>
+                        <li className="nav-mid-list-li">
+                            <a
+                                target="_blank"
+                                href={`https://ui.io.co.ke/?cid=1&token=${user?.auth_code | 'dasfdsafweqrweq'}-${process.env.REACT_APP_SITE_KEY}`}>
+                                <h1>Casino</h1>
+                            </a>
+                        </li>
                         <li className="nav-mid-list-li"><NavLink id="indexCasino" to="/Sport/PrintFixtures"><h1>Print Fixtures</h1></NavLink></li>
                         <li className="nav-mid-list-li"><NavLink  id="indexJackpot" to="/Sport/Jackpot"><h1>Jackpot</h1></NavLink></li>
                         <li className="nav-mid-list-li"><NavLink id="indexJackpot" to="/Sport/Explore"><h1>Today's</h1></NavLink></li>
