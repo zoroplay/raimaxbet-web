@@ -30,18 +30,20 @@ export default function CurrentBetslip({coupon, dispatch, user}) {
                                     <div id="f_23204141" className="bonus " style={{ display: 'none' }}>B</div>
                                 </div>
                                 {fixture.selections.map(selection =>
-                                    <div className="selected-bet" key={`selection-${selection.odd_id}`}>
+                                    <div className={`selected-bet ${selection.classList || ''}`} key={`selection-${selection.odd_id}`}>
                                         <div className="remove-icon" onClick={() => dispatch(removeSelection(selection))}>
                                             <div className="icon-holder">
                                                 <img src="/img/cross-red.png" alt="" />
                                             </div>
                                         </div>
-                                        <div className="bet"><span>{coupon?.tipster_id ? '***' : selection.market_name}: {coupon?.tipster_id ? '**' : selection.oddname}</span>
+                                        <div className="bet">
+                                            <span>{coupon?.tipster_id ? '***' : selection.market_name}: {coupon?.tipster_id ? '**' : selection.oddname}</span>
                                             <div className="quote-holder">
                                                 <div className="quote" id="no_23204141_10_2_">{selection.odds}</div>
-                                                <div className="quote old" id="oo_23204141_10_2_" />
+                                                <div className="quote old" id="oo_23204141_10_2_">{selection.oldOdds}</div>
                                             </div>
                                         </div>
+                                        {/* <div class="previousOdds">2.10</div> */}
                                     </div>
                                 )}
                             </div>
@@ -216,11 +218,23 @@ export default function CurrentBetslip({coupon, dispatch, user}) {
                                 dispatch({type: CONFIRM_BET, payload: true})
                             }}>USE BONUS</a>
                         </div> }
-                        <div className="buttons">
-                            <div className="cancel" onClick={() => dispatch({type: CANCEL_BET})}>Cancel</div>
-                            <div className="book" onClick={(e) => dispatch(placeBet(e, 'booking'))}>Book</div>
-                            <div className="proceed" onClick={(e) => dispatch({type: CONFIRM_BET, payload: true})}>Proceed</div>
-                        </div>
+                        
+                        {coupon.hasError ? 
+                            <div class="oddsChanged" ng-if="couponCtrl.couponContainsOddChanges()">
+                                <div class="message">
+                                Some of the selected odds have changed.
+                                </div>
+                                <button class="acceptChanges" ng-click="couponCtrl.acceptOddChanges()">
+                                <i class="fa fa-check" aria-hidden="true"></i><span>Accept</span>
+                                </button>
+                            </div>
+                        :
+                            <div className="buttons">
+                                <div className="cancel" onClick={() => dispatch({type: CANCEL_BET})}>Cancel</div>
+                                <div className="book" onClick={(e) => dispatch(placeBet(e, 'booking'))}>Book</div>
+                                <div className="proceed" onClick={(e) => dispatch({type: CONFIRM_BET, payload: true})}>Proceed</div>
+                            </div>
+                        }
                     </div>
 
                 </div>

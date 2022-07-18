@@ -158,25 +158,28 @@ export const checkOddsChange = async (couponData, fixtures, dispatch, globalVars
                             console.log('found market', market)
 
                             market.odds.forEach(odd => {
-                                if(odd.type === selection.name ) {
+                                if(odd.type === selection.oddname ) {
                                     if(odd.active === '1' && odd.odds > selection.odds) {
-                                        selection.oddIncreased = true;
-                                        selection.newOdds = odd.odds;
+                                        selection.classList = 'valueChanged valueIncreased flashSuccess';
+                                        selection.oldOdds = selection.odds;
+                                        selection.odds = odd.odds;
                                         coupon.hasError = true;
                                         coupon.errorMsg = 'Attention! some odds have been changed';
                                         updated = true;
                                     } else if (odd.active === '1' && odd.odds < selection.odds) {
-                                        selection.oddDecreased = true;
-                                        selection.newOdds = odd.odds;
+                                        selection.classList = 'valueChanged valueDecreased flashDanger';
+                                        selection.oldOdds = selection.odds;
+                                        selection.odds = odd.odds;
                                         coupon.hasError = true;
                                         coupon.errorMsg = 'Attention! some odds have been changed';
                                         updated = true;
                                     } else if (odd.active === '0') {
                                         // selections.splice(i, 1);
+                                        selection.classList = 'valueChanged valueDecreased flashDanger';
                                         coupon.hasError = true;
                                         coupon.errorMsg = 'Attention! some odds have been changed';
                                         selection.hasError = true;
-                                        selection.newOdds = 0;
+                                        selection.disabled = true;
                                         updated = true;
                                     }
                                 }
@@ -190,7 +193,7 @@ export const checkOddsChange = async (couponData, fixtures, dispatch, globalVars
                         coupon.hasError = true;
                         coupon.errorMsg = 'Attention! some odds have been changed';
                         selection.error = true;
-                        selection.newOdds = 0;
+                        selection.disabled = true;
                     }
                 }
             }
@@ -199,7 +202,8 @@ export const checkOddsChange = async (couponData, fixtures, dispatch, globalVars
     
     if (updated) {
         coupon.hasLive  = checkIfHasLive(coupon.selections);
-
+        coupon.tournaments = groupTournament(coupon.selections);
+        coupon.fixtures = groupSelections(coupon.selections);
         // update coupon
         dispatch({type: SET_COUPON_DATA, payload: coupon});
         // if (coupon.selections.length > 0) {
