@@ -2571,6 +2571,39 @@ input, select, textarea{
   to {opacity: 1}
 }
 
+@-webkit-keyframes flashSuccess{
+  0%,100%{
+      background-color:transparent
+  }
+  50%{
+      background-color:rgba(34,120,60,.4)
+  }
+}
+@keyframes flashSuccess{
+  0%,100%{
+      background-color:transparent
+  }
+  50%{
+      background-color:rgba(34,120,60,.4)
+  }
+}
+@-webkit-keyframes flashDanger{
+  0%,100%{
+      background-color:transparent
+  }
+  50%{
+      background-color:rgba(255,16,10,.4)
+  }
+}
+@keyframes flashDanger{
+  0%,100%{
+      background-color:transparent
+  }
+  50%{
+      background-color:rgba(255,16,10,.4)
+  }
+}
+
 .mb img{
   margin-bottom: 10px !important;
 }
@@ -8647,6 +8680,7 @@ ul, ul li {
             // display: inline-block;
             display: flex;
             width: 100%;
+            position: relative;
             .remove-icon {
               // height: 20px;
               width: 36px;
@@ -8667,39 +8701,6 @@ ul, ul li {
                   margin-top: 6px;
                   user-select: none;
                 }
-              }
-              &.valueChanged:after {
-                position: absolute;
-                content: '';
-                right: 0;
-                width: 0;
-                height: 0;
-                border-style: solid;
-                -webkit-transition: -webkit-transform .5s;
-                -o-transition: transform .5s;
-                transition: transform .5s;
-                transition: transform .5s,-webkit-transform .5s;
-                &.valueDecreased:after {
-                  bottom: 0;
-                  border-width: 0 0 10px 10px;
-                  border-color: transparent transparent #ff423d;
-                }
-                &.valueIncreased:after {
-                  top: 0;
-                  border-width: 0 10px 10px 0;
-                  border-color: transparent #2da050 transparent transparent;
-                }
-              }
-              &.flashSuccess:before, &.flashDanger:before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 2;
-                pointer-events: none;
-                color: #fff;
               }
             }
             .bet {
@@ -8742,6 +8743,63 @@ ul, ul li {
                   // }
                 }
               }
+            }
+            .previousOdds {
+              display: -webkit-box;
+              display: -ms-flexbox;
+              display: flex;
+              -webkit-box-align: center;
+              -ms-flex-align: center;
+              align-items: center;
+              -webkit-box-pack: center;
+              -ms-flex-pack: center;
+              justify-content: center;
+              width: 50px;
+              margin-right: -50px;
+              padding-top: 5.5px;
+              padding-bottom: 5.5px;
+              -webkit-transition: -webkit-transform .5s;
+              -o-transition: transform .5s;
+              transition: transform .5s;
+              transition: transform .5s,-webkit-transform .5s;
+              background-color: #dbdada;
+              color: rgba(0,0,0,.5);
+            }
+            &.valueChanged:after {
+              position: absolute;
+              content: '';
+              right: 0;
+              width: 0;
+              height: 0;
+              border-style: solid;
+              -webkit-transition: -webkit-transform .5s;
+              -o-transition: transform .5s;
+              transition: transform .5s;
+              transition: transform .5s,-webkit-transform .5s;
+            }
+            &.valueDecreased:after {
+              bottom: 0;
+              border-width: 0 0 10px 10px;
+              border-color: transparent transparent #ff423d;
+            }
+            &.valueIncreased:after {
+              top: 0;
+              border-width: 0 10px 10px 0;
+              border-color: transparent #2da050 transparent transparent;
+            }
+
+            &.flashSuccess:before, &.flashDanger:before {
+              -webkit-animation: flashDanger 2s 1;
+              animation: flashDanger 2s 1;
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              z-index: 2;
+              pointer-events: none;
+              color: #fff;
             }
           }
         }
@@ -9156,6 +9214,56 @@ ul, ul li {
               padding: 0 2px;
               width: 100%;
             }
+            .oddsChanged {
+              display: -webkit-box;
+              display: -ms-flexbox;
+              display: flex;
+              float: left;
+              width: 96%;
+              padding: 0 0px 15px;
+              box-sizing: border-box;
+              justify-content: space-between;
+              -webkit-box-align: center;
+              -ms-flex-align: center;
+              align-items: center;
+              border-radius: 0;
+              background-color: #fec82e;
+              padding: 3px 4px;
+              margin: -1px 4px 1px;
+              .message {
+                font-size: 11px;
+                color: #000;
+                text-align: left;
+              }
+              .acceptChanges {
+                background-color: #2da050;
+                color: #fff;
+                border-radius: 4px;
+                border: 0;
+                display: flex;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                font-size: 14px;
+                font-weight: 700;
+                cursor: pointer;
+                -webkit-user-select: none;
+                user-select: none;
+                font-family: Roboto,sans-serif;
+                opacity: unset;
+                margin-left: 10px;
+                -webkit-transition: all .15s ease-in-out;
+                -o-transition: all .15s ease-in-out;
+                transition: all .15s ease-in-out;
+                text-align: center;
+                outline: 0;
+                -ms-user-select: none;
+                padding: 6px;
+              }
+            }
             .buttons {
               float: left;
               width: 100%;
@@ -9199,6 +9307,7 @@ ul, ul li {
                   }
                 }
               }
+              
               &.logged {
                 div {
                   width: calc(50% - 48px);
@@ -26172,7 +26281,7 @@ div.token-input-dropdown{
                   line-height: 15px;
                   margin-top: -5px;
                   text-decoration: none;
-                  color: $primary;
+                  color: $black;
                   position: relative;
                   &:empty {
                     display: none;
