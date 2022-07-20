@@ -207,3 +207,18 @@ export const getPoolTickets = (data, page) =>
 
 export const getCouponTickets = (data, page) =>
     Http.post(`/user/account/coupon-tickets?page=${page}`, data);
+
+export const getExpenses = () =>
+    Http.get(`/list/expense`);
+
+export const getExpensesType = () =>
+Http.get(`/list/expense/type`);
+
+export const postExpense = (data) =>
+Http.post(`/create/expense`, data);
+
+export const getCashOuts = () =>
+Http.get(`/admin/list/cashout`);
+
+export const getCashIn = () =>
+Http.get(`/admin/list/cashin`);

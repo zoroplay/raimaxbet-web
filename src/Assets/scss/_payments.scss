@@ -365,3 +365,49 @@
     text-align: right!important;
   }
 }
+.account-head-btn{
+  padding-top: 1rem;
+}
+.expense-form{
+  margin-top: 3rem;
+  .expense-input{
+    margin: 2rem auto;
+    width: 90%;
+    label{
+      display: block;
+      font-size: 1rem;
+      margin-bottom: .5rem;
+    }
+    input, select{
+      width: 100%;
+      padding: .5rem 1rem;
+    }
+
+  }
+  .expense-btn{
+    float: right;
+    margin-right: 2rem;
+  }
+}
+
+.expense-modal-header{
+  background:#2c914a;
+  // background: linear-gradient(to bottom, #2d944c 0, #2c914a 100%);
+  // margin-top: -1rem;
+  color: white;
+  padding: 0rem 1rem;
+}
+.modal-header{
+  background:#2c914a;
+  // background: linear-gradient(to bottom, #0071be 0, #0054ac 100%);
+  margin-top: -1rem;
+  padding-left: 1rem;
+  padding-bottom: .2rem;
+  h2{
+    color: white;
+  }
+}
+.close-icon{
+  top: 13px;
+  color: white !important;
+}

@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import '../../Assets/scss/app.scss';
+import {formatDate, formatNumber} from "../../Utils/helpers";
 import {getBonuses} from "../../Services/apis";
 import {toast} from "react-toastify";
-import {formatDate, formatNumber} from "../../Utils/helpers";
 import {useDispatch, useSelector} from "react-redux";
 import {SHOW_BONUS_CONFIRM} from "../../Redux/types";
 

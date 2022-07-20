@@ -18,6 +18,9 @@ import {useSelector} from "react-redux";
 import {Deposit} from "../Views/Account/Deposit";
 import BonusTransactionList from "../Views/Account/BonusTransactionList";
 import {Bonuses} from "../Views/Account/Bonuses";
+import Expenses from "../Views/Account/Expenses";
+import Cashin from "../Views/Account/CashIn";
+import Cashout from "../Views/Account/CashOut";
 import CouponTicket from "../Views/Account/CouponTicket";
 
 const AccountRoutes = ({history}) => {
@@ -36,6 +39,9 @@ const AccountRoutes = ({history}) => {
         <Route exact path="/Account/ActiveBonus" component={TransactionList} />
         <Route exact path="/Account/BonusTransactionList" component={BonusTransactionList} />
         <Route exact path="/Account/Bonuses" component={Bonuses} />
+        <Route exact path="/Account/Expenses" component={Expenses} />
+        <Route exact path="/Account/Cash-in" component={Cashin} />
+        <Route exact path="/Account/Cash-out" component={Cashout} />
         <Route exact path="/Account/BetDetail/:betslip" component={BetDetail} />
         <Route exact path="/Account/BetList" component={BetList} />
         <Route exact path="/Account/JackpotBets" component={JackpotBetList} />
