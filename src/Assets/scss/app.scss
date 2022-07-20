@@ -162,3 +162,227 @@
     text-align: right;
   }
 }
+.logged-table {
+  border: 1px solid #c2c1c1 !important;
+  width: 100%;
+  &.cashdesk-table{
+    tbody {
+      tr {
+        // background: #edeced;
+        border-bottom: 1px solid #c2c1c1 !important;
+        td {
+          border-right: 1px solid #c2c1c1 !important;
+          line-height: 30px;
+          text-align: left;
+          padding: 0 5px;
+          color: #062164;
+          font-size: 12px;
+          font-weight: normal;
+          height: 31px;
+          &:nth-child(1) {
+            width: 70px;
+            .add-remove-icon {
+              display: inline-block;
+              width: 20px;
+              height: 20px;
+              float: left;
+              cursor: pointer;
+              margin-top: 5px;
+              margin-right: 10px;
+              background-image: url(//7more.7more.bet/7more/images/remove-row.png);
+              background-size: 100%;
+              background-repeat: no-repeat;
+              .add {
+                background-image: url(//7more.7more.bet/7more/images/add-row.png);
+                margin-bottom: 5px;
+              }
+            }
+          }
+          &:nth-child(2) {
+            width: 70px;
+            input {
+              width: 100%;
+            }
+          }
+          &:nth-child(3) {
+            width: 110px;
+            text-align: center;
+          }
+          &:nth-child(4) {
+            font-weight: bold;
+            width: 300px;
+            line-height: normal;
+            span {
+              display: block;
+              width: 200px;
+              white-space: nowrap;
+              overflow: auto;
+              text-overflow: ellipsis;
+              &:nth-child(2) {
+                font-size: 11px;
+              }
+            }
+          }
+          &:nth-child(5) {
+            width: 130px;
+            input[type="text"] {
+              width: calc(100% - 35px);
+              float: left;
+            }
+            i {
+              float: left;
+              line-height: 24px;
+              font-size: 14px;
+              padding-left: 10px;
+              cursor: pointer;
+            }
+          }
+          &:nth-child(6) {
+            font-weight: bold;
+            text-align: center;
+            width: 90px;
+          }
+          input[type="text"] {
+            border: 1px solid #062164;
+            border-radius: 3px;
+            font-weight: bold;
+            color: #00113C;
+            font-size: 13px;
+            line-height: 20px;
+            text-align: center;
+          }
+          .smart-bet {
+            position: relative;
+            width: 86px;
+            z-index: 1;
+            .tooltip-info {
+              position: relative;
+              display: inline-block;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+    tfoot{
+      td {
+        padding: 0 5px;
+        &:nth-child(1) {
+          width: 70px;
+          .add-remove-icon {
+            width: 20px;
+            height: 20px;
+            float: left;
+            cursor: pointer;
+            margin-top: 5px;
+            margin-right: 10px;
+            background-image: url(//7more.7more.bet/7more/images/add-row.png);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+.cashdesk-content {
+  width: 100%;
+  display: inline-block;
+  border-bottom: 5px solid #FEC82E !important;
+  background-color: #d4d4d4;
+  .cashdesk-tabs {
+    width: 100%;
+    border-bottom: 1px solid #c2c1c1;
+    padding: 20px 0 30px 5px;
+    background-color: #d4d4d4;
+    display: inline-block;
+    .row {
+      width: 100%;
+      max-width: 735px;
+      display: block;
+      margin: 0 auto;
+      .tab {
+        width: 135px;
+        color: #ebebeb;
+        background-color: #373a42;
+        font-size: 12px;
+        font-weight: 500;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 10px 10px;
+        float: left;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        span {
+          float: right;
+        }
+        &.green {
+          color: #44b250;
+        }
+      }
+      .stake-holder {
+        float: left;
+        line-height: 32px;
+        text-align: right;
+        padding-left: 30px;
+        margin-bottom: 5px;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        width: calc(100% - 430px);
+        span {
+          font-size: 13px;
+          padding-right: 5px;
+          color: #062164;
+          font-weight: 500;
+        }
+        input {
+          border: 1px solid #062164;
+          border-radius: 3px;
+          font-weight: bold;
+          color: #00113C;
+          font-size: 10px;
+          line-height: 30px;
+          width: 83px;
+          font-size: 13px;
+          padding: 0 5px;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+        }
+      }
+      .buttons {
+        float: left;
+        text-align: right;
+        width: calc(100% - 430px);
+        margin-bottom: 5px;
+        div {
+          display: inline-block;
+          padding-left: 27px;
+          padding-right: 8px;
+          border-radius: 3px;
+          cursor: pointer;
+          background-image: url(//7more.7more.bet/7more/images/cancel-button.png);
+          background-size: auto 60%;
+          background-position: left 5px top 7px;
+          background-repeat: no-repeat;
+          color: #ebebeb;
+          font-size: 12px;
+          font-weight: bold;
+          line-height: 32px;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          margin-right: 5px;
+          &.cancel {
+            background-color: #e1042e;
+          }
+          &.proceed {
+            margin-right: 0;
+            background-image: url(//7more.7more.bet/7more/images/proceed-button.png);
+            background-color: #2e9c3d;
+          }
+        }
+      }
+    }
+  }
+}

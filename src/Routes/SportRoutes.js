@@ -16,6 +16,7 @@ import Tipsters from "../Views/Tipsters";
 import TipsterBetslips from "../Views/TipsterBetslips";
 import PoolFixtures from "../Views/PoolFixtures";
 import WeeklyCoupon from "../Views/WeeklyCoupon";
+import Cashdesk from "../Views/Cashdesk";
 
 
 export default function SportRoutes() {
@@ -23,6 +24,7 @@ export default function SportRoutes() {
   return (
       <Switch>
           <Route exact path="/Sport/Default" component={Home} />
+          <Route exact path="/Sport/Cashdesk" component={Cashdesk} />
           <Route exact path="/Sport/OddsLessThan" component={OddsLessThan} />
           <Route exact path="/Sport/Explore" component={ExploreEvents} />
           <Route exact path="/Sport/PreMatch/:sport" component={TournamentSelector} />
