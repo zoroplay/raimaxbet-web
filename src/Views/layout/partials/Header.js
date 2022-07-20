@@ -253,6 +253,7 @@ export default function Header() {
                         <li className="nav-bottom-list-li"><a href="https://ls.sir.sportradar.com/netbetuof" target="_blank"><h2>Livescore</h2></a></li>
                         <li className="nav-bottom-list-li"><a href="./contact.html"><h2>Contact Us</h2></a></li>*/}
                         <li className="nav-bottom-list-li"><NavLink title="Home" to="/">Home</NavLink></li>
+                        <li className="nav-bottom-list-li new"><NavLink to="/Sport/cashDesk" title="Cash Desk">Cash Desk</NavLink></li>
                         <li className="nav-bottom-list-li"><NavLink to={`/Sport/Pool`}>Pool Fixtures</NavLink></li>
                         <li className="nav-bottom-list-li"><NavLink to={`/Sport/Coupon`}>Weekly Coupon</NavLink></li>
                         <li className="nav-bottom-list-li"><NavLink title="FAQ" to="/Sport/Pages/faq">FAQ</NavLink></li>
