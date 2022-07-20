@@ -38,17 +38,17 @@ export default function Routes() {
   const dispatch = useDispatch();
 
   const handleOnIdle = event => {
-    if(isAuthenticated) {
-      sendLogout().then(res => {
-        dispatch({type: REMOVE_USER_DATA});
-        document.body.classList.add("Anonymous");
-        document.body.classList.remove("Logged");
-      }).catch (err => {
-        dispatch({type: REMOVE_USER_DATA});
-        document.body.classList.add("Anonymous");
-        document.body.classList.remove("Logged");
-      });
-    }
+    // if(isAuthenticated) {
+    //   sendLogout().then(res => {
+    //     dispatch({type: REMOVE_USER_DATA});
+    //     document.body.classList.add("Anonymous");
+    //     document.body.classList.remove("Logged");
+    //   }).catch (err => {
+    //     dispatch({type: REMOVE_USER_DATA});
+    //     document.body.classList.add("Anonymous");
+    //     document.body.classList.remove("Logged");
+    //   });
+    // }
   }
 
   const handleOnActive = event => {
