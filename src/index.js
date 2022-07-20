@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 
 import ReactDOM from 'react-dom';
 import './Assets/scss/layout.scss';
+import './Assets/scss/app.scss';
 import 'react-toastify/dist/ReactToastify.css';
 
 import App from './App';
