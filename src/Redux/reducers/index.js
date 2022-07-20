@@ -4,6 +4,7 @@ import {sportsData, sportsBook} from './sports'
 import couponData from './coupon'
 import userData from './user'
 import login from './login'
+import {expenseReducer} from "./expenses";
 
 const reducers = combineReducers({
     routing: routerReducer,
@@ -11,7 +12,8 @@ const reducers = combineReducers({
     sportsBook,
     couponData,
     login,
-    auth: userData
+    auth: userData,
+    expenses: expenseReducer
 });
 
 export default reducers;

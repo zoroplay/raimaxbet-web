@@ -162,6 +162,12 @@
     text-align: right;
   }
 }
+
+.app-flex-item{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 1rem;
 .logged-table {
   border: 1px solid #c2c1c1 !important;
   width: 100%;
@@ -385,4 +391,4 @@
       }
     }
   }
-}
+}}
