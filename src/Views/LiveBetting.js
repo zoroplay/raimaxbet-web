@@ -150,7 +150,7 @@ export function LiveBetting ({history}) {
                                                                     </span>
                                                                 </div>
                                                                 <div className="time">
-                                                                    {match.live_data?.match_time !== 0 && <span className="min">{match.live_data?.match_time} min </span> }
+                                                                    {match.live_data?.match_time && <span className="min">{match.live_data?.match_time} min </span> }
                                                                     <span className="fase">{matchStatus(match.match_status)}</span>
                                                                 </div>
                                                                 <div className="risultato over">
