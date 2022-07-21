@@ -18,9 +18,9 @@ $cdnPath : "//#{$skin}.brlgcs.com/#{$skin}";
 $imagesPath : "//web.betteck.com/img";
 // $imagesPath : "//westernbet.brlgcs.com/atlantiq1/images";
 
-$site-width: 1024px;
+$site-width: 1124px;
 $switch-point: 1260px;
-$mo-point: 1034px;
+$mo-point: 1134px;
 
 
 // $primary: #121827;
@@ -771,7 +771,7 @@ input, select, textarea{
 
 .section-content{
   background-color: $white;
-  width: 1034px;
+  width: 1134px;
   min-height: 250%; /* Temporary property */
   margin: 0 auto;
   // margin-top: 10px;
@@ -851,7 +851,7 @@ input, select, textarea{
 .side1{
   // background-color: $primary;
   // width: 165px;  /* old width */
-  width: 190px;
+  width: 210px;
   padding: 10px;
   // margin-right: 5px;
   padding-top: 0;
@@ -1202,7 +1202,7 @@ input, select, textarea{
 /* Side2 Styles below  ****************************/
 
 .side2{
-  width: 603px;
+  width: 653px;
 
 }
 
@@ -2051,7 +2051,7 @@ input, select, textarea{
 .side3{
   // background-color: $primary;
   // width: 216px;  /* Old width */
-  width: 241px;
+  width: 271px;
   padding: 10px;
   // margin-left: 5px;
   padding-top: 0;
@@ -9286,6 +9286,7 @@ ul, ul li {
                 font-weight: bold;
                 line-height: 33px;
                 margin: 0 2px;
+                width: 33%;
                 &.cancel {
                   background-color: $col-6;
                   &:hover {
@@ -9305,6 +9306,13 @@ ul, ul li {
                   &:hover {
                     background-color: darken($col-13 ,5%);
                   }
+                }
+              }
+              &.live-btn {
+                div {
+                  width: 50%;
+                  font-size: 15px;
+                  text-align: center;
                 }
               }
               

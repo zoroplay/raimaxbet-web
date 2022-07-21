@@ -41,7 +41,39 @@ export const LiveEventsOverview = [
                 ]
             }
         ]
-    }, {
+    }, 
+    {
+        sport: "Baseball",
+        id: 3,
+        markets: [
+            {
+                name: 'Winner',
+                id: '',
+                outcomes: [
+                    {name: '1', id: 1},
+                    {name: '2', id: 2},
+                ]
+            },
+            {
+                name: 'Over/Under',
+                id: 160,
+                hasSpread: true,
+                outcomes: [
+                    {name: 'Over', id: 1},
+                    {name: 'Under', id: 2},
+                ]
+            },
+            {
+                name: 'Handicap',
+                id: 305,
+                outcomes: [
+                    {name: '1 H', id: 1},
+                    {name: '2 H', id: 2},
+                ]
+            }
+        ]
+    },
+    {
         sport: "Basketball",
         id: 2,
         markets: [
@@ -198,6 +230,40 @@ export const LiveEventsOverview = [
                     {name: 'Under', id: 2},
                 ]
             }
+        ]
+    },
+    {
+        sport: 'Table Tennis',
+        id: 20,
+        
+        markets: [
+            {
+                name: 'Which team will win the match?',
+                id: '177',
+                hasSpread: false,
+                outcomes: [
+                    {name: '1', id: 17, type: '1'},
+                    {name: '2', id: 18, type: '2'},
+                ]
+            },
+            {
+                id: '5',
+                name: 'Total Points',
+                hasSpread: true,
+                outcomes: [
+                    {name: 'Over', id: 11, type: 'o'},
+                    {name: 'Under', id: 12, type: 'u'},
+                ]
+            },
+            {
+                name: 'Which team will win the set?',
+                id: '7',
+                hasSpread: true,
+                outcomes: [
+                    {name: '1', id: 17, type: '1'},
+                    {name: '2', id: 18, type: '2'},
+                ]
+            },
         ]
     },
     {

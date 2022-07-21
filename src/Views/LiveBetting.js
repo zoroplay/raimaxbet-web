@@ -33,7 +33,7 @@ export function LiveBetting ({history}) {
                 setSports(sports);
                 // check if current selection has event in it and update
                 if (coupon.selections.length) {
-                    console.log('checking odds update')
+                    // console.log('checking odds update')
                     checkOddsChange(coupon, response.data.fixtures, dispatch, SportsbookGlobalVariable, SportsbookBonusList);
                 }
             }else{

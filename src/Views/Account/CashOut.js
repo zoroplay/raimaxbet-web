@@ -38,7 +38,6 @@ export default function Cashout() {
       <div className="page__head">
         <div className="page__head-item app-flex-item">
           <h3>Cash Out History</h3>
-
         </div>
       </div>
       <div>

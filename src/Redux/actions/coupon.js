@@ -686,7 +686,7 @@ export function placeBet(e, type, giftCode){
                 // let bets = this.$store.getters.bets;
                 _.each(coupondata.selection, function (value) {
                     _.each(res.events, function (item) {
-                        if (value.event_id === item.event_id && value.odd_name === item.odd_name) {
+                        if (value.provider_id === item.provider_id && value.odd_name === item.odd_name) {
                             value.hasError = true;
                         }
                     });
