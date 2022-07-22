@@ -8,6 +8,7 @@ const initialState = {
     loadedCoupon: null,
     confirm: false,
     coupon:{
+        acceptChanges: false,
         selections: [],
         combos:[],
         totalOdds: 1,
@@ -134,7 +135,14 @@ const couponData = persistReducer(
                         bet_type: action.payload
                     }
                 };
-                break;
+            case types.ACCEPT_CHANGES:
+                return {
+                    ...state,
+                    coupon: {
+                        ...state.coupon,
+                        acceptChanges: true
+                    }
+                };
             default:
                 return state;
         }

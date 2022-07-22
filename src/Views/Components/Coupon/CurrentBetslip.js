@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import {Multiple} from "./BetTypes/Multiple";
 import {Combined} from "./BetTypes/Combined";
 import {Split} from "./BetTypes/Split";
-import {CANCEL_BET, CONFIRM_BET, SET_COUPON_TYPE, SET_USE_BONUS} from "../../../Redux/types";
+import {ACCEPT_CHANGES, CANCEL_BET, CONFIRM_BET, SET_COUPON_TYPE, SET_USE_BONUS} from "../../../Redux/types";
 import {fastAdd, placeBet, removeSelection} from "../../../Redux/actions";
 import {formatNumber} from "../../../Utils/helpers";
 import {useSelector} from "react-redux";
@@ -190,7 +190,7 @@ export default function CurrentBetslip({coupon, dispatch, user}) {
                             <tr>
                                 <td colSpan="4" className="allow-changes">
                                     <div className="check">
-                                        <input type="checkbox" id="allowChangeOdds" />
+                                        <input type="checkbox" id="allowChangeOdds" defaultChecked={coupon.acceptChanges} checked={coupon.acceptChanges} />
                                         <input type="hidden" id="livello" value="" />
                                         <span className="checkmark"></span>
                                     </div>
@@ -219,19 +219,19 @@ export default function CurrentBetslip({coupon, dispatch, user}) {
                             }}>USE BONUS</a>
                         </div> }
                         
-                        {coupon.hasError ? 
+                        {coupon.hasError && !coupon.acceptChanges ? 
                             <div class="oddsChanged" ng-if="couponCtrl.couponContainsOddChanges()">
                                 <div class="message">
                                 Some of the selected odds have changed.
                                 </div>
-                                <button class="acceptChanges" ng-click="couponCtrl.acceptOddChanges()">
-                                <i class="fa fa-check" aria-hidden="true"></i><span>Accept</span>
+                                <button class="acceptChanges" onClick={() => dispatch({type: ACCEPT_CHANGES})}>
+                                    <i class="fa fa-check" aria-hidden="true"></i><span>Accept</span>
                                 </button>
                             </div>
                         :
-                            <div className="buttons">
+                            <div className={`buttons ${coupon.hasLive ? 'live-btn' : ''}`}>
                                 <div className="cancel" onClick={() => dispatch({type: CANCEL_BET})}>Cancel</div>
-                                <div className="book" onClick={(e) => dispatch(placeBet(e, 'booking'))}>Book</div>
+                               {!coupon.hasLive && <div className="book" onClick={(e) => dispatch(placeBet(e, 'booking'))}>Book</div> }
                                 <div className="proceed" onClick={(e) => dispatch({type: CONFIRM_BET, payload: true})}>Proceed</div>
                             </div>
                         }

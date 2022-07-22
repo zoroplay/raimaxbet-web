@@ -41,16 +41,49 @@ export const LiveEventsOverview = [
                 ]
             }
         ]
-    }, {
+    }, 
+    {
         sport: "Basketball",
         id: 2,
         markets: [
             {
                 name: 'Winner',
-                id: '',
+                id: '43',
+                hasSpread: false,
                 outcomes: [
-                    {name: '1', id: 1},
-                    {name: '2', id: 2},
+                    {name: '1', id: 17, type: '1'},
+                    {name: '2', id: 18, type: '2'},
+                ]
+            },
+            {
+                name: 'Handicap',
+                id: '4',
+                hasSpread: true,
+                outcomes: [
+                    {name: '1', id: 7, type: '1'},
+                    {name: '2', id: 8, type: '2'},
+                ]
+            },
+            {
+                name: 'Odd/Even',
+                id: '51',
+                outcomes: [
+                    {name: 'Odd', id: 4572, type: 'odd'},
+                    {name: 'Even', id: 4574, type: 'even'},
+                ]
+            }
+        ]
+    },
+    {
+        sport: "Baseball",
+        id: 3,
+        markets: [
+            {
+                name: 'Money Line',
+                id: '14897',
+                outcomes: [
+                    {name: '1', id: 17, type: '1'},
+                    {name: '2', id: 18, type: '2'},
                 ]
             },
             {
@@ -111,27 +144,29 @@ export const LiveEventsOverview = [
         markets: [
             {
                 name: 'Winner',
-                id: '',
+                id: '31',
+                hasSpread: false,
                 outcomes: [
-                    {name: '1', id: 1},
-                    {name: '2', id: 2},
+                    {name: '1', id: 17, type: '1'},
+                    {name: '2', id: 18, type: '2'},
                 ]
             },
             {
                 name: 'Over/Under',
-                id: 160,
+                id: '8',
                 hasSpread: true,
                 outcomes: [
-                    {name: 'Over', id: 1},
-                    {name: 'Under', id: 2},
+                    {name: 'Over', id: 160, type: 'over'},
+                    {name: 'Under', id: 159, type: 'under'},
                 ]
             },
             {
-                name: 'Who Wins the Set?',
-                id: '7',
+                name: 'Total Games Odd/Even',
+                id: '37',
+                hasSpread: false,
                 outcomes: [
-                    {name: '1 H', id: 1, type: '1'},
-                    {name: '2 H', id: 2, type: '2'},
+                    {name: 'Odd', id: 171, type: 'odd'},
+                    {name: 'Even', id: 172, type: 'even'},
                 ]
             },
         ]
@@ -201,6 +236,65 @@ export const LiveEventsOverview = [
         ]
     },
     {
+        sport: "Snooker",
+        id: 19,
+        markets: [
+            {
+                id: '17340',
+                name: 'Match Winner',
+                hasSpread: false,
+                outcomes: [
+                    {name: '1', id: 1, type: '1'},
+                    {name: 'X', id: 2, type: 'x'},
+                    {name: '2', id: 3, type: '2'},
+                ]
+            },
+            {
+                id: '999',
+                name: 'Who will win the frame?',
+                hasSpread: false,
+                outcomes: [
+                    {name: '1', id: 17, type: '1'},
+                    {name: '2', id: 18, type: '2'},
+                ]
+            },
+        ]
+    },
+    {
+        sport: 'Table Tennis',
+        id: 20,
+        
+        markets: [
+            {
+                name: 'Which team will win the match?',
+                id: '177',
+                hasSpread: false,
+                outcomes: [
+                    {name: '1', id: 17, type: '1'},
+                    {name: '2', id: 18, type: '2'},
+                ]
+            },
+            {
+                id: '5',
+                name: 'Total Points',
+                hasSpread: true,
+                outcomes: [
+                    {name: 'Over', id: 11, type: 'o'},
+                    {name: 'Under', id: 12, type: 'u'},
+                ]
+            },
+            {
+                name: 'Which team will win the set?',
+                id: '7',
+                hasSpread: true,
+                outcomes: [
+                    {name: '1', id: 17, type: '1'},
+                    {name: '2', id: 18, type: '2'},
+                ]
+            },
+        ]
+    },
+    {
         sport: "Cricket",
         id: 21,
         markets: [
@@ -229,6 +323,21 @@ export const LiveEventsOverview = [
                     {name: 'Under', id: 2},
                 ]
             }
+        ]
+    },
+    {
+        sport: "Dart",
+        id: 22,
+        markets: [
+            {
+                id: '11478',
+                name: 'Winner',
+                outcomes: [
+                    {name: '1', id: 1, type: '1'},
+                    {name: 'X', id: 2, type: 'x'},
+                    {name: '2', id: 3, type: '2'},
+                ]
+            },
         ]
     },
     {
@@ -387,7 +496,7 @@ export const LiveEventsOverview = [
                 ]
             }
         ]
-    }
+    },
 ]
 
 export const matchStatus = (status) => {

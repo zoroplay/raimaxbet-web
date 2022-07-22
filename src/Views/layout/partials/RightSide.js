@@ -45,7 +45,7 @@ export default function RightSide() {
             </a>}
 
             <a href="/Sport/cms?mid=29&amp;sid=0" className="mb">
-                <img src="/img/CONTACT-US.png" alt="contact us" />
+                <img src="/img/CONTACT-US.png" alt="contact us" width="100%" />
             </a>
 
             <div className="lucky-container">
