@@ -18,17 +18,17 @@ $cdnPath : "//#{$skin}.brlgcs.com/#{$skin}";
 $imagesPath : "//web.betteck.com/img";
 // $imagesPath : "//westernbet.brlgcs.com/atlantiq1/images";
 
-$site-width: 1024px;
+$site-width: 1124px;
 $switch-point: 1260px;
-$mo-point: 1034px;
+$mo-point: 1134px;
 
 
 // $primary: #121827;
 $primary: #ffffff;
 // $secondary: #343944;
 $secondary: #373a42;
-$accent: #1d843f;
-$accent-alt: #be2026;
+$accent: #7d7d7d;
+$accent-alt: #FD9E03;
 
 $pure-white: #fff;
 // $alt-white: #F5F5F5;
@@ -57,7 +57,7 @@ $col-3: #6b6e78;
 $col-4: #343844;
 $col-5: #c1c0c0;
 $col-6: #cd2f28;
-$col-7: #1e2026;
+$col-7: #252525;
 $col-8: #2b2e36;
 $col-9: #E89B02;
 $col-10: #3abd23;
@@ -771,7 +771,7 @@ input, select, textarea{
 
 .section-content{
   background-color: $white;
-  width: 1034px;
+  width: 1134px;
   min-height: 250%; /* Temporary property */
   margin: 0 auto;
   // margin-top: 10px;
@@ -851,7 +851,7 @@ input, select, textarea{
 .side1{
   // background-color: $primary;
   // width: 165px;  /* old width */
-  width: 190px;
+  width: 210px;
   padding: 10px;
   // margin-right: 5px;
   padding-top: 0;
@@ -1202,7 +1202,7 @@ input, select, textarea{
 /* Side2 Styles below  ****************************/
 
 .side2{
-  width: 603px;
+  width: 653px;
 
 }
 
@@ -2051,7 +2051,7 @@ input, select, textarea{
 .side3{
   // background-color: $primary;
   // width: 216px;  /* Old width */
-  width: 241px;
+  width: 271px;
   padding: 10px;
   // margin-left: 5px;
   padding-top: 0;
@@ -8611,7 +8611,7 @@ ul, ul li {
             border-bottom: 1px solid #b3b3ba;
             .id {
               float: left;
-              color: $accent-alt;
+              color: $black;
               font-size: 10px;
               font-weight: 500;
               line-height: 1.2;
@@ -9286,6 +9286,7 @@ ul, ul li {
                 font-weight: bold;
                 line-height: 33px;
                 margin: 0 2px;
+                width: 33%;
                 &.cancel {
                   background-color: $col-6;
                   &:hover {
@@ -9305,6 +9306,13 @@ ul, ul li {
                   &:hover {
                     background-color: darken($col-13 ,5%);
                   }
+                }
+              }
+              &.live-btn {
+                div {
+                  width: 50%;
+                  font-size: 15px;
+                  text-align: center;
                 }
               }
               
@@ -10785,7 +10793,7 @@ ul, ul li {
 }
 .dgHdrStyle, .RisultatiGruppiStyle {
   font-size: 12px;
-  background-color: #1d843f;
+  background-color: #FD9E03;
   color: #ffffff;
   height: 29px;
   text-align: left;
@@ -10844,7 +10852,7 @@ ul, ul li {
   border-bottom: 1px solid #ffffff;
 }
 .dgPagerStyle {
-  background-color: #1d843f;
+  background-color: #FD9E03;
 }
 .dgPagerStyle td span {
   text-decoration: none;
@@ -30610,13 +30618,13 @@ span.ui-icon.ui-icon-circle-triangle-e {
   //border-top: 1px solid #62bb7d;
   border-radius: 1px;
   background: $accent;
-  background: -moz-linear-gradient(top,$accent 0,$col-10 100%);
-  background: -webkit-gradient(linear,left top,left bottom,color-stop(0,$accent),color-stop(100%,$col-10));
-  background: -webkit-linear-gradient(top,$accent 0,$col-10 100%);
-  background: -o-linear-gradient(top,$accent 0,$col-10 100%);
-  background: -ms-linear-gradient(top,$accent 0,$col-10 100%);
-  background: linear-gradient(to bottom,$accent 0,$col-10 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$accent, endColorstr=$col-10, GradientType=0);
+  background: -moz-linear-gradient(top,$accent 0,$col-7 100%);
+  background: -webkit-gradient(linear,left top,left bottom,color-stop(0,$accent),color-stop(100%,$col-7));
+  background: -webkit-linear-gradient(top,$accent 0,$col-7 100%);
+  background: -o-linear-gradient(top,$accent 0,$col-7 100%);
+  background: -ms-linear-gradient(top,$accent 0,$col-7 100%);
+  background: linear-gradient(to bottom,$accent 0,$col-7 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$accent, endColorstr=$col-7, GradientType=0);
 }
 .btn-blue {
   background: #5b9fd2 !important;
