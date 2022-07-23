@@ -222,3 +222,9 @@ Http.get(`/admin/list/cashout`);
 
 export const getCashIn = () =>
 Http.get(`/admin/list/cashin`);
+
+export const getAllLivescore = () =>
+Http.get(`/sportscore/score-event`);
+
+export const getLivescore = () =>
+Http.get(`/sportscore/sportscore-live`);
