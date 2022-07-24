@@ -221,6 +221,7 @@ export default function Header() {
                                 <h1>Casino</h1>
                             </a>
                         </li>
+                        <li className="nav-mid-list-li"><NavLink id="indexLivescore" to="/Sport/Livescore"><h1>LIVE SCORE</h1></NavLink></li>
                         <li className="nav-mid-list-li"><NavLink id="indexCasino" to="/Sport/PrintFixtures"><h1>Print Fixtures</h1></NavLink></li>
                         <li className="nav-mid-list-li"><NavLink  id="indexJackpot" to="/Sport/Jackpot"><h1>Jackpot</h1></NavLink></li>
                         <li className="nav-mid-list-li"><NavLink id="indexJackpot" to="/Sport/Explore"><h1>Today's</h1></NavLink></li>
