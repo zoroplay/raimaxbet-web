@@ -44,7 +44,7 @@ const LiveScore = () => {
 
   return (
     <div className="livescore">
-      <div className="livescore-tab mt-2">
+      <div className="livescore-tab">
         <button
           className={
             activeTab === "All"
