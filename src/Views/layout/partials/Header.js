@@ -55,7 +55,7 @@ export default function Header() {
     }, [isAuthenticated, user]);
 
     useEffect(() => {
-        setHash(MD5(`${token}10100${backurl}${mode}${group}${privateKey}`).toString())
+        setHash(MD5(`${token}10100${backurl}${mode}${group}${clientPlatform}${privateKey}`).toString())
     }, [token, mode]);
 
     const submitForm = (e) => {
