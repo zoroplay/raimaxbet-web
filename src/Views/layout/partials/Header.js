@@ -30,6 +30,7 @@ export default function Header() {
     const [mode, setMode] = useState(0);
     const [token, setToken] = useState('111111');
     const [hash, setHash] = useState('');
+    const [clientPlatform, setClientPlatform] = useState('desktop');
     const backurl = process.env.REACT_APP_URL;
     const privateKey = process.env.REACT_APP_XPRESS_PRIVATE_KEY;
     const group = process.env.REACT_APP_SITE_KEY;
@@ -42,6 +43,8 @@ export default function Header() {
                     dispatch({type: UPDATE_USER_BALANCE, payload: e.user.balance});
                     toast.success('Your deposit request was successful')
                 })
+            
+            if(user.role === 'Cashier') setClientPlatform('retail');
 
             setToken(user.auth_code+'-'+group);
             setMode(1);
@@ -49,7 +52,7 @@ export default function Header() {
             setToken('111111');
             setMode(0);
         }
-    }, [isAuthenticated]);
+    }, [isAuthenticated, user]);
 
     useEffect(() => {
         setHash(MD5(`${token}10100${backurl}${mode}${group}${privateKey}`).toString())
@@ -210,7 +213,7 @@ export default function Header() {
                             } */}
                             <a
                                 target="_blank"
-                                href={`${process.env.REACT_APP_XPRESS_LAUNCH_URL}?token=${token}&game=10100&backurl=${backurl}&mode=${mode}&group=${group}&h=${hash}`}>
+                                href={`${process.env.REACT_APP_XPRESS_LAUNCH_URL}?token=${token}&game=10100&backurl=${backurl}&mode=${mode}&group=${group}&clientPlatform=${clientPlatform}&h=${hash}`}>
                                 <h1>Virtual</h1>
                             </a>
                         </li>
@@ -221,7 +224,6 @@ export default function Header() {
                                 <h1>Casino</h1>
                             </a>
                         </li>
-                        <li className="nav-mid-list-li"><NavLink id="indexLivescore" to="/Sport/Livescore"><h1>LIVE SCORE</h1></NavLink></li>
                         <li className="nav-mid-list-li"><NavLink id="indexCasino" to="/Sport/PrintFixtures"><h1>Print Fixtures</h1></NavLink></li>
                         <li className="nav-mid-list-li"><NavLink  id="indexJackpot" to="/Sport/Jackpot"><h1>Jackpot</h1></NavLink></li>
                         <li className="nav-mid-list-li"><NavLink id="indexJackpot" to="/Sport/Explore"><h1>Today's</h1></NavLink></li>
@@ -250,19 +252,19 @@ export default function Header() {
                     <ul className="nav-bottom-list">
                         {/*<li className="nav-bottom-list-li new"><a href="#" onClick="firebets();"><h2>Firebets</h2></a></li>
                         <li className="nav-bottom-list-li"><a href="/Sport/cms?mid=11&amp;sid=0"><h2>Help</h2></a></li>
-                        <li className="nav-bottom-list-li"><a href="https://s5.sir.sportradar.com/netbetuof#" target="_blank"><h2>Statistics</h2></a></li>
-                        <li className="nav-bottom-list-li"><a href="https://ls.sir.sportradar.com/netbetuof" target="_blank"><h2>Livescore</h2></a></li>
                         <li className="nav-bottom-list-li"><a href="./contact.html"><h2>Contact Us</h2></a></li>*/}
-                        <li className="nav-bottom-list-li"><NavLink title="Home" to="/">Home</NavLink></li>
-                        <li className="nav-bottom-list-li new"><NavLink to="/Sport/cashDesk" title="Cash Desk">Cash Desk</NavLink></li>
-                        <li className="nav-bottom-list-li"><NavLink to={`/Sport/Pool`}>Pool Fixtures</NavLink></li>
-                        <li className="nav-bottom-list-li"><NavLink to={`/Sport/Coupon`}>Weekly Coupon</NavLink></li>
-                        <li className="nav-bottom-list-li"><NavLink title="FAQ" to="/Sport/Pages/faq">FAQ</NavLink></li>
-                        <li className="nav-bottom-list-li"><NavLink title="How to Deposit / Withdraw" to="/Sport/Pages/how-to-deposit">How to Deposit / Withdraw</NavLink></li>
+                        <li className="nav-bottom-list-li"><NavLink title="Home" to="/"><h2>Home</h2></NavLink></li>
+                        <li className="nav-bottom-list-li new"><NavLink to="/Sport/cashDesk" title="Cash Desk"><h2>Cash Desk</h2></NavLink></li>
+                        <li className="nav-bottom-list-li"><NavLink to={`/Sport/Pool`}><h2>Pool Fixtures</h2></NavLink></li>
+                        <li className="nav-bottom-list-li"><NavLink to={`/Sport/Coupon`}><h2>Weekly Coupon</h2></NavLink></li>
+                        <li className="nav-bottom-list-li"><a href="#"><h2>Statistics</h2></a></li>
+                        <li className="nav-bottom-list-li"><NavLink to="Sport/Livescore"><h2>Livescore</h2></NavLink></li>
+                        <li className="nav-bottom-list-li"><NavLink title="FAQ" to="/Sport/Pages/faq"><h2>FAQ</h2></NavLink></li>
+                        {/* <li className="nav-bottom-list-li"><NavLink title="How to Deposit / Withdraw" to="/Sport/Pages/how-to-deposit">How to Deposit / Withdraw</NavLink></li> */}
                         {/*<li className="nav-bottom-list-li"><NavLink title="Tutorials" to="/Sport/Pages/how-to-play">Tutorials</NavLink></li>*/}
                         {/*<li className="nav-bottom-list-li"><a title="Results">Results</a></li>*/}
-                        <li className="nav-bottom-list-li"><NavLink title="Contact Us" to="/Sport/Pages/contact-us" >Contact Us</NavLink></li>
-                        <li className="nav-bottom-list-li new"><NavLink title="Become An Agent" to="/BecomeAnAgent" >Become an Agent</NavLink></li>
+                        <li className="nav-bottom-list-li"><NavLink title="Contact Us" to="/Sport/Pages/contact-us" ><h2>Contact Us</h2></NavLink></li>
+                        <li className="nav-bottom-list-li new"><NavLink title="Become An Agent" to="/BecomeAnAgent" ><h2>Become an Agent</h2></NavLink></li>
                     </ul>
                     <p className="nav-bottom-clock" id="THEtime">{moment().format('HH:mm')}</p>
                 </div>
