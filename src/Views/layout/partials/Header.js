@@ -262,7 +262,7 @@ export default function Header() {
                         <li className="nav-bottom-list-li"><NavLink to={`/Sport/Pool`}><h2>Pool Fixtures</h2></NavLink></li>
                         <li className="nav-bottom-list-li"><NavLink to={`/Sport/Coupon`}><h2>Weekly Coupon</h2></NavLink></li>
                         <li className="nav-bottom-list-li"><a href="#"><h2>Statistics</h2></a></li>
-                        <li className="nav-bottom-list-li"><NavLink to="Sport/Livescore"><h2>Livescore</h2></NavLink></li>
+                        <li className="nav-bottom-list-li"><NavLink to="/Sport/Livescore"><h2>Livescore</h2></NavLink></li>
                         <li className="nav-bottom-list-li"><NavLink title="FAQ" to="/Sport/Pages/faq"><h2>FAQ</h2></NavLink></li>
                         {/* <li className="nav-bottom-list-li"><NavLink title="How to Deposit / Withdraw" to="/Sport/Pages/how-to-deposit">How to Deposit / Withdraw</NavLink></li> */}
                         {/*<li className="nav-bottom-list-li"><NavLink title="Tutorials" to="/Sport/Pages/how-to-play">Tutorials</NavLink></li>*/}
