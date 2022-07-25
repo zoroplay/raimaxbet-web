@@ -200,29 +200,33 @@ export default function Header() {
                         </li>
                         <li className="nav-mid-list-li"><NavLink id="indexLive" to="/Live/LiveDefault"><h1>In-Play</h1></NavLink></li>
                         <li className="nav-mid-list-li">
-                            {/* {user.role === 'Cashier' ?
+                            {user.role === 'Cashier' ?
                                 <a
                                     target="_blank"
-                                    href={`${process.env.REACT_APP_GLOBALBET_PROD}/engine/shop/autologin/account?login=${user.username}-BTK&code=${user.auth_code}&shopRedirectTo=/client/shop.jsp%3Flocale=en_US`}>
+                                    // href={`${process.env.REACT_APP_GLOBALBET_PROD}/engine/shop/autologin/account?login=${user.username}-BTK&code=${user.auth_code}&shopRedirectTo=/client/shop.jsp%3Flocale=en_US`}>
+                                    href={`${process.env.REACT_APP_XPRESS_LAUNCH_URL}?token=${token}&game=10100&backurl=${backurl}&mode=${mode}&group=${group}&clientPlatform=${clientPlatform}&h=${hash}`}>                                   
                                     <h1>Virtual</h1>
                                 </a>
                                 :
                                 <NavLink to="/Sport/Virtual">
                                     <h1>Virtual</h1>
                                 </NavLink>
-                            } */}
-                            <a
+                            }
+                            {/* <a
                                 target="_blank"
                                 href={`${process.env.REACT_APP_XPRESS_LAUNCH_URL}?token=${token}&game=10100&backurl=${backurl}&mode=${mode}&group=${group}&clientPlatform=${clientPlatform}&h=${hash}`}>
                                 <h1>Virtual</h1>
-                            </a>
+                            </a> */}
                         </li>
                         <li className="nav-mid-list-li">
-                            <a
+                            <NavLink to="/Casino">
+                                    <h1>Casino</h1>
+                                </NavLink>
+                            {/* <a
                                 target="_blank"
                                 href={`https://ui.io.co.ke/?cid=1&token=${user?.auth_code || 'dasfdsafweqrweq'}-${process.env.REACT_APP_SITE_KEY}`}>
                                 <h1>Casino</h1>
-                            </a>
+                            </a> */}
                         </li>
                         <li className="nav-mid-list-li"><NavLink id="indexCasino" to="/Sport/PrintFixtures"><h1>Print Fixtures</h1></NavLink></li>
                         <li className="nav-mid-list-li"><NavLink  id="indexJackpot" to="/Sport/Jackpot"><h1>Jackpot</h1></NavLink></li>
@@ -264,7 +268,7 @@ export default function Header() {
                         {/*<li className="nav-bottom-list-li"><NavLink title="Tutorials" to="/Sport/Pages/how-to-play">Tutorials</NavLink></li>*/}
                         {/*<li className="nav-bottom-list-li"><a title="Results">Results</a></li>*/}
                         <li className="nav-bottom-list-li"><NavLink title="Contact Us" to="/Sport/Pages/contact-us" ><h2>Contact Us</h2></NavLink></li>
-                        <li className="nav-bottom-list-li new"><NavLink title="Become An Agent" to="/BecomeAnAgent" ><h2>Become an Agent</h2></NavLink></li>
+                        <li className="nav-bottom-list-li"><NavLink title="Become An Agent" to="/BecomeAnAgent" ><h2>Become an Agent</h2></NavLink></li>
                     </ul>
                     <p className="nav-bottom-clock" id="THEtime">{moment().format('HH:mm')}</p>
                 </div>
