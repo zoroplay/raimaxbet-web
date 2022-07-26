@@ -66,7 +66,7 @@ export default function Virtual() {
             <iframe 
                 title="casino" 
                 style={{ width: '100%', border: 0, height: '100vh'}} 
-                src={`${process.env.REACT_APP_XPRESS_LAUNCH_URL}?token=${token}&game=10100&backurl=${backurl}&mode=${mode}&group=${group}&h=${hash}}`} />
+                src={`${process.env.REACT_APP_XPRESS_LAUNCH_URL}?token=${token}&game=10100&backurl=${backurl}&mode=${mode}&group=${group}&h=${hash}`} />
         </JackpotLayout>
     )
 }
