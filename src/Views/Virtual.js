@@ -9,14 +9,15 @@ export default function Virtual() {
     const [mode, setMode] = useState(0);
     const [token, setToken] = useState('111111');
     const [hash, setHash] = useState('');
+    const [group, setGroup] = useState(process.env.REACT_APP_SITE_KEY);
     const backurl = process.env.REACT_APP_URL;
     const privateKey = process.env.REACT_APP_XPRESS_PRIVATE_KEY;
-    const group = process.env.REACT_APP_SITE_KEY;
 
     useEffect(() => {
         if (isAuthenticated) {
-            setToken(user.auth_code+'-'+group);
+            setToken(user.auth_code);
             setMode(1);
+            setGroup(user.group);
         } else {
             setToken('111111');
             setMode(0);
@@ -65,8 +66,9 @@ export default function Virtual() {
             {/* <div id="globalbet" /> */}
             <iframe 
                 title="casino" 
-                style={{ width: '100%', border: 0, height: '100vh'}} 
-                src={`${process.env.REACT_APP_XPRESS_LAUNCH_URL}?token=${token}&game=10100&backurl=${backurl}&mode=${mode}&group=${group}&h=${hash}`} />
+                style={{ width: '100%', border: 0, height: '100vh', overflow: 'scroll'}} 
+                src={`${process.env.REACT_APP_XPRESS_LAUNCH_URL}?token=${token}&game=10100&backurl=${backurl}&mode=${mode}&group=${group}&h=${hash}`} 
+            />
         </JackpotLayout>
     )
 }

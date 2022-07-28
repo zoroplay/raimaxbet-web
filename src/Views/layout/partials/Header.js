@@ -29,11 +29,12 @@ export default function Header() {
     const history = useHistory();
     const [mode, setMode] = useState(0);
     const [token, setToken] = useState('111111');
+    const [gameId, setGameId] = useState('10100');
+    const [group, setGroup] = useState(process.env.REACT_APP_SITE_KEY || '111111');
     const [hash, setHash] = useState('');
     const [clientPlatform, setClientPlatform] = useState('desktop');
     const backurl = process.env.REACT_APP_URL;
     const privateKey = process.env.REACT_APP_XPRESS_PRIVATE_KEY;
-    const group = process.env.REACT_APP_SITE_KEY;
 
     useEffect(() => {
         if (isAuthenticated) {
@@ -43,10 +44,14 @@ export default function Header() {
                     dispatch({type: UPDATE_USER_BALANCE, payload: e.user.balance});
                     toast.success('Your deposit request was successful')
                 })
-            
-            if(user.role === 'Cashier') setClientPlatform('retail');
 
-            setToken(user.auth_code+'-'+group);
+            if(user.role === 'Cashier') {
+                setClientPlatform('retail');
+                setGameId('10160');
+            }
+            
+            setGroup(user.group);
+            setToken(user.auth_code);
             setMode(1);
         } else {
             setToken('111111');
@@ -55,8 +60,8 @@ export default function Header() {
     }, [isAuthenticated, user]);
 
     useEffect(() => {
-        setHash(MD5(`${token}10100${backurl}${mode}${group}${clientPlatform}${privateKey}`).toString())
-    }, [token, mode]);
+        setHash(MD5(`${token}${gameId}${backurl}${mode}${group}${clientPlatform}${privateKey}`).toString())
+    }, [token, mode, group, gameId]);
 
     const submitForm = (e) => {
         e.preventDefault();
@@ -204,7 +209,7 @@ export default function Header() {
                                 <a
                                     target="_blank"
                                     // href={`${process.env.REACT_APP_GLOBALBET_PROD}/engine/shop/autologin/account?login=${user.username}-BTK&code=${user.auth_code}&shopRedirectTo=/client/shop.jsp%3Flocale=en_US`}>
-                                    href={`${process.env.REACT_APP_XPRESS_LAUNCH_URL}?token=${token}&game=10100&backurl=${backurl}&mode=${mode}&group=${group}&clientPlatform=${clientPlatform}&h=${hash}`}>                                   
+                                    href={`${process.env.REACT_APP_XPRESS_LAUNCH_URL}?token=${token}&game=${gameId}&backurl=${backurl}&mode=${mode}&group=${group}&clientPlatform=${clientPlatform}&h=${hash}`}>                                   
                                     <h1>Virtual</h1>
                                 </a>
                                 :
