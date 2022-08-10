@@ -15,7 +15,7 @@
   .topHeader {
     background: #3f444e;
     color: #fff;
-    border-top: 1px solid #FD9E03;
+    border-top: 1px solid #01D46D;
     border-bottom: 1px solid #031134;
     height: 40px;
     display: -webkit-box;
@@ -244,7 +244,7 @@
                     font-weight: 700;
                     padding: 0 0 0 16px;
                     margin: 0 0 30px 0;
-                    background-color: #FD9E03;
+                    background-color: #01D46D;
                     color: #fff;
                     cursor: pointer;
                     .arrow {
@@ -390,7 +390,7 @@
 
                                     &:hover {
                                       cursor: pointer;
-                                      background-color: #FD9E03;
+                                      background-color: #01D46D;
                                       background-image: none;
                                       -webkit-box-shadow: inset 0 1px 3px #000;
                                       box-shadow: inset 0 1px 3px #000;
@@ -430,8 +430,8 @@
                                   &.sel {
                                     .oddsQ  {
                                       cursor: pointer;
-                                      background-color: #e5b500;
-                                      background-image: linear-gradient(to bottom, #fec900 0, #fec900 100%);
+                                      background-color: #00a957;
+                                      background-image: linear-gradient(to bottom, #33dc8a 0, #33dc8a 100%);
                                       color: #000;
                                       box-shadow: inset 1px 1px 5px #000;
                                     }
