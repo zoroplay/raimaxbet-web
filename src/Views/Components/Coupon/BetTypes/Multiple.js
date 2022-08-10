@@ -23,7 +23,7 @@ export const Multiple = ({couponData, dispatch, globalVar}) => {
                 <tr>
                     <td colSpan="4">
                         <div className="default-bets">
-                            {amounts && amounts.map(amount => <div key={amount} className="single-bet" onClick={() => dispatch(fastAdd(parseInt(amount)))}> {amount}</div>)}
+                            {amounts && amounts.map(amount => <div key={amount} className="single-bet btn-color-blue" onClick={() => dispatch(fastAdd(parseInt(amount)))}> {amount}</div>)}
                         </div>
                     </td>
                 </tr>

@@ -93,7 +93,7 @@ export default function LeftSide() {
 
             <div className="psec-container">
                 <div className="smx-card-section">
-                    <div className="smx-card-list-heading">Most popular</div>
+                    <div className="smx-card-list-heading">TOP LEAGUE</div>
                     <div className="smx-card-list">
                         {topbets && topbets.map(row =>
                             <NavLink to={`/Sport/Odds?tid=${row.tournament_id}&sid=1`} key={row.id} className="smx-card" >
