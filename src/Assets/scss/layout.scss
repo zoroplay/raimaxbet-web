@@ -18,17 +18,17 @@ $cdnPath : "//#{$skin}.brlgcs.com/#{$skin}";
 $imagesPath : "//web.betteck.com/img";
 // $imagesPath : "//westernbet.brlgcs.com/atlantiq1/images";
 
-$site-width: 1124px;
+$site-width: 1024px;
 $switch-point: 1260px;
 $mo-point: 1134px;
 
 
 // $primary: #121827;
-$primary: #ffffff;
+$primary: #191919;
 // $secondary: #343944;
-$secondary: #373a42;
+$secondary: #010914;
 $accent: #7d7d7d;
-$accent-alt: #FD9E03;
+$accent-alt: #01D46D;
 
 $pure-white: #fff;
 // $alt-white: #F5F5F5;
@@ -91,11 +91,11 @@ $si-8: #00a651;
 // ---odds styles
 @mixin odd-box(){
   color: $pure-white;
-  background-color: $accent;
+  background-color: $primary
 }
 @mixin odd-box-hover(){
   font-weight: bold;
-  background-color: darken($accent, 10%);
+  background-color: darken($accent-alt, 10%);
 }
 @mixin odd-box-selected(){
   font-weight: bold;
@@ -145,10 +145,12 @@ html{
 body{
   // background-color: $white;
   background-color: darken($primary, 4%);
-  background: #484848 url(../img/bg-stadium.jpeg) fixed;
+  background: #484848 url(../img/ourbet-bg.jpeg) fixed;
   margin: 0;
   padding: 0;
   font-family: Arial, 'Roboto', Helvetica, sans-serif;
+  background-size: 100%;
+  background-attachment: fixed;
 }
 
 a{
@@ -184,7 +186,7 @@ input, select, textarea{
   background-color: $primary;
   padding-bottom: 9px;
   // background-image: linear-gradient(to bottom,#3a3e47 0,#2b2e37 100%);
-  background-image: linear-gradient(to bottom,lighten($primary, 5%) 0, $primary 100%);
+  // background-image: linear-gradient(to bottom,lighten($primary, 5%) 0, $primary 100%);
   &::after{
     position: absolute;
     content: '';
@@ -771,7 +773,7 @@ input, select, textarea{
 
 .section-content{
   background-color: $white;
-  width: 1134px;
+  width: 1034px;
   min-height: 250%; /* Temporary property */
   margin: 0 auto;
   // margin-top: 10px;
@@ -851,7 +853,7 @@ input, select, textarea{
 .side1{
   // background-color: $primary;
   // width: 165px;  /* old width */
-  width: 210px;
+  width: 190px;
   padding: 10px;
   // margin-right: 5px;
   padding-top: 0;
@@ -1202,7 +1204,7 @@ input, select, textarea{
 /* Side2 Styles below  ****************************/
 
 .side2{
-  width: 653px;
+  width: 603px;
 
 }
 
@@ -2051,7 +2053,7 @@ input, select, textarea{
 .side3{
   // background-color: $primary;
   // width: 216px;  /* Old width */
-  width: 271px;
+  width: 241px;
   padding: 10px;
   // margin-left: 5px;
   padding-top: 0;
@@ -2083,7 +2085,7 @@ input, select, textarea{
   padding-left: 34px;
   margin-bottom: 10px;
   white-space: nowrap;
-  background-color: $accent;
+  background-color: $secondary;
   color: $textcolor-li;
   &:hover{
     &::after{
@@ -7010,7 +7012,7 @@ input, select, textarea{
   border: 1px solid $col-1;
   //border-bottom: 1px solid $darkblue;
   color: $pure-white;
-  background-color: $accent;
+  background-color: $primary;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e934c', endColorstr='#1f7d3b',GradientType=0 );
 }
 .divOdds .item .odds .odd.sel,
@@ -10793,7 +10795,7 @@ ul, ul li {
 }
 .dgHdrStyle, .RisultatiGruppiStyle {
   font-size: 12px;
-  background-color: #FD9E03;
+  background-color: $accent-alt;
   color: #ffffff;
   height: 29px;
   text-align: left;
