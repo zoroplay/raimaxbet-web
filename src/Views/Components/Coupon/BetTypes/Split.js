@@ -78,7 +78,7 @@ export const Split = ({couponData, dispatch, globalVar, bonusList}) => {
                 <tr>
                     <td colSpan="4">
                         <div className="default-bets">
-                            {amounts && amounts.map(amount => <div key={amount} className="single-bet" onClick={() => dispatch(updateSystemWinnings(parseInt(amount), 'max'))}>
+                            {amounts && amounts.map(amount => <div key={amount} className="single-bet btn-color-blue" onClick={() => dispatch(updateSystemWinnings(parseInt(amount), 'max'))}>
                                 {amount}
                             </div>)}
                         </div>

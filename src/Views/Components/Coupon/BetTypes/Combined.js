@@ -118,7 +118,10 @@ export const Combined = ({couponData, dispatch, globalVar, bonusList}) => {
                 <tr>
                     <td colSpan="4">
                         <div className="default-bets">
-                            {amounts && amounts.map(amount => <div key={amount} className="single-bet" onClick={() => dispatch(fastAdd(parseInt(amount)))}>{globalVar.Currency} {amount}</div>)}
+                            {amounts && amounts.map(amount => <div key={amount} className="single-bet btn-color-blue" onClick={() => dispatch(fastAdd(parseInt(amount)))}>
+                                {/* {globalVar.Currency} */}
+                                {amount}
+                            </div>)}
                         </div>
                     </td>
                 </tr>
