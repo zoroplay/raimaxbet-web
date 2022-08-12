@@ -17,12 +17,17 @@ const error = {
 const RegisterSchema = Yup.object().shape({
 
     username: Yup.string()
-        .min(3, "Minimum 3 letters")
+        .min(4, "Minimum 3 letters")
         .required("Enter a username"),
-    full_name: Yup.string()
-        .required("Enter a username"),
+    first_name: Yup.string()
+        .min(4, 'Invalid character length')
+        .required("Enter your first name"),
+    last_name: Yup.string()
+        .min(4, 'Invalid character length')
+        .required("Enter your last name"),
     phone: Yup.string()
-        .required("Enter a username"),
+        .min(11, 'Please enter a valid phone number')
+        .required("Your phone number is required"),
     email: Yup.string().email()
         .required(),
     password: Yup.string()
@@ -40,6 +45,7 @@ export default function Register({history}) {
     const dispatch = useDispatch();
     const {isAuthenticated} = useSelector((state) => state.auth);
     const [bg, setBg] = useState(null);
+    const [showPassword, setShowPassword] = useState(false);
 
     const {data: res, error: errorData} = useSWR('/utilities/bg-image?type=registration&position=background');
 
@@ -78,7 +84,9 @@ export default function Register({history}) {
                         </div>
                         <Formik
                             initialValues={{
-                                full_name: '',
+                                first_name: '',
+                                last_name: '',
+                                dob: '',
                                 username: '',
                                 phone: '',
                                 email: '',
@@ -143,21 +151,35 @@ export default function Register({history}) {
                                             </div>
                                             <div className="dnxreg-box">
                                                 <div className="dnxreg-box-a">
-                                                    <label htmlFor="" className="nxlabel">Full Name *</label>
+                                                    <label htmlFor="" className="nxlabel">First Name *</label>
                                                 </div>
                                                 <div className="dnxreg-box-b">
                                                     <Field
-                                                        style={errors.full_name ? error : null}
+                                                        style={errors.first_name ? error : null}
                                                         type="text"
                                                         className="nxfield"
                                                         placeholder=""
-                                                        name="full_name"
+                                                        name="first_name"
                                                     />
                                                 </div>
                                             </div>
                                             <div className="dnxreg-box">
                                                 <div className="dnxreg-box-a">
-                                                    <label htmlFor="" className="nxlabel">Email *</label>
+                                                    <label htmlFor="" className="nxlabel">Last Name *</label>
+                                                </div>
+                                                <div className="dnxreg-box-b">
+                                                    <Field
+                                                        style={errors.last_name ? error : null}
+                                                        type="text"
+                                                        className="nxfield"
+                                                        placeholder=""
+                                                        name="last_name"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="dnxreg-box">
+                                                <div className="dnxreg-box-a">
+                                                    <label htmlFor="" className="nxlabel">Email Address *</label>
                                                 </div>
                                                 <div className="dnxreg-box-b">
                                                     <Field
@@ -199,13 +221,13 @@ export default function Register({history}) {
                                                 <div className="dnxreg-box-b">
                                                     <Field
                                                         style={errors.password ? error : null}
-                                                        type="password"
+                                                        type={showPassword ? 'text' : 'password'}
                                                         id="dnxreg-pass1"
                                                         className="nxfield nx-field-pass"
                                                         placeholder="Password"
                                                         name="password"
                                                     />
-                                                    <span className="showpass" id="showpass1" />
+                                                    <span onClick={() => setShowPassword(!showPassword)} className={`showpass ${showPassword ? '' : 'hidepass'}`} id="showpass1" />
                                                 </div>
                                             </div>
 
