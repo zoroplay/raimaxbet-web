@@ -149,34 +149,37 @@ export default function Register({history}) {
                                                     />
                                                 </div>
                                             </div>
-                                            <div className="dnxreg-box">
-                                                <div className="dnxreg-box-a">
-                                                    <label htmlFor="" className="nxlabel">First Name *</label>
+                                            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+                                                <div className="dnxreg-box">
+                                                    <div className="dnxreg-box-a">
+                                                        <label htmlFor="" className="nxlabel">First Name *</label>
+                                                    </div>
+                                                    <div className="dnxreg-box-b">
+                                                        <Field
+                                                            style={errors.first_name ? error : null}
+                                                            type="text"
+                                                            className="nxfield"
+                                                            placeholder=""
+                                                            name="first_name"
+                                                        />
+                                                    </div>
                                                 </div>
-                                                <div className="dnxreg-box-b">
-                                                    <Field
-                                                        style={errors.first_name ? error : null}
-                                                        type="text"
-                                                        className="nxfield"
-                                                        placeholder=""
-                                                        name="first_name"
-                                                    />
+                                                <div className="dnxreg-box">
+                                                    <div className="dnxreg-box-a">
+                                                        <label htmlFor="" className="nxlabel">Last Name *</label>
+                                                    </div>
+                                                    <div className="dnxreg-box-b">
+                                                        <Field
+                                                            style={errors.last_name ? error : null}
+                                                            type="text"
+                                                            className="nxfield"
+                                                            placeholder=""
+                                                            name="last_name"
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div className="dnxreg-box">
-                                                <div className="dnxreg-box-a">
-                                                    <label htmlFor="" className="nxlabel">Last Name *</label>
-                                                </div>
-                                                <div className="dnxreg-box-b">
-                                                    <Field
-                                                        style={errors.last_name ? error : null}
-                                                        type="text"
-                                                        className="nxfield"
-                                                        placeholder=""
-                                                        name="last_name"
-                                                    />
-                                                </div>
-                                            </div>
+                                            
                                             <div className="dnxreg-box">
                                                 <div className="dnxreg-box-a">
                                                     <label htmlFor="" className="nxlabel">Email Address *</label>
@@ -213,39 +216,41 @@ export default function Register({history}) {
                                         </div>
 
                                         <div className="aqx-loax-c">
-
-                                            <div className="dnxreg-box">
-                                                <div className="dnxreg-box-a">
-                                                    <label htmlFor="" className="nxlabel">Password*</label>
+                                            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+                                                <div className="dnxreg-box">
+                                                    <div className="dnxreg-box-a">
+                                                        <label htmlFor="" className="nxlabel">Password*</label>
+                                                    </div>
+                                                    <div className="dnxreg-box-b">
+                                                        <Field
+                                                            style={errors.password ? error : null}
+                                                            type={showPassword ? 'text' : 'password'}
+                                                            id="dnxreg-pass1"
+                                                            className="nxfield nx-field-pass"
+                                                            placeholder="Password"
+                                                            name="password"
+                                                        />
+                                                        <span onClick={() => setShowPassword(!showPassword)} className={`showpass ${showPassword ? '' : 'hidepass'}`} id="showpass1" />
+                                                    </div>
                                                 </div>
-                                                <div className="dnxreg-box-b">
-                                                    <Field
-                                                        style={errors.password ? error : null}
-                                                        type={showPassword ? 'text' : 'password'}
-                                                        id="dnxreg-pass1"
-                                                        className="nxfield nx-field-pass"
-                                                        placeholder="Password"
-                                                        name="password"
-                                                    />
-                                                    <span onClick={() => setShowPassword(!showPassword)} className={`showpass ${showPassword ? '' : 'hidepass'}`} id="showpass1" />
+
+                                                <div className="dnxreg-box">
+                                                    <div className="dnxreg-box-a">
+                                                        <label htmlFor="" className="nxlabel">Confirm Password*</label>
+                                                    </div>
+                                                    <div className="dnxreg-box-b">
+                                                        <Field
+                                                            style={errors.confirm_password ? error : null}
+                                                            type="password"
+                                                            id="dnxreg-pass2"
+                                                            className="nxfield nx-field-pass"
+                                                            placeholder="Confirm Password"
+                                                            name="confirm_password"
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
-
-                                            <div className="dnxreg-box">
-                                                <div className="dnxreg-box-a">
-                                                    <label htmlFor="" className="nxlabel">Confirm Password*</label>
-                                                </div>
-                                                <div className="dnxreg-box-b">
-                                                    <Field
-                                                        style={errors.confirm_password ? error : null}
-                                                        type="password"
-                                                        id="dnxreg-pass2"
-                                                        className="nxfield nx-field-pass"
-                                                        placeholder="Confirm Password"
-                                                        name="confirm_password"
-                                                    />
-                                                </div>
-                                            </div>
+                                           
 
 
                                             <div className="dnxreg-age">
