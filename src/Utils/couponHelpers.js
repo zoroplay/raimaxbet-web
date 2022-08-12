@@ -3,6 +3,7 @@ import {CANCEL_BET, SET_COUPON_DATA} from "../Redux/types";
 import {getSplitProps} from "../Services/apis";
 import { updateComboWinningsFromTotal } from "../Redux/actions";
 import CouponCalculation from "./CouponCalculation";
+import { uniqBy } from "lodash";
 const couponCalculation = new CouponCalculation();
 
 export const calculateWinnings = (couponData, globalVars, bonusList) => {
@@ -29,20 +30,24 @@ export const calculateTotalOdds = (selections) => {
 }
 
 export const calculateBonus = (maxWin, coupondata, globalVars, bonusList) => {
-    let ticket_length = 0,
-        minBonusOdd = globalVars.MinBonusOdd,
+    let minBonusOdd = globalVars.MinBonusOdd,
         bonusInfo = [],
         bonus = 0;
-    //count eligible tickets for bonus
+    
+    const events = [];
+    // get eligible events for bonus
     coupondata.selections.forEach((item, i) => {
-        if(item.odds >= minBonusOdd){
-            ticket_length++;
-        }
+        if(item.odds >= minBonusOdd) events.push(item);
     });
+
+    // get unique events in case of split bet
+    const uniqueEvents = uniqBy(coupondata.selections, 'provider_id');
+    console.log(uniqueEvents.length);
+
     // console.log(minBonusOdd);
     //get bonus settings for ticket length
     bonusList.forEach((item, i) => {
-        if(item.ticket_length === ticket_length)
+        if(item.ticket_length === uniqueEvents.length)
             bonusInfo = item;
     })
     //calculate total bonus
