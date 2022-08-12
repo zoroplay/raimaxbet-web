@@ -154,9 +154,9 @@ export default function BetList({match, history}) {
                                                 bets.length > 0 ? (
                                                     bets.map((bet, i) =>
                                                         <tr className="dgItemStyle" key={bet.betslip_id}>
-                                                            {user.role === 'Cashier' && bet.status === 0 && (bet.active_selections.length === bet.selections.length) &&
-                                                            <td onClick={() => confirmCancel(bet.id)} style={{cursor: 'pointer'}}>
-                                                                <img src="/img/cancel-button.png" alt="" />
+                                                            {user.role === 'Cashier' && (bet.active_selections.length === bet.selections.length) &&
+                                                            <td style={{cursor: 'pointer'}}>
+                                                                {bet.status === 0 && <img onClick={() => confirmCancel(bet.id)} src="/img/cancel-button.png" alt="" /> }
                                                             </td>}
                                                             <td className="btnsec codcoupon">
                                                                 <NavLink
