@@ -42,7 +42,6 @@ export const calculateBonus = (maxWin, coupondata, globalVars, bonusList) => {
 
     // get unique events in case of split bet
     const uniqueEvents = uniqBy(coupondata.selections, 'provider_id');
-    console.log(uniqueEvents.length);
 
     // console.log(minBonusOdd);
     //get bonus settings for ticket length

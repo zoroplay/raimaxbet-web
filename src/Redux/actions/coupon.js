@@ -449,7 +449,7 @@ export function updateComboWinningsFromTotal (stake) {
 
         let noOfCombos = 0
         let coupondata = {...state.couponData.coupon};
-        // const globalVars = {...state.sportsBook.SportsbookGlobalVariable};
+        const globalVars = {...state.sportsBook.SportsbookGlobalVariable};
         const bonusList = [...state.sportsBook.SportsbookBonusList];
 
         coupondata.totalStake = stake ? stake : coupondata.totalStake;
@@ -496,7 +496,7 @@ export function updateComboWinningsFromTotal (stake) {
 
             if (coupondata.Groupings && coupondata.Groupings.length) {
                 const calculatedCoupon = couponCalculation.calcPotentialWins(coupondata, bonusList);
-                coupondata = couponCalculation.updateFromCalculatedCoupon(coupondata, calculatedCoupon);
+                coupondata = couponCalculation.updateFromCalculatedCoupon(coupondata, calculatedCoupon, globalVars, bonusList);
                 // update combos with max win
                 coupondata.combos.forEach(combo => {
                     for (let i = 0; i < coupondata.Groupings.length; i++) {

@@ -2,7 +2,6 @@ import React from "react";
 import {fastAdd, updateComboWinningsFromTotal} from "../../../../Redux/actions";
 import {SET_COUPON_DATA} from "../../../../Redux/types";
 import CouponCalculation from "../../../../Utils/CouponCalculation";
-// import {calculateBonus} from "../../../../Utils/couponHelpers";
 import {formatNumber} from "../../../../Utils/helpers";
 
 export const Combined = ({couponData, dispatch, globalVar, bonusList}) => {
@@ -23,7 +22,7 @@ export const Combined = ({couponData, dispatch, globalVar, bonusList}) => {
             }
 
             const calculatedCoupon = couponCalculation.calcPotentialWins(coupondata, bonusList);
-            coupondata = couponCalculation.updateFromCalculatedCoupon(coupondata, calculatedCoupon);
+            coupondata = couponCalculation.updateFromCalculatedCoupon(coupondata, calculatedCoupon, globalVar, bonusList);
             // update combos with max win
             coupondata.combos.forEach(combo => {
                 for (let i = 0; i < coupondata.Groupings.length; i++) {

@@ -1,9 +1,11 @@
+/* eslint-disable no-extend-native */
 import SlotKey from './SlotKey';
 import CalculatedGroup from './CalculatedGroup';
 import CalculatedCoupon from './CalculatedCoupon';
 import {Combination, FastCombination as fastCombination} from './Combination';
 // import store from '../Redux/store';
-// const { SportsbookGlobalVariable } = store.getState();
+import { calculateBonus } from './couponHelpers';
+// const { SportsbookGlobalVariable, SportsbookBonusList  } = store.getState();
 
 const BetCouponGroup = (function () {
     function BetCouponGroup() {
@@ -369,7 +371,8 @@ export default class CouponCalculation {
         }
         throw new Error("Can't find the bonus percentage for " + numberOfEvents + " events");
     };
-    updateFromCalculatedCoupon = function (betCoupon, calculatedCoupon) {
+    updateFromCalculatedCoupon = function (betCoupon, calculatedCoupon, globalVar, bonusList) {
+
         if (betCoupon.Groupings.length > 0) {
             for (var i = 0; i < calculatedCoupon.Groups.length; i++) {
                 var calculatedGroup = calculatedCoupon.Groups[i];
@@ -400,8 +403,8 @@ export default class CouponCalculation {
         betCoupon.NetStakeMinWin = this.getNetStakeMinWin(betCoupon);
         betCoupon.maxWin = this.getMaxWin(betCoupon);
         betCoupon.NetStakeMaxWin = this.getNetStakeMaxWin(betCoupon);
-        betCoupon.minBonus = this.getMinBonus(betCoupon);
-        betCoupon.maxBonus = this.getMaxBonus(betCoupon);
+        betCoupon.minBonus = calculateBonus(betCoupon.minWin, betCoupon, globalVar, bonusList);
+        betCoupon.maxBonus = calculateBonus(betCoupon.maxWin, betCoupon, globalVar, bonusList);
         betCoupon.MinPercentageBonus = this.getMinPercentageBonus(betCoupon);
         betCoupon.MaxPercentageBonus = this.getMaxPercentageBonus(betCoupon);
         betCoupon.minOdds = this.getMinOdd(betCoupon);
