@@ -24,6 +24,7 @@ function App() {
   const dispatch = useDispatch();
   const {depositModal, loginModal, tipsterModal} = useSelector((state) => state.sportsData);
   const couponData = useSelector((state) => state.couponData);
+  const {isAuthenticated} = useSelector((state) => state.auth);
 
   const init = useCallback(() => {
     Promise.all([
@@ -38,6 +39,11 @@ function App() {
   useEffect(() => {
     init();
   }, [init]);
+
+  // update global variables on authentication status change
+  useEffect(() => {
+      init();
+  }, [isAuthenticated, init])
 
   return (
       <ErrorBoundary>

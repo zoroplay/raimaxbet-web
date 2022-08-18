@@ -23,8 +23,8 @@ export default function Main({children, history}) {
             <main className="main-content" style={{backgroundImage: bg ? `url(${bg})` : ''}}>
                 <section className="section-content">
                     <div className="side-container">
-                        <NavLink to="/BecameAnAgent" className="join-btn1">BE AGENT</NavLink>
-                        <NavLink to="/BecameAnAgent" className="join-btn2">BE AGENT</NavLink>
+                        <NavLink to="/BecameAnAgent" className="join-btn1">BE COME AN AGENT</NavLink>
+                        <NavLink to="/BecameAnAgent" className="join-btn2">BE COME AN AGENT</NavLink>
 
                         <LeftSide history={history} />
 

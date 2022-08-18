@@ -12,8 +12,8 @@ export default function InPlay({children}) {
             <div className="main-content live-page">
                 <section className="section-content">
                     <div className="live-container">
-                        <a href="/Sport/became-an-agent" className="join-btn1">BE AGENT</a>
-                        <a href="/Sport/became-an-agent" className="join-btn2">BE AGENT</a>
+                        <a href="/Sport/became-an-agent" className="join-btn1">BE COME AN AGENT</a>
+                        <a href="/Sport/became-an-agent" className="join-btn2">BE COME AN AGENT</a>
 
                         <div className="live-wrapper" id="live-root">
                             {children}
