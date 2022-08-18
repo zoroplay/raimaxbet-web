@@ -47,8 +47,13 @@ export const calculateBonus = (maxWin, coupondata, globalVars, bonusList) => {
     // console.log(minBonusOdd);
     //get bonus settings for ticket length
     bonusList.forEach((item, i) => {
-        if(item.ticket_length === uniqueEvents.length)
-            bonusInfo = item;
+        if (coupondata.bet_type === 'Combo') {
+            if(item.ticket_length === coupondata.comboSelection)
+                bonusInfo = item;
+        } else {
+            if(item.ticket_length === uniqueEvents.length)
+                bonusInfo = item;
+        }
     })
     //calculate total bonus
     if(bonusInfo.bonus !== undefined){
