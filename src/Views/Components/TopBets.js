@@ -40,7 +40,6 @@ export default function TopBets() {
         }
     }, [activeTournament, topBets]);
 
-    console.log(topBets, 43)
     return (
 
         <div className="topbets-container">

@@ -139,7 +139,6 @@ export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddna
                             }
                             const calculatedGroup   = couponCalculation.calcCombinations(couponData);
                             couponData.combos       = calculatedGroup.Groups;
-                            console.log(couponData);
                             // couponData.combos = await getCombos(couponData);
                             //calculate and get pot winnings with bonus
                             if (couponData.bet_type === 'Combo') {

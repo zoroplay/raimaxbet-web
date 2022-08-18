@@ -57,7 +57,6 @@ export default function Cashdesk({location}) {
                     e.target.value = '';
                 }
             }).catch(err => {
-                console.log(err.message);
                 toast.error('Something went wrong. Please try again')
             });
         }

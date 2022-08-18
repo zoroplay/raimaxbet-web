@@ -7,6 +7,7 @@ import { uniqBy } from "lodash";
 const couponCalculation = new CouponCalculation();
 
 export const calculateWinnings = (couponData, globalVars, bonusList) => {
+    // console.log(couponData);
     //calculate winnings
     let maxWin = parseFloat(couponData.totalOdds) * parseFloat(couponData.stake);
     //calculate bonus

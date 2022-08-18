@@ -203,7 +203,7 @@ export default function Header() {
                                 <h1>Sport</h1>
                             </NavLink>
                         </li>
-                        <li className="nav-mid-list-li"><NavLink id="indexLive" to="/Live/LiveDefault"><h1>In-Play</h1></NavLink></li>
+                        <li className="nav-mid-list-li"><NavLink id="indexLive" to="/Live/LiveDefault"><h1>Live</h1></NavLink></li>
                         <li className="nav-mid-list-li">
                             {user.role === 'Cashier' ?
                                 <a

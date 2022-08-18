@@ -22,6 +22,7 @@ export default function BetSlip() {
                 dispatch({type: LOADING});
                 if (res.message === 'found' && res.coupon.selections.length) {
                     let couponData = res.coupon;
+                    couponData.totalStake = couponData.stake;
                     couponData.tournaments = groupTournament(couponData.selections);
                     // couponData.fixtures = groupSelections(couponData.selections);
                     dispatch({type: SET_COUPON_DATA, payload: couponData});

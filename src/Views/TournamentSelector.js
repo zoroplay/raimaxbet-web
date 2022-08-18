@@ -50,7 +50,6 @@ export default function TournamentSelector({history}) {
     const handleSingleClick = e => {
         const newSelections = [...selections];
         const id = e.target.value;
-        console.log(e.target.checked);
         if(e.target.checked){
             newSelections.push(id);
             setSelections(newSelections);

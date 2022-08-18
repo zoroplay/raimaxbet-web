@@ -84,12 +84,10 @@ export const getAllExpenseType = () => async (dispatch) => {
 }
 
 export const getAllExpenses = () => async (dispatch) => {
-    console.log("data", "all")
     try {
         dispatch(getExpenseStarted())
         const response = await getExpenses()
         const { data } = response;
-        console.log(data)
         return dispatch(getExpenseSuccess(data))
     } catch (error) {
         return dispatch(getExpensesFailed(error.response))

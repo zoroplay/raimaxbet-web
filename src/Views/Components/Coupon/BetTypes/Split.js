@@ -7,12 +7,14 @@ export const Split = ({couponData, dispatch, globalVar, bonusList}) => {
 
     const updateSystemWinnings = (stake, action) => {
         let coupondata = {...couponData};
-        coupondata.totalStake = stake;
+        // coupondata.totalStake = stake;
 
         if(stake !== '') {
+            coupondata.totalStake = coupondata.totalStake + stake;
 
-            coupondata.exciseDuty = coupondata.totalStake * 0 / 100;
-            coupondata.stake = coupondata.totalStake - coupondata.exciseDuty;
+            // coupondata.exciseDuty = coupondata.totalStake * 0 / 100;
+            // coupondata.stake = coupondata.totalStake - coupondata.exciseDuty;
+            coupondata.stake = coupondata.totalStake;
             coupondata.minStake = parseFloat(stake) / coupondata.noOfCombos;
 
             //calculate winnings
