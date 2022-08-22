@@ -44,7 +44,7 @@ export default function EventDetails({location, history}) {
         } else if (len === 6 || len === 12) {
             return 'c6';
         } else if (len === 9 || len === 18) {
-            return 'c9'
+            return 'c5'
         } else {
             return 'c4';
         }
@@ -119,7 +119,7 @@ export default function EventDetails({location, history}) {
                                 <div className={`SEOdds ${getClass(row.selections.length)}`}>
                                     {row.selections.map((selection, s) =>
                                         <div title="Singles" className={`SEOdd g1 
-                                            ${(selection.odds === '-' || selection.odds == null) ? 'disabled' : ''}
+                                            ${(selection.odds === '-' || selection.odds == 'OFF') ? 'disabled' : ''}
                                             ${(isSelected(createID(fixture.provider_id, row.market?.id, selection.name, selection.id), coupon)) ? 'sel' : ''}`}
                                              key={`selection-${s}`}>
                                             <div className="SEOddsTQ ">{selection.name}</div>

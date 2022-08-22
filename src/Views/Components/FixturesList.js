@@ -78,7 +78,7 @@ export default function FixturesList({
                                             <div
                                                 className={`odd r1 c1 g1 
                                                 ${(predictions.length > 9 && (p % 6) === 0) ? 'firstInRow' : ''} 
-                                                ${(getOdds(prediction, fixture.odds) === '-' || getOdds(prediction, fixture.odds) == null) ? 'disabled' : ''}
+                                                ${(getOdds(prediction, fixture.odds) === '-' || getOdds(prediction, fixture.odds) == 'OFF') ? 'disabled' : ''}
                                                 ${(isSelected(createID(fixture.provider_id, prediction.market_id, prediction.odd_name, prediction.odd_id), coupon)) ? 'sel' : ''}`}
                                                 key={`prediction-${p}`}
                                                 onClick={() => dispatch(addToCoupon(fixture, prediction.market_id, prediction.market_name, getOdds(prediction, fixture.odds), prediction.odd_id, prediction.odd_name,

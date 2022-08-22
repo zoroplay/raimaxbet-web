@@ -4,6 +4,7 @@ import {getSplitProps} from "../Services/apis";
 import { updateComboWinningsFromTotal } from "../Redux/actions";
 import CouponCalculation from "./CouponCalculation";
 import { uniqBy } from "lodash";
+import couponData from "../Redux/reducers/coupon";
 const couponCalculation = new CouponCalculation();
 
 export const calculateWinnings = (couponData, globalVars, bonusList) => {
@@ -48,7 +49,8 @@ export const calculateBonus = (maxWin, coupondata, globalVars, bonusList) => {
     //get bonus settings for ticket length
     bonusList.forEach((item, i) => {
         if (coupondata.bet_type === 'Combo') {
-            if(item.ticket_length === coupondata.comboSelection)
+            const lastGrouping = coupondata.Groupings[coupondata.Groupings.length - 1];
+            if(item.ticket_length === lastGrouping.Grouping)
                 bonusInfo = item;
         } else {
             if(item.ticket_length === uniqueEvents.length)

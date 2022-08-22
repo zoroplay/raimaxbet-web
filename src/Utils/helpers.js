@@ -141,7 +141,7 @@ export const getOdds = (prediction, outcomes) => {
         }
     })
 
-    if(odd !== ''){
+    if(odd !== '' || odd !== 'OFF' || odd !== 0){
         return odd;
     }else{
         return '-';
