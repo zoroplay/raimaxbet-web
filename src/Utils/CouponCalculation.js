@@ -405,6 +405,9 @@ export default class CouponCalculation {
         betCoupon.NetStakeMaxWin = this.getNetStakeMaxWin(betCoupon);
         betCoupon.minBonus = calculateBonus(betCoupon.minWin, betCoupon, globalVar, bonusList);
         betCoupon.maxBonus = calculateBonus(betCoupon.maxWin, betCoupon, globalVar, bonusList);
+        betCoupon.maxWin = betCoupon.maxBonus + betCoupon.maxWin;
+        betCoupon.minWin = betCoupon.minBonus + betCoupon.minWin;
+
         betCoupon.MinPercentageBonus = this.getMinPercentageBonus(betCoupon);
         betCoupon.MaxPercentageBonus = this.getMaxPercentageBonus(betCoupon);
         betCoupon.minOdds = this.getMinOdd(betCoupon);
