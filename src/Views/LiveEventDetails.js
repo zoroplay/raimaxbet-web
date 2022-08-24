@@ -91,7 +91,6 @@ export function LiveEventDetails ({location, history}) {
         dispatch(addToCoupon(fixture, market.id, market.name, selection.odds, selection.id, selection.name,
                 createID(fixture.provider_id, market.id, selection.name, selection.id),'live'))
     }
-    console.log(liveData);
     return (
         <div id="eventContainer">
             <div className="headerItem">
@@ -119,6 +118,7 @@ export function LiveEventDetails ({location, history}) {
             </div>
             <ol id="live-bets-grid" style={{letterSpacing: '-4px'}}>
                 {markets?.map(market =>
+                market.active === '1' &&
                 <li className="Bet"
                     style={{paddingLeft: '0px', paddingRight: '0px', marginLeft: '0px', marginRight: '0px', width: '100%', letterSpacing: 'normal'}}
                     key={market.Id}
@@ -126,14 +126,14 @@ export function LiveEventDetails ({location, history}) {
                     <div className="BetContainer">
                         <div className="Header Relative">
                             <div className="Content">
-                                <h4 data-bind="text: Caption">{market.name}</h4>
+                                <h4 data-bind="text: Caption">{market.name} {market.specialOddsValue ? market.specialOddsValue : ''}</h4>
                                 <div className="ToggleButton" title="Collapse All Bets" />
                                 <div className="ToggleButton Toggled" title="Expand All Bet" style={{display: 'none'}} />
                                 <div className="FavoriteButton" title="preferred" />
                             </div>
                         </div>
                         <ol style={{letterSpacing: '-4px'}}>
-                            {market.active === '1' && market.odds.length > 0 && market.odds.map(selection =>
+                            {market.odds.length > 0 && market.odds.map(selection =>
                                 <li className={`Odds Relative ${market.odds.length === 2 ? 'col-2' : 'col-3'}
                                     ${isSelected(createID(fixture.provider_id, market.id, selection.type, selection.id), coupon) ? 'sel' : ''}
                                 `}
