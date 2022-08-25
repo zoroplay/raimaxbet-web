@@ -31,7 +31,6 @@ $secondary: #da251c;
 // $secondary: #373a42;
 // $secondary: #010914;
 $accent: #da251c;
-// $accent-alt: #01D46D;
 $accent-alt: #da251c;
 
 $pure-white: #fff;
@@ -297,7 +296,7 @@ input, select, textarea{
   padding-left: 10px;
   width: 112px;
   height: 30px;
-  color: $black;
+  color: $white;
   background-color: #003b79;
   // box-shadow: inset 0 5px 10px 3px #0e0e0e59;
   transition: border .2s ease-in-out;
@@ -11601,7 +11600,7 @@ ul, ul li {
     .uzr-a{
       font-weight: bold;
       margin-bottom: 5px;
-      color: $textcolor-li;
+      color: $textcolor-dr;
       &-ico{
         padding-right: 15px;
         cursor: pointer;
@@ -11646,7 +11645,7 @@ ul, ul li {
       // justify-content: flex-end;
       font-size: 11px;
       margin-bottom: 5px;
-      color: $textcolor-li;
+      color: $blue;
       //display: grid;
       //grid-template-columns: 77px 16px 60px ;
 
@@ -11720,7 +11719,7 @@ ul, ul li {
 .uxr-container{
   font-family: 'Roboto', 'Play', sans-serif;
   font-size: 12px;
-  color: $textcolor-li;
+  color: $blue;
   //margin-right: 30px;
   .uxr-inner{
     display: flex;

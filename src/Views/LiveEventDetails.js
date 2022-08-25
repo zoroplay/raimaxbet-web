@@ -7,7 +7,7 @@ import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
 import {matchStatus} from "../Utils/constants";
 import {formatOdd, isSelected, liveScore, sortTeams} from "../Utils/helpers";
 import {addToCoupon} from "../Redux/actions";
-import {createID} from "../Utils/couponHelpers";
+import {checkOddsChange, createID} from "../Utils/couponHelpers";
 
 export function LiveEventDetails ({location, history}) {
     const urlParam = new URLSearchParams(location.search);
@@ -16,6 +16,7 @@ export function LiveEventDetails ({location, history}) {
     const [liveData, setLiveData] = useState(null);
     const [markets, setMarkets] = useState(null);
     const [loading, setLoading] = useState(true);
+    const {SportsbookGlobalVariable, SportsbookBonusList} = useSelector((state) => state.sportsBook);
     const dispatch = useDispatch();
     const coupon = useSelector(({couponData}) => couponData.coupon);
 
@@ -71,9 +72,9 @@ export function LiveEventDetails ({location, history}) {
                                 selection.OddChanged = oldOddChange;
                             }
 
-                            // if (coupon.selections.length) {
-                            //     checkOddsChange(coupon, fixture, selection, dispatch, SportsbookGlobalVariable, SportsbookBonusList);
-                            // }
+                            if (coupon.selections.length) {
+                                checkOddsChange(coupon, [fixture], dispatch, SportsbookGlobalVariable, SportsbookBonusList);
+                            }
                         }
                     });
                 // }
