@@ -15,8 +15,7 @@ export const Split = ({couponData, dispatch, globalVar, bonusList}) => {
             // coupondata.exciseDuty = coupondata.totalStake * 0 / 100;
             // coupondata.stake = coupondata.totalStake - coupondata.exciseDuty;
             coupondata.stake = coupondata.totalStake;
-            coupondata.minStake = parseFloat(stake) / coupondata.noOfCombos;
-
+            coupondata.minStake = parseFloat(coupondata.stake) / coupondata.noOfCombos;
             //calculate winnings
             let minWinnings = parseFloat(coupondata.minOdds) * parseFloat(coupondata.minStake);
             let maxWinnings = parseFloat(coupondata.maxOdds) * parseFloat(coupondata.minStake);
@@ -73,8 +72,8 @@ export const Split = ({couponData, dispatch, globalVar, bonusList}) => {
                             type="text"
                             value={couponData.stake}
                             maxLength="5"
-                            onChange={(e) => updateSystemWinnings(e.target.value,'max')} />
-                        <div onClick="preReset_int();" className="small-button">Clear</div>
+                            onChange={(e) => updateSystemWinnings(parseFloat(e.target.value),'max')} />
+                        <div onClick={() => updateSystemWinnings(0, 'max')} className="small-button">Clear</div>
                     </td>
                 </tr>
                 <tr>
