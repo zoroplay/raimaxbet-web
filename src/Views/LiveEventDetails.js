@@ -81,7 +81,7 @@ export function LiveEventDetails ({location, history}) {
                 // console.log(item);
             });
 
-            setMarkets(newMarkets);
+            setMarkets(newMarkets.sort((market1, market2) => market1.id - market2.id));
         } else {
             setMarkets(liveData?.markets);
         }
@@ -127,7 +127,7 @@ export function LiveEventDetails ({location, history}) {
                     <div className="BetContainer">
                         <div className="Header Relative">
                             <div className="Content">
-                                <h4 data-bind="text: Caption">{market.name} {market.specialOddsValue ? market.specialOddsValue : ''}</h4>
+                                <h4 data-bind="text: Caption">{market.name} {market.specialOddsValue && market.specialOddsValue !== '-1' ? market.specialOddsValue : ''}</h4>
                                 <div className="ToggleButton" title="Collapse All Bets" />
                                 <div className="ToggleButton Toggled" title="Expand All Bet" style={{display: 'none'}} />
                                 <div className="FavoriteButton" title="preferred" />
