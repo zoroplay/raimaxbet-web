@@ -34,7 +34,7 @@ export default function Virtual() {
             {/* <div id="globalbet" /> */}
             <iframe 
                 title="casino" 
-                style={{ width: '100%', border: 0, height: '400vh', overflow: 'scroll'}} 
+                style={{ width: '100%', border: 0, height: '500vh', overflow: 'scroll'}} 
                 // style={{ width: '100%', border: 0, height: '100vh', overflow: scroll !important}} 
                 src={`${process.env.REACT_APP_XPRESS_LAUNCH_URL}?token=${token}&game=10100&backurl=${backurl}&mode=${mode}&group=${group}&h=${hash}`} 
             />
