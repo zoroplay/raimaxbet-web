@@ -89,8 +89,8 @@ export function LiveEventDetails ({location, history}) {
 
 
     const selectOdds = (market, selection) => {
-        dispatch(addToCoupon(fixture, market.id, market.name, selection.odds, selection.id, selection.name,
-                createID(fixture.provider_id, market.id, selection.name, selection.id),'live'))
+        dispatch(addToCoupon(fixture, market.id, market.name + '' + market.specialOddsValue && market.specialOddsValue !== '-1' ? market.specialOddsValue : '', selection.odds, selection.id, selection.type,
+                createID(fixture.provider_id, market.id, selection.type, selection.id),'live'))
     }
     return (
         <div id="eventContainer">
