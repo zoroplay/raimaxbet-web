@@ -24,7 +24,7 @@ export function LiveEventDetails ({location, history}) {
         getLiveFixtureData(eventId).then(res => {
             setLoading(false);
             if (res.success && (res.data.match_status === 'ended' || res.data.match_status === 'interrupted'))
-                history.push('/Live/LiveDefault');
+                history.push('/sport/livebetting');
 
             setFixture(res.data);
             setLiveData(JSON.parse(res.data.live_data));
