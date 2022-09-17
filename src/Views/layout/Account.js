@@ -26,10 +26,10 @@ const Account = ({children, history}) => {
                                 <li className="uxr-li-link"><NavLink title="Bet List" to="/Account/JackpotBets">Jackpot Bet List</NavLink></li>
                                 <li className="uxr-li-link"><NavLink title="Bet List" to="/Account/CouponBets">Coupon BetList</NavLink></li>
                                 <li className="uxr-li-link"><NavLink title="Transactions List" to="/Account/TransactionList">Transactions List</NavLink></li>
-
+{/* 
                                 <li className="uxr-li-link"><NavLink title="Cash Ins" to="/Account/cash-in">Cash In</NavLink></li>
                                 <li className="uxr-li-link"><NavLink title="Cash Out" to="/Account/cash-out">Cash Out</NavLink></li>
-                                <li className="uxr-li-link"><NavLink title="Expenses" to="/Account/expenses">Expenses</NavLink></li>
+                                <li className="uxr-li-link"><NavLink title="Expenses" to="/Account/expenses">Expenses</NavLink></li> */}
                                 <li className="uxr-li-link"><NavLink title="Bonuses" to="/Account/Bonuses">Bonuses</NavLink></li>
                                 <li className="uxr-li-link"><NavLink title="Transactions List" to="/Account/BonusTransactionList">Bonus Transaction List</NavLink></li>
 
