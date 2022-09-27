@@ -27,11 +27,13 @@ $mo-point: 1134px;
 $primary: #fff;
 // $primary: #191919;
 // $secondary: #343944;
-$secondary: #da251c;
+// $secondary: #da251c;
+$secondary: #01d46d;
 // $secondary: #373a42;
 // $secondary: #010914;
-$accent: #da251c;
-$accent-alt: #da251c;
+// $accent: #da251c;
+$accent: #01d46d;
+$accent-alt: #01d46d;
 
 $pure-white: #fff;
 // $alt-white: #F5F5F5;
@@ -148,7 +150,7 @@ html{
 body{
   // background-color: $white;
   background-color: darken($primary, 4%);
-  background: #484848 url(../img/bg-stadium.jpeg) fixed;
+  background: #484848 url(../img/ourbet-bg.jpeg) fixed;
   margin: 0;
   padding: 0;
   font-family: Arial, 'Roboto', Helvetica, sans-serif;
@@ -187,7 +189,7 @@ input, select, textarea{
 .header{
   position: relative;
   border-bottom: 5px solid green;
-  background-color: $primary;
+  background-color: #191919;
   padding-bottom: 9px;
   // background-image: linear-gradient(to bottom,#3a3e47 0,#2b2e37 100%);
   // background-image: linear-gradient(to bottom,lighten($primary, 5%) 0, $primary 100%);
@@ -547,7 +549,8 @@ input, select, textarea{
 
 // Footer Styles below (Footer) ----------------------------------------------
 .footer-section{
-  background-color: $secondary;
+  // background-color: $secondary;
+  background-color: #010914;
   color: $pure-white;
   width: 100%;
   // margin-top: 10px;
@@ -7358,11 +7361,7 @@ input, select, textarea{
         display: inline;
         padding-left: 3px;
         font-size: 9px;
-<<<<<<< HEAD
         color: #ffffff;
-=======
-        color: #fff;
->>>>>>> 69b141339cfc93786be933ea82bf76b9a86e8d87
       }
       .SEOddLnk {
         display: block;

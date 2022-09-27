@@ -44,11 +44,7 @@ export default function EventDetails({location, history}) {
         } else if (len === 6 || len === 12) {
             return 'c6';
         } else if (len === 9 || len === 18) {
-<<<<<<< HEAD
-            return 'c5'
-=======
             return 'c6'
->>>>>>> 69b141339cfc93786be933ea82bf76b9a86e8d87
         } else {
             return 'c4';
         }
