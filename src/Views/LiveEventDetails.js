@@ -7,7 +7,7 @@ import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
 import {matchStatus} from "../Utils/constants";
 import {formatOdd, isSelected, liveScore, sortTeams} from "../Utils/helpers";
 import {addToCoupon} from "../Redux/actions";
-import {createID} from "../Utils/couponHelpers";
+import {checkOddsChange, createID} from "../Utils/couponHelpers";
 
 export function LiveEventDetails ({location, history}) {
     const urlParam = new URLSearchParams(location.search);
@@ -16,6 +16,7 @@ export function LiveEventDetails ({location, history}) {
     const [liveData, setLiveData] = useState(null);
     const [markets, setMarkets] = useState(null);
     const [loading, setLoading] = useState(true);
+    const {SportsbookGlobalVariable, SportsbookBonusList} = useSelector((state) => state.sportsBook);
     const dispatch = useDispatch();
     const coupon = useSelector(({couponData}) => couponData.coupon);
 
@@ -23,7 +24,7 @@ export function LiveEventDetails ({location, history}) {
         getLiveFixtureData(eventId).then(res => {
             setLoading(false);
             if (res.success && (res.data.match_status === 'ended' || res.data.match_status === 'interrupted'))
-                history.push('/Live/LiveDefault');
+                history.push('/sport/livebetting');
 
             setFixture(res.data);
             setLiveData(JSON.parse(res.data.live_data));
@@ -71,16 +72,16 @@ export function LiveEventDetails ({location, history}) {
                                 selection.OddChanged = oldOddChange;
                             }
 
-                            // if (coupon.selections.length) {
-                            //     checkOddsChange(coupon, fixture, selection, dispatch, SportsbookGlobalVariable, SportsbookBonusList);
-                            // }
+                            if (coupon.selections.length) {
+                                checkOddsChange(coupon, [fixture], dispatch, SportsbookGlobalVariable, SportsbookBonusList);
+                            }
                         }
                     });
                 // }
                 // console.log(item);
             });
 
-            setMarkets(newMarkets);
+            setMarkets(newMarkets.sort((market1, market2) => market1.id - market2.id));
         } else {
             setMarkets(liveData?.markets);
         }
@@ -88,10 +89,9 @@ export function LiveEventDetails ({location, history}) {
 
 
     const selectOdds = (market, selection) => {
-        dispatch(addToCoupon(fixture, market.id, market.name, selection.odds, selection.id, selection.name,
-                createID(fixture.provider_id, market.id, selection.name, selection.id),'live'))
+        dispatch(addToCoupon(fixture, market.id, market.name + '' + market.specialOddsValue && market.specialOddsValue !== '-1' ? market.specialOddsValue : '', selection.odds, selection.id, selection.type,
+                createID(fixture.provider_id, market.id, selection.type, selection.id),'live'))
     }
-    console.log(liveData);
     return (
         <div id="eventContainer">
             <div className="headerItem">
@@ -119,6 +119,7 @@ export function LiveEventDetails ({location, history}) {
             </div>
             <ol id="live-bets-grid" style={{letterSpacing: '-4px'}}>
                 {markets?.map(market =>
+                market.active === '1' &&
                 <li className="Bet"
                     style={{paddingLeft: '0px', paddingRight: '0px', marginLeft: '0px', marginRight: '0px', width: '100%', letterSpacing: 'normal'}}
                     key={market.Id}
@@ -126,14 +127,14 @@ export function LiveEventDetails ({location, history}) {
                     <div className="BetContainer">
                         <div className="Header Relative">
                             <div className="Content">
-                                <h4 data-bind="text: Caption">{market.name}</h4>
+                                <h4 data-bind="text: Caption">{market.name} {market.specialOddsValue && market.specialOddsValue !== '-1' ? market.specialOddsValue : ''}</h4>
                                 <div className="ToggleButton" title="Collapse All Bets" />
                                 <div className="ToggleButton Toggled" title="Expand All Bet" style={{display: 'none'}} />
                                 <div className="FavoriteButton" title="preferred" />
                             </div>
                         </div>
                         <ol style={{letterSpacing: '-4px'}}>
-                            {market.active === '1' && market.odds.length > 0 && market.odds.map(selection =>
+                            {market.odds.length > 0 && market.odds.map(selection =>
                                 <li className={`Odds Relative ${market.odds.length === 2 ? 'col-2' : 'col-3'}
                                     ${isSelected(createID(fixture.provider_id, market.id, selection.type, selection.id), coupon) ? 'sel' : ''}
                                 `}

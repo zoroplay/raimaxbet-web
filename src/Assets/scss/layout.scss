@@ -15,7 +15,7 @@
 
 $skin : "atlantiq1";
 $cdnPath : "//#{$skin}.brlgcs.com/#{$skin}";
-$imagesPath : "//web.betteck.com/img";
+$imagesPath : "//web.citybet.bet/img";
 // $imagesPath : "//westernbet.brlgcs.com/atlantiq1/images";
 
 $site-width: 1024px;
@@ -24,11 +24,14 @@ $mo-point: 1134px;
 
 
 // $primary: #121827;
-$primary: #191919;
+$primary: #fff;
+// $primary: #191919;
 // $secondary: #343944;
-$secondary: #010914;
-$accent: #7d7d7d;
-$accent-alt: #01D46D;
+$secondary: #da251c;
+// $secondary: #373a42;
+// $secondary: #010914;
+$accent: #da251c;
+$accent-alt: #da251c;
 
 $pure-white: #fff;
 // $alt-white: #F5F5F5;
@@ -145,7 +148,7 @@ html{
 body{
   // background-color: $white;
   background-color: darken($primary, 4%);
-  background: #484848 url(../img/ourbet-bg.jpeg) fixed;
+  background: #484848 url(../img/bg-stadium.jpeg) fixed;
   margin: 0;
   padding: 0;
   font-family: Arial, 'Roboto', Helvetica, sans-serif;
@@ -171,7 +174,8 @@ input, select, textarea{
 
 ::selection {
   color: $textcolor-dr;
-  background: lighten($accent, 5%);
+  background: #0080d8;
+  // background: lighten($accent, 5%);
 }
 ::-moz-selection {
   color: $textcolor-dr;
@@ -292,8 +296,8 @@ input, select, textarea{
   padding-left: 10px;
   width: 112px;
   height: 30px;
-  color: $black;
-  background-color: $white;
+  color: $white;
+  background-color: #003b79;
   // box-shadow: inset 0 5px 10px 3px #0e0e0e59;
   transition: border .2s ease-in-out;
   outline: 0;
@@ -2087,7 +2091,8 @@ input, select, textarea{
   padding-left: 34px;
   margin-bottom: 10px;
   white-space: nowrap;
-  background-color: $secondary;
+  background-color: #0071be;
+  // background-color: $secondary;
   color: $textcolor-li;
   &:hover{
     &::after{
@@ -7039,7 +7044,8 @@ input, select, textarea{
 }
 .OddGB_1_0 a, .OddGB_1_1 a,
 .divOdds .SEs .item .odd.g1, .SEOdd.g1 a {
-  color: $primary;
+  // color: $primary;
+  color: black;
 }
 .divOdds.r1 .item .odds .odd {
   height: 28px;
@@ -7352,7 +7358,11 @@ input, select, textarea{
         display: inline;
         padding-left: 3px;
         font-size: 9px;
+<<<<<<< HEAD
         color: #ffffff;
+=======
+        color: #fff;
+>>>>>>> 69b141339cfc93786be933ea82bf76b9a86e8d87
       }
       .SEOddLnk {
         display: block;
@@ -7740,7 +7750,7 @@ ul, ul li {
           border: 2px solid $primary;
           box-sizing: border-box;
           background: $primary;
-          color: $white;
+          color: $black;
           float: left;
           font-size: 11px;
           outline: 0;
@@ -11595,7 +11605,7 @@ ul, ul li {
     .uzr-a{
       font-weight: bold;
       margin-bottom: 5px;
-      color: $textcolor-li;
+      color: $textcolor-dr;
       &-ico{
         padding-right: 15px;
         cursor: pointer;
@@ -11640,7 +11650,7 @@ ul, ul li {
       // justify-content: flex-end;
       font-size: 11px;
       margin-bottom: 5px;
-      color: $textcolor-li;
+      color: $blue;
       //display: grid;
       //grid-template-columns: 77px 16px 60px ;
 
@@ -11714,7 +11724,7 @@ ul, ul li {
 .uxr-container{
   font-family: 'Roboto', 'Play', sans-serif;
   font-size: 12px;
-  color: $textcolor-li;
+  color: $blue;
   //margin-right: 30px;
   .uxr-inner{
     display: flex;
@@ -11918,7 +11928,7 @@ ul, ul li {
     padding: 0;
     ul {
       li {
-        border-bottom: 1px solid lighten($white, 20%);
+        border-bottom: 1px solid lighten($accent-alt, 20%);
         transition: .3s all;
         display: inline-block;
         width: 100%;
@@ -11927,10 +11937,11 @@ ul, ul li {
         }
         &:hover,&.open,&.active {
           background-color: lighten($accent-alt,10%);
+          color: $white;
         }
         a,span {
           font-size: 13px;
-          color: lighten($white, 20%);
+          color: lighten($accent-alt, 20%);
           line-height: 33px;
           display: inline-block;
           width: 100%;

@@ -75,11 +75,11 @@ export function Withdrawal({history}) {
                                                         />
                                                     </div>
                                                     <div className="txt-deepgray mt20">
-                                                        <h3 className="txt-darkgreen"> Bank Transfer</h3>
+                                                        {/* <h3 className="txt-darkgreen"> Bank Transfer</h3>
                                                         <strong>Withdrawal via Bank Transfer is for Free.</strong> Withdrawals via bank
                                                         transfer take up to 24 hours after authorisation and are only
                                                         actioned during banking hours. If your bank account is not
-                                                        listed above, kindly add your bank account details below.
+                                                        listed above, kindly add your bank account details below. */}
                                                     </div>
                                                 </div>
                                             </div>
@@ -128,7 +128,7 @@ function Form({
             {/*<div className="info-box green">{paymentSuccess}</div>*/}
             {errMsg && <div className="callout red mb15">{errMsg}</div>}
 
-            <div className="form-row mt25">
+            <div className="form-row">
                 <div className="form-label"><strong> Withdrawal Amount ({SportsbookGlobalVariable.Currency})</strong></div>
                 <div className={`form-input ${errors.amount ? 'error' : ''}`}>
                     <Field name="amount"

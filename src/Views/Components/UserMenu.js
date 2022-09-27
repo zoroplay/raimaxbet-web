@@ -11,9 +11,9 @@ export default function UserMenu({user}) {
                 <li className="uxr-li-link"><NavLink title="Jackpot Bet List" to="/Account/CouponBets">Coupon BetList</NavLink></li>
                 <li className="uxr-li-link"><NavLink title="Transactions List" to="/Account/TransactionList">Transactions List</NavLink></li>
                 <li className="uxr-li-link"><NavLink title="Active Bonus" to="/Account/Bonuses">Bonuses</NavLink></li>
-                <li className="uxr-li-link"><NavLink title="Active Expenses" to="/Account/Expenses">Expenses</NavLink></li>
-                <li className="uxr-li-link"><NavLink title="Active Cash In" to="/Account/Cash-in">Cash In</NavLink></li>
-                <li className="uxr-li-link"><NavLink title="Active Cash Out" to="/Account/Cash-out">Cash Out</NavLink></li>
+                {/* <li className="uxr-li-link"><NavLink title="Active Expenses" to="/Account/Expenses">Expenses</NavLink></li> */}
+                {/* <li className="uxr-li-link"><NavLink title="Active Cash In" to="/Account/Cash-in">Cash In</NavLink></li> */}
+                {/* <li className="uxr-li-link"><NavLink title="Active Cash Out" to="/Account/Cash-out">Cash Out</NavLink></li> */}
                 <li className="uxr-li-link"><NavLink title="Transactions List" to="/Account/BonusTransactionList">Bonus Transaction List</NavLink></li>
 
                 {(user.role === 'Master Agent' || user.role === 'Super Agent' || user.role === 'Agent' || user.role === 'Shop') &&
