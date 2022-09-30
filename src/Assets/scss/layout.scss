@@ -29860,6 +29860,8 @@ span.ui-icon.ui-icon-circle-triangle-e {
       height: 30px;
       padding: 0 15px;
       font-size: 12px;
+     
+
     }
     .showpass{
       display: inline-block;
@@ -30094,6 +30096,7 @@ span.ui-icon.ui-icon-circle-triangle-e {
     margin: 0 auto;
     padding: 0 40px;
     display: flex;
+    justify-content: center;
     @media only screen and (max-width: 930px){
       padding: 0 10px;
       flex-direction: column;
@@ -30136,12 +30139,44 @@ span.ui-icon.ui-icon-circle-triangle-e {
           }
         }
       }
+      
+    }
+    .aqx-b{
+      flex: 1;
+      min-height: 500px;
+      max-width: 500px !important;
+      margin: 0 auto;
+      @media only screen and (max-width: 930px){
+        // padding: 10px;
+        font-size: .75rem;
+        min-height: auto;
+        max-width: 80% !important;
+      }
+      &-head{
+        text-transform: uppercase;
+        text-align: center;
+        background-color: white;
+        color: #ad1d16;
+        padding: 15px;
+        font-size: 1.1rem;
+        &-txt{
+          margin: 0;
+        }
+        @media only screen and (max-width: 930px){
+          padding: 10px;
+          font-size: .75rem;
+        }
+      }
+      &-content{
+        background-color:  #ad1d16;
+        padding: 18px 40px;
+      }
       .aqx-sub{
-        background-color: $alt-fixture;
+        background-color: white;
+        color: #ad1d16;
         padding: 20px 0;
         text-align: center;
         text-transform: uppercase;
-        color: $white;
         @media only screen and (max-width: 930px){
           padding: 10px;
         }
@@ -30158,35 +30193,9 @@ span.ui-icon.ui-icon-circle-triangle-e {
         }
       }
     }
-    .aqx-b{
-      flex: 1;
-      min-height: 500px;
-      @media only screen and (max-width: 930px){
-        // padding: 10px;
-        font-size: .75rem;
-        min-height: auto;
-      }
-      &-head{
-        text-transform: uppercase;
-        text-align: center;
-        background-color: darken($alt-fixture, 5%);
-        color: $white;
-        padding: 15px;
-        font-size: 1.1rem;
-        &-txt{
-          margin: 0;
-        }
-        @media only screen and (max-width: 930px){
-          padding: 10px;
-          font-size: .75rem;
-        }
-      }
-      &-content{
-        background-color: darken($secondary, 5%);
-        padding: 18px 40px;
-      }
-    }
+    
   }
+  
 }
 
 // Reg input styles
@@ -30213,6 +30222,8 @@ span.ui-icon.ui-icon-circle-triangle-e {
       height: 38px;
       padding: 0 15px;
       font-size: 16px;
+      
+
     }
     .showpass{
       display: inline-block;
@@ -30303,6 +30314,7 @@ span.ui-icon.ui-icon-circle-triangle-e {
         margin-right: 15px;
         padding: 5px;
         min-width: 0;
+
         &:focus::placeholder{
           color: transparent;
         }
