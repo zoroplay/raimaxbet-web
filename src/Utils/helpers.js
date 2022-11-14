@@ -208,7 +208,7 @@ export const formatOdd = (odd) => {
 };
 
 export const openFastCode = () => {
-  let url = "https://ourbet.bet/Sport/ShortCodes";
+  let url = "https://ourbet.net/Sport/ShortCodes";
   window.open(
     url,
     "mywin",
