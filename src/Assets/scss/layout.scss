@@ -11936,7 +11936,7 @@ ul, ul li {
         }
         &:hover,&.open,&.active {
           background-color: darken($accent-alt,80%);
-            color: white;
+            
         }
         a,span {
           font-size: 13px;
@@ -11953,6 +11953,9 @@ ul, ul li {
             background-color: darken($accent-alt,80%);
             color: white;
           }
+        }
+        a:hover{
+          color: white !important;
         }
         span {
           padding-left: 42px;

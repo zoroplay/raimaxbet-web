@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 import "../../Assets/scss/_deposit.scss";
 import { getAllBanks, bankWithdrawal } from "../../Services/apis";
 import { ErrorPopUp, SuccessPopUp } from "../../Utils/toastify";
+import { useSelector } from "react-redux";
 
-export const WithdrawalToBank = () => {
+export const WithdrawalToBank = ({ history }) => {
   const [loading, setLoading] = useState();
   const [data, setData] = useState([]);
   const [amount, setAmount] = useState(0);
   const [errMsg, setErrMsg] = useState("");
   const [err, setErr] = useState(false);
+  const { user, isAuthenticated } = useSelector((state) => state.auth);
   const [inputObject, setObject] = useState({
     amount: 0,
     bank_id: "",
@@ -90,6 +92,16 @@ export const WithdrawalToBank = () => {
         });
     }
   };
+
+  useEffect(() => {
+    if (!isAuthenticated) history.replace("/");
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    if (user?.email === null) {
+      history.replace("/Account/PersonalDetails");
+    }
+  }, [user]);
 
   return (
     <div className="deposit">

@@ -10,6 +10,8 @@ $red:  #01a153;
     font-size: .9rem;
 }
 .deposit{
+    background: white;
+    color: #4c4c4c;
     button{
         padding: .5rem 2rem;
         border: 0;
@@ -100,18 +102,19 @@ justify-content: center;
     .left{
         padding: 0 1rem;
         width: 50%;
-        border: 1px solid white;
-        color: white;
+        border: 1px solid #4c4c4c;
+        color: #4c4c4c;
         li{
             margin: 1rem 0;
         }
     }
     .right{
-        color: white;
+        color: #4c4c4c;
+
 
         width: 50%;
-        border: 1px solid white;
-        padding: 1rem 1rem;
+        border: 1px solid #4c4c4c;
+        padding: 0rem 1rem;
         // .form-box{
             label{
                 display: block;
@@ -188,12 +191,13 @@ select{
     button{
         background: $red;
         color: white;
-        width: 95%;
-        padding: .7rem .5rem;
+        width: 50%;
+        border-radius: 5px;
+        padding: .8rem .5rem;
     }
     button:hover{
-        background:white;
-        color:  $red;
+        background:#000;
+        color:  white;
     }
 }
 }
@@ -241,6 +245,7 @@ select{
     font-size: 13px;
     text-align: center;
     background-color: #494d59;
+    color: #fff;
     border-radius: 3px;
     height: 38px;
   }
