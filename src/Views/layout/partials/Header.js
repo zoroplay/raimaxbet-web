@@ -77,7 +77,7 @@ export default function Header() {
 
     setLogginIn(true);
 
-    login(formattedPhoneNumber(username), password)
+    login(username, password)
       .then((res) => {
         setLogginIn(false);
         if (!res.success) {
