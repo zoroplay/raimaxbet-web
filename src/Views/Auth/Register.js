@@ -14,6 +14,9 @@ const error = {
   backgroundColor: "pink",
 };
 
+const errorM = {
+  color: "#01a153",
+};
 const RegisterSchema = Yup.object().shape({
   username: Yup.string()
     .min(11, "Please enter a valid phone number")
@@ -53,23 +56,6 @@ export default function Register({ history }) {
     <Others>
       <div className="aqx-main">
         <div className="aqx-main-inner">
-          {/* <div className="aqx-a">
-            <div className="aqx-banner">
-              <a href="#" className="aqx-banner-link">
-                <div
-                  className="aqx-banner-img"
-                  style={{
-                    backgroundImage: bg
-                      ? `url(${bg})`
-                      : "http:/img/aqx-reg-banner.jpg",
-                  }}
-                />
-              </a>
-            </div>
-
-            
-          </div> */}
-
           <div className="aqx-b">
             <div className="aqx-b-head">
               <h3 className="aqx-b-head-txt">Registration</h3>
@@ -155,70 +141,12 @@ export default function Register({ history }) {
                               name="username"
                             />
                           </div>
+                          <div>
+                            <span className="error">
+                              {errors.username && errors?.username}
+                            </span>
+                          </div>
                         </div>
-                        {/* <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-                                                <div className="dnxreg-box">
-                                                    <div className="dnxreg-box-a">
-                                                        <label htmlFor="" className="nxlabel">First Name *</label>
-                                                    </div>
-                                                    <div className="dnxreg-box-b">
-                                                        <Field
-                                                            style={errors.first_name ? error : null}
-                                                            type="text"
-                                                            className="nxfield"
-                                                            placeholder=""
-                                                            name="first_name"
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div className="dnxreg-box">
-                                                    <div className="dnxreg-box-a">
-                                                        <label htmlFor="" className="nxlabel">Last Name *</label>
-                                                    </div>
-                                                    <div className="dnxreg-box-b">
-                                                        <Field
-                                                            style={errors.last_name ? error : null}
-                                                            type="text"
-                                                            className="nxfield"
-                                                            placeholder=""
-                                                            name="last_name"
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="dnxreg-box">
-                                                <div className="dnxreg-box-a">
-                                                    <label htmlFor="" className="nxlabel">Email Address *</label>
-                                                </div>
-                                                <div className="dnxreg-box-b">
-                                                    <Field
-                                                        style={errors.email ? error : null}
-                                                        type="email"
-                                                        className="nxfield"
-                                                        placeholder=""
-                                                        name="email"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="dnxreg-box">
-                                                <div className="dnxreg-box-a">
-                                                    <label htmlFor="" className="nxlabel">Mobile Number*</label>
-                                                </div>
-                                                <div className="dnxreg-box-b">
-                                                    <div className="nxmob">
-                                                        <select name="" id="" className="nxmob-select">
-                                                            <option value="+234">+234</option>
-                                                        </select>
-                                                        <Field
-                                                            style={errors.phone ? error : null}
-                                                            type="text"
-                                                            className="nxmob-num"
-                                                            placeholder="08181234567"
-                                                            name="phone"
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div> */}
                       </div>
 
                       <div className="aqx-loax-c">
