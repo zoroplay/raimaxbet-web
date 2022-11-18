@@ -216,3 +216,6 @@ export const getAllBanks = () => Http.get(`/utilities/list-banks`);
 
 export const bankWithdrawal = (payload) =>
   Http.post("user/account/withdraw", payload);
+
+export const updateProfile = (data) =>
+  Http.post("/user/account/save-personal-data", data);

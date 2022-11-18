@@ -250,8 +250,8 @@ select{
     height: 38px;
   }
   .quickstake__item:hover {
-    background-color: white;
-  color: #494d59;
+    background-color: rgb(12, 11, 11);
+  color: white;
   
 }
   div.quickstake__item, div.txt-blue, strong.txt-blue {
@@ -275,4 +275,7 @@ select{
     color: red;
     font-size: 1rem;
     text-align: center;
+}
+.pl-5{
+    padding-left: 1rem;
 }

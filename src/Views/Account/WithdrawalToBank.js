@@ -99,7 +99,7 @@ export const WithdrawalToBank = ({ history }) => {
 
   useEffect(() => {
     if (user?.email === null) {
-      history.replace("/Account/PersonalDetails");
+      history.replace("/Account/PersonalInfo");
     }
   }, [user]);
 
@@ -126,25 +126,8 @@ export const WithdrawalToBank = ({ history }) => {
         </div>
         <div className="right">
           <h3 className="">Withdrawal</h3>
-          {/* <div className="flex by-1">
-            <p onClick={() => updateAmount(1000)}>Total Balance: </p>
-            <h5> N65,00000</h5>
-          </div> */}
+
           <div>
-            {/* <div className="form-input">
-              <input
-                name="amount"
-                min={500}
-                value={inputObject.amount}
-                onChange={handleChange}
-                type="number"
-                className="deposit-input"
-                step="100"
-                maxLength={5}
-                max="10000"
-              />
-              <div className="form-input--stake"> Min 100</div>
-            </div> */}
             <div className=" my-1">
               <label className="">Amount:</label>
               <input
