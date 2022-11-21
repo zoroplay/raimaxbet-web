@@ -167,7 +167,7 @@ export default function Header() {
         <div className="nav-top">
           <div className="nav-logo-container">
             <a href="/Sport/Default">
-              <img src="/img/logo.png" alt="pitch90" className="nav-logo" />
+              <img src="/img/logo.png" alt="ourbet" className="nav-logo" />
             </a>
           </div>
           {!isAuthenticated ? (

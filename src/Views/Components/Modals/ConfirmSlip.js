@@ -83,7 +83,7 @@ export default function ConfirmSlip({couponData}) {
                                         </span>
                                     </span>
                                     <span className="content">
-                                        Please print it and go to any Pitch90 betting shop to lay the bet.
+                                        Please print it and go to any Ourbet betting shop to lay the bet.
                                         The bet is valid only when authorised in a betting shop, and the final ticket is released.
                                         Odds may change.
                                         <br />
