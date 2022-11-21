@@ -11241,6 +11241,7 @@ ul, ul li {
     }
     .mainContent {
       padding: 10px 20px 0 20px;
+      // background: black;
       .highText {
         font-weight: 700;
       }
@@ -11927,7 +11928,7 @@ ul, ul li {
     padding: 0;
     ul {
       li {
-        border-bottom: 1px solid lighten($accent-alt, 20%);
+        border-bottom: 1px solid darken($accent-alt, 20%);
         transition: .3s all;
         display: inline-block;
         width: 100%;
@@ -11935,12 +11936,12 @@ ul, ul li {
           border-bottom: none;
         }
         &:hover,&.open,&.active {
-          background-color: lighten($accent-alt,10%);
-          color: $white;
+          background-color: darken($accent-alt,80%);
+            
         }
         a,span {
           font-size: 13px;
-          color: lighten($accent-alt, 20%);
+          color: #4c4c4c;
           line-height: 33px;
           display: inline-block;
           width: 100%;
@@ -11950,8 +11951,12 @@ ul, ul li {
             margin-right: 10px;
           }
           &.active {
-            background-color: lighten($accent-alt,10%);
+            background-color: darken($accent-alt,80%);
+            color: white;
           }
+        }
+        a:hover{
+          color: white !important;
         }
         span {
           padding-left: 42px;
@@ -30172,12 +30177,12 @@ span.ui-icon.ui-icon-circle-triangle-e {
         }
       }
       &-content{
-        background-color:  #ad1d16;
+        background-color:  #01a153;
         padding: 18px 40px;
       }
       .aqx-sub{
         background-color: white;
-        color: #ad1d16;
+        color: #01a183;
         padding: 20px 0;
         text-align: center;
         text-transform: uppercase;
@@ -30799,4 +30804,41 @@ body .sr-widget .sr-pills .sr-pill.sr-active,
   font-size: 12px;
   line-height: 14px;
   color: #ffffff;
+}
+
+.personal-profile{
+  background: black;
+
+  .form-row{
+    width: 50%;
+    margin: .5rem 0;
+  padding: 1rem;
+
+    background: black;
+  }
+  label{
+display: block;
+margin-bottom: 1rem;
+color: white;
+  }
+  input{
+    width: 90%;
+    padding: 1rem;
+    background: white !important;
+    border: none;
+  }
+  .flex{
+    display: flex;
+  }
+  .update-btn{
+    text-align: center;
+    padding: 1rem 5rem;
+    margin: 0 auto;
+    border: none;
+cursor: pointer;
+  }
+  .update-btn:hover{
+    background: #01a153;
+    color: white;
+  }
 }

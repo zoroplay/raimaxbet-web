@@ -77,7 +77,7 @@ export default function Header() {
 
     setLogginIn(true);
 
-    login(formattedPhoneNumber(username), password)
+    login(username, password)
       .then((res) => {
         setLogginIn(false);
         if (!res.success) {
@@ -213,7 +213,7 @@ export default function Header() {
                 <div className="uzr-a">
                   <i className="uzr-a-ico" /> {user.username}
                 </div>
-                <div className="uzr-b">
+                <div className="uzr-b" style={{ color: "white" }}>
                   {!refreshing ? (
                     <i className="uzr-b-ico" onClick={refreshBalance} />
                   ) : (
@@ -227,7 +227,7 @@ export default function Header() {
                     {formatNumber(user.balance)}
                   </span>
                 </div>
-                <div className="uzr-b">
+                <div className="uzr-b" style={{ color: "white" }}>
                   Balance:{" "}
                   <span className="uzr-b-cur">
                     {SportsbookGlobalVariable.Currency}
@@ -236,7 +236,7 @@ export default function Header() {
                     {formatNumber(user.balance)}
                   </span>
                 </div>
-                <div className="uzr-b">
+                <div className="uzr-b" style={{ color: "white" }}>
                   Bonus:{" "}
                   <span className="uzr-b-cur">
                     {SportsbookGlobalVariable.Currency}
@@ -318,7 +318,7 @@ export default function Header() {
                     Deposit
                   </NavLink>
                 </div>
-                <div className="uxr-b">
+                <div className="uxr-b" style={{ color: "white" }}>
                   <span className="uxr-b-text">My Account</span>
                   <UserMenu user={user} />
                 </div>
