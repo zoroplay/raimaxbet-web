@@ -3,19 +3,25 @@ import React, { Fragment } from "react";
 /**
  * packages
  */
-import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
-import { useIdleTimer } from 'react-idle-timer'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import { useIdleTimer } from "react-idle-timer";
 
 import NotFound from "../Views/NotFound";
 
 import SportRoutes from "./SportRoutes";
 import Main from "../Views/layout/Main";
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
-import {authDetails, sendLogout} from "../Services/apis";
-import {REMOVE_USER_DATA, UPDATE_USER_DATA} from "../Redux/types";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { authDetails, sendLogout } from "../Services/apis";
+import { REMOVE_USER_DATA, UPDATE_USER_DATA } from "../Redux/types";
 import Jackpot from "../Views/Jackpot";
 import Register from "../Views/Auth/Register";
+import Verify from "../Views/Auth/Verify";
 import RecoverPassword from "../Views/Auth/RecoverPassword";
 import Account from "../Views/layout/Account";
 import AccountRoutes from "./AccountRoutes";
@@ -32,53 +38,54 @@ import Casino from "../Views/Casino";
 // import LiveRoutes from "./LiveRoutes";
 // import Live from "../Views/Layout/Live";
 
-
 export default function Routes() {
-  const {isAuthenticated} = useSelector((state) => state.auth);
+  const { isAuthenticated } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  const handleOnIdle = event => {
-    if(isAuthenticated) {
-      sendLogout().then(res => {
-        dispatch({type: REMOVE_USER_DATA});
-        document.body.classList.add("Anonymous");
-        document.body.classList.remove("Logged");
-      }).catch (err => {
-        dispatch({type: REMOVE_USER_DATA});
-        document.body.classList.add("Anonymous");
-        document.body.classList.remove("Logged");
-      });
+  const handleOnIdle = (event) => {
+    if (isAuthenticated) {
+      sendLogout()
+        .then((res) => {
+          dispatch({ type: REMOVE_USER_DATA });
+          document.body.classList.add("Anonymous");
+          document.body.classList.remove("Logged");
+        })
+        .catch((err) => {
+          dispatch({ type: REMOVE_USER_DATA });
+          document.body.classList.add("Anonymous");
+          document.body.classList.remove("Logged");
+        });
     }
-  }
+  };
 
-  const handleOnActive = event => {
+  const handleOnActive = (event) => {
     // console.log('user is active', event)
     // console.log('time remaining', getRemainingTime())
-  }
+  };
 
   const handleOnAction = (e) => {
     // console.log('user did something', e)
-  }
+  };
 
   const { getRemainingTime, getLastActiveTime } = useIdleTimer({
     timeout: 1000 * 60 * 10,
     onIdle: handleOnIdle,
     onActive: handleOnActive,
     onAction: handleOnAction,
-    debounce: 500
-  })
+    debounce: 500,
+  });
 
   useEffect(() => {
     if (isAuthenticated) {
-      authDetails().then(resp => {
-        if(resp.user) {
+      authDetails().then((resp) => {
+        if (resp.user) {
           const user = resp.user;
           dispatch({
             type: UPDATE_USER_DATA,
-            payload: user
+            payload: user,
           });
         }
-      })
+      });
     }
   }, [isAuthenticated]);
 
@@ -88,6 +95,7 @@ export default function Routes() {
         <Switch>
           <Redirect from="/" to="/Sport/Default" exact />
           <Route path="/Auth/Register" component={Register} />
+          <Route path="/Auth/Verify" component={Verify} />
           <Route path="/Auth/RecoverPassword" component={RecoverPassword} />
           <Route path="/Auth/ResetPassword" component={ResetPassword} />
           <Route path="/Sport/Jackpot" component={Jackpot} />
@@ -111,9 +119,21 @@ export default function Routes() {
           <Route x="/BecomeAnAgent/:path?/:extra?" exact>
             <BecomeAnAgent>
               <Switch>
-                <Route exact path="/BecomeAnAgent/register" component={AgentRegister} />
-                <Route exact path="/BecomeAnAgent/benefits" component={Benefits} />
-                <Route exact path="/BecomeAnAgent/how-to-start" component={EasySteps} />
+                <Route
+                  exact
+                  path="/BecomeAnAgent/register"
+                  component={AgentRegister}
+                />
+                <Route
+                  exact
+                  path="/BecomeAnAgent/benefits"
+                  component={Benefits}
+                />
+                <Route
+                  exact
+                  path="/BecomeAnAgent/how-to-start"
+                  component={EasySteps}
+                />
                 <Route exact path="/BecomeAnAgent" component={Index} />
               </Switch>
             </BecomeAnAgent>

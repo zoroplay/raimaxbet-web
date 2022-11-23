@@ -1,17 +1,40 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Others from "../layout/Others";
-import { confirmVerification, sendVerification } from "../../Services/apis";
+import {
+  confirmVerification,
+  sendOtp,
+  sendVerification,
+} from "../../Services/apis";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-import { UPDATE_USERNAME } from "../../Redux/types";
-import { formattedPhoneNumber } from "../../Utils/helpers";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function RecoverPassword({ history }) {
+export default function Verify({ history }) {
+  const dispatch = useDispatch();
   const [sending, setSending] = useState(false);
   const [otpStatus, setOtpStatus] = useState({ loading: false, status: "" });
+  const { isAuthenticated } = useSelector((state) => state.auth);
   const [otp, setOtp] = useState("");
-  const [username, setUsername] = useState("");
-  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isAuthenticated) history.replace("/");
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    sendSMS();
+  }, [isAuthenticated]);
+
+  const sendSMS = async () => {
+    setSending(true);
+    await sendOtp()
+      .then((res) => {
+        setSending(false);
+        toast.success("Please check your phone for your verification code");
+      })
+      .catch((err) => {
+        setSending(false);
+        toast.error("Unable to send SMS. Please try again");
+      });
+  };
 
   const [otpRef, setOtpRef] = useState({
     otp1: useRef(),
@@ -22,37 +45,16 @@ export default function RecoverPassword({ history }) {
     otp6: useRef(),
   });
 
-  const sendSMS = async (username) => {
-    if (username !== "") {
-      setSending(true);
-      await sendVerification({ username })
-        .then((res) => {
-          setSending(false);
-          if (res.success) {
-            setUsername(username);
-            toast.success("Please check your phone for your verification code");
-          }
-          // console.log(res);
-        })
-        .catch((err) => {
-          setSending(false);
-
-          toast.error("Unable to send SMS. Please try again");
-        });
-    }
-  };
-
   const confirmOtp = async (otp) => {
     setOtpStatus({ ...otpStatus, loading: true });
-    await confirmVerification({ otp, username })
+    await confirmVerification({ verification_code: otp })
       .then((res) => {
         setOtpStatus({ ...otpStatus, loading: false });
         if (res.success) {
-          dispatch({ type: UPDATE_USERNAME, payload: username });
+          //   dispatch({ type: UPDATE_USERNAME, payload: username });
           setOtpStatus({ ...otpStatus, status: "true" });
-          setTimeout(() => {
-            history.push("/Auth/ResetPassword");
-          }, 2000);
+          toast.success(res?.message);
+          history.push("/");
         } else {
           setOtpStatus({ ...otpStatus, status: "false" });
           toast.error(res.message);
@@ -88,7 +90,6 @@ export default function RecoverPassword({ history }) {
       return 0;
     }
   };
-
   return (
     <Others>
       <div className="forgot-password-page">
@@ -96,34 +97,11 @@ export default function RecoverPassword({ history }) {
           <div className="forgot-password-holder">
             <div className="block-title">
               <img src="/img/arrow-down.png" alt="" className="title-icon" />
-              <span>Forgot Password</span>
+              <span>Phone Number Verification </span>
             </div>
             <div className="forgot-password-content">
-              <p className="head-titl">
-                Enter your registered phone number to reset your password{" "}
-              </p>
+              <p className="head-tit">Enter OTP sent to your phone </p>
               <div className="form-holder">
-                <div className="input-group">
-                  <p className="label">Phone Number:</p>
-                  <input
-                    type="text"
-                    name="username"
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
-                  {/* <p className="aqx-loax-a-info">
-                                        <i className="fa fa-info-circle aqx-loax-a-info-ico" /> Do not include 0 when
-                                        entering your number; start with 7 or 1</p> */}
-                </div>
-                <div className="aqx-loax-b">
-                  <button
-                    className="aqx-loax-btn"
-                    onClick={() => sendSMS(formattedPhoneNumber(username))}
-                    disabled={sending}
-                  >
-                    Send code{" "}
-                    {sending && <i className="fa fa-spin fa-spinner" />}
-                  </button>
-                </div>
                 <div className="input-group">
                   <div className="dnxreg-box">
                     <div className="dnxreg-box-a">
@@ -213,6 +191,16 @@ export default function RecoverPassword({ history }) {
                       </div>
                     </div>
                   </div>
+                </div>
+                <div className="aqx-loax-b">
+                  <button
+                    className="aqx-loax-btn"
+                    onClick={() => sendSMS()}
+                    disabled={sending}
+                  >
+                    Re-Send OTP{" "}
+                    {sending && <i className="fa fa-spin fa-spinner" />}
+                  </button>
                 </div>
               </div>
             </div>
