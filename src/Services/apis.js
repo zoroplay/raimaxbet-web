@@ -219,3 +219,7 @@ export const bankWithdrawal = (payload) =>
 
 export const updateProfile = (data) =>
   Http.post("/user/account/save-personal-data", data);
+
+export const sendOtp = () => Http.post(`/sendsms`);
+export const verifyCode = (otp) =>
+  Http.post(`/sms/pin_verification/verify`, otp);
