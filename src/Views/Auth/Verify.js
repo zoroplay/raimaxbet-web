@@ -27,12 +27,10 @@ export default function Verify({ history }) {
     setSending(true);
     await sendOtp()
       .then((res) => {
-        console.log(res);
         setSending(false);
         toast.success("Please check your phone for your verification code");
       })
       .catch((err) => {
-        console.log(err.response);
         setSending(false);
         toast.error("Unable to send SMS. Please try again");
       });
@@ -51,7 +49,6 @@ export default function Verify({ history }) {
     setOtpStatus({ ...otpStatus, loading: true });
     await confirmVerification({ verification_code: otp })
       .then((res) => {
-        console.log(res);
         setOtpStatus({ ...otpStatus, loading: false });
         if (res.success) {
           //   dispatch({ type: UPDATE_USERNAME, payload: username });
@@ -64,7 +61,6 @@ export default function Verify({ history }) {
         }
       })
       .catch((err) => {
-        console.loh(err.response);
         setOtpStatus({ ...otpStatus, loading: false });
         toast.error("Invalid verification code.");
       });
