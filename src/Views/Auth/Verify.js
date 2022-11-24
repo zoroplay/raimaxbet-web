@@ -4,6 +4,7 @@ import {
   confirmVerification,
   sendOtp,
   sendVerification,
+  verifyCode,
 } from "../../Services/apis";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
@@ -47,7 +48,7 @@ export default function Verify({ history }) {
 
   const confirmOtp = async (otp) => {
     setOtpStatus({ ...otpStatus, loading: true });
-    await confirmVerification({ verification_code: otp })
+    await verifyCode({ verification_code: otp })
       .then((res) => {
         setOtpStatus({ ...otpStatus, loading: false });
         if (res.success) {
