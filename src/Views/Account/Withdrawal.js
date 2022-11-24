@@ -22,7 +22,7 @@ export function Withdrawal({history}) {
             setSubmitting(false);
             if (res.success) {
 
-                dispatch({type: UPDATE_USER_BALANCE, payload: res.balance});
+                dispatch({type: UPDATE_USER_BALANCE, payload: res.available_balance});
 
                 toast.success('Withdrawal request has been sent');
 

@@ -228,7 +228,7 @@ export default function Jackpot() {
             setShowConfirm(false);
             if (res.success) {
                 // update user balance
-                dispatch({type: UPDATE_USER_BALANCE, payload: res.balance});
+                dispatch({type: UPDATE_USER_BALANCE, payload: res.available_balance});
                 toast.success('Your jackpot bet has been placed successfully');
                 // return dispatch({type: SET_BET_PLACED, payload: res});
                 resetCoupon();

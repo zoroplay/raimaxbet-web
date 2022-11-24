@@ -5,7 +5,6 @@ import { getGatewayKeys, saveTransaction } from "../../Services/apis";
 import { UPDATE_USER_BALANCE } from "../../Redux/types";
 import { formatNumber } from "../../Utils/helpers";
 import { toast } from "react-toastify";
-import { useRavePayment } from "react-ravepayment";
 
 const gateways = [
   { slug: "rave", name: "Flutterwave" },
@@ -29,7 +28,6 @@ export function Deposit({ history }) {
     production: process.env.NODE_ENV === "production",
   });
   const [paymentSuccess, setPaymentSuccess] = useState("");
-  const [obj, setObj] = useState({});
   const dispatch = useDispatch();
 
   const updateAmount = (value) => {
@@ -56,7 +54,7 @@ export function Deposit({ history }) {
         // update user balance
         dispatch({
           type: UPDATE_USER_BALANCE,
-          payload: user.balance + config.amount,
+          payload: user.available_balance + config.amount,
         });
 
         response.paymentMethod = "paystack";
@@ -99,8 +97,8 @@ export function Deposit({ history }) {
     switch (activeTab.slug) {
       case "rave":
         // console.log(response);
-        if (response.respcode === "00") {
-          response.reference = response.tx.txRef;
+        if (response.charge_response_code === "00") {
+          response.reference = response.tx_ref;
           setPaymentSuccess(
             `Success!! Your account has been credited with ${formatNumber(
               config.amount
@@ -109,7 +107,7 @@ export function Deposit({ history }) {
           // update user balance
           dispatch({
             type: UPDATE_USER_BALANCE,
-            payload: user.balance + config.amount,
+            payload: user.available_balance + config.amount,
           });
 
           saveTransaction(response);
@@ -125,7 +123,7 @@ export function Deposit({ history }) {
           // update user balance
           dispatch({
             type: UPDATE_USER_BALANCE,
-            payload: user.balance + config.amount,
+            payload: user.available_balance + config.amount,
           });
 
           saveTransaction(response);
@@ -142,7 +140,7 @@ export function Deposit({ history }) {
           // update user balance
           dispatch({
             type: UPDATE_USER_BALANCE,
-            payload: user.balance + config.amount,
+            payload: user.available_balance + config.amount,
           });
           response.reference = response.transactionReference;
 
@@ -153,15 +151,13 @@ export function Deposit({ history }) {
     setConfig({ ...config, amount: "" });
   };
 
-  const onClose = () => {
-    // console.log('closed');
+  const onClose = (resp) => {
+    console.log('closed', resp);
   };
 
   useEffect(() => {
     getGateway(activeTab);
   }, []);
-
-  const { initializePayment } = useRavePayment(config);
 
   function payWithMonnify() {
     window.MonnifySDK.initialize({
@@ -182,6 +178,34 @@ export function Deposit({ history }) {
         //Implement what should happen when the modal is closed here
         console.log(data);
       },
+    });
+  }
+
+  function payWithRave() {
+    const raveModal = window.FlutterwaveCheckout({
+      public_key: config.PBFPubKey,
+      tx_ref: "FLW_" + Math.floor(Math.random() * 1000000000 + 1),
+      amount: config.amount,
+      currency: "NGN",
+      payment_options: "card, banktransfer, ussd",
+      redirect_url: "",
+      customer: {
+        email: user?.email,
+        // phone_number: "08102909304",
+        name: user?.username,
+      },
+      callback: (response) => {
+        console.log('completed', response)
+        onSuccess(response);
+        raveModal.close();
+      },
+      onclose: (incomplete) => {
+        console.log('closed', incomplete)
+        if (incomplete === true) {
+          // Record event in analytics
+
+        }
+      }
     });
   }
 
@@ -312,9 +336,7 @@ export function Deposit({ history }) {
                                 rave: (
                                   <button
                                     className="btn green mt20 mb20"
-                                    onClick={() =>
-                                      initializePayment(onSuccess, onClose)
-                                    }
+                                    onClick={() => payWithRave()}
                                   >
                                     {" "}
                                     Make Payment

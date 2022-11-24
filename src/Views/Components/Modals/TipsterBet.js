@@ -39,7 +39,7 @@ export default function TipsterBet({dispatch, betslip, reset}) {
             .then(res => {
                 setSending(false);
                 if (res.success) {
-                    dispatch({type: UPDATE_USER_BALANCE, payload: res.balance});
+                    dispatch({type: UPDATE_USER_BALANCE, payload: res.available_balance});
                     dispatch({type: SHOW_TIPSTER_BET});
                     toast.success('Your bet has been placed successfully', {position: 'top-center'});
                 } else if (res.message === 'auth_fail') {

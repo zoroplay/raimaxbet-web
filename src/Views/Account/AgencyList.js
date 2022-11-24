@@ -104,7 +104,7 @@ export default function AgencyList() {
                                                                     <td>{ row.rolename }</td>
                                                                     <td>{ row.username }</td>
                                                                     <td>{ row.name }</td>
-                                                                    <td>{SportsbookGlobalVariable.Currency}{ formatNumber(row.balance) }</td>
+                                                                    <td>{SportsbookGlobalVariable.Currency}{ formatNumber(row.available_balance) }</td>
                                                                     <td>
                                                                         <a href="javascript:;" onClick={() => dispatch({
                                                                             type: SHOW_PASSWORD_MODAL,

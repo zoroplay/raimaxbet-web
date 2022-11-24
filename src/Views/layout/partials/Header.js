@@ -42,7 +42,7 @@ export default function Header() {
     if (isAuthenticated) {
       LEcho.channel(`deposits.${user.username}`).listen("DepositEvent", (e) => {
         // console.log(e.user);
-        dispatch({ type: UPDATE_USER_BALANCE, payload: e.user.balance });
+        dispatch({ type: UPDATE_USER_BALANCE, payload: e.user.available_balance });
         toast.success("Your deposit request was successful");
       });
 
@@ -224,7 +224,7 @@ export default function Header() {
                     {SportsbookGlobalVariable.Currency}
                   </span>
                   <span className="uzr-b-num">
-                    {formatNumber(user.balance)}
+                    {formatNumber(user.available_balance)}
                   </span>
                 </div>
                 <div className="uzr-b" style={{ color: "white" }}>

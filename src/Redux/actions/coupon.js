@@ -22,7 +22,7 @@ import {Http} from "../../Utils";
 import * as _ from 'lodash';
 import {toast} from "react-toastify";
 import {getSplitProps, loadCoupon} from "../../Services/apis";
-import {calculateExclusionPeriod, checkNoOfDraws, formatDate} from "../../Utils/helpers";
+import {calculateExclusionPeriod, checkNoOfDraws} from "../../Utils/helpers";
 import CouponCalculation from "../../Utils/CouponCalculation";
 
 const couponCalculation = new CouponCalculation();
@@ -165,14 +165,8 @@ export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddna
             }
             for (let i = 0; i < couponData.selections.length; i++) {
                 if(couponData.selections[i].provider_id === data.provider_id){
-                    // recalculate total odds
-                    // couponData.totalOdds = (parseFloat(couponData.totalOdds) * parseFloat(couponData.selections[i].odds)).toFixed(2);
                     //add selection to selections list
                     couponData.selections.push(data);
-                    //calculate and get pot winnings with bonus
-                    // const winnings = calculateWinnings(couponData, globalVars, bonusList);
-                    // couponData.maxWin = winnings.maxWin;
-                    // couponData.maxBonus = winnings.maxBonus;
                     //group selections by match
                     couponData.tournaments = groupTournament(couponData.selections);
                     // couponData.fixtures = groupSelections(couponData.selections);
@@ -666,7 +660,7 @@ export function placeBet(e, type, giftCode){
                     ele.innerHTML = 'Proceed';
 
                     // update user balance
-                    dispatch({type: UPDATE_USER_BALANCE, payload: res.balance});
+                    dispatch({type: UPDATE_USER_BALANCE, payload: res.available_balance});
                     // update todays bet
                     dispatch({type: SET_TODAYS_BET, payload: res.coupon});
                     // dispatch({type: CANCEL_BET});
@@ -789,7 +783,7 @@ export function placePoolBet(e) {
             ele.innerHTML = 'Place Bet';
             if (res.success) {
                 // update user balance
-                dispatch({type: UPDATE_USER_BALANCE, payload: res.balance});
+                dispatch({type: UPDATE_USER_BALANCE, payload: res.available_balance});
 
                 dispatch({type: CANCEL_BET});
                 window.scrollTo({
@@ -840,7 +834,7 @@ export function placeCouponBet(e) {
             ele.innerHTML = 'Place Bet';
             if (res.success) {
                 // update user balance
-                dispatch({type: UPDATE_USER_BALANCE, payload: res.balance});
+                dispatch({type: UPDATE_USER_BALANCE, payload: res.available_balance});
 
                 dispatch({type: CANCEL_BET});
                 window.scrollTo({

@@ -82,7 +82,7 @@ export default function TransferFunds() {
                                     <tr className="dgItemStyle" key={i}>
                                       <td align="center">{row.username}</td>
                                       <td align="center">
-                                        {formatNumber(row.balance)}
+                                        {formatNumber(row.available_balance)}
                                       </td>
                                       <td
                                         align="center"

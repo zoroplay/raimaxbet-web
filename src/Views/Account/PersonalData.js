@@ -49,7 +49,7 @@ export default function PersonalData({ history }) {
           phone_number: res.user.details.phone_number,
           username: res.user.username,
           email: res.user.email,
-          balance: res.user.balance,
+          balance: res.user.available_balance,
         });
         setCountries(res.countries);
         setStates(res.states);

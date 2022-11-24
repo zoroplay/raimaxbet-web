@@ -208,7 +208,7 @@ export const formatOdd = (odd) => {
 };
 
 export const openFastCode = () => {
-  let url = "https://ourbet.net/Sport/ShortCodes";
+  let url = `${process.env.REACT_APP_BASEURL}/Sport/ShortCodes`;
   window.open(
     url,
     "mywin",

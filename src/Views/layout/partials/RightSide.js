@@ -25,7 +25,7 @@ export default function RightSide() {
             {!isAuthenticated ?
                 <NavLink to="/Auth/Register" className="registerBtn">REGISTER NOW!</NavLink>
                 :
-                user.role !== 'Cashier' && <a href="javascript:;" onClick={() => dispatch({type: SHOW_DEPOSIT_MODAL})} className="depositBtn">DEPOSIT NOW!</a>
+                user.role !== 'Cashier' && <NavLink to="/Account/Deposit" className="depositBtn">DEPOSIT NOW!</NavLink>
             }
             {/* SMART BET*/}
             <SmartBet />
