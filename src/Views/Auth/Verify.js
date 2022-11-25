@@ -13,7 +13,7 @@ export default function Verify({ history }) {
   const dispatch = useDispatch();
   const [sending, setSending] = useState(false);
   const [otpStatus, setOtpStatus] = useState({ loading: false, status: "" });
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
   const [otp, setOtp] = useState("");
 
   useEffect(() => {
@@ -21,20 +21,30 @@ export default function Verify({ history }) {
   }, [isAuthenticated]);
 
   useEffect(() => {
+    if (user?.verified === 1) {
+      history.replace("/");
+    }
+  }, [user]);
+
+  useEffect(() => {
     sendSMS();
   }, [isAuthenticated]);
 
   const sendSMS = async () => {
     setSending(true);
-    await sendOtp()
-      .then((res) => {
-        setSending(false);
-        toast.success("Please check your phone for your verification code");
-      })
-      .catch((err) => {
-        setSending(false);
-        toast.error("Unable to send SMS. Please try again");
-      });
+    if (user?.verified === 0) {
+      await sendOtp()
+        .then((res) => {
+          console.log(res);
+
+          setSending(false);
+          toast.success("Please check your phone for your verification code");
+        })
+        .catch((err) => {
+          setSending(false);
+          toast.error("Unable to send SMS. Please try again");
+        });
+    }
   };
 
   const [otpRef, setOtpRef] = useState({
@@ -51,11 +61,11 @@ export default function Verify({ history }) {
     await verifyCode({ verification_code: otp })
       .then((res) => {
         setOtpStatus({ ...otpStatus, loading: false });
-        if (res.success) {
-          //   dispatch({ type: UPDATE_USERNAME, payload: username });
+        if (res.message === "Your account is now active") {
+          window.location.reload(false);
           setOtpStatus({ ...otpStatus, status: "true" });
           toast.success(res?.message);
-          history.push("/");
+          history.push("/Sport/Default");
         } else {
           setOtpStatus({ ...otpStatus, status: "false" });
           toast.error(res.message);

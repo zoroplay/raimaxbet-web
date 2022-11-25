@@ -24,6 +24,7 @@ export default function Home({ history }) {
     }
   }, [res]);
 
+  console.log(user);
   return (
     <div className="App-header">
       {sliders.length && (
