@@ -35,8 +35,6 @@ export default function Verify({ history }) {
     if (user?.verified === 0) {
       await sendOtp()
         .then((res) => {
-          console.log(res);
-
           setSending(false);
           toast.success("Please check your phone for your verification code");
         })
@@ -58,14 +56,14 @@ export default function Verify({ history }) {
 
   const confirmOtp = async (otp) => {
     setOtpStatus({ ...otpStatus, loading: true });
-    await verifyCode({ verification_code: otp })
+    await verifyCode({ verification_pin: otp })
       .then((res) => {
         setOtpStatus({ ...otpStatus, loading: false });
-        if (res.message === "Your account is now active") {
+        if (res.status) {
           window.location.reload(false);
           setOtpStatus({ ...otpStatus, status: "true" });
           toast.success(res?.message);
-          history.push("/Sport/Default");
+          history.push("/");
         } else {
           setOtpStatus({ ...otpStatus, status: "false" });
           toast.error(res.message);
