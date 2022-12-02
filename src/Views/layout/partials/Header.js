@@ -100,6 +100,7 @@ export default function Header() {
       })
       .catch((err) => {
         setLogginIn(false);
+        console.log(err.response);
         if (err.response.status === 401) {
           toast.error("Invalid username or password", {
             position: "top-right",
