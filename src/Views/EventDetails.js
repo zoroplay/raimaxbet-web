@@ -126,7 +126,7 @@ export default function EventDetails({location, history}) {
                                             <div className="SEOddLnk"
                                                  onClick={() => dispatch(addToCoupon(fixture, row.market?.id, row.market.name, selection.odds, selection.id, selection.name,
                                                      createID(fixture.provider_id, row.market?.id, selection.name, selection.id), fixture.fixture_type))}>
-                                                {selection.odds}
+                                                {parseFloat(selection.odds).toFixed(2)}
                                             </div>
                                         </div>
                                     )}

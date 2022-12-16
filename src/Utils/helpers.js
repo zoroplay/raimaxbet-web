@@ -148,7 +148,7 @@ export const getOdds = (prediction, outcomes) => {
   });
 
   if (odd !== "" || odd !== "OFF" || odd !== 0) {
-    return odd;
+    return odd > 0 ? parseFloat(odd).toFixed(2) : "-";
   } else {
     return "-";
   }

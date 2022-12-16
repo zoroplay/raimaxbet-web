@@ -15,7 +15,7 @@ export default function CurrentBetslip({coupon, dispatch, user}) {
             <div className="selections-wrapper">
                 <div className="selections">
                     <div className="selection">Selections <span className="selectionss">{coupon.selections.length}</span></div>
-                    <div className="max-odd">Max Odd <span className="maxodd" id="quota">{coupon.totalOdds}</span></div>
+                    <div className="max-odd">Max Odd <span className="maxodd" id="quota">{parseFloat(coupon.totalOdds).toFixed(2)}</span></div>
                 </div>
                 <div id="couponEvents">
                     {coupon.tournaments.map(tournament =>
@@ -169,7 +169,7 @@ export default function CurrentBetslip({coupon, dispatch, user}) {
                                         Stake <span id="totalStake">{coupon.totalStake || 0}</span>
                                     </td>
                                     <td>
-                                        Odds <span className="maxodd">{coupon.totalOdds}</span>
+                                        Odds <span className="maxodd">{parseFloat(coupon.totalOdds).toFixed(2)}</span>
                                     </td>
                                 </tr>
                                 <tr>
