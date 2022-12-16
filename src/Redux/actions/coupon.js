@@ -129,6 +129,9 @@ export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddna
                             couponData.grossWin = parseFloat(couponData.maxBonus) + maxWinnings;
                             couponData.wthTax = (couponData.grossWin - couponData.stake) * process.env.REACT_APP_WTH_PERC / 100;
                             couponData.maxWin = couponData.grossWin - couponData.wthTax;
+
+                            return dispatch({type: SET_COUPON_DATA, payload: couponData});
+
                         } else {
 
                             // recalculate totalOdds if prev bet type was Split
