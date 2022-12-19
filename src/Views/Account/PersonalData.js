@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { SET_USER_DATA } from "../../Redux/types";
 
 export default function PersonalData({ history }) {
-  const { SportsbookGlobalVariable } = useSelector((state) => state.sportsBook);
   const [isSubmitting, setSubmitting] = useState(false);
   const [errMsg, setErrmsg] = useState("");
   const [err, setErr] = useState(false);
@@ -39,8 +38,7 @@ export default function PersonalData({ history }) {
           first_name: res.user.details.first_name,
           last_name: res.user.details.last_name,
           phone: res?.user?.details?.phone_number,
-
-          date_of_birth: res.user.details.date_of_birth,
+          // date_of_birth: res.user.details.date_of_birth,
           gender: res.user.details.gender,
           country_id: res.user.details.country_id,
           state_id: res.user.details.state_id,
@@ -104,6 +102,7 @@ export default function PersonalData({ history }) {
           history.goBack();
         })
         .catch((err) => {
+          console.log(err.response);
           setSubmitting(false);
           if (err.response.status === 422) {
             let errors = Object.values(err?.response?.data?.errors);
