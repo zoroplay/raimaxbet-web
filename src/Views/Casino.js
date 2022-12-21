@@ -8,7 +8,7 @@ export default function Casino() {
 
   return (
     <JackpotLayout>
-      <iframe title="casino" style={{ width: '100%', border: 0, height: '100vh'}} src={`${process.env.REACT_APP_CASINO_URL}/?cid=1&token=${user?.auth_code}-${process.env.REACT_APP_SITE_KEY}`} />
+      <iframe title="casino" style={{ width: '100%', border: 0, height: '100vh'}} src={`${process.env.REACT_APP_CASINO_URL}/?cid=1&token=${user?.code}-${user?.auth_code}-${process.env.REACT_APP_SITE_KEY}`} />
     </JackpotLayout>
   );
 }
