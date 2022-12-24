@@ -21,7 +21,7 @@ import {
 import {Http} from "../../Utils";
 import * as _ from 'lodash';
 import {toast} from "react-toastify";
-import {getSplitProps, loadCoupon} from "../../Services/apis";
+import {getOddsChange, getSplitProps, loadCoupon} from "../../Services/apis";
 import {calculateExclusionPeriod, checkNoOfDraws} from "../../Utils/helpers";
 import CouponCalculation from "../../Utils/CouponCalculation";
 
@@ -895,5 +895,87 @@ export function reloadCoupon (betslip_id, action) {
                 alert('Unable to rebet the selected coupon because all the events are expired');
             }
         }).catch(err => dispatch({type: LOADING}));
+    }
+}
+
+export function oddsChange() {
+    return (dispatch, getState) => {
+        const state = getState();
+        let couponData = {...state.couponData.coupon}
+        const globalVars = {...state.sportsBook.SportsbookGlobalVariable};
+        const bonusList = [...state.sportsBook.SportsbookBonusList];
+        const selections = couponData.selections;
+        const data = [];
+
+        selections.forEach(selection => {
+            data.push({
+                is_live: selection.event_type === 'live' ? true : false,
+                match_id: selection.provider_id,
+                market_id: selection.market_id,
+                odd_id: selection.odd_id,
+                odds_value: selection.odds,
+                odds_type: selection.oddname
+            })
+        });
+
+        getOddsChange(data).then(async (res) => {
+            if(res.success) {
+                const changes = res.data
+                // console.log(changes);
+                for (let i = 0; i < changes.length; i++) {
+                    const selection = selections.find(item => item.odd_id === changes[i].odds_id && item.provider_id === changes[i].match_id);
+                    if (selection) {
+                        selection.odds = changes[i].odds;
+                    }
+                }
+                couponData.totalOdds = calculateTotalOdds(couponData.selections);
+                
+                if (couponData.bet_type === 'Split') {
+                    couponData = await getSplitProps(couponData);
+                    couponData.minStake = parseFloat(couponData.stake) / couponData.noOfCombos;
+    
+                    //calculate winnings
+                    const minWinnings = parseFloat(couponData.minOdds) * parseFloat(couponData.minStake);
+                    const maxWinnings = parseFloat(couponData.maxOdds) * parseFloat(couponData.minStake);
+                    //calculate bonus
+                    couponData.minBonus = calculateBonus(minWinnings, couponData, globalVars, bonusList);
+                    couponData.maxBonus = calculateBonus(maxWinnings, couponData, globalVars, bonusList);
+                    couponData.minGrossWin = parseFloat(couponData.minBonus) + minWinnings;
+                    couponData.minWTH = (couponData.minGrossWin - couponData.stake) * process.env.REACT_APP_WTH_PERC / 100;
+                    couponData.minWin = couponData.minGrossWin - couponData.minWTH;
+                    couponData.grossWin = parseFloat(couponData.maxBonus) + maxWinnings;
+                    const wthTax = (couponData.grossWin - couponData.stake) * process.env.REACT_APP_WTH_PERC / 100;
+                    couponData.wthTax = wthTax < 1 ? 0 : wthTax;
+                    couponData.maxWin = couponData.grossWin - couponData.wthTax;
+    
+                    return dispatch({type: SET_COUPON_DATA, payload: couponData});
+                } else {
+                    const calculatedGroup   = couponCalculation.calcCombinations(couponData);
+                    couponData.combos       = calculatedGroup.Groups;
+                    // couponData.combos = await getCombos(couponData);
+                    //calculate and get pot winnings with bonus
+                    if (couponData.bet_type === 'Combo') {
+                        dispatch({type: SET_COUPON_DATA, payload: couponData});
+                        if (couponData.Groupings && couponData.Groupings.length) {
+                            setTimeout(() => {
+                                return dispatch(updateComboWinningsFromTotal());
+                            }, 500);
+                        }
+                    } else {
+                        const winnings = calculateWinnings(couponData, globalVars, bonusList);
+                        couponData.maxWin = winnings.maxWin;
+                        couponData.maxBonus = winnings.maxBonus;
+                        couponData.wthTax = winnings.wthTax;
+                        couponData.grossWin = winnings.grossWin;
+    
+                        return dispatch({type: SET_COUPON_DATA, payload: couponData});
+                    }
+                }
+                couponData.selections = selections;
+                return dispatch({type: SET_COUPON_DATA, payload: couponData});
+            }
+        }).catch(e => {
+            console.log(e.message);
+        })
     }
 }

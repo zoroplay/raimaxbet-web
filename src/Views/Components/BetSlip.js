@@ -5,8 +5,8 @@ import {groupTournament} from "../../Utils/couponHelpers";
 import {LOADING, SET_COUPON_DATA, SET_TODAYS_BET} from "../../Redux/types";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {toast} from "react-toastify";
 import CurrentBetslip from "./Coupon/CurrentBetslip";
+import { oddsChange } from '../../Redux/actions';
 
 export default function BetSlip() {
     const {coupon, todaysBets} = useSelector((state) => state.couponData);
@@ -46,6 +46,17 @@ export default function BetSlip() {
         }
     }, [isAuthenticated]);
 
+    useEffect(() => {
+
+        const interval = setInterval(() => {
+            if(coupon.selections.length)
+                dispatch(oddsChange());
+        }, 15000);
+
+        return () => clearInterval(interval);
+    }, [coupon]);
+
+    
 
     return (
         <div className="single-block betslip-holder active">

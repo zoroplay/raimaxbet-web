@@ -16,11 +16,12 @@ export function LiveBetting ({history}) {
     const coupon = useSelector(({couponData}) => couponData.coupon);
     const {SportsbookGlobalVariable, SportsbookBonusList} = useSelector((state) => state.sportsBook);
     const dispatch = useDispatch();
+    
     const getData = () => {
         getLiveFixtures().then(response => {
-            setAvailableSports(response.data.sports);
-            let tournaments = groupLiveSports(response.data.fixtures);
-            let sports = response.data.sports;
+            setAvailableSports(response.data.data.sports);
+            let tournaments = groupLiveSports(response.data.data.fixtures);
+            let sports = response.data.data.sports;
             if(sports.length > 0){
                 sports.forEach((item, key) => {
                     item.Tournaments = []
@@ -32,10 +33,10 @@ export function LiveBetting ({history}) {
                 // console.log(sports);
                 setSports(sports);
                 // check if current selection has event in it and update
-                if (coupon.selections.length) {
-                    // console.log('checking odds update')
-                    checkOddsChange(coupon, response.data.fixtures, dispatch, SportsbookGlobalVariable, SportsbookBonusList);
-                }
+                // if (coupon.selections.length) {
+                //     // console.log('checking odds update')
+                //     checkOddsChange(coupon, response.data.data.fixtures, dispatch, SportsbookGlobalVariable, SportsbookBonusList);
+                // }
             }else{
 
             }
@@ -44,9 +45,9 @@ export function LiveBetting ({history}) {
 
     useEffect(() => {
         getLiveFixtures().then(response => {
-            setAvailableSports(response.data.sports || []);
-            let tournaments = groupLiveSports(response.data.fixtures);
-            let sports = response.data.sports;
+            setAvailableSports(response.data.data.sports || []);
+            let tournaments = groupLiveSports(response.data.data.fixtures);
+            let sports = response.data.data.sports;
             if(sports.length > 0){
                 sports.forEach((item, key) => {
                     item.Tournaments = []
@@ -165,32 +166,33 @@ export function LiveBetting ({history}) {
                                                                                 <div className="SE">{market.name}</div>
                                                                                 <div className={market.hasSpread ? 'hndItem' : ''}>
                                                                                     {market.hasSpread && match.live_data?.markets && getSpread(match.live_data?.markets, market) !== undefined &&
-                                                                                    <div className="hnd">
-                                                                                        <div className="hndTitle">hnd</div>
-                                                                                        <div className="hndValue">
-                                                                                            {getSpread(match.live_data?.markets, market)}
+                                                                                        <div className="hnd">
+                                                                                            <div className="hndTitle">hnd</div>
+                                                                                            <div className="hndValue">
+                                                                                                {getSpread(match.live_data?.markets, market)}
+                                                                                            </div>
                                                                                         </div>
-                                                                                    </div>
                                                                                     }
                                                                                     {market.outcomes.map(outcome =>
-                                                                                    <div 
-                                                                                        className={`OddsQuotaItemStyleTQ 
-                                                                                        ${market.hasSpread ? 'hndItem' : ''} 
-                                                                                        ${getSpread(match.live_data?.markets, market) === undefined ? 'noOdd' : ''}
-                                                                                        g1`} 
-                                                                                        key={`${slugify(sport.Name)}-${market.id}-${outcome.id}`}
-                                                                                    >
-                                                                                        <LiveOdd
-                                                                                            newOdds={getLiveOdds(match.live_data?.markets, market, outcome)}
-                                                                                            // newOdds={0.0}
-                                                                                            outcome={outcome}
-                                                                                            market={market}
-                                                                                            fixture={match}
-                                                                                            coupon={coupon}
-                                                                                            globalVars={SportsbookGlobalVariable}
-                                                                                            bonusList={SportsbookBonusList}
-                                                                                        />
-                                                                                    </div>)}
+                                                                                        <div 
+                                                                                            className={`OddsQuotaItemStyleTQ 
+                                                                                            ${market.hasSpread ? 'hndItem' : ''} 
+                                                                                            ${getSpread(match.live_data?.markets, market) === undefined ? 'noOdd' : ''}
+                                                                                            g1`} 
+                                                                                            key={`${slugify(sport.Name)}-${market.id}-${outcome.id}`}
+                                                                                        >
+                                                                                            <LiveOdd
+                                                                                                newOdds={getLiveOdds(match.live_data?.markets, market, outcome)}
+                                                                                                // newOdds={0.0}
+                                                                                                outcome={outcome}
+                                                                                                market={market}
+                                                                                                fixture={match}
+                                                                                                coupon={coupon}
+                                                                                                globalVars={SportsbookGlobalVariable}
+                                                                                                bonusList={SportsbookBonusList}
+                                                                                            />
+                                                                                        </div>
+                                                                                    )}
                                                                                 </div>
                                                                             </div> )}
                                                                         </div>

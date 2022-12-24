@@ -9,7 +9,7 @@ import {useSelector} from "react-redux";
 
 export default function CurrentBetslip({coupon, dispatch, user}) {
     const {SportsbookGlobalVariable, SportsbookBonusList} = useSelector((state) => state.sportsBook);
-
+    
     return (
         <div id="coupon">
             <div className="selections-wrapper">
