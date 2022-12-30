@@ -1,5 +1,6 @@
 import { Http } from "../Utils";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 export const fetchGlobalVars = () => Http.get(`/utilities/globalvariables`);
 
@@ -169,11 +170,7 @@ export const getLiveFixtureData = (eventId) =>
 
 export const getUpcomingLive = () => Http.get("/sports/live/upcoming");
 
-export const getOddsChange = (data) =>
-  Http.post(
-    `https://sb-btk-sportapi-cdn-micro-prod.azureedge.net/api/feeds/oddschanged/en`,
-    data
-  );
+export const getOddsChange = (data) => Http.post("/sports/live/oddschanged", data);
 
 export const getJackpots = () => Http.get("/sports/jackpots");
 
