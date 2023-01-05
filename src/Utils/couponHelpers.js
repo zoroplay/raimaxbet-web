@@ -4,11 +4,9 @@ import {getSplitProps} from "../Services/apis";
 import { updateComboWinningsFromTotal } from "../Redux/actions";
 import CouponCalculation from "./CouponCalculation";
 import { uniqBy } from "lodash";
-import couponData from "../Redux/reducers/coupon";
 const couponCalculation = new CouponCalculation();
 
 export const calculateWinnings = (couponData, globalVars, bonusList) => {
-    // console.log(couponData);
     //calculate winnings
     let maxWin = parseFloat(couponData.totalOdds) * parseFloat(couponData.stake);
     //calculate bonus

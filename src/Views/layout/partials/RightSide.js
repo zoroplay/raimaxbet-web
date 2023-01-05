@@ -5,11 +5,9 @@ import CouponCheck from "../../Components/CouponCheck";
 import BetSlip from "../../Components/BetSlip";
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {SHOW_DEPOSIT_MODAL} from "../../../Redux/types";
 import useSWR from "swr/esm/use-swr";
 
 export default function RightSide() {
-    const dispatch = useDispatch();
     const {isAuthenticated, user } = useSelector(state => state.auth);
     const [image, setBg] = useState(null);
 
@@ -20,6 +18,7 @@ export default function RightSide() {
             setBg(res.image_path);
         }
     }, [res]);
+
     return (
         <div className="side3">
             {!isAuthenticated ?

@@ -51,9 +51,12 @@ export default function BetSlip() {
         const interval = setInterval(() => {
             if(coupon.selections.length)
                 dispatch(oddsChange());
-        }, 15000);
+        }, 20000);
 
-        return () => clearInterval(interval);
+        return () => {
+            if(!coupon.selections.length)
+                clearInterval(interval);
+        };
     }, [coupon]);
 
     
