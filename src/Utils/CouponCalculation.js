@@ -247,12 +247,14 @@ export default class CouponCalculation {
         calculatedCouponGroups.forEach(function (g) { return calculatedCoupon.Groups.push(g); });
         return calculatedCoupon;
     };
+
     calcCombinationsForCrossCombinationsBetGroup = function (k, numSelectionsPerEvent, maxCombinationForCoupon) {
         var choosen = fastCombination.chooseFromSets(numSelectionsPerEvent, k);
         if (choosen > maxCombinationForCoupon)
             return -1;
         return choosen;
     };
+    
     calcPotentialWins = function (coupon, bonusList) {
         var maxCombinationForCoupon = Math.min(process.env.REACT_APP_MaxCombinationsByGrouping, process.env.REACT_APP_MaxCouponCombinations);
         var oddsForSlotKeyMap = this.getOddsForSlotKeyMap(coupon);
@@ -379,18 +381,18 @@ export default class CouponCalculation {
                 var betCouponGroups = betCoupon.Groupings.filter(function (g) { return g.Grouping == calculatedGroup.Grouping; });
                 if (betCouponGroups.length > 0) {
                     var betCouponGroup = betCouponGroups[0];
-                    betCouponGroup.Combinations = calculatedGroup.Combinations;
-                    betCouponGroup.MaxBonus = calculatedGroup.MaxBonus();
-                    betCouponGroup.maxWin = calculatedGroup.MaxWin();
-                    betCouponGroup.MaxWinNet = calculatedGroup.NetStakeMaxWin(); // Till this point only turnover tax is applied. Witholding tax is applied later
-                    betCouponGroup.NetStakeMaxWin = calculatedGroup.NetStakeMaxWin();
-                    betCouponGroup.MinBonus = calculatedGroup.MinBonus();
-                    betCouponGroup.minWin = calculatedGroup.MinWin();
-                    betCouponGroup.MinWinNet = calculatedGroup.NetStakeMinWin(); // Till this point only turnover tax is applied. Witholding tax is applied later
-                    betCouponGroup.NetStakeMinWin = calculatedGroup.NetStakeMinWin();
-                    betCouponGroup.MinPercentageBonus = calculatedGroup.MinPercentageBonus;
-                    betCouponGroup.MaxPercentageBonus = calculatedGroup.MaxPercentageBonus;
-                    betCouponGroup.NetStake = calculatedGroup.StakeForCombinationTaxed;
+                    betCouponGroup.Combinations         = calculatedGroup.Combinations;
+                    betCouponGroup.MaxBonus             = calculatedGroup.MaxBonus();
+                    betCouponGroup.maxWin               = calculatedGroup.MaxWin();
+                    betCouponGroup.MaxWinNet            = calculatedGroup.NetStakeMaxWin(); // Till this point only turnover tax is applied. Witholding tax is applied later
+                    betCouponGroup.NetStakeMaxWin       = calculatedGroup.NetStakeMaxWin();
+                    betCouponGroup.MinBonus             = calculatedGroup.MinBonus();
+                    betCouponGroup.minWin               = calculatedGroup.MinWin();
+                    betCouponGroup.MinWinNet            = calculatedGroup.NetStakeMinWin(); // Till this point only turnover tax is applied. Witholding tax is applied later
+                    betCouponGroup.NetStakeMinWin       = calculatedGroup.NetStakeMinWin();
+                    betCouponGroup.MinPercentageBonus   = calculatedGroup.MinPercentageBonus;
+                    betCouponGroup.MaxPercentageBonus   = calculatedGroup.MaxPercentageBonus;
+                    betCouponGroup.NetStake             = calculatedGroup.StakeForCombinationTaxed;
                 }
                 if (!betCouponGroup.Combinations > 0 && betCouponGroup.Grouping > 0) {
                     betCoupon = this.removeGroup(betCoupon, betCouponGroup);
@@ -399,21 +401,22 @@ export default class CouponCalculation {
         }
         //betCoupon.Odds.sortMultipleAsc("EventName", "TournamentName", "MatchName");
         betCoupon.TotalCombinations = this.getTotalCombinations(betCoupon);
-        betCoupon.minWin = this.getMinWin(betCoupon);
-        betCoupon.NetStakeMinWin = this.getNetStakeMinWin(betCoupon);
-        betCoupon.maxWin = this.getMaxWin(betCoupon);
-        betCoupon.NetStakeMaxWin = this.getNetStakeMaxWin(betCoupon);
-        betCoupon.minBonus = calculateBonus(betCoupon.minWin, betCoupon, globalVar, bonusList);
-        betCoupon.maxBonus = calculateBonus(betCoupon.maxWin, betCoupon, globalVar, bonusList);
-        betCoupon.maxWin = betCoupon.maxBonus + betCoupon.maxWin;
-        betCoupon.minWin = betCoupon.minBonus + betCoupon.minWin;
+        betCoupon.minWin            = this.getMinWin(betCoupon);
+        betCoupon.NetStakeMinWin    = this.getNetStakeMinWin(betCoupon);
+        betCoupon.maxWin            = this.getMaxWin(betCoupon);
+        betCoupon.NetStakeMaxWin    = this.getNetStakeMaxWin(betCoupon);
+        betCoupon.minBonus          = calculateBonus(betCoupon.minWin, betCoupon, globalVar, bonusList);
+        betCoupon.maxBonus          = calculateBonus(betCoupon.maxWin, betCoupon, globalVar, bonusList);
+        betCoupon.maxWin            = betCoupon.maxBonus + betCoupon.maxWin;
+        betCoupon.minWin            = this.getMinBonus(betCoupon, bonusList) + betCoupon.minWin;
 
         betCoupon.MinPercentageBonus = this.getMinPercentageBonus(betCoupon);
         betCoupon.MaxPercentageBonus = this.getMaxPercentageBonus(betCoupon);
-        betCoupon.minOdds = this.getMinOdd(betCoupon);
-        betCoupon.maxOdds = this.getMaxOdd(betCoupon);
+        betCoupon.minOdds            = this.getMinOdd(betCoupon);
+        betCoupon.maxOdds            = this.getMaxOdd(betCoupon);
         return betCoupon;
     };
+
     MaxGrouping = function (selections) {
         var ret = Number.MAX_VALUE;
         //lottery skip for now
@@ -481,21 +484,38 @@ export default class CouponCalculation {
             return 0;
         }
     };
-    getMinBonus = function (betCoupon) {
-        if (betCoupon.Groupings.length > 0) {
-            return betCoupon.Groupings.min("MinBonus");
-        }
-        else {
+    getMinBonus = function (betCoupon, bonusList) {
+        const minGroup = this.getMinGroup(betCoupon);
+        const minBonus = this.getMinBonusLength(bonusList);
+
+        if (minGroup >= minBonus) {
+            return betCoupon.minBonus;
+        } else {
             return 0;
         }
     };
     getMaxBonus = function (betCoupon) {
         if (betCoupon.Groupings.length > 0) {
             return betCoupon.Groupings.sum("MaxBonus");
+        } else {
+            return 0;
+        }
+    };
+    getMinGroup = function (betCoupon) {
+        if (betCoupon.Groupings.length > 0) {
+            return betCoupon.Groupings.min("Grouping");
         }
         else {
             return 0;
         }
+    };
+    getMinBonusLength = function (bonusList) {
+        if (bonusList.length > 0) {
+            return bonusList.min("ticket_length");
+        } else {
+            return 0;
+        }
+        
     };
     getMinPercentageBonus = function (betCoupon) {
         if (betCoupon.Groupings.length > 0) {
