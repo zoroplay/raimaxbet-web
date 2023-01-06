@@ -9,14 +9,14 @@ export default function SportOdds({location, history}) {
     const sid = urlParam.get('sid');
     const dispatch = useDispatch();
 
-    const {tournaments } = useSelector(state => state.sportsData);
+    const {tournaments, activePeriod } = useSelector(state => state.sportsData);
 
     useEffect(() => {
         if(tid) {
             const tournament = tournaments.find(tournament => tournament.sport_tournament_id === parseInt(tid));
 
             if (!tournament) { // if new tournament, add to store
-                dispatch(setTournaments({tid, sid}));
+                dispatch(setTournaments({tid, sid, period: activePeriod}));
             }
         }
     }, [dispatch, sid, tid]);

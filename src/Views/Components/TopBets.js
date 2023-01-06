@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   formatDate,
   getOdds,
-  getStats,
   groupFixtures,
   isSelected,
 } from "../../Utils/helpers";

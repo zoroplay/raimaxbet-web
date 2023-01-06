@@ -30,8 +30,8 @@ export const getFixture = (eventId) =>
 
 export const getMatches = (tid) => Http.get(`sports/get-matches/${tid}`);
 
-export const getFixtures = (tid, sid) =>
-  Http.get(`sports/get-fixtures/${tid}?sid=${sid}&source=web`);
+export const getFixtures = (tid, sid, period) =>
+  Http.get(`sports/get-fixtures/${tid}?sid=${sid}&source=web&period=${period}`);
 
 export const loadCoupon = (code, action) =>
   Http.get(`sports/booking/${code}?action=${action}`);

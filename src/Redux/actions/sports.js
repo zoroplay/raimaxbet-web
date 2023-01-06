@@ -46,11 +46,11 @@ export const setTournaments = payload => {
         // create new tournaments state object
         const tournaments = [...state.sportsData.tournaments];
         // get payloads
-        const {tid, sid} = payload;
+        const {tid, sid, period} = payload;
         // check if tournament exists
 
         dispatch({type: LOADING});
-        getFixtures(tid, sid).then(res => {
+        getFixtures(tid, sid, period).then(res => {
             dispatch({type: LOADING});
             if(res){
                 tournaments.unshift(res);
