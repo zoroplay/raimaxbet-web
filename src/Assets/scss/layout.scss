@@ -25,18 +25,10 @@ $mo-point: 1134px;
 
 // $primary: #121827;
 $primary: #fff;
-// $primary: #191919;
-// $secondary: #343944;
-// $secondary: #da251c;
-$secondary: #01d46d;
-// $secondary: #373a42;
-// $secondary: #010914;
-// $accent: #da251c;
+$secondary: #01D46D;
 $accent: #01d46d;
 $accent-alt: #01d46d;
-
 $pure-white: #fff;
-// $alt-white: #F5F5F5;
 $alt-white: #D8DDE3;
 $pure-black: #000;
 $black: #000;
@@ -48,7 +40,7 @@ $textcolor-dr : #000;
 $textcolor-li : #fff;
 
 // $green: #3abd23;
-$green: #64b000;
+$green: #01D46D;
 $red: #cd2f28;
 $blue: #4c54f0;
 $darkblue: #014fa2;
@@ -424,7 +416,7 @@ input, select, textarea{
 
 .header-bottom-container{
   // border-top: 1px solid transparentize(#fff, 0.8);
-  background-color: darken($accent-alt, 10%);
+  background-color: $green;
   // background-image: linear-gradient(to bottom, lighten($secondary, 1%) 0, darken($secondary, 3%) 100%);
   height: 39px;
   display: flex;
@@ -7083,7 +7075,7 @@ input, select, textarea{
 .divOdds .item:nth-child(2) .odd DIV:first-child,
 .divOdds .sepData+.item .odds .odd DIV:first-child {
   display: block;
-  background-color: #F2F3F4;
+  // background-color: #F2F3F4;
   color: #42464C;
   height: 20px;
   left: 0;
