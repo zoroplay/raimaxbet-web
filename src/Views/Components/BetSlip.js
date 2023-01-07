@@ -12,6 +12,8 @@ export default function BetSlip() {
     const {coupon, todaysBets} = useSelector((state) => state.couponData);
     const {isAuthenticated, user} = useSelector((state) => state.auth);
     const [code, setCode] = useState('');
+    const [interval, setIntervalVal] = useState(null);
+
     const dispatch = useDispatch();
 
     const findCoupon = (e) => {
@@ -48,15 +50,17 @@ export default function BetSlip() {
 
     useEffect(() => {
 
-        const interval = setInterval(() => {
-            if(coupon.selections.length)
-                dispatch(oddsChange());
-        }, 20000);
+        if(coupon.selections.length) {
+            if (interval) clearInterval(interval);
 
-        return () => {
-            if(!coupon.selections.length)
-                clearInterval(interval);
-        };
+            const start = setInterval(() => {
+                dispatch(oddsChange());
+            }, 25000);
+
+            setIntervalVal(start);
+        }
+        
+        return () => clearInterval(interval);
     }, [coupon]);
 
     
