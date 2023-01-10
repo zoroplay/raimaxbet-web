@@ -182,12 +182,12 @@ export default function FixturesList({
                             background: "transparent",
                           }}
                           disabled={
-                            getOdds(prediction, fixture.odds) <= 1.1
+                            getOdds(prediction, fixture.odds) <= 1.0
                               ? true
                               : false
                           }
                         >
-                          {getOdds(prediction, fixture.odds) <= 1.1
+                          {getOdds(prediction, fixture.odds) <= 1.0
                             ? "-"
                             : getOdds(prediction, fixture.odds)}
                         </button>
