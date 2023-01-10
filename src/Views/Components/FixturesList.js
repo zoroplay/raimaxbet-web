@@ -54,6 +54,17 @@ export default function FixturesList({
 
   return (
     <>
+      {/* <tr className="stat-bottom">
+        <th></th>
+        <th>1</th>
+        <th>X</th>
+        <th>2</th>
+        <th>1X</th>
+        <th>12</th>
+        <th>X2</th>
+        <th>GG</th>
+        <th>NG</th>
+      </tr> */}
       {fixtures.map((fixture, f) => (
         <div
           className={`item ${checkFixtureDate(fixture, f)}`}
@@ -80,7 +91,8 @@ export default function FixturesList({
               history.push(`/Sport/EventDetail?EventID=${fixture.provider_id}`)
             }
           >
-            {fixture.event_name}
+            {fixture?.team_a.substring(0, 13)} -{" "}
+            {fixture?.team_b.substring(0, 12)}
           </div>
 
           {/*<div className="stats innprojekt" ng-if="(subEvent.StatCode != '')"*/}
@@ -108,6 +120,7 @@ export default function FixturesList({
                 {selectedMarkets.map((market, i) => (
                   <div className={`cq t${i}`} key={`market-${i}`}>
                     <span>{market.name}</span>
+
                     {getPredictions(market).map((prediction, p) => (
                       <button
                         disabled={

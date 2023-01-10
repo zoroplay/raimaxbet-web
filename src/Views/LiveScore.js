@@ -11,7 +11,7 @@ const LiveScore = () => {
 
   const toggleTab = (tab) => {
     setActiveTab(tab);
-    fetchLive()
+    fetchLive();
   };
 
   useEffect(() => {
