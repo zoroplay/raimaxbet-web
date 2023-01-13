@@ -532,7 +532,7 @@ export default function PersonalData({ history }) {
                             name="email"
                             value={inputObj.email}
                             autoComplete={false}
-                            required
+                            disabled={true}
                             onChange={(e) => handleChange(e)}
                           />
                         </div>
@@ -545,6 +545,7 @@ export default function PersonalData({ history }) {
                             required
                             value={inputObj.first_name}
                             autoComplete={false}
+                            disabled={true}
                             onChange={(e) => handleChange(e)}
                           />
                         </div>
@@ -555,6 +556,7 @@ export default function PersonalData({ history }) {
                             name="last_name"
                             value={inputObj.last_name}
                             autoComplete={false}
+                            disabled={true}
                             onChange={(e) => handleChange(e)}
                           />
                         </div>
