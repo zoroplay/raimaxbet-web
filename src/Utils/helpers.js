@@ -253,3 +253,35 @@ export const checkNoOfDraws = (selections) => {
   });
   return no_of_draws === selections.length && no_of_draws > 5;
 };
+export const validateCombinability = (no_of_fixtures, tournaments) => {
+  let res = {success: true};
+  tournaments.forEach((tournament) => {
+      switch (tournament.combinability) {
+          case 'double':
+              if (no_of_fixtures < 2) {
+                  res = {
+                      success: false,
+                      message: 'You must select minimum of 2 games under ' + tournament.category + ' -> ' + tournament.tournamentName
+                  };
+              }
+              break;
+          case 'treble':
+              if (no_of_fixtures < 3) {
+                  res = {
+                      success: false,
+                      message: 'You must select minimum of 3 games under ' + tournament.category + ' -> ' + tournament.tournamentName
+                  };
+              }
+              break;
+          case 'min_5':
+              if (no_of_fixtures < 5) {
+                  res = {
+                      success: false,
+                      message: 'You must select minimum of 5 games under ' + tournament.category + ' -> ' + tournament.tournamentName
+                  };
+              }
+              break;
+      }
+  });
+  return res;
+}

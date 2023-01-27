@@ -22,7 +22,7 @@ import {Http} from "../../Utils";
 import * as _ from 'lodash';
 import {toast} from "react-toastify";
 import {getOddsChange, getSplitProps, loadCoupon} from "../../Services/apis";
-import {calculateExclusionPeriod, checkNoOfDraws} from "../../Utils/helpers";
+import {calculateExclusionPeriod, checkNoOfDraws, validateCombinability} from "../../Utils/helpers";
 import CouponCalculation from "../../Utils/CouponCalculation";
 
 const couponCalculation = new CouponCalculation();
@@ -52,7 +52,8 @@ export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddna
             category: fixture.sport_category_name,
             sport: fixture.sport_name,
             type,
-            fixed: false
+            fixed: false,
+            combinability: fixture.combinability || 0
         };
         if (type === 'live') {
             data.in_play_time = fixture.live_data?.match_time;
@@ -650,6 +651,26 @@ export function placeBet(e, type, giftCode){
 
         } else {
             url = '/sports/book-bet?channel=website'
+        }
+        //validate combinability
+        const combinability = validateCombinability(coupondata.selections.length, coupondata.tournaments);
+        // console.log(combinability)
+        if (!combinability.success) {
+            coupondata.errorMsg = combinability.message;
+
+            window.scrollTo({
+                top: 100,
+                left: 100,
+                behavior: 'smooth'
+            });
+
+            toast.error('Attention! you have an error in your selection');
+
+            return dispatch({type: SET_COUPON_DATA, payload: coupondata});
+
+        } else {
+            coupondata.errorMsg = null;
+            dispatch({type: SET_COUPON_DATA, payload: coupondata})
         }
         ele.disabled = true;
         ele.innerHTML = 'Submitting...';

@@ -122,6 +122,7 @@ export const groupSelections = (data) => {
             obj.event_id = item.event_id;
             obj.provider_id = item.provider_id;
             obj.type = item.type;
+            obj.combinability   = item.combinability;
             // obj.hasError    = item.hasError;
             obj.selections = obj.selections || [];
 
