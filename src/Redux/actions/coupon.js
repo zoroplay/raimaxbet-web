@@ -622,18 +622,18 @@ export function placeBet(e, type, giftCode){
             return;
         }
 
-        if (coupondata.selections.length === 2 && coupondata.stake > 2000){
-            dispatch({type: LOADING});
-            toast.error('Maximum stake for 2 selections is N2,000');
-            return;
-        }
+        // if (coupondata.selections.length === 2 && coupondata.stake > 2000){
+        //     dispatch({type: LOADING});
+        //     toast.error('Maximum stake for 2 selections is N2,000');
+        //     return;
+        // }
 
-        const hasMoreDraws = checkNoOfDraws(coupondata.selections);
+        // const hasMoreDraws = checkNoOfDraws(coupondata.selections);
 
-        if (hasMoreDraws) {
-            toast.error(`You cannot play more than 5 draws in one ticket`);
-            return;
-        }
+        // if (hasMoreDraws) {
+        //     toast.error(`You cannot play more than 5 draws in one ticket`);
+        //     return;
+        // }
 
         if (coupondata.hasLive)
             ele = document.getElementById('placeBetBtn');
@@ -664,7 +664,7 @@ export function placeBet(e, type, giftCode){
                 behavior: 'smooth'
             });
 
-            toast.error('Attention! you have an error in your selection');
+            toast.error(combinability.message);
 
             return dispatch({type: SET_COUPON_DATA, payload: coupondata});
 
