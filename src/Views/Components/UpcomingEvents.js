@@ -115,7 +115,7 @@ export default function UpcomingEvents() {
                                 cursor: "pointer",
                               }}
                               disabled={
-                                getOdds(row, match.odds) <= 1.1 ? true : false
+                                getOdds(row, match.odds) <= 1.0 ? true : false
                               }
                               onClick={() =>
                                 dispatch(
@@ -159,7 +159,7 @@ export default function UpcomingEvents() {
                                                     : ""
                                                 }`}
                             >
-                              {getOdds(row, match.odds) <= 1.1
+                              {getOdds(row, match.odds) <= 1.0
                                 ? "-"
                                 : getOdds(row, match.odds)}
                             </button>

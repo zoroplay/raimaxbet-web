@@ -124,7 +124,7 @@ export default function FixturesList({
                     {getPredictions(market).map((prediction, p) => (
                       <button
                         disabled={
-                          getOdds(prediction, fixture.odds) <= 1.1
+                          getOdds(prediction, fixture.odds) <= 1.0
                             ? true
                             : false
                         }

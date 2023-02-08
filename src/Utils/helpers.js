@@ -140,6 +140,7 @@ export const getOdds = (prediction, outcomes) => {
   let odd = "";
   _.each(outcomes, (outcome) => {
     if (
+      outcome.active != 0 &&
       outcome.id === prediction.odd_id &&
       outcome.name === prediction.odd_name
     ) {
