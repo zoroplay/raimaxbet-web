@@ -55,7 +55,7 @@ export default function BetSlip() {
 
             const start = setInterval(() => {
                 dispatch(oddsChange());
-            }, 25000);
+            }, 20000);
 
             setIntervalVal(start);
         }

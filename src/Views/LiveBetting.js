@@ -6,7 +6,6 @@ import {getLiveOdds, getSpread, groupLiveSports, liveScore, slugify} from "../Ut
 import {LiveEventsOverview, matchStatus} from "../Utils/constants";
 import {LiveOdd} from "./Components/LiveOdd";
 import {useDispatch, useSelector} from "react-redux";
-import { checkOddsChange } from "../Utils/couponHelpers";
 
 export function LiveBetting ({history}) {
     const [availableSports, setAvailableSports] = useState([]);
@@ -19,9 +18,9 @@ export function LiveBetting ({history}) {
     
     const getData = () => {
         getLiveFixtures().then(response => {
-            setAvailableSports(response.data.data.sports);
-            let tournaments = groupLiveSports(response.data.data.fixtures);
-            let sports = response.data.data.sports;
+            setAvailableSports(response.data.sports);
+            let tournaments = groupLiveSports(response.data.fixtures);
+            let sports = response.data.sports;
             if(sports.length > 0){
                 sports.forEach((item, key) => {
                     item.Tournaments = []
@@ -45,9 +44,9 @@ export function LiveBetting ({history}) {
 
     useEffect(() => {
         getLiveFixtures().then(response => {
-            setAvailableSports(response.data.data.sports || []);
-            let tournaments = groupLiveSports(response.data.data.fixtures);
-            let sports = response.data.data.sports;
+            setAvailableSports(response.data.sports || []);
+            let tournaments = groupLiveSports(response.data.fixtures);
+            let sports = response.data.sports;
             if(sports.length > 0){
                 sports.forEach((item, key) => {
                     item.Tournaments = []
