@@ -168,7 +168,7 @@ export default function Header() {
         <div className="nav-top">
           <div className="nav-logo-container">
             <a href="/Sport/Default">
-              <img src="/img/logo.png" alt="ourbet" className="nav-logo" />
+              <img src="/img/logo.png" alt="Raimaxbet" className="nav-logo" />
             </a>
           </div>
           {!isAuthenticated ? (
@@ -196,7 +196,7 @@ export default function Header() {
                     onKeyPress={onKeyUp}
                   />
                   <input name="action_flag" type="hidden" value="login" />
-                  <NavLink to="/Auth/Register" style={{ color: "#01d46d" }}>
+                  <NavLink to="/Auth/Register" style={{ color: "#0895fc" }}>
                     Register
                   </NavLink>
                 </div>

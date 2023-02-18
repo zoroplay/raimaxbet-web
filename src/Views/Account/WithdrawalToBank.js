@@ -110,7 +110,7 @@ export const WithdrawalToBank = ({ history }) => {
           <h3>NOTE</h3>
           <p className="my-1 text-1">
             For easier and faster process verification, please ensure your bank
-            account information matches the details in your OurBet account.
+            account information matches the details in your Raimaxbet account.
           </p>
           <p className="my-1 text-1">
             In line with the regulation, winings above <strong>#400,000</strong>
