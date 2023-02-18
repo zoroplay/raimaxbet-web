@@ -132,7 +132,7 @@ export default function Register({ history }) {
                             }}
                           >
                             <select name="pre" id="" className="nxmob-select">
-                              <option value="+234">+234</option>
+                              <option value="+211">+211</option>
                             </select>
                             <Field
                               style={errors.username ? error : null}
