@@ -13,9 +13,9 @@ export default function Home({ history }) {
   const { data: res, error } = useSWR("/sports/banners?banner_type=web");
 
   useEffect(() => {
-    if (user?.verified === 0) {
-      history.replace("/Auth/Verify");
-    }
+    // if (user?.verified === 0) {
+    //   history.replace("/Auth/Verify");
+    // }
   }, [user]);
 
   useEffect(() => {
