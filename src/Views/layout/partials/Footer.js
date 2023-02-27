@@ -40,9 +40,9 @@ export default function Footer() {
                             <span className="paymeth-head"><h3>Payment Methods</h3></span>
 
                             <div className="paymeth-img">
-                            <img className="paymeth-img-src" src="/img/paystack1.png" alt="" />
-                                <img className="paymeth-img-src" src="/img/flutterwave1.png" alt="" />
-                                <img className="paymeth-img-src" src="/img/paystack.png" alt="" />
+                            <img className="paymeth-img-src" src="/img/Mgurush1.png" alt="" />
+                                {/* <img className="paymeth-img-src" src="/img/flutterwave1.png" alt="" />
+                                <img className="paymeth-img-src" src="/img/paystack.png" alt="" /> */}
 
                             </div>
                         </div>
