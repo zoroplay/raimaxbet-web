@@ -49,6 +49,7 @@ const userData = persistReducer(
                     user: {
                         ...state.user,
                         available_balance: action.payload,
+                        balance: action.payload
                     }
                 }
             }
