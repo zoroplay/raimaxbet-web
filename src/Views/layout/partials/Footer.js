@@ -72,13 +72,14 @@ export default function Footer() {
 
                         <ul className="terms-list">
                             <li className="terms-list-li"><a href="#" onClick={() => goTo('/Sport/Pages/terms-and-conditions')}>General T&amp;C</a></li>
+                            <li className="terms-list-li"><a href="#" onClick={() => goTo('/Sport/Pages/betting-rules')}>Betting Rules</a></li>
                             {/*<li className="terms-list-li"><a href="#">Sport T&amp;C</a></li>
                             <li className="terms-list-li"><a href="#">Live Betting T&amp;C</a></li>
                             <li className="terms-list-li"><a href="#">Casino T&amp;C</a></li>
                             <li className="terms-list-li"><a href="#">Racing T&amp;C</a></li>
                             <li className="terms-list-li"><a href="#">Pitch90 T&amp;C</a></li>*/}
                             <li className="terms-list-li"><a href="#" onClick={() => goTo('/Sport/Pages/responsible-gaming')}>Responsible Gaming</a></li>
-                            <li className="terms-list-li"><a href="#" onClick={() => goTo('/Sport/Pages/privacy')}>Privacy</a></li>
+                            <li className="terms-list-li"><a href="#" onClick={() => goTo('/Sport/Pages/personal-account')}>Personal Account</a></li>
                         </ul>
                     </div>
 
