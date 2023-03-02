@@ -75,11 +75,11 @@ const Account = ({ children, history }) => {
                 )}
                 {user.role !== "Cashier" && (
                   <>
-                    <li className="uxr-li-link">
+                    {/* <li className="uxr-li-link">
                       <NavLink title="Deposit" to="/Account/Deposit">
                         Deposit
                       </NavLink>
-                    </li>
+                    </li> */}
                     <li className="uxr-li-link">
                       <NavLink title="Withdraw" to="/Account/Withdraw-to-bank">
                         Withdraw to Bank
