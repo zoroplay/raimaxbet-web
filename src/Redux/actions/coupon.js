@@ -684,7 +684,7 @@ export function placeBet(e, type, giftCode){
                     ele.innerHTML = 'Proceed';
 
                     // update user balance
-                    dispatch({type: UPDATE_USER_BALANCE, payload: res.available_balance});
+                    dispatch({type: UPDATE_USER_BALANCE, payload: res.balance});
                     // update todays bet
                     dispatch({type: SET_TODAYS_BET, payload: res.coupon});
                     // dispatch({type: CANCEL_BET});
