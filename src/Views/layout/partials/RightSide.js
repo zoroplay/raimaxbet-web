@@ -21,11 +21,11 @@ export default function RightSide() {
 
     return (
         <div className="side3">
-            {!isAuthenticated ?
+            {/* {!isAuthenticated ?
                 <NavLink to="/Auth/Register" className="registerBtn">REGISTER NOW!</NavLink>
                 :
                 user.role !== 'Cashier' && <NavLink to="/Account/Deposit" className="depositBtn">DEPOSIT NOW!</NavLink>
-            }
+            } */}
             {/* SMART BET*/}
             <SmartBet />
             

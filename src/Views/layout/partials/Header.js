@@ -220,7 +220,7 @@ export default function Header() {
                   ) : (
                     <i className={`fa fa-spin fa-spinner`} />
                   )}
-                  Availability:{" "}
+                  Balance :{" "}
                   <span className="uzr-b-cur">
                     {SportsbookGlobalVariable.Currency}
                   </span>
@@ -228,7 +228,7 @@ export default function Header() {
                     {formatNumber(user.available_balance)}
                   </span>
                 </div>
-                <div className="uzr-b" style={{ color: "white" }}>
+                {/* <div className="uzr-b" style={{ color: "white" }}>
                   Balance:{" "}
                   <span className="uzr-b-cur">
                     {SportsbookGlobalVariable.Currency}
@@ -236,7 +236,7 @@ export default function Header() {
                   <span className="uzr-b-num">
                     {formatNumber(user.balance)}
                   </span>
-                </div>
+                </div> */}
                 <div className="uzr-b" style={{ color: "white" }}>
                   Bonus:{" "}
                   <span className="uzr-b-cur">
@@ -314,11 +314,11 @@ export default function Header() {
           {isAuthenticated && (
             <div className="uxr-container">
               <div className="uxr-inner">
-                <div className="uxr-a">
+                {/* <div className="uxr-a">
                   <NavLink to="/Account/Deposit" className="uxr-a-link">
                     Deposit
                   </NavLink>
-                </div>
+                </div> */}
                 <div className="uxr-b" style={{ color: "white" }}>
                   <span className="uxr-b-text">My Account</span>
                   <UserMenu user={user} />
