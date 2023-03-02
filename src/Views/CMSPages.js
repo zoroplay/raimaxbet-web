@@ -8,7 +8,7 @@ export default function CMSPages({match}) {
 
     return (
         <>
-            <div id="MainContent" className="sport" style={{padding: '10px'}}>
+            <div id="MainContent" className="sport" style={{padding: '10px', background: '#fff'}}>
                 <h2>{data?.title}</h2>
                 <div  dangerouslySetInnerHTML={{ __html: data?.body}} />
             </div>
