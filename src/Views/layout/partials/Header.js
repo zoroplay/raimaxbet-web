@@ -314,11 +314,11 @@ export default function Header() {
           {isAuthenticated && (
             <div className="uxr-container">
               <div className="uxr-inner">
-                <div className="uxr-a">
+                {/* <div className="uxr-a">
                   <NavLink to="/Account/Deposit" className="uxr-a-link">
                     Deposit
                   </NavLink>
-                </div>
+                </div> */}
                 <div className="uxr-b" style={{ color: "white" }}>
                   <span className="uxr-b-text">My Account</span>
                   <UserMenu user={user} />

@@ -80,11 +80,11 @@ const Account = ({ children, history }) => {
                         Deposit
                       </NavLink>
                     </li> */}
-                    <li className="uxr-li-link">
+                    {/* <li className="uxr-li-link">
                       <NavLink title="Withdraw" to="/Account/Withdraw-to-bank">
                         Withdraw to Bank
                       </NavLink>
-                    </li>
+                    </li> */}
                     <li className="uxr-li-link">
                       <NavLink title="Withdraw" to="/Account/Withdraw">
                         Withdraw from Shop{" "}
