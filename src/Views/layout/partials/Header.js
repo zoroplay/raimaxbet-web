@@ -220,15 +220,6 @@ export default function Header() {
                   ) : (
                     <i className={`fa fa-spin fa-spinner`} />
                   )}
-                  Availability:{" "}
-                  <span className="uzr-b-cur">
-                    {SportsbookGlobalVariable.Currency}
-                  </span>
-                  <span className="uzr-b-num">
-                    {formatNumber(user.available_balance)}
-                  </span>
-                </div>
-                <div className="uzr-b" style={{ color: "white" }}>
                   Balance:{" "}
                   <span className="uzr-b-cur">
                     {SportsbookGlobalVariable.Currency}
@@ -237,6 +228,15 @@ export default function Header() {
                     {formatNumber(user.available_balance)}
                   </span>
                 </div>
+                {/* <div className="uzr-b" style={{ color: "white" }}>
+                  Balance:{" "}
+                  <span className="uzr-b-cur">
+                    {SportsbookGlobalVariable.Currency}
+                  </span>
+                  <span className="uzr-b-num">
+                    {formatNumber(user.available_balance)}
+                  </span>
+                </div> */}
                 <div className="uzr-b" style={{ color: "white" }}>
                   Bonus:{" "}
                   <span className="uzr-b-cur">
