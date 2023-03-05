@@ -17,7 +17,7 @@ export default function Index({history}) {
                     start and grow his/her own shop.</p>
                 <p>By offering customers the chance to play on over <strong>5000 events a month</strong>, providing <strong>great
                     bonuses</strong> and the <strong>best odds</strong>, we make your job an easy sell.</p>
-                <p>For further information please call <strong>08053877646</strong> or WhatsAPP <strong> 08101212126</strong>&nbsp;(7 days a week, 8:00 am to 21:00 pm)
+                <p>For further information please call <strong>+211921212150</strong> or Email <strong> raimaxsb@gmail.com</strong>&nbsp;(7 days a week, 8:00 am to 21:00 pm)
                     or fill in and submit the registration form.</p>
                 <p>A {process.env.REACT_APP_NAME} representative will be in touch.</p>
                 <p><NavLink className="bttn" to="/BecomeAnAgent/Register">Register now</NavLink></p>

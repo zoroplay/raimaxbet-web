@@ -24,7 +24,7 @@ export default function EasySteps({history}) {
                 <p>Interested in us and our agency concept?<br />
                     Do you want to know more about your options and earning opportunities with {process.env.REACT_APP_NAME}?<br />
                     Then contact us via our <NavLink to="/BecomeAnAgent/register">registration form</NavLink> or call us
-                    on <strong>0720909999</strong> or WhatsAPP <strong> +254791744076</strong>&nbsp;(7 days a week, 8:00 am to 21:00 pm).</p>
+                    on <strong>+211921212150</strong> or Email <strong> raimaxsb@gmail.com</strong>&nbsp;(7 days a week, 8:00 am to 21:00 pm).</p>
                 <p><NavLink className="bttn" to="/BecomeAnAgent/register">Register now</NavLink></p>
                 <p>*Subject to contract.</p>
             </div>
