@@ -32,10 +32,10 @@ export default function Index({history}) {
                     <li>Technical support on-site and via telephone.</li>
                 </ul>
                 <h3>Support:   raimaxsb@gmail.com</h3>
-                <ul>
+                {/* <ul>
                     <li>On-site support from competent {process.env.REACT_APP_NAME} field staff.</li>
                     <li>Free training course to prepare you and your staff for the opening of your betting shop.</li>
-                </ul>
+                </ul> */}
                 <p><NavLink className="bttn" to="/BecomeAnAgent/register">Register now</NavLink></p>
 
             </div>
