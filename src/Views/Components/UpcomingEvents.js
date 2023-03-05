@@ -95,7 +95,7 @@ export default function UpcomingEvents() {
                           <div className="match-teams-content-b">
                             <span className="match-date">{match.event_id}</span>
                             <span className="match-time">
-                              {match.event_time}
+                              {formatDate(parseInt(match.schedule), 'HH:mm')}
                             </span>
                             <a
                               className="match-grap"

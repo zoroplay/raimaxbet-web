@@ -22,7 +22,7 @@ import {Http} from "../../Utils";
 import * as _ from 'lodash';
 import {toast} from "react-toastify";
 import {getOddsChange, getSplitProps, loadCoupon} from "../../Services/apis";
-import {calculateExclusionPeriod, checkNoOfDraws, validateCombinability} from "../../Utils/helpers";
+import {calculateExclusionPeriod, checkNoOfDraws, formatDate, validateCombinability} from "../../Utils/helpers";
 import CouponCalculation from "../../Utils/CouponCalculation";
 
 const couponCalculation = new CouponCalculation();
@@ -47,7 +47,7 @@ export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddna
             odd_id: odd_id,
             odds: odds,
             element_id: ele_id,
-            start_date: fixture.schedule,
+            start_date: formatDate(parseInt(fixture.schedule), 'YYYY-MM-DD HH:mm'),
             tournament: fixture.sport_tournament_name,
             category: fixture.sport_category_name,
             sport: fixture.sport_name,

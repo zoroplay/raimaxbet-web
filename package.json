@@ -2,7 +2,6 @@
   "name": "web",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://pitch90.azurewebsites.net/api",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
@@ -16,7 +15,7 @@
     "laravel-echo": "^1.10.0",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
-    "moment-timezone": "^0.5.33",
+    "moment-timezone": "^0.5.41",
     "node-sass": "4.14.1",
     "pusher-js": "^7.0.3",
     "react": "^17.0.1",

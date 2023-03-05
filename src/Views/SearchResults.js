@@ -66,7 +66,7 @@ export default function SearchResults({location}) {
                                                             <NavLink to={`/Sport/EventDetail?EventID=${result.provider_id}`}>{result.event_name}</NavLink>
                                                         </td>
                                                         <td className="ricercaData">
-                                                            <span id="s_w_PC_PC_gridSottoEventi_ctl02_lblData">{formatDate(result.schedule, 'DD/MM/YYYY HH:mm:ss')}</span>
+                                                            <span id="s_w_PC_PC_gridSottoEventi_ctl02_lblData">{formatDate(parseInt(result.schedule), 'DD/MM/YYYY HH:mm:ss')}</span>
                                                         </td>
                                                     </tr>
                                                 )}

@@ -4,7 +4,7 @@ import { findFixtureWithOutcomes } from "../Services/apis";
 import { toast } from "react-toastify";
 import { addToCoupon, removeSelection, updateWinnings } from "../Redux/actions";
 import { calculateBonus, createID } from "../Utils/couponHelpers";
-import { formatNumber } from "../Utils/helpers";
+import { formatDate, formatNumber } from "../Utils/helpers";
 import { CANCEL_BET, CONFIRM_BET, SET_COUPON_DATA } from "../Redux/types";
 import { useHistory } from "react-router-dom";
 
@@ -46,7 +46,7 @@ export default function Cashdesk() {
           if (res.event_name) {
             const input = document.getElementById(`event_code_${i}`);
             newArr[i].event_name = res.event_name;
-            newArr[i].event_date = res.event_time;
+            newArr[i].event_date = formatDate(res.event_time, 'HH:mm');
             newArr[i].tournament_name = res.sport_tournament_name;
             // newArr[i].market_code = res.outcomes[0].code;
             // newArr[i].odds = res.outcomes[0].odds;
