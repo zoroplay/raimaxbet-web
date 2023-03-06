@@ -81,7 +81,7 @@ export default function EventDetails({location, history}) {
         <>
             <div id="MainContent" className="championship-page">
                 <div id="divDett">
-                    <div id="SEOddsDataSE" >{ formatDate(parseInt(fixture?.schedule), 'DD/MM/YYYY HH:mm') }</div>
+                    <div id="SEOddsDataSE" >{ formatDate(fixture?.schedule, 'DD/MM/YYYY HH:mm') }</div>
                     <div id="SEOddsDescSE" className="OddsDetailsSE">{fixture?.event_name}</div>
                     <div className="OddsBreadbrum">
                         <ul>

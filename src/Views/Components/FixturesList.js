@@ -71,12 +71,12 @@ export default function FixturesList({
           key={`fixture-${f}`}
         >
           <div className="sepData">
-            {formatDate(parseInt(fixture.schedule), "DD MMMM YYYY")}
+            {formatDate(fixture.schedule, "DD MMMM YYYY")}
           </div>
           <div className="ID">{fixture.event_id}</div>
           <div className="Time">
-            <span>{formatDate(parseInt(fixture.schedule), "HH:mm")}</span>
-            <span>{formatDate(parseInt(fixture.schedule), "DD MMM")}</span>
+            <span>{formatDate(fixture.schedule, "HH:mm")}</span>
+            <span>{formatDate(fixture.schedule, "DD MMM")}</span>
           </div>
 
           <div

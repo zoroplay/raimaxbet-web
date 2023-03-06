@@ -126,7 +126,7 @@ export default function TopBets() {
                                 {match.event_id}
                               </span>
                               <span className="match-time">
-                                {formatDate(parseInt(match.schedule), "HH:mm")}
+                                {formatDate(match.schedule, "HH:mm")}
                               </span>
                               <a
                                 className="match-grap"
