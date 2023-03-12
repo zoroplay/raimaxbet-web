@@ -14,7 +14,7 @@ export const LiveEventsOverview = [
         markets: [
             {
                 id: '1',
-                name: '1X2',
+                name: '3way',
                 hasSpread: false,
                 outcomes: [
                     {name: '1', id: 1, type: '1'},
@@ -33,7 +33,7 @@ export const LiveEventsOverview = [
             },
             {
                 id: '5',
-                name: 'Over/Under',
+                name: 'Total',
                 hasSpread: true,
                 outcomes: [
                     {name: 'Over', id: 1, type: 'o'},
