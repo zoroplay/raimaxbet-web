@@ -30,7 +30,7 @@ export function LiveEventDetails ({location, history}) {
                 history.push('/Live/LiveDefault');
 
             setFixture(res.data);
-            setLiveData(JSON.parse(res.data.live_data));
+            setLiveData(res.data.live_data);
         }).catch(err => {
             setLoading(false)
             // console.log(err);
@@ -88,7 +88,7 @@ export function LiveEventDetails ({location, history}) {
         } else {
             setMarkets(liveData?.markets);
         }
-    }, [fixture]);
+    }, [liveData]);
 
     const selectOdds = (market, selection) => {
         if (selection.odds !== 0) {
