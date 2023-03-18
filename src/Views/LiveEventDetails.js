@@ -5,9 +5,10 @@ import {useDispatch, useSelector} from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
 import {matchStatus} from "../Utils/constants";
-import {formatOdd, isSelected, liveScore, sortTeams} from "../Utils/helpers";
+import {formatOdd, isSelected, liveScore} from "../Utils/helpers";
 import {addToCoupon} from "../Redux/actions";
 import {checkOddsChange, createID} from "../Utils/couponHelpers";
+import useSWR from 'swr';
 
 export function LiveEventDetails ({location, history}) {
     const urlParam = new URLSearchParams(location.search);
@@ -19,6 +20,8 @@ export function LiveEventDetails ({location, history}) {
     const {SportsbookGlobalVariable, SportsbookBonusList} = useSelector((state) => state.sportsBook);
     const dispatch = useDispatch();
     const coupon = useSelector(({couponData}) => couponData.coupon);
+    const { data } = useSWR("/sports/live/outcomes");
+    const liveOutcomes = data?.data;
 
     const fetchFixture = () => {
         getLiveFixtureData(eventId).then(res => {
@@ -87,11 +90,48 @@ export function LiveEventDetails ({location, history}) {
         }
     }, [fixture]);
 
-
     const selectOdds = (market, selection) => {
-        dispatch(addToCoupon(fixture, market.id, market.name + '' + market.specialOddsValue && market.specialOddsValue !== '-1' ? market.specialOddsValue : '', selection.odds, selection.id, selection.type,
-                createID(fixture.provider_id, market.id, selection.type, selection.id),'live'))
+        if (selection.odds !== 0) {
+            const outcome = getOutcome(market, selection);
+            dispatch(
+                addToCoupon(
+                    fixture,
+                    outcome.market_id,
+                    outcome.market_name,
+                    outcome.odds,
+                    outcome.odd_id,
+                    outcome.odd_name,
+                    createID(
+                        fixture.provider_id,
+                        outcome.market_id,
+                        outcome.odd_name, 
+                        outcome.odd_id
+                    ),
+                    'live'
+                )
+            )
+        }
     }
+
+    const getOutcome = (market, selection) => {
+        let outcome;
+        liveOutcomes.forEach((liveOutcome) => {
+            if (market.name === liveOutcome.market_name && selection.type == liveOutcome.name) {
+                outcome = {
+                    market_id: market.id,
+                    market_name: `${market.name} ${
+                        market.specialOddsValue && market.specialOddsValue !== '-1' ? 
+                        market.specialOddsValue : ""}`,
+                    odds: selection.odds,
+                    odd_name: selection.type,
+                    odd_id: liveOutcome.id,
+                };
+                return
+            }
+        });
+        return outcome;
+    }
+
     return (
         <div id="eventContainer">
             <div className="headerItem">

@@ -992,8 +992,8 @@ export function oddsChange() {
                         return dispatch({type: SET_COUPON_DATA, payload: couponData});
                     }
                 }
-                couponData.selections = selections;
-                return dispatch({type: SET_COUPON_DATA, payload: couponData});
+                // couponData.selections = selections;
+                // return dispatch({type: SET_COUPON_DATA, payload: couponData});
             }
         }).catch(e => {
             console.log(e.message);
