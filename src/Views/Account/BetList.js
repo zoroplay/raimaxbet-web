@@ -42,8 +42,8 @@ export default function BetList({match, history}) {
         setLoading(true);
         const data = {
             type: filterData.type,
-            from: moment(filterData.from).format('DD/MM/YYYY'),
-            to: moment(filterData.to).format('DD/MM/YYYY'),
+            from: moment(filterData.from).format('YYYY-MM-DD'),
+            to: moment(filterData.to).format('YYYY-MM-DD'),
             page_size: filterData.page_size,
             betslip_id: filterData.betslip_id,
             status: filterData.status
