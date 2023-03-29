@@ -294,8 +294,8 @@ export default function Header() {
                             </a> */}
             </li>
             <li className="nav-mid-list-li">
-              <NavLink id="indexCasino" to="/Sport/PrintFixtures">
-                <h1>Print Fixtures</h1>
+              <NavLink id="indexCasino" to="/games/rocket-man">
+                <h1>Rocket Man</h1>
               </NavLink>
             </li>
             <li className="nav-mid-list-li">

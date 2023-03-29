@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 import JackpotLayout from "./layout/JackpotLayout";
 import { useSelector } from "react-redux";
 
-export default function Casino() {
+export default function RocketMan() {
   const { user, isAuthenticated } = useSelector((state) => state.auth);
   const [token, setToken] = useState('demo');
 
   useEffect(() => {
     if (isAuthenticated) {
-      setToken(`${user?.auth_code}-${process.env.REACT_APP_SITE_KEY}`)
+      setToken(`${user?.code}-${user?.auth_code}-${process.env.REACT_APP_SITE_KEY}`)
     }
   }, [isAuthenticated]);
 
@@ -18,7 +18,7 @@ export default function Casino() {
       <iframe 
         title="casino" 
         style={{ width: '100%', border: 0, height: '100vh'}} 
-        src={`${process.env.REACT_APP_CASINO_URL}/?cid=1&token=${token}}`} 
+        src={`https://cdn.rocketman.elbet.com/?token=${token}&version=desktop&companyId=170&language=en&currency=${process.env.REACT_APP_CURRENCY}`}
       />
     </JackpotLayout>
   );
