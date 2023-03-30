@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 
 import JackpotLayout from "./layout/JackpotLayout";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { SHOW_LOGIN_MODAL } from "../Redux/types";
 
 export default function RocketMan() {
   const { user, isAuthenticated } = useSelector((state) => state.auth);
   const [token, setToken] = useState('demo');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (isAuthenticated) {
       setToken(`${user?.code}-${user?.auth_code}-${process.env.REACT_APP_SITE_KEY}`)
+    }else {
+      dispatch({type: SHOW_LOGIN_MODAL})
+
     }
   }, [isAuthenticated]);
 
