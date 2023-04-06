@@ -780,6 +780,7 @@ export function placeBet(e, type, giftCode){
             dispatch({type: LOADING});
 
             ele.disabled = false;
+            
             if (type === 'bet') {
                 ele.innerHTML = 'Place Bet';
             } else {
@@ -788,7 +789,6 @@ export function placeBet(e, type, giftCode){
             if(err.response.status === 401){
                 toast.error('Please login to place bets');
             }
-            // console.log(err);
         });
     }
 };
