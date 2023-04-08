@@ -143,6 +143,7 @@ export const groupTournament = (data) => {
 
         obj.tournamentName  = item.tournament;
         obj.category        = item.category;
+        obj.combinability   = item.combinability;
         obj.events          = obj.events || [];
 
         obj.events.push(item);
