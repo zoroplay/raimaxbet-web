@@ -108,60 +108,21 @@ export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddna
                     couponData.selections.splice(i, 1);
                     //check if couponData still has selections
                     if (couponData.selections.length > 0) {
-                        const prevBetType = couponData.bet_type;
-                        //group selections by match
+                        // recalculate total odds
+                        couponData.totalOdds = calculateTotalOdds(couponData.selections);
+                        //group selections by tournament
                         couponData.tournaments = groupTournament(couponData.selections);
-                         // check if has live
-                         couponData.hasLive  = checkIfHasLive(couponData.selections);
                         //check bet type
-                        couponData.bet_type = checkBetType(couponData);
+                        couponData.bet_type = checkBetType(couponData.grouped);
 
-                        if (couponData.bet_type === 'Split') {
-                            couponData = await getSplitProps(couponData);
-                            //calculate winnings
-                            const minWinnings = parseFloat(couponData.minOdds) * parseFloat(couponData.minStake);
-                            const maxWinnings = parseFloat(couponData.maxOdds) * parseFloat(couponData.minStake);
-                            //calculate bonus
-                            couponData.minBonus = calculateBonus(minWinnings, couponData, globalVars, bonusList);
-                            couponData.maxBonus = calculateBonus(maxWinnings, couponData, globalVars, bonusList);
-                            couponData.minGrossWin = parseFloat(couponData.minBonus) + minWinnings;
-                            couponData.minWTH = (couponData.minGrossWin - couponData.stake) * process.env.REACT_APP_WTH_PERC / 100;
-                            couponData.minWin = couponData.minGrossWin - couponData.minWTH;
-                            couponData.grossWin = parseFloat(couponData.maxBonus) + maxWinnings;
-                            couponData.wthTax = (couponData.grossWin - couponData.stake) * process.env.REACT_APP_WTH_PERC / 100;
-                            couponData.maxWin = couponData.grossWin - couponData.wthTax;
-
-                            return dispatch({type: SET_COUPON_DATA, payload: couponData});
-
-                        } else {
-
-                            // recalculate totalOdds if prev bet type was Split
-                            if (prevBetType === 'Split') {
-                                couponData.totalOdds = calculateTotalOdds(couponData.selections);
-                            } else { // else remove selection from total odds
-                                couponData.totalOdds = (parseFloat(couponData.totalOdds) / parseFloat(data.odds)).toFixed(2);
-                            }
-                            const calculatedGroup   = couponCalculation.calcCombinations(couponData);
-                            couponData.combos       = calculatedGroup.Groups;
-                            // couponData.combos = await getCombos(couponData);
-                            //calculate and get pot winnings with bonus
-                            if (couponData.bet_type === 'Combo') {
-                                dispatch({type: SET_COUPON_DATA, payload: couponData});
-                                if (couponData.Groupings && couponData.Groupings.length) {
-                                    setTimeout(() => {
-                                        return dispatch(updateComboWinningsFromTotal());
-                                    }, 500);
-                                }
-                            } else {
-                                const winnings = calculateWinnings(couponData, globalVars, bonusList);
-                                couponData.maxWin = winnings.maxWin;
-                                couponData.maxBonus = winnings.maxBonus;
-                                couponData.wthTax = winnings.wthTax;
-                                couponData.grossWin = winnings.grossWin;
-
-                                return dispatch({type: SET_COUPON_DATA, payload: couponData});
-                            }
-                        }
+                        const winnings = calculateWinnings(couponData, globalVars, bonusList);
+                        couponData.maxWin = winnings.maxWin;
+                        couponData.maxBonus = winnings.maxBonus;
+                        couponData.wthTax = winnings.wthTax;
+                        couponData.grossWin = winnings.grossWin;
+                        // check if has live
+                        couponData.hasLive  = checkIfHasLive(couponData.selections);
+                        return dispatch({type: SET_COUPON_DATA, payload: couponData});
                     } else {
                         return dispatch({type: CANCEL_BET})
                     }
@@ -169,37 +130,15 @@ export function addToCoupon(fixture, market_id, market_name, odds, odd_id, oddna
             }
             for (let i = 0; i < couponData.selections.length; i++) {
                 if(couponData.selections[i].provider_id === data.provider_id){
-                    //add selection to selections list
-                    couponData.selections.push(data);
-                    //group selections by match
-                    couponData.tournaments = groupTournament(couponData.selections);
-                    // couponData.fixtures = groupSelections(couponData.selections);
-                    //bet type
-                    couponData.bet_type = 'Split';
-                    // remove item
-                    // couponData.selections.splice(i, 1);
-                    couponData = await getSplitProps(couponData);
-                    //calculate winnings
-                    const minWinnings = parseFloat(couponData.minOdds) * parseFloat(couponData.minStake);
-                    const maxWinnings = parseFloat(couponData.maxOdds) * parseFloat(couponData.minStake);
-                    //calculate bonus
-                    couponData.minBonus = calculateBonus(minWinnings, couponData, globalVars, bonusList);
-                    couponData.maxBonus = calculateBonus(maxWinnings, couponData, globalVars, bonusList);
-                    couponData.minGrossWin = parseFloat(couponData.minBonus) + minWinnings;
-                    couponData.minWTH = (couponData.minGrossWin - couponData.stake) * process.env.REACT_APP_WTH_PERC / 100;
-                    couponData.minWin = couponData.minGrossWin - couponData.minWTH;
-                    couponData.grossWin = parseFloat(couponData.maxBonus) + maxWinnings;
-                    couponData.wthTax = (couponData.grossWin - couponData.stake) * process.env.REACT_APP_WTH_PERC / 100;
-                    couponData.maxWin = couponData.grossWin - couponData.wthTax;
-
-                    return dispatch({type: SET_COUPON_DATA, payload: couponData});
+                    //remove old selection
+                    couponData.selections.splice(i, 1);
                 }
             }
 
-            couponData.totalOdds = (parseFloat(couponData.totalOdds) * parseFloat(data.odds)).toFixed(2);
             //add selection to selections list
             couponData.selections.push(data);
-
+            // recalculate total odds
+            couponData.totalOdds = calculateTotalOdds(couponData.selections);
             //group selections by match
             couponData.tournaments = groupTournament(couponData.selections);
             // couponData.fixtures = groupSelections(couponData.selections);
