@@ -9,7 +9,7 @@ export default function Casino() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      setToken(`${user?.auth_code}-${process.env.REACT_APP_SITE_KEY}`)
+      setToken(`${user?.code}-${user?.auth_code}-${process.env.REACT_APP_SITE_KEY}`)
     }
   }, [isAuthenticated]);
 
