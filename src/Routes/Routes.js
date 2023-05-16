@@ -38,6 +38,8 @@ import Casino from "../Views/Casino";
 import RocketMan from "../Views/RocketMan";
 // import LiveRoutes from "./LiveRoutes";
 // import Live from "../Views/Layout/Live";
+import ViewMoreGames from "../Views/ViewMoreGames";
+import ViewGames from "../Views/ViewGames";
 
 export default function Routes() {
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -102,6 +104,8 @@ export default function Routes() {
           <Route path="/Sport/Jackpot" component={Jackpot} />
           <Route path="/Sport/Virtual" component={Virtual} />
           <Route path="/Casino" component={Casino} />
+          <Route exact path="/play/live-casino/:id" component={ViewGames} />
+          <Route exact path="/live-casino" component={ViewMoreGames} />
           <Route path="/games/rocket-man" component={RocketMan} />
           <Route path="/Sport/:path?/:extra?" exact>
             <Main>
@@ -140,6 +144,7 @@ export default function Routes() {
               </Switch>
             </BecomeAnAgent>
           </Route>
+
           <Route path={["/404", "*"]} component={NotFound} />
         </Switch>
       </Router>

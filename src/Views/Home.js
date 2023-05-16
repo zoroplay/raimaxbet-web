@@ -5,6 +5,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.css";
 import useSWR from "swr/esm/use-swr";
 import { useSelector } from "react-redux";
+import LiveCasino from "./Components/LiveCasino";
 
 export default function Home({ history }) {
   const [sliders, setSliders] = useState([]);
@@ -45,6 +46,7 @@ export default function Home({ history }) {
           ))}
         </Carousel>
       )}
+      <LiveCasino />
       <TopBets />
 
       <UpcomingEvents />
