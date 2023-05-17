@@ -221,7 +221,9 @@ export const updateProfile = (data) =>
 export const sendOtp = () => Http.post(`/sendsms`);
 export const verifyCode = (otp) =>
   Http.post(`/sms/pin_verification/verify`, otp);
-export const getTopCasinoGame = () => Http.get(`casino/top-games?status=1`);
+export const getTopCasinoGame = () => Http.get(`casino/top-games?status=1/`);
+export const getTopGamesByCategory = () =>
+  Http.get(`admin/casino/games/top/category`);
 export const getAllCasino = () => Http.get(`casino/web-content?status=1`);
 export const getMoreCasino = () =>
   Http.get(`/casino/web-content?status=1&limit=50`);

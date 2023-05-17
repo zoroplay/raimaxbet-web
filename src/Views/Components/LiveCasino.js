@@ -17,6 +17,7 @@ function LiveCasino() {
     setLoading(true);
     getTopCasinoGame()
       .then((response) => {
+        console.log(response);
         setLoading(false);
         setGames(response?.data);
       })
@@ -74,7 +75,7 @@ function LiveCasino() {
                 />
                 <div class="middle">
                   <p>{item?.title}</p>
-                  <div class="textt">Play</div>
+                  <button class="textt">Play</button>
                 </div>
               </div>
             ))}
