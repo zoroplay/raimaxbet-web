@@ -1,6 +1,6 @@
 import moment from "moment-timezone";
 import * as _ from "lodash";
-import { unslugify } from "unslugify";
+import unslugify from "unslugify";
 
 export const getStats = (fixture) => {
   const statWrapper = document.getElementById(
@@ -98,7 +98,9 @@ export const liveScore = (score, team) => {
 };
 
 export const formatDate = (str, format = "YYYY-MM-DD HH:mm") =>
-  moment(str).tz(Intl.DateTimeFormat().resolvedOptions().timeZone).format(format);
+  moment(str)
+    .tz(Intl.DateTimeFormat().resolvedOptions().timeZone)
+    .format(format);
 
 export const goBack = (history) => {
   history.goBack();
@@ -255,34 +257,46 @@ export const checkNoOfDraws = (selections) => {
   return no_of_draws === selections.length && no_of_draws > 5;
 };
 export const validateCombinability = (no_of_fixtures, tournaments) => {
-  let res = {success: true};
+  let res = { success: true };
   tournaments.forEach((tournament) => {
-      switch (tournament.combinability) {
-          case 'double':
-              if (no_of_fixtures < 2) {
-                  res = {
-                      success: false,
-                      message: 'You must select minimum of 2 games when playing ' + tournament.category + ' -> ' + tournament.tournamentName
-                  };
-              }
-              break;
-          case 'treble':
-              if (no_of_fixtures < 3) {
-                  res = {
-                      success: false,
-                      message: 'You must select minimum of 3 games when playing ' + tournament.category + ' -> ' + tournament.tournamentName
-                  };
-              }
-              break;
-          case 'min_5':
-              if (no_of_fixtures < 5) {
-                  res = {
-                      success: false,
-                      message: 'You must select minimum of 5 games when playing ' + tournament.category + ' -> ' + tournament.tournamentName
-                  };
-              }
-              break;
-      }
+    switch (tournament.combinability) {
+      case "double":
+        if (no_of_fixtures < 2) {
+          res = {
+            success: false,
+            message:
+              "You must select minimum of 2 games when playing " +
+              tournament.category +
+              " -> " +
+              tournament.tournamentName,
+          };
+        }
+        break;
+      case "treble":
+        if (no_of_fixtures < 3) {
+          res = {
+            success: false,
+            message:
+              "You must select minimum of 3 games when playing " +
+              tournament.category +
+              " -> " +
+              tournament.tournamentName,
+          };
+        }
+        break;
+      case "min_5":
+        if (no_of_fixtures < 5) {
+          res = {
+            success: false,
+            message:
+              "You must select minimum of 5 games when playing " +
+              tournament.category +
+              " -> " +
+              tournament.tournamentName,
+          };
+        }
+        break;
+    }
   });
   return res;
-}
+};

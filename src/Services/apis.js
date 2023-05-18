@@ -170,7 +170,8 @@ export const getLiveFixtureData = (eventId) =>
 
 export const getUpcomingLive = () => Http.get("/sports/live/upcoming");
 
-export const getOddsChange = (data) => Http.post("/sports/live/oddschanged", data);
+export const getOddsChange = (data) =>
+  Http.post("/sports/live/oddschanged", data);
 
 export const getJackpots = () => Http.get("/sports/jackpots");
 
@@ -220,3 +221,12 @@ export const updateProfile = (data) =>
 export const sendOtp = () => Http.post(`/sendsms`);
 export const verifyCode = (otp) =>
   Http.post(`/sms/pin_verification/verify`, otp);
+export const getTopCasinoGame = () => Http.get(`casino/top-games?status=1/`);
+export const getTopGamesByCategory = () =>
+  Http.get(`admin/casino/games/top/category`);
+export const getAllCasino = () => Http.get(`casino/web-content?status=1`);
+export const getMoreCasino = () =>
+  Http.get(`/casino/web-content?status=1&limit=50`);
+export const playGame = (payload) => Http.post(`/c27/start-session`, payload);
+export const initiateCoralPayment = (payload) =>
+  Http.post("payment/initiate/coral", payload);
