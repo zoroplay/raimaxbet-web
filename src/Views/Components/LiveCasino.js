@@ -17,7 +17,6 @@ function LiveCasino() {
     setLoading(true);
     getTopCasinoGame()
       .then((response) => {
-        console.log(response);
         setLoading(false);
         setGames(response?.data);
       })
@@ -42,46 +41,59 @@ function LiveCasino() {
 
   return (
     <div>
-      <div className="box-header topbets-top">
-        <h4>Live Casino</h4>
-        <NavLink to="/live-casino">View More</NavLink>
-      </div>
-      {loading ? (
-        <Loader loading={loading} style={{ textAlign: "center" }} />
-      ) : (
-        <Carousel
-          className="banner-cont"
-          style={{ background: "black" }}
-          autoPlay={true}
-          infiniteLoop={true}
-          showStatus={false}
-          showThumbs={false}
-          centerMode={true}
-          centerSlidePercentage={33}
-          showArrows={true}
-          interval={3000}
-        >
-          {/* <div className="box-holder"> */}
-          {games &&
-            games?.map((item, i) => (
-              <div
-                className="box"
-                key={i}
-                onClick={() => viewDetails(item?.game_id)}
-              >
-                <img
-                  src={item?.image_path === null ? Casino : item?.image_path}
-                  alt="view"
-                />
-                <div class="middle">
-                  <p>{item?.title}</p>
-                  <button class="textt">Play</button>
-                </div>
+      {games &&
+        games?.map((item) =>
+          item?.games?.length === 0 ? (
+            ""
+          ) : (
+            <>
+              <div className="box-header topbets-top">
+                <h4>{item?.name}</h4>
+                <NavLink to="/live-casino">View More</NavLink>
               </div>
-            ))}
-          {/* </div> */}
-        </Carousel>
-      )}
+              {loading ? (
+                <Loader loading={loading} style={{ textAlign: "center" }} />
+              ) : (
+                <Carousel
+                  className="banner-cont"
+                  style={{ background: "black" }}
+                  autoPlay={true}
+                  infiniteLoop={true}
+                  showStatus={false}
+                  showThumbs={false}
+                  centerMode={true}
+                  centerSlidePercentage={33}
+                  showArrows={true}
+                  interval={3000}
+                >
+                  {/* <div className="box-holder"> */}
+                  {item?.games &&
+                    item?.games?.map((game, i) => (
+                      <div
+                        className="box"
+                        key={i}
+                        onClick={() => viewDetails(game?.casino?.game_id)}
+                      >
+                        <img
+                          src={
+                            game?.casino?.image_path === null
+                              ? Casino
+                              : game?.casino?.image_path
+                          }
+                          alt="view"
+                        />
+                        <div class="middle">
+                          <p>{game?.casino?.title}</p>
+                          <button class="textt">Play</button>
+                        </div>
+                      </div>
+                    ))}
+                  {/* </div> */}
+                </Carousel>
+              )}
+            </>
+          )
+        )}
     </div>
   );
 }
