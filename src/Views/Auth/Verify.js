@@ -2,47 +2,34 @@ import React, { useRef, useState, useEffect } from "react";
 import Others from "../layout/Others";
 import {
   confirmVerification,
-  sendOtp,
+  login,
+  register,
   sendVerification,
-  verifyCode,
 } from "../../Services/apis";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
+import { SET_USER_DATA, UPDATE_SIGNUP_DATA } from "../../Redux/types";
 
 export default function Verify({ history }) {
   const dispatch = useDispatch();
   const [sending, setSending] = useState(false);
   const [otpStatus, setOtpStatus] = useState({ loading: false, status: "" });
-  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const { signup  } = useSelector((state) => state.auth);
   const [otp, setOtp] = useState("");
 
-  useEffect(() => {
-    if (!isAuthenticated) history.replace("/");
-  }, [isAuthenticated]);
-
-  useEffect(() => {
-    if (user?.verified === 1) {
-      history.replace("/");
-    }
-  }, [user]);
-
-  useEffect(() => {
-    sendSMS();
-  }, [isAuthenticated]);
 
   const sendSMS = async () => {
     setSending(true);
-    if (user?.verified === 0) {
-      await sendOtp()
-        .then((res) => {
-          setSending(false);
-          toast.success("Please check your phone for your verification code");
-        })
-        .catch((err) => {
-          setSending(false);
-          toast.error("Unable to send SMS. Please try again");
-        });
-    }
+    await sendVerification({username: signup.phone}, 'register')
+      .then((res) => {
+        setSending(false);
+        toast.success("Please check your phone for your verification code");
+      })
+      .catch((err) => {
+        setSending(false);
+        toast.error("Unable to send SMS. Please try again");
+      });
+  
   };
 
   const [otpRef, setOtpRef] = useState({
@@ -56,12 +43,46 @@ export default function Verify({ history }) {
 
   const confirmOtp = async (otp) => {
     setOtpStatus({ ...otpStatus, loading: true });
-    await verifyCode({ verification_pin: otp })
+    await confirmVerification({ otp, username: signup.phone })
       .then((res) => {
-        setOtpStatus({ ...otpStatus, loading: false });
-        if (res.status) {
-          window.location.reload(false);
-          setOtpStatus({ ...otpStatus, status: "true" });
+        if (res.success) {
+          register(signup)
+            .then((res) => {
+              if (res.success) {
+                dispatch({type: UPDATE_SIGNUP_DATA, payload: {}});
+                setOtpStatus({ ...otpStatus, loading: false });
+                const { username, password } = res.credentials;
+                login(username, password)
+                  .then((res) => {
+                    dispatch({
+                      type: SET_USER_DATA,
+                      payload: {
+                        user: res.user,
+                        access_token: res.token,
+                        isAuthenticated: true,
+                      },
+                    });
+                    history.push("/Sport/Default");
+                  })
+                  .catch((err) => {
+                    if (err.response.status === 401) {
+                      toast.error(err.message);
+                    }
+                  });
+              }
+            })
+            .catch((err) => {
+              setOtpStatus({ ...otpStatus, loading: false });
+              if (err.response.status === 422) {
+                let errors = Object.values(err.response.data.errors);
+                errors = errors.flat();
+                errors.forEach((error) => {
+                  toast.error(error);
+                });
+              } else {
+                toast.error(err.message);
+              }
+            });
           toast.success(res?.message);
           history.push("/");
         } else {
@@ -99,6 +120,7 @@ export default function Verify({ history }) {
       return 0;
     }
   };
+
   return (
     <Others>
       <div className="forgot-password-page">

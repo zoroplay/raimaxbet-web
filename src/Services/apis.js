@@ -1,6 +1,6 @@
 import { Http } from "../Utils";
 import { toast } from "react-toastify";
-import axios from "axios";
+import store from '../Redux/store';
 
 export const fetchGlobalVars = () => Http.get(`/utilities/globalvariables`);
 
@@ -50,8 +50,8 @@ export const authDetails = () => Http.get(`auth/details`);
 export const register = (data) =>
   Http.post(`auth/register?client=website`, data);
 
-export const sendVerification = (data) =>
-  Http.post(`auth/send-verification-code`, data);
+export const sendVerification = (data, type) =>
+  Http.post(`auth/send-verification-code?type=${type}`, data);
 
 export const confirmVerification = (data) =>
   Http.post(`auth/confirm-verification-code`, data);
@@ -170,8 +170,7 @@ export const getLiveFixtureData = (eventId) =>
 
 export const getUpcomingLive = () => Http.get("/sports/live/upcoming");
 
-export const getOddsChange = (data) =>
-  Http.post("/sports/live/oddschanged", data);
+export const getOddsChange = (data) => Http.post("/sports/live/oddschanged", data);
 
 export const getJackpots = () => Http.get("/sports/jackpots");
 
@@ -212,6 +211,8 @@ export const getLivescore = () => Http.get(`/sportscore/sportscore-live`);
 
 export const getAllBanks = () => Http.get(`/utilities/list-banks`);
 
+export const getBankDetails = () => Http.get(`/user/account/get-bank-account`);
+
 export const bankWithdrawal = (payload) =>
   Http.post("user/account/withdraw", payload);
 
@@ -221,12 +222,30 @@ export const updateProfile = (data) =>
 export const sendOtp = () => Http.post(`/sendsms`);
 export const verifyCode = (otp) =>
   Http.post(`/sms/pin_verification/verify`, otp);
+
 export const getTopCasinoGame = () => Http.get(`casino/top-games?status=1/`);
 export const getTopGamesByCategory = () =>
   Http.get(`admin/casino/games/top/category`);
 export const getAllCasino = () => Http.get(`casino/web-content?status=1`);
 export const getMoreCasino = () =>
   Http.get(`/casino/web-content?status=1&limit=50`);
+
 export const playGame = (payload) => Http.post(`/c27/start-session`, payload);
-export const initiateCoralPayment = (payload) =>
-  Http.post("payment/initiate/coral", payload);
+
+export const initializeTransaction = (data) =>
+  Http.post("user/account/deposit?channel=website", data);
+
+export const verifyTransaction = (data) => {
+    const {
+      auth: { access_token }
+    } = store.getState();
+    if (access_token) {
+      return Http.get(
+        `user/account/verify-payment?paymentChannel=${data.paymentChannel}&trxRef=${data.trxRef}`
+      );
+    } else {
+      return Http.get(`verify-payment?paymentChannel=${data.paymentChannel}&trxRef=${data.trxRef}`);
+    }
+  }
+
+  export const verifyBankAccount = (data) => Http.post(`user/account/verify-account`, data);

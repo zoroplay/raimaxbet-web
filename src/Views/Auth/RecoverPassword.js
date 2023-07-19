@@ -2,12 +2,13 @@ import React, { useRef, useState } from "react";
 import Others from "../layout/Others";
 import { confirmVerification, sendVerification } from "../../Services/apis";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { UPDATE_USERNAME } from "../../Redux/types";
 import { formattedPhoneNumber } from "../../Utils/helpers";
 
 export default function RecoverPassword({ history }) {
   const [sending, setSending] = useState(false);
+  const { SportsbookGlobalVariable } = useSelector((state) => state.sportsBook);
   const [otpStatus, setOtpStatus] = useState({ loading: false, status: "" });
   const [otp, setOtp] = useState("");
   const [username, setUsername] = useState("");
@@ -24,13 +25,17 @@ export default function RecoverPassword({ history }) {
 
   const sendSMS = async (username) => {
     if (username !== "") {
+      const dialCode = SportsbookGlobalVariable.DialCode.substring(1);
+
       setSending(true);
-      await sendVerification({ username })
+      await sendVerification({ username: dialCode+''+username }, 'forgot-password')
         .then((res) => {
           setSending(false);
           if (res.success) {
             setUsername(username);
             toast.success("Please check your phone for your verification code");
+          } else {
+            toast.error(res.message);
           }
           // console.log(res);
         })
@@ -43,8 +48,13 @@ export default function RecoverPassword({ history }) {
   };
 
   const confirmOtp = async (otp) => {
+    const dialCode = SportsbookGlobalVariable.DialCode.substring(1);
+
+    const phone = dialCode+''+formattedPhoneNumber(username);
+
     setOtpStatus({ ...otpStatus, loading: true });
-    await confirmVerification({ otp, username })
+
+    await confirmVerification({ otp, username: phone })
       .then((res) => {
         setOtpStatus({ ...otpStatus, loading: false });
         if (res.success) {
