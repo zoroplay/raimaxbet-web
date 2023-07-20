@@ -6,6 +6,7 @@ import * as types from "../types";
 const initialState = {
     role: [],//guest
     user: {},
+    signup: {},
     isAuthenticated: false,
     access_token: null,
     username: null,
@@ -28,6 +29,13 @@ const userData = persistReducer(
                 return {
                     ...state,
                     user: action.payload
+                };
+            }
+            case Actions.UPDATE_SIGNUP_DATA:
+            {
+                return {
+                    ...state,
+                    signup: action.payload
                 };
             }
             case types.UPDATE_USERNAME:

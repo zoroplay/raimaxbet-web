@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import DepositModal from "../Components/Modals/DepositModal";
 import "react-datepicker/dist/react-datepicker.css";
 import { NavLink, withRouter } from "react-router-dom";
-import { SHOW_DEPOSIT_MODAL } from "../../Redux/types";
 import ConfirmBonusWithdrawal from "../Components/Modals/ConfirmBonusWithdrawal";
 
 const Account = ({ children, history }) => {

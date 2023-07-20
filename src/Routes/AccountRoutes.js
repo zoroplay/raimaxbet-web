@@ -23,6 +23,7 @@ import Expenses from "../Views/Account/Expenses";
 import Cashin from "../Views/Account/CashIn";
 import Cashout from "../Views/Account/CashOut";
 import CouponTicket from "../Views/Account/CouponTicket";
+import DepositForm from "../Views/Account/DepositForm";
 
 const AccountRoutes = ({ history }) => {
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -62,6 +63,7 @@ const AccountRoutes = ({ history }) => {
         component={WithdrawalToBank}
       />
       <Route exact path="/Account/Deposit" component={Deposit} />
+      <Route exact path="/Account/DepositWith/:type" component={DepositForm} />
       <Route exact path="/Account/NewUser" component={NewUser} />
       <Route exact path="/Account/TransferFunds" component={TransferFunds} />
       <Route exact path="/Account/AgencyList" component={AgencyList} />

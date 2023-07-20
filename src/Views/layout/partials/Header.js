@@ -80,7 +80,7 @@ export default function Header() {
 
     setLogginIn(true);
 
-    login(username, password)
+    login(formattedPhoneNumber(username), password)
       .then((res) => {
         setLogginIn(false);
         if (!res.success) {
@@ -171,7 +171,7 @@ export default function Header() {
         <div className="nav-top">
           <div className="nav-logo-container">
             <a href="/Sport/Default">
-              <img src="/img/logo.png" alt="Raimaxbet" className="nav-logo" />
+              <img src="/img/logo.png" alt="Maxbet" className="nav-logo" />
             </a>
           </div>
           {!isAuthenticated ? (
@@ -199,7 +199,7 @@ export default function Header() {
                     onKeyPress={onKeyUp}
                   />
                   <input name="action_flag" type="hidden" value="login" />
-                  <NavLink to="/Auth/Register" style={{ color: "#0895fc" }}>
+                  <NavLink to="/Auth/Register" style={{ color: "#cb0f02" }}>
                     Register
                   </NavLink>
                 </div>
@@ -317,11 +317,11 @@ export default function Header() {
           {isAuthenticated && (
             <div className="uxr-container">
               <div className="uxr-inner">
-                {/* <div className="uxr-a">
+                <div className="uxr-a">
                   <NavLink to="/Account/Deposit" className="uxr-a-link">
                     Deposit
                   </NavLink>
-                </div> */}
+                </div>
                 <div className="uxr-b" style={{ color: "white" }}>
                   <span className="uxr-b-text">My Account</span>
                   <UserMenu user={user} />

@@ -3,11 +3,12 @@ import Others from "../layout/Others";
 import * as Yup from "yup";
 import { useState } from "react";
 import { Field, Form, Formik } from "formik";
-import { login, register } from "../../Services/apis";
+import { sendVerification } from "../../Services/apis";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { SET_USER_DATA } from "../../Redux/types";
+import { UPDATE_SIGNUP_DATA } from "../../Redux/types";
 import useSWR from "swr/esm/use-swr";
+import { formattedPhoneNumber } from "../../Utils/helpers";
 
 const error = {
   border: "1px solid red",
@@ -37,6 +38,7 @@ export default function Register({ history }) {
   const { isAuthenticated } = useSelector((state) => state.auth);
   const [bg, setBg] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+  const { SportsbookGlobalVariable } = useSelector((state) => state.sportsBook);
 
   const { data: res, error: errorData } = useSWR(
     "/utilities/bg-image?type=registration&position=background"
@@ -69,49 +71,36 @@ export default function Register({ history }) {
               }}
               validationSchema={RegisterSchema}
               onSubmit={(values, { setSubmitting }) => {
+                const dialCode = SportsbookGlobalVariable.DialCode.substring(1);
+
                 const payload = {
-                  username: values.username,
-                  phone: values.username,
+                  username: formattedPhoneNumber(values.username),
+                  phone: dialCode+''+formattedPhoneNumber(values.username),
                   password: values.password,
                   confirm_password: values.confirm_password,
                   referral_code: values?.referral_code,
                 };
-                register(payload)
-                  .then((res) => {
-                    setSubmitting(false);
-                    if (res.success) {
-                      const { username, password } = res.credentials;
-                      login(username, password)
-                        .then((res) => {
-                          dispatch({
-                            type: SET_USER_DATA,
-                            payload: {
-                              user: res.user,
-                              access_token: res.token,
-                              isAuthenticated: true,
-                            },
-                          });
-                          history.push("/Sport/Default");
-                        })
-                        .catch((err) => {
-                          if (err.response.status === 401) {
-                            toast.error(err.message);
-                          }
-                        });
-                    }
-                  })
-                  .catch((err) => {
-                    setSubmitting(false);
-                    if (err.response.status === 422) {
-                      let errors = Object.values(err.response.data.errors);
-                      errors = errors.flat();
-                      errors.forEach((error) => {
-                        toast.error(error);
-                      });
-                    } else {
-                      toast.error(err.message);
-                    }
-                  });
+
+                sendVerification({username: payload.phone}, 'register').then(res => {
+                  setSubmitting(false);
+                  if(res.success) {
+                    dispatch({type: UPDATE_SIGNUP_DATA, payload});
+                    history.push("/Auth/Verify");
+                  } else {
+                    toast.error(res.message);
+                  }
+                }).catch((err) => {
+                  setSubmitting(false);
+                  if (err.response.status === 422) {
+                    let errors = Object.values(err.response.data.errors);
+                    errors = errors.flat();
+                    errors.forEach((error) => {
+                      toast.error(error);
+                    });
+                  } else {
+                    toast.error(err.message);
+                  }
+                });
               }}
             >
               {({ isSubmitting, touched, errors, values }) => (
@@ -132,13 +121,14 @@ export default function Register({ history }) {
                             }}
                           >
                             <select name="pre" id="" className="nxmob-select">
-                              <option value="+211">+211</option>
+                              <option value="+234">{SportsbookGlobalVariable.DialCode}</option>
                             </select>
                             <Field
                               style={errors.username ? error : null}
                               type="text"
                               className="nxfield"
                               name="username"
+                              placeholder="8012345678"
                             />
                           </div>
                           <div>
