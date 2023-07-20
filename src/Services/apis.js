@@ -1,6 +1,6 @@
 import { Http } from "../Utils";
 import { toast } from "react-toastify";
-import store from '../Redux/store';
+import store from "../Redux/store";
 
 export const fetchGlobalVars = () => Http.get(`/utilities/globalvariables`);
 
@@ -170,7 +170,8 @@ export const getLiveFixtureData = (eventId) =>
 
 export const getUpcomingLive = () => Http.get("/sports/live/upcoming");
 
-export const getOddsChange = (data) => Http.post("/sports/live/oddschanged", data);
+export const getOddsChange = (data) =>
+  Http.post("/sports/live/oddschanged", data);
 
 export const getJackpots = () => Http.get("/sports/jackpots");
 
@@ -231,21 +232,30 @@ export const getMoreCasino = () =>
   Http.get(`/casino/web-content?status=1&limit=50`);
 
 export const playGame = (payload) => Http.post(`/c27/start-session`, payload);
+export const initiateCoralPayment = (payload) =>
+  Http.post("payment/initiate/coral", payload);
+export const getAllGamesCategories = () =>
+  Http.get(`casino/get-games-categories?per_page=50`);
+export const getAllGamesByCategory = (category) =>
+  Http.get(`casino/get-games/${category}`);
 
 export const initializeTransaction = (data) =>
   Http.post("user/account/deposit?channel=website", data);
 
 export const verifyTransaction = (data) => {
-    const {
-      auth: { access_token }
-    } = store.getState();
-    if (access_token) {
-      return Http.get(
-        `user/account/verify-payment?paymentChannel=${data.paymentChannel}&trxRef=${data.trxRef}`
-      );
-    } else {
-      return Http.get(`verify-payment?paymentChannel=${data.paymentChannel}&trxRef=${data.trxRef}`);
-    }
+  const {
+    auth: { access_token },
+  } = store.getState();
+  if (access_token) {
+    return Http.get(
+      `user/account/verify-payment?paymentChannel=${data.paymentChannel}&trxRef=${data.trxRef}`
+    );
+  } else {
+    return Http.get(
+      `verify-payment?paymentChannel=${data.paymentChannel}&trxRef=${data.trxRef}`
+    );
   }
+};
 
-  export const verifyBankAccount = (data) => Http.post(`user/account/verify-account`, data);
+export const verifyBankAccount = (data) =>
+  Http.post(`user/account/verify-account`, data);
