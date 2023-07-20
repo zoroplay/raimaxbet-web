@@ -452,6 +452,13 @@
     opacity: 1;
   }
   
+  .game-card:hover img{
+    opacity: .3;
+  }
+  
+  .game-card:hover .middle {
+    opacity: 1;
+  }
   .box-holder{
     display: flex;
     flex-wrap: wrap;
@@ -466,92 +473,92 @@
   // }
 // }
 
-.casino-view{
-  .body{
-    height: 450px;
-    .body-flex{
-      display:flex;
-      flex-wrap: wrap;
+  .casino-view{
+    .body{
+      height: 450px;
+      .body-flex{
+        display:flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 100%;
+        background:  radial-gradient(ellipse at top,rgba(0,0,0,.1),rgba(0,0,0,.5) 100%);
+        white-space: nowrap;
+        overflow-x: auto;
+          overflow-y: scroll;
+          gap: 10px;
+          .game-card{
+            // margin-right: 1rem;
+            border-radius: 10px;
+            width: 24%;
+            position: relative;
+            cursor: pointer;
+            // height: 45%;
+            margin-bottom: .0rem;
+            p{
+              color: white;
+              margin-top: -.1rem;
+            }
+            img{
+        width: 100%;
+
+            border-radius: 10px;
+
+            }
+          }
+      }
+    }
+    .footer{
+     background: linear-gradient(180deg,hsla(0,0%,100%,.25),#000);
+     color: white;
+     height: 120px;
+     padding: 0rem 1rem;
+     display: flex;
+     .sides{
+      width:20%;
+      height: 100%;
+     }
+     .middle-view{
+      width: 60%;
+      height: 100%;
+    }
+    .middle-flex{
+      display:inline-flex;
       width: 100%;
       height: 100%;
       background:  radial-gradient(ellipse at top,rgba(0,0,0,.1),rgba(0,0,0,.5) 100%);
       white-space: nowrap;
       overflow-x: auto;
-        overflow-y: scroll;
-        gap: 10px;
-        .game-card{
-          // margin-right: 1rem;
-          border-radius: 10px;
-          width: 24%;
-          position: relative;
-          cursor: pointer;
-          // height: 45%;
-          margin-bottom: .0rem;
-          p{
-            color: white;
-            margin-top: -.1rem;
-          }
-          img{
-      width: 100%;
-
-          border-radius: 10px;
-
-          }
-        }
-    }
-  }
-  .footer{
-   background: linear-gradient(180deg,hsla(0,0%,100%,.25),#000);
-   color: white;
-   height: 120px;
-   padding: 0rem 1rem;
-   display: flex;
-   .sides{
-    width:20%;
-    height: 100%;
-   }
-   .middle-view{
-    width: 60%;
-    height: 100%;
-  }
-  .middle-flex{
-    display:inline-flex;
-    width: 100%;
-    height: 100%;
-    background:  radial-gradient(ellipse at top,rgba(0,0,0,.1),rgba(0,0,0,.5) 100%);
-    white-space: nowrap;
-    overflow-x: auto;
-      overflow-y: hidden;
-    .game-card{
-      cursor: pointer;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      align-self: center;
-    P{
-      text-transform: capitalize;
-      background: black;
-      padding: 1rem 2rem;
-      border-radius: 10px;
-    }
-      
-      margin: 0rem .5rem;
-    }
-    .active-card{
-      
-      cursor: pointer;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      align-self: center;
-
-      p{
-      text-transform: capitalize;
-      background: white;
-      color: black;
-      padding: 1.5rem 2rem;
-      border-radius: 10px;
+        overflow-y: hidden;
+      .game-card{
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        align-self: center;
+      P{
+        text-transform: capitalize;
+        background: black;
+        padding: 1rem 2rem;
+        border-radius: 10px;
       }
-   
-    }}}
-}
+        
+        margin: 0rem .5rem;
+      }
+      .active-card{
+        
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        align-self: center;
+
+        p{
+        text-transform: capitalize;
+        background: white;
+        color: black;
+        padding: 1.5rem 2rem;
+        border-radius: 10px;
+        }
+     
+      }}}
+  }

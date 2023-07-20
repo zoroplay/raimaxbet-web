@@ -32,6 +32,7 @@ export default function Casino() {
     getAllGamesByCategory(active)
       .then((response) => {
         setLoading(false);
+
         setGames(response);
       })
       .catch((err) => {
@@ -49,7 +50,7 @@ export default function Casino() {
 
   const viewDetails = (id) => {
     if (isAuthenticated) {
-      history.push(`/play/casino/${id}`);
+      history.push(`/play/live-casino/${id}`);
     } else {
       history.replace("/Auth/Register");
     }
