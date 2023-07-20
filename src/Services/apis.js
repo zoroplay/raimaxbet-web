@@ -230,3 +230,7 @@ export const getMoreCasino = () =>
 export const playGame = (payload) => Http.post(`/c27/start-session`, payload);
 export const initiateCoralPayment = (payload) =>
   Http.post("payment/initiate/coral", payload);
+export const getAllGamesCategories = () =>
+  Http.get(`casino/get-games-categories?per_page=50`);
+export const getAllGamesByCategory = (category) =>
+  Http.get(`casino/get-games/${category}`);

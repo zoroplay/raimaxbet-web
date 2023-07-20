@@ -42,7 +42,10 @@ export default function Header() {
     if (isAuthenticated) {
       LEcho.channel(`deposits.${user.username}`).listen("DepositEvent", (e) => {
         // console.log(e.user);
-        dispatch({ type: UPDATE_USER_BALANCE, payload: e.user.available_balance });
+        dispatch({
+          type: UPDATE_USER_BALANCE,
+          payload: e.user.available_balance,
+        });
         toast.success("Your deposit request was successful");
       });
 
@@ -285,7 +288,7 @@ export default function Header() {
             </li>
             <li className="nav-mid-list-li">
               <NavLink to="/Casino">
-                <h1>Casino</h1>
+                <h1>Pragmatic Play</h1>
               </NavLink>
               {/* <a
                                 target="_blank"
@@ -295,7 +298,7 @@ export default function Header() {
             </li>
             <li className="nav-mid-list-li">
               <NavLink id="indexCasino" to="/games/rocket-man">
-                <h1>Rocket Man</h1>
+                <h1>Casino</h1>
               </NavLink>
             </li>
             <li className="nav-mid-list-li">

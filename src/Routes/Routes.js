@@ -106,7 +106,7 @@ export default function Routes() {
           <Route path="/Casino" component={Casino} />
           <Route exact path="/play/live-casino/:id" component={ViewGames} />
           <Route exact path="/live-casino" component={ViewMoreGames} />
-          <Route path="/games/rocket-man" component={RocketMan} />
+          <Route path="/games/rocket-man" component={Casino} />
           <Route path="/Sport/:path?/:extra?" exact>
             <Main>
               <SportRoutes />
