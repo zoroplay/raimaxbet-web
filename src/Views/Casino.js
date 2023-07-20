@@ -49,9 +49,9 @@ export default function Casino() {
 
   const viewDetails = (id) => {
     if (isAuthenticated) {
-      setToken(
-        `${user?.code}-${user?.auth_code}-${process.env.REACT_APP_SITE_KEY}`
-      );
+      history.push(`/play/casino/${id}`);
+    } else {
+      history.replace("/Auth/Register");
     }
   };
 
