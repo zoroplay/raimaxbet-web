@@ -288,7 +288,7 @@ export default function Header() {
             </li>
             <li className="nav-mid-list-li">
               <NavLink to="/Casino">
-                <h1>Pragmatic Play</h1>
+                <h1>Casino</h1>
               </NavLink>
               {/* <a
                                 target="_blank"
@@ -298,7 +298,7 @@ export default function Header() {
             </li>
             <li className="nav-mid-list-li">
               <NavLink id="indexCasino" to="/games/rocket-man">
-                <h1>Casino</h1>
+                <h1>Rocket Man</h1>
               </NavLink>
             </li>
             <li className="nav-mid-list-li">

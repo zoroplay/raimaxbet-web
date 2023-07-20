@@ -4,7 +4,8 @@ import JackpotLayout from "./layout/JackpotLayout";
 import { useSelector } from "react-redux";
 import { getAllGamesByCategory, getAllGamesCategories } from "../Services/apis";
 import Loader from "./Components/Loader";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 export default function Casino() {
   const { user } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
@@ -99,7 +100,13 @@ export default function Casino() {
               ""
             )}
           </div>
-          <div className="middle-view">
+          <div className="middle-view" style={{ fontSize: "1rem" }}>
+            <div className="arrowIcon">
+              <FontAwesomeIcon
+                icon={faChevronRight}
+                style={{ float: "right" }}
+              />
+            </div>
             <div className="middle-flex">
               {categories &&
                 categories?.data?.map((item, i) => (
