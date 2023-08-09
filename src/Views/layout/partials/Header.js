@@ -42,7 +42,10 @@ export default function Header() {
     if (isAuthenticated) {
       LEcho.channel(`deposits.${user.username}`).listen("DepositEvent", (e) => {
         // console.log(e.user);
-        dispatch({ type: UPDATE_USER_BALANCE, payload: e.user.available_balance });
+        dispatch({
+          type: UPDATE_USER_BALANCE,
+          payload: e.user.available_balance,
+        });
         toast.success("Your deposit request was successful");
       });
 
