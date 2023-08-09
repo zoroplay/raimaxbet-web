@@ -20,7 +20,7 @@ const errorM = {
 };
 const RegisterSchema = Yup.object().shape({
   username: Yup.string()
-    .min(11, "Please enter a valid phone number")
+    // .min(11, "Please enter a valid phone number")
     .required("Your phone number is required"),
   password: Yup.string()
     .min(3, "Minimum 3 letters")
