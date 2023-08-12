@@ -3,10 +3,10 @@ import Others from "../layout/Others";
 import * as Yup from "yup";
 import { useState } from "react";
 import { Field, Form, Formik } from "formik";
-import { sendVerification } from "../../Services/apis";
+import { login, register, sendVerification } from "../../Services/apis";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { UPDATE_SIGNUP_DATA } from "../../Redux/types";
+import { SET_USER_DATA, UPDATE_SIGNUP_DATA } from "../../Redux/types";
 import useSWR from "swr/esm/use-swr";
 import { formattedPhoneNumber } from "../../Utils/helpers";
 
@@ -81,25 +81,41 @@ export default function Register({ history }) {
                   referral_code: values?.referral_code,
                 };
 
-                sendVerification({username: payload.phone}, 'register').then(res => {
-                  setSubmitting(false);
-                  if(res.success) {
-                    dispatch({type: UPDATE_SIGNUP_DATA, payload});
-                    history.push("/Auth/Verify");
-                  } else {
-                    toast.error(res.message);
-                  }
-                }).catch((err) => {
-                  setSubmitting(false);
-                  if (err.response.status === 422) {
-                    let errors = Object.values(err.response.data.errors);
-                    errors = errors.flat();
-                    errors.forEach((error) => {
-                      toast.error(error);
-                    });
-                  } else {
-                    toast.error(err.message);
-                  }
+                register(payload)
+                  .then((res) => {
+                    setSubmitting(false);
+                    if (res.success) {
+                      const { username, password } = res.credentials;
+                      login(username, password)
+                        .then((res) => {
+                          dispatch({
+                            type: SET_USER_DATA,
+                            payload: {
+                              user: res.user,
+                              access_token: res.token,
+                              isAuthenticated: true,
+                            },
+                          });
+                          history.push("/Sport/Default");
+                        })
+                        .catch((err) => {
+                          if (err.response.status === 401) {
+                            toast.error(err.message);
+                          }
+                        });
+                    }
+                  })
+                  .catch((err) => {
+                    setSubmitting(false);
+                    if (err.response.status === 422) {
+                      let errors = Object.values(err.response.data.errors);
+                      errors = errors.flat();
+                      errors.forEach((error) => {
+                        toast.error(error);
+                      });
+                    } else {
+                      toast.error(err.message);
+                    }
                 });
               }}
             >
