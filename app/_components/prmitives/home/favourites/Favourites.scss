@@ -1,0 +1,141 @@
+@use "@/variable" as var;
+
+.favs {
+  width: 100%;
+  background-color: var.$green;
+  // max-height: 280px;
+  height: 46px;
+  overflow: scroll;
+  transition: all 0.3s linear;
+  .fav_acc_wrap {
+    cursor: pointer;
+    padding: 8px;
+    border-bottom: 1px solid rgb(255, 255, 255, 0.2);
+    .fav_acc_texts {
+      align-items: center;
+      .fav_acc_star {
+        font-size: 23px;
+        margin-right: 10px;
+        color: #fff;
+      }
+      .fav_acc_title {
+        font-size: 14px;
+        font-weight: 300;
+        color: #fff;
+      }
+    }
+    .fav_acc_down{
+      color: #fff;
+    }
+  }
+  .favs_item {
+    padding: 10px 8px;
+    border-bottom: 1px solid rgb(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s linear;
+    position: relative;
+    overflow: hidden;
+    &:hover {
+      background-color: lighten($color: var.$green, $amount: 10);
+    }
+    &:hover .fav_item_sp {
+      color: rgb(0, 0, 0, 0.2);
+    }
+
+    .favs_item_texts {
+      .favs_item_teams {
+        font-size: 14px;
+        font-weight: 300;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 210px;
+        overflow: hidden;
+        margin-bottom: 4px;
+        z-index: 2;
+      }
+      .favs_item_date {
+        font-size: 14px;
+        font-weight: 300;
+        color: rgb(193, 191, 191);
+      }
+    }
+    .favs_item_close {
+      &:hover {
+        color: rgb(120, 43, 43);
+      }
+    }
+    .sbe-sb-sports-icon, .sports_icon {
+      position: absolute;
+      right: 0;
+      bottom: -40px;
+      font-size: 80px;
+      opacity: 0.1;
+    }
+  }
+  .empty_item {
+    padding: 15px 8px;
+    border-bottom: 1px solid rgb(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s linear;
+    &:hover {
+      background-color: lighten($color: var.$green, $amount: 10);
+    }
+    .favs_item_texts {
+      .favs_item_empty {
+        font-size: 14px;
+        font-weight: 300;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 210px;
+        overflow: hidden;
+        margin-bottom: 4px;
+      }
+    }
+    .empty_item_icon {
+      margin-right: 5px;
+      color: #4dd0e1;
+    }
+  }
+  .add_anim_bg {
+    animation: empty_bg 5s 1s linear;
+  }
+  .add_anim_text {
+    animation: empty_text 0.5s 0s linear;
+  }
+}
+.extend_fav {
+  height: 280px;
+}
+
+@keyframes empty_bg {
+  0% {
+    background-color: var.$green;
+  }
+  10% {
+    background-color: lighten($color: var.$green, $amount: 10);
+  }
+  30% {
+    background-color: var.$green;
+  }
+  40% {
+    background-color: lighten($color: var.$green, $amount: 10);
+  }
+  60% {
+    background-color: var.$green;
+  }
+  80% {
+    background-color: lighten($color: var.$green, $amount: 10);
+  }
+  100% {
+    background-color: var.$green;
+  }
+}
+
+@keyframes empty_text {
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

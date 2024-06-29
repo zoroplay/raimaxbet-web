@@ -1,0 +1,25 @@
+@use "@/variable" as var;
+
+.side_bar {
+  width: 100%;
+  .side_bar_tab {
+    border-radius: 0px !important;
+  }
+
+  .side_bar_tabs {
+    background-color: var.$green;
+    .home_side_toggle {
+      width: 15%;
+      font-size: 24px;
+      cursor: pointer;
+      height: 42px;
+    }
+
+    .home_toggle_full {
+      width: 100%;
+    }
+  }
+  .side_bar_search {
+    width: 100%;
+  }
+}

@@ -1,0 +1,55 @@
+@use "@/variable" as var;
+
+.cat_matches_wrap {
+  background-color: #f3f1f1;
+  width: 100%;
+  position: relative;
+
+  .cat_matches_cancle {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    color: var.$orange;
+    cursor: pointer;
+  }
+  .cat_matches {
+    width: 100%;
+
+    .markets_wrap {
+      width: 100%;
+      padding: 10px 0px;
+      align-items: center;
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+      .markets_items {
+        width: 50%;
+        align-items: center;
+
+        .market_item_single {
+          width: 45%;
+          font-size: 13px;
+          color: var.$text-black;
+        }
+
+        .market_items_select {
+          width: 45%;
+
+          .market_select {
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            background-color: transparent;
+            outline: none;
+            width: 70%;
+            font-size: 11px;
+            font-weight: 300;
+            background-color: var.$green;
+            padding: 8px;
+            text-transform: uppercase;
+
+            .market_option {
+            }
+          }
+        }
+      }
+    }
+  }
+}

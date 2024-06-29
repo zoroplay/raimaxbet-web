@@ -1,0 +1,30 @@
+@use "@/variable" as var;
+
+.help {
+  padding: 30px 100px;
+  background-color: #fff;
+  gap: 20px;
+  .help_select {
+    width: 30%;
+    background-color: var.$green;
+    padding: 20px;
+    .select_text {
+      color: #fff;
+      margin-bottom: 15px;
+      border-bottom: solid 1px rgba(243, 240, 240, 0.3);
+      padding-bottom: 4px;
+      transition: color 0.3s linear;
+      cursor: pointer;
+      &:hover {
+        color: #959292;
+      }
+    }
+
+    .active {
+      color: #959292;
+    }
+  }
+  .help_content {
+    width: 70%;
+  }
+}

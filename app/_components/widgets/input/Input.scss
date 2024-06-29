@@ -1,0 +1,135 @@
+@use "@/variable" as var;
+
+.input {
+  width: 100%;
+  position: relative;
+  // max-width: 469px;
+
+  .input_label_wrap_text {
+    font-size: 12px;
+    color: var.$text-black;
+    margin-bottom: 8px;
+    font-weight: 700;
+
+    @media (max-width: 991px) {
+      font-size: 12px;
+    }
+  }
+
+  .input_label_wrap_text_required {
+    color: #ff0707;
+    font-size: 12px;
+  }
+
+  .input_label_wrap {
+    .tooltip {
+      cursor: pointer;
+      position: relative;
+      color: white;
+      font-size: 8px;
+      z-index: 2;
+
+      &:hover .tooltip_pop_up {
+        opacity: 1;
+        display: block;
+      }
+
+      .tooltip_pop_up {
+        position: absolute;
+        opacity: 0;
+        display: none;
+        background: black;
+        padding: 5px;
+        right: -45px;
+        border-radius: 5px;
+        min-width: 100px;
+        top: 25px;
+        text-align: center;
+
+        &::before {
+          content: "";
+          position: absolute;
+          background-color: black;
+          height: 10px;
+          width: 10px;
+          transform: rotate(40deg);
+          right: 48px;
+          top: -5px;
+        }
+      }
+    }
+  }
+
+  .input_main_wrap {
+    position: relative;
+    border-radius: 4px;
+    border: 1px solid #a1a4b1;
+    height: 38px;
+    width: 100%;
+
+    .num_text {
+      font-size: 14px;
+      padding: 0px 6px;
+      border-right: 1px solid #a1a4b1;
+      height: 100%;
+
+      .num_text_icon {
+        margin-right: 4px;
+        margin-bottom: -2px;
+      }
+    }
+
+    .input_main {
+      position: relative;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      outline: none;
+      padding: 3px;
+      height: 34px;
+      width: 90%;
+      color: var.$text-black;
+      font-size: 12px;
+      background-color: transparent;
+
+      &::placeholder {
+        color: var.$text-black;
+        font-size: 13px;
+      }
+    }
+
+    .datepicker {
+      @extend .input_main;
+      width: 240%;
+    }
+
+    .date {
+      position: absolute;
+      padding: 9px;
+      right: 0;
+      top: 0;
+      height: 99%;
+      cursor: pointer;
+    }
+
+    .password {
+      position: absolute;
+      padding: 9px;
+      right: 0px;
+      top: 0;
+      height: 99%;
+      cursor: pointer;
+
+      .pass_icon {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.input_error {
+  color: #ff0707;
+  font-size: 12px;
+  // position: absolute;
+  // top: 40px;
+  // left: 0;
+}

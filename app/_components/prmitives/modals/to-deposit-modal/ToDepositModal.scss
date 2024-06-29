@@ -1,0 +1,27 @@
+@use "@/variable" as var;
+
+.to_deposit {
+  padding: 10px;
+  background-color: #fff;
+  .to_deposit_icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+    color: var.$text-black;
+  }
+  .to_deposit_text {
+    font-size: 16px;
+    color: #797979;
+    text-align: center;
+    margin-bottom: 26px;
+    font-weight: 300;
+  }
+  .to_deposit_btn1 {
+    background-color: #c1c11c;
+    padding: 10px 32px;
+    margin: 0px 5px;
+  }
+  .to_deposit_btn2 {
+    @extend .to_deposit_btn1;
+    background-color: #4bae4f;
+  }
+}

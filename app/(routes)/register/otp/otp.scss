@@ -1,0 +1,65 @@
+@use "@/variable" as var;
+
+.register {
+  padding: 50px 20px 50px 20px;
+
+  .form_wrap {
+    background-color: #fff;
+    width: 40%;
+    padding: 10px;
+    .register_title {
+      font-size: 22px;
+      color: black;
+      width: 100%;
+      margin-bottom: 10px;
+      font-weight: 700;
+      border-bottom: 1px solid rgba(157, 157, 157, 0.2);
+      padding-bottom: 10px;
+    }
+    .form_wrap_item {
+      .checkbox_wrap {
+        position: relative;
+        margin-bottom: 30px;
+        margin-top: 10px;
+        .check_input {
+          opacity: 0;
+          margin-right: 15px;
+        }
+        .checkbox {
+          border: 1px solid #ccd6e4;
+          width: 17px;
+          height: 17px;
+          font-size: 13px;
+          color: #4bae4f;
+          position: absolute;
+          //   z-index: -1;/
+        }
+
+        .active {
+          border: 1px solid #4bae4f;
+        }
+        .check_text {
+          color: var.$text-black;
+          font-size: 12px;
+          a {
+            color: #ff8f00;
+          }
+        }
+      }
+    }
+    .reg_btn {
+      background-color: var.$primary-accent;
+      color: var.$color;
+      font-size: 16px;
+      padding: 11px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    .reg_btn_resend {
+      @extend .reg_btn;
+      background-color: var.$orange;
+      color: var.$text-black;
+      font-size: 14px;
+    }
+  }
+}

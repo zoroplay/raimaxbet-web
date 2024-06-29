@@ -1,0 +1,34 @@
+@use "@/variable" as var;
+
+.hover_side {
+  width: 100%;
+  background-color: var.$green;
+  padding: 2px;
+  height: 100vh;
+  .hover_icon_wrap {
+    background-color: #31514c;
+    height: 40px;
+    width: 100%;
+    margin-bottom: 4px;
+    position: relative;
+    cursor: pointer;
+    .hover_icon {
+      font-size: 24px;
+      opacity: 0.9;
+    }
+    .hover_comp {
+      position: absolute;
+      z-index: 3;
+      left: 0;
+      top: 0;
+      width: 30px;
+      background-color: var.$green;
+      transition: all 0.3s linear;
+      opacity: 0;
+    }
+    .hover_comp_active {
+      opacity: 1;
+      width: 300px;
+    }
+  }
+}

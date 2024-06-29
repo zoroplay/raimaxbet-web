@@ -1,0 +1,48 @@
+@use "@/variable" as var;
+
+.otp_reset {
+  width: 40%;
+  height: 100vh;
+  background-color: var.$green;
+  position: fixed;
+  .otp_reset_icon_wrap {
+    padding: 20px;
+    .ver_num_icon {
+      color: #fff;
+      font-size: 25px;
+    }
+    .otp_reset_icon {
+      @extend .ver_num_icon;
+    }
+  }
+  .otp_reset_wrap {
+    padding: 50px 0px 0px 0px;
+    .otp_reset_title {
+      font-size: 30px;
+      color: #fff;
+      margin-bottom: 20px;
+      font-weight: 900;
+      width: 100%;
+      text-align: center;
+    }
+    .otp_reset_sub {
+      @extend .otp_reset_title;
+      font-size: 14px;
+      font-weight: 400;
+      color: #d3cfcf;
+      margin-bottom: 50px;
+    }
+    .otp_reset_inp_wrap {
+      .otp_reset_inp {
+        width: 60px !important;
+        height: 60px;
+        font-size: 16px;
+      }
+      .otp_reset_resend {
+        color: #d3cfcf;
+        font-size: 16px;
+        margin-top: 40px;
+      }
+    }
+  }
+}

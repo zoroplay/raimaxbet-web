@@ -1,0 +1,39 @@
+@use "@/variable.scss" as var;
+
+.home_banner {
+  background: var.$green;
+  width: 100%;
+  position: relative;
+  .slide_container {
+    width: 100%;
+    height: 160px;
+
+    .slide {
+      width: 100%;
+      position: relative;
+      height: 160px;
+
+      .banner_image {
+        object-fit: cover;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .banner_next {
+    position: absolute;
+    right: 2px;
+    top: 28%;
+    font-size: 25px;
+    height: 60px;
+    width: 40px;
+    background-color: rgb(0, 0, 0, 0.3);
+    cursor: pointer;
+    color: rgb(255, 255, 255, 0.8);
+  }
+  .banner_prev {
+    @extend .banner_next;
+    left: 2px;
+  }
+}

@@ -1,0 +1,38 @@
+@use "@/variable" as var;
+
+.pay_acc {
+  width: 100%;
+  border: 1px solid #e8e8e8;
+  padding: 8px;
+  background-color: #f8f8f8;
+
+  .pay_acc_title {
+    color: #797979;
+    font-size: 13px;
+    margin: 8px 0px;
+    text-align: center;
+  }
+
+  .pay_acc_btn {
+    background-color: #5b938a;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var.$text-black;
+  }
+}
+
+.pay_accounts {
+  @extend .pay_acc;
+  margin-top: 20px;
+  .pay_accounts_texts {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e8e8e8;
+    .pay_accounts_title {
+      font-size: 13px;
+    }
+    .pay_accounts_title_one {
+      color: #797979;
+      font-size: 13px;
+    }
+  }
+}

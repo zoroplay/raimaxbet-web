@@ -1,0 +1,67 @@
+@use "@/variable" as var;
+
+.games {
+  // border-top: 1px solid black;
+
+  .games_slide {
+    background-color: #e8e8e8;
+    padding: 40px 0px 35px 0px;
+    .games_slide_head {
+      font-size: 22px;
+      margin: 10px 0;
+    }
+    .game_slide_con {
+      width: 100%;
+      margin-bottom: 15px;
+      // margin-right: -10px;
+      .slider {
+        width: 180px !important;
+        display: flex !important;
+        flex-direction: column;
+        background-color: #fff;
+        padding: 2px;
+        // margin-right: 10px;
+        .slide_img_wrap {
+          height: 139px;
+          width: 100%;
+          position: relative;
+          .game_slide_img {
+            position: absolute;
+            object-fit: cover;
+            height: 100%;
+            right: 0;
+          }
+        }
+
+        .games_slide_title {
+          font-size: 13px;
+          color: var.$text-black;
+          padding: 10px 0px;
+          font-weight: 600;
+          width: 200px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+    .slide_btn {
+      background: var.$green;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .slide_text_wrap {
+      padding: 30px;
+      .slide_text {
+        font-size: 12px;
+        color: black;
+        margin-bottom: 30px;
+        text-align: left;
+        line-height: 20px;
+        span {
+          color: var.$red;
+        }
+      }
+    }
+  }
+}

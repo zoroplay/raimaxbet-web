@@ -1,0 +1,155 @@
+@use "@/variable" as var;
+
+.deposit_modal_bonus {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  height: 700px;
+  overflow-y: scroll;
+  padding-bottom: 80px;
+
+  .deposit_modal_title_wrap {
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 10px 0px;
+
+    .deposit_modal_title {
+      font-size: 18px;
+      color: var.$text-black;
+    }
+
+    .deposit_modal_cancel {
+      font-size: 22px;
+      color: var.$text-black;
+    }
+  }
+
+  .deposit_modal_sub_wrap {
+    padding: 10px 0px;
+    border-bottom: 2px solid rgba(231, 139, 61, 0.8);
+
+    .deposit_modal_sub_text {
+      font-size: 16px;
+      padding: 5px;
+      color: #b2b4b6;
+      font-weight: 300;
+      margin-bottom: 2px;
+    }
+
+    .main {
+      color: var.$orange;
+    }
+  }
+
+  .deposit_modal_form_wrap {
+    padding-top: 15px;
+    align-items: center;
+
+    .deposit_modal_form_text {
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .deposit_modal_input_wrap {
+      align-items: center;
+
+      .deposit_modal_input_con {
+        width: 80%;
+
+        .deposit_modal_input {
+          width: 100%;
+          border: 1px solid #707070;
+          padding: 6.5px 12px;
+        }
+      }
+
+      .deposit_modal_ngn {
+        font-size: 14px;
+        padding: 6px 12px;
+        border: 1px solid #707070;
+        width: 20%;
+      }
+
+      .deposit_modal_dec {
+        @extend .deposit_modal_ngn;
+      }
+    }
+  }
+
+  .deposit_modal_payment_wrap {
+    border: 1px solid #e9e9ea;
+    border-radius: 4px;
+    padding: 5px;
+    margin-top: 15px;
+
+    .deposit_modal_payment {
+      .paypent_text {
+        align-items: center;
+        margin-bottom: 10px;
+
+        .key {
+          font-size: 13px;
+          color: #5b938a;
+          font-weight: 700;
+        }
+
+        .value {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+
+  .bonus_wrap {
+    border-bottom: 1px solid #e9e9ea;
+    padding: 15px 0px;
+
+    .bonus {
+      .bonus_text {
+        font-size: 16px;
+        font-weight: 700;
+        color: var.$text-black;
+        margin-bottom: 8px;
+      }
+
+      .no_bonus_text {
+        font-size: 12px;
+        color: black;
+      }
+    }
+  }
+
+  .deposit_modal_btn {
+    background-color: var.$primary-accent;
+    color: var.$color;
+    padding: 15px;
+    font-weight: 700;
+  }
+
+  .deposit_modal_btn_back {
+    @extend.deposit_modal_btn;
+    margin-bottom: 15px;
+    background-color: #9d9d9d;
+    color: #fff;
+    margin-top: 20px;
+  }
+
+  .deposit_modal_btn_proceed {
+    @extend.deposit_modal_btn;
+  }
+  .pay_iframe {
+    margin-top: 25px;
+    .iframe_item {
+      border: 1px solid #e9e9ea;
+    }
+    .pay_iframe_text {
+      padding: 15px 8px 30px 8px;
+      text-align: center;
+      font-size: 18px;
+      color: var.$text-black;
+      border: 1px solid #e9e9ea;
+    }
+  }
+}

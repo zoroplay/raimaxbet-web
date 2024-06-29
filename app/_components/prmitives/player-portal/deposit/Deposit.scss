@@ -1,0 +1,160 @@
+@use "@/variable" as var;
+
+.deposit {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  padding-bottom: 30px;
+
+  .deposit_title_wrap {
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 10px 0px;
+
+    .deposit_title {
+      font-size: 18px;
+      color: var.$text-black;
+    }
+
+    .deposit_cancel {
+      font-size: 22px;
+      color: var.$text-black;
+    }
+  }
+
+  .deposit_sub_wrap {
+    padding: 10px 0px;
+    border-bottom: 2px solid rgba(231, 139, 61, 0.8);
+
+    .deposit_sub_text {
+      font-size: 16px;
+      padding: 5px;
+      color: #b2b4b6;
+      margin-bottom: 2px;
+    }
+
+    .main {
+      color: var.$orange;
+    }
+  }
+
+  .deposit_form_wrap {
+    padding-top: 15px;
+    align-items: center;
+
+    .deposit_form_text {
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .deposit_input_wrap {
+      align-items: center;
+      height: 40px;
+
+      .deposit_input_con {
+        width: 80%;
+        height: 100%;
+
+        .deposit_input {
+          height: 100%;
+          width: 100%;
+          border: 1px solid #707070;
+          padding: 6.5px 12px;
+          background-color: transparent;
+          color: var.$text-black;
+
+          &::placeholder {
+            color: var.$text-black;
+          }
+        }
+      }
+
+      .deposit_ngn {
+        height: 100%;
+        font-size: 14px;
+        color: var.$text-black;
+        border: 1px solid #707070;
+        width: 20%;
+      }
+
+      .deposit_dec {
+        @extend .deposit_ngn;
+      }
+    }
+
+    .deposit_error {
+      font-size: 11px;
+      color: red;
+      margin-top: 4px;
+    }
+  }
+
+  .deposit_payment_wrap {
+    border: 1px solid #e9e9ea;
+    border-radius: 4px;
+    padding: 5px;
+    margin-top: 15px;
+
+    .deposit_payment {
+      .deposit_payment_img {
+        object-fit: contain;
+      }
+
+      .paypent_text {
+        align-items: center;
+        margin-bottom: 10px;
+
+        .key {
+          font-size: 13px;
+          color: #5b938a;
+          font-weight: 700;
+        }
+
+        .value {
+          font-size: 13px;
+        }
+      }
+    }
+
+    .deposit_btns {
+      .deposit_btn {
+        background-color: #5b938a;
+        color: var.$text-black;
+        padding: 15px;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+
+      .deposit_acc {
+        height: 50px;
+        transition: all 0.3s ease-in-out;
+        //   background-color: red;
+        overflow: hidden;
+
+        .deposit_acc_icon {
+          color: #fff;
+          background-color: #9d9d9d;
+          padding: 15px;
+          width: 100%;
+          border-radius: 5px;
+          margin-bottom: 5px;
+        }
+
+        .deposit_acc_method {
+          padding: 10px;
+          color: #717171;
+          font-size: 12px;
+          width: 100%;
+          border: 1px solid #e9e9ea;
+        }
+      }
+
+      .active {
+        @extend .deposit_acc;
+        height: 100px;
+      }
+    }
+  }
+}

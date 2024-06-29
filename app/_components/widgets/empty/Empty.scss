@@ -1,0 +1,34 @@
+@use "@/variable" as var;
+
+.empty {
+  width: 100%;
+
+  .empty_icon_wrap {
+    border-radius: 50%;
+    background-color: var.$green;
+    width: 110px;
+    height: 110px;
+    position: relative;
+    overflow: hidden;
+
+    .empty_icon {
+      font-size: 90px;
+      color: white;
+      position: absolute;
+      top: 30%;
+      left: 10%;
+    }
+  }
+
+  .empty_title {
+    font-size: 14px;
+    color: var.$text-black;
+    margin-top: 10px;
+    font-weight: 700;
+  }
+
+  .empty_sub {
+    font-size: 12px;
+    margin-top: 2px;
+  }
+}

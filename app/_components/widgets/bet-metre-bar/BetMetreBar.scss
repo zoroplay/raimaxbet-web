@@ -1,0 +1,21 @@
+@use "@/variable" as var;
+
+.betmetre_read {
+  position: relative;
+  color: #fff;
+  font-size: 11px;
+  width: 100%;
+  text-align: center;
+  height: 18px;
+  background-color: #096b27;
+
+  .betmetre_read_bar {
+    background-color: #5b938a;
+    height: 100%;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}

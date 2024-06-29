@@ -1,0 +1,121 @@
+@use "@/variable.scss" as var;
+
+.all_lgs {
+  width: 100%;
+  .all_lgs_sport {
+    padding: 35px 10px;
+    background-color: darken($color: var.$green, $amount: 5);
+    .all_sport_text {
+      font-size: 20px;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+    .sbe-sb-sports-icon,
+    .sports_icon {
+      font-size: 24px;
+    }
+  }
+  .all_lgs_tab {
+    background-color: var.$green;
+    height: 40px;
+    margin-top: 2px;
+    .all_lgs_text {
+      color: #fff;
+      font-size: 14px;
+      text-transform: uppercase;
+      position: relative;
+      font-weight: 300;
+      padding: 0px 20px;
+      transition: all 0.3s linear;
+      height: 100%;
+      cursor: pointer;
+      &:hover {
+        background-color: lighten($color: var.$green, $amount: 10);
+      }
+      .count {
+        margin-left: 5px;
+        background-color: #fff;
+        width: 24px;
+        height: 20px;
+        color: var.$text-black;
+        border-radius: 50%;
+        font-size: 12px;
+        font-weight: 600;
+      }
+    }
+  }
+  .categories {
+    .category_wrap {
+      height: 40px;
+      align-items: center;
+      padding: 0px 0px 0px 10px;
+      background-color: darken($color: var.$green, $amount: 5);
+      margin-top: 2px;
+      .category {
+        align-items: center;
+        .category_text {
+          font-size: 12px;
+          text-transform: uppercase;
+          font-weight: 300;
+        }
+      }
+      .more_wrap {
+        align-items: center;
+        height: 100%;
+        .more {
+          font-size: 14px;
+          font-weight: 300;
+          padding: 0px 10px;
+          border-left: 1px solid rgba(255, 255, 255, 0.2);
+          border-right: 1px solid rgba(255, 255, 255, 0.2);
+          height: 100%;
+          cursor: pointer;
+          transition: all 0.3 linear;
+          &:hover {
+            color: var.$orange;
+          }
+          .more_icon {
+            margin-top: 6px;
+            font-size: 22px;
+          }
+        }
+        .expand {
+          margin-top: 2px;
+          width: 30px;
+          transition: all 0.3 linear;
+          cursor: pointer;
+          rotate: 180deg;
+          &:hover {
+            color: var.$orange;
+          }
+        }
+        .active {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    .category_items_wrap {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      .category_item {
+        padding: 10px 10px;
+        background-color: rgba(24, 23, 23, 0.4);
+        color: #cac9c9;
+        font-size: 14px;
+        font-weight: 300;
+        text-transform: capitalize;
+        transition: all 0.3 linear;
+        cursor: pointer;
+        &:hover {
+          background-color: lighten($color: rgba(24, 23, 23, 0.4), $amount: 4);
+          color: var.$orange;
+        }
+      }
+    }
+    .loading {
+      grid-column: span 12;
+      height: 35px;
+    }
+  }
+}

@@ -1,0 +1,176 @@
+@use "@/variable" as var;
+
+.bet_acc {
+  cursor: pointer;
+  .bet_acc_stake {
+    background-color: #ebebeb;
+    border-bottom: 2px solid #868686;
+    padding: 8px;
+
+    .bet_acc_texts {
+      .icon_text {
+        align-items: center;
+
+        .icon {
+          font-size: 20px;
+        }
+
+        .active {
+          transform: rotate(180deg);
+          margin-bottom: 4px;
+        }
+      }
+
+      .bet_acc_title {
+        font-size: 13px;
+        color: var.$text-black;
+        font-weight: 700;
+      }
+
+      .bet_acc_text {
+        @extend .bet_acc_title;
+        font-size: 11px;
+        font-weight: 300;
+      }
+    }
+
+    .bet_acc_stake_status {
+      padding-left: 20px;
+
+      .bet_acc_status_text1 {
+        font-size: 11px;
+        color: var.$text-black;
+      }
+
+      .bet_acc_status_text2 {
+        @extend .bet_acc_status_text1;
+        color: #8a8a8a;
+      }
+    }
+  }
+
+  .bet_acc_market {
+    padding: 8px 8px 8px 15px;
+    border-bottom: 1px solid #dedede;
+
+    .bet_acc_market_texts {
+      margin-bottom: 5px;
+
+      .icon_text {
+        .status_indicator {
+          width: 10px;
+          height: 10px;
+          background-color: #8a8a8a;
+          border-radius: 50%;
+          margin-right: 8px;
+          margin-bottom: 2px;
+        }
+
+        .bet_acc_market_title {
+          font-size: 13px;
+          color: var.$text-black;
+          font-weight: 700;
+        }
+      }
+
+      .bet_acc_market_odd {
+        color: #e78b3d;
+        font-size: 12px;
+      }
+    }
+
+    .bet_acc_market_textwrap {
+      padding-left: 17px;
+
+      .bet_acc_market_text {
+        color: #868686;
+        font-size: 10px;
+        margin-bottom: 3px;
+      }
+    }
+
+    .bet_acc_teamscore_wrap {
+      margin-bottom: 10px;
+      padding-left: 17px;
+
+      .bet_acc_teamscore {
+        font-size: 10px;
+        color: var.$text-black;
+        width: 265px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        span {
+          color: #e78b3d;
+        }
+      }
+
+      .bet_acc_teamscore_text {
+        color: #8a8a8a;
+        font-size: 10px;
+      }
+    }
+
+    .bet_acc_market_stake_icons {
+      padding-left: 17px;
+
+      .sbe-sb-mb-event-cashout {
+        color: #868686;
+        margin: 0px 10px 0px 0px;
+        font-size: 20px;
+      }
+
+      .sbe-sb-mb-event-statistics {
+        color: #868686;
+        font-size: 14px;
+        height: 4px !important;
+        position: relative;
+
+        .sbe-app-statistics {
+          position: relative;
+
+          &::before {
+            position: absolute;
+            bottom: 4px;
+          }
+        }
+      }
+    }
+  }
+
+  .bet_acc_stake_detail_wrap {
+    padding-bottom: 8px;
+    border-bottom: 3px solid #c3c1c1;
+
+    .bet_acc_stake_detail {
+      padding: 8px;
+      background-color: #ebebeb;
+
+      .bet_acc_stake_text {
+        font-size: 12px;
+        color: var.$text-black;
+      }
+
+      .bet_acc_stake_pow {
+        font-size: 13px;
+        color: var.$text-black;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .bottom {
+    border-bottom: 1px solid #dedede;
+  }
+
+  .bet_acc_btn_wrap {
+    padding: 10px 10px 0px 10px;
+
+    .bet_acc_btn {
+      background-color: #5b938a;
+      color: var.$text-black;
+      font-weight: 700;
+    }
+  }
+}

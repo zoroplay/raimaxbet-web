@@ -1,0 +1,1708 @@
+﻿@font-face {
+  font-family: "sbe-sb-sports";
+  src: url("../public/sbe-sb-sports.eot?7dzyz1");
+  src: url("../public/sbe-sb-sports.eot?7dzyz1#iefix")
+      format("embedded-opentype"),
+    url("../public/sbe-sb-sports.ttf?7dzyz1") format("truetype"),
+    url("../public/sbe-sb-sports.woff?7dzyz1") format("woff"),
+    url("../public/sbe-sb-sports.svg?7dzyz1#sbe-sb-sports") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+.sbe-sb-sports-icon,
+.sbe-sb-mb-sports-icon {
+  font-size: 22px;
+  color: #aab1b9;
+}
+.sbe-sb-sports-icon:before,
+.sbe-sb-mb-sports-icon:before {
+  font-family: "sbe-sb-sports" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\e900";
+  text-shadow: 0 2px 1px rgba(0, 0, 0, 0.15);
+}
+.soccer:before {
+  content: "\e901";
+  color: #1eac51;
+}
+.basketball:before,
+.basketball-3x3:before {
+  content: "\e902";
+  color: #ff9800;
+}
+.baseball:before {
+  content: "\e903";
+  color: #ae7e49;
+}
+.ice-hockey:before {
+  content: "\e904";
+  color: #50a2c6;
+}
+.tennis:before {
+  content: "\e905";
+  color: #72bf44;
+}
+.handball:before {
+  content: "\e906";
+  color: #a59a78;
+}
+.floorball:before {
+  content: "\e907";
+  color: #db8e1d;
+}
+.golf:before {
+  content: "\e908";
+  color: #57a329;
+}
+.motorsport:before,
+.motor-sport:before {
+  content: "\e909";
+  color: #90929f;
+}
+.rugby:before,
+.rugby-union:before,
+.rugby-league {
+  content: "\e90a";
+  color: #a1887f;
+}
+.aussie-rules:before {
+  content: "\e90b";
+  color: #e7685c;
+}
+.winter-sports:before,
+.wintersports:before,
+.alpine:before {
+  content: "\e90c";
+  color: #84a6bc;
+}
+.bandy:before {
+  content: "\e90d";
+  color: #f57c00;
+}
+.american-football:before,
+.football:before {
+  content: "\e90e";
+  color: #a1887f;
+}
+.cycling:before {
+  content: "\e90f";
+  color: #b8ab84;
+}
+.snooker:before {
+  content: "\e910";
+  color: #ea4955;
+}
+.darts:before {
+  content: "\e911";
+  color: #ff5f54;
+}
+.volleyball:before {
+  content: "\e912";
+  color: #b09f6c;
+}
+.waterpolo:before {
+  content: "\e913";
+  color: #338fd6;
+}
+.curling:before {
+  content: "\e914";
+  color: #338fd6;
+}
+.futsal:before {
+  content: "\e915";
+  color: #52a3b0;
+}
+.olympics:before {
+  content: "\e916";
+  color: #d5ad1c;
+}
+.beachvolley:before,
+.beach-volley:before {
+  content: "\e917";
+  color: #ee8500;
+}
+.softball:before {
+  content: "\e918";
+  color: #b97e3a;
+}
+.beachsoccer:before,
+.beach-soccer:before {
+  content: "\e919";
+  color: #bfaf7e;
+}
+.pesapallo:before {
+  content: "\e91a";
+  color: #db8e48;
+}
+.lottery:before {
+  content: "\e91b";
+  color: #00bcd4;
+}
+.boxe:before {
+  content: "\e91c";
+  color: #e84e5d;
+}
+.specials:before {
+  content: "\e91d";
+  color: #bfaf7e;
+}
+.sailing:before {
+  content: "\e91e";
+  color: #338fd6;
+}
+.boxing:before {
+  content: "\e91c";
+  color: #e84e5d;
+}
+.horseracing:before,
+.horse-racing:before {
+  content: "\e91f";
+  color: #b97e3a;
+}
+.rowing:before {
+  content: "\e920";
+  color: #0f81d9;
+}
+.athletics:before {
+  content: "\e921";
+  color: #c66e64;
+}
+.greyhoundracing:before,
+.greyhound-racing:before,
+.greyhound:before {
+  content: "\e922";
+  color: #b97e3a;
+}
+.sumowrestling:before {
+  content: "\e923";
+  color: #b0a174;
+}
+.hurling:before {
+  content: "\e924";
+  color: #189946;
+}
+.tabletennis:before,
+.table-tennis:before {
+  content: "\e925";
+  color: #0c82b3;
+}
+.netball:before {
+  content: "\e926";
+  color: #ff9800;
+}
+.yachting:before {
+  content: "\e927";
+  color: #338fd6;
+}
+.swimming:before,
+.marathon-swimming:before {
+  content: "\e928";
+  color: #338fd6;
+}
+.badminton:before {
+  content: "\e929";
+  color: #70c2a7;
+}
+.polo:before {
+  content: "\e92a";
+  color: #189946;
+}
+.squash:before {
+  content: "\e92b";
+  color: #e1b93f;
+}
+.pool:before {
+  content: "\e92c";
+  color: #338fd6;
+}
+.chess:before {
+  content: "\e92d";
+  color: #edbd6f;
+}
+.cricket:before {
+  content: "\e92e";
+  color: #c7333f;
+}
+.bowls:before {
+  content: "\e92f";
+  color: #2a8c4c;
+}
+.field-hockey:before {
+  content: "\e930";
+  color: #168763;
+}
+.dog-races:before {
+  content: "\e931";
+  color: #b97e3a;
+}
+.soccer-mythical:before {
+  content: "\e901";
+  color: #1eac51;
+}
+.world-lottery:before {
+  content: "\e932";
+  color: #00bcd4;
+}
+.mma:before {
+  content: "\e933";
+  color: #e84e5d;
+}
+.esport-counter-strike:before {
+  content: "\e934";
+  color: #d49031;
+}
+.esport-league-of-legends:before {
+  content: "\e935";
+  color: #c5923b;
+}
+.esports-dota:before,
+.esports-dota-2:before,
+.esport-dota:before,
+.esport-dota-2:before {
+  content: "\e936";
+  color: #ee3b37;
+}
+.esports-overwatch:before {
+  content: "\e937";
+  color: #fa9c1e;
+}
+.esports-heroes-storm:before {
+  content: "\e938";
+  color: #0098ca;
+}
+.esports-hearthstone:before {
+  content: "\e939";
+  color: #dec153;
+}
+.esports-mortal-kombat:before {
+  content: "\e93a";
+  color: #fd9e00;
+}
+.esports-worldof-tanks:before {
+  content: "\e93b";
+  color: #888888;
+}
+.esports-warcraft:before {
+  content: "\e93c";
+  color: #e1b500;
+}
+.esports-smite:before {
+  content: "\e93d";
+  color: #e1b500;
+}
+.esports-starcraft:before {
+  content: "\e93e";
+  color: #84a8bd;
+}
+.esports-halo:before {
+  content: "\e93f";
+  color: #9b9b9b;
+}
+.esports-vainglory:before {
+  content: "\e940";
+  color: #c7333f;
+}
+.esports-cross-fire:before {
+  content: "\e941";
+  color: #c27527;
+}
+.esports-street-fighter:before,
+.esports-street-fighter-v:before {
+  content: "\e942";
+  color: #fe3e00;
+}
+.esports-call-of-duty:before {
+  content: "\e943";
+  color: #d49031;
+}
+.online-games:before {
+  content: "\e944";
+  color: #8967c4;
+}
+.e-sports:before {
+  content: "\e945";
+  color: #8967c4;
+}
+.e-sports-soccer:before {
+  content: "\e946";
+  color: #1eac51;
+}
+.e-sports-basketball:before {
+  content: "\e947";
+  color: #ff9800;
+}
+.all-sports:before {
+  content: "\e948";
+  color: #dab820;
+}
+.stadium:before {
+  content: "\e949";
+  color: #189946;
+}
+.strategy:before {
+  content: "\e94a";
+  color: #868686;
+}
+.motorcycle:before,
+.moto-gp:before,
+.moto-2:before,
+.moto-3:before,
+.superbike:before {
+  content: "\e94b";
+  color: #90929f;
+}
+.cars:before,
+.nascar:before,
+.rally:before {
+  content: "\e94c";
+  color: #90929f;
+}
+.skating:before,
+.short-track:before,
+.figure-skating:before,
+.speed-skating:before {
+  content: "\e94d";
+  color: #50a2c6;
+}
+.bowling:before {
+  content: "\e94e";
+  color: #e74b48;
+}
+.bodybuilding:before {
+  content: "\e94f";
+  color: #90929f;
+}
+.diving:before {
+  content: "\e950";
+  color: #338fd6;
+}
+.medal-soccer:before {
+  content: "\e951";
+  color: #ca9800;
+}
+.medal-basketball:before {
+  content: "\e952";
+  color: #ca9800;
+}
+.medal:before {
+  content: "\e953";
+  color: #ca9800;
+}
+.medal-oscar:before {
+  content: "\e954";
+  color: #ca9800;
+}
+.sports-star:before {
+  content: "\e95d";
+  color: #ca9800;
+}
+.sports-star-o:before {
+  content: "\e95e";
+  color: #ca9800;
+}
+.alpine-skiing:before,
+.freestyle-skiing:before {
+  content: "\e964";
+  color: #84a6bc;
+}
+.biathlon:before {
+  content: "\e965";
+  color: #84a6bc;
+}
+.nordic-combined:before {
+  content: "\e966";
+  color: #84a6bc;
+}
+.ski-jumping:before {
+  content: "\e967";
+  color: #84a6bc;
+}
+.cross-country:before {
+  content: "\e955";
+  color: #84a6bc;
+}
+.snowboard:before {
+  content: "\e956";
+  color: #84a6bc;
+}
+.bobsleigh:before {
+  content: "\e957";
+  color: #84a6bc;
+}
+.luge:before {
+  content: "\e958";
+  color: #84a6bc;
+}
+.skeleton:before {
+  content: "\e959";
+  color: #84a6bc;
+}
+.tekken:before {
+  content: "\e95a";
+  color: #e84e5d;
+}
+.formula:before,
+.formula-e:before,
+.indycar:before,
+.formula-1:before {
+  content: "\e95b";
+  color: #90929f;
+}
+.speedway:before {
+  content: "\e95f";
+  color: #9b9587;
+}
+.dtm:before {
+  content: "\e960";
+  color: #90929f;
+}
+.corner:before {
+  content: "\e95c";
+  color: #90929f;
+}
+.card-sport:before {
+  content: "\e961";
+  color: #90929f;
+}
+.penalty:before {
+  content: "\e962";
+  color: #90929f;
+}
+.penalty-2:before {
+  content: "\e963";
+  color: #90929f;
+}
+.first-half:before {
+  content: "\e968";
+  color: #90929f;
+}
+.second-half:before {
+  content: "\e969";
+  color: #90929f;
+}
+.offside:before {
+  content: "\e96a";
+  color: #90929f;
+}
+.end-game:before {
+  content: "\e96b";
+  color: #90929f;
+}
+.team-kit-s:before {
+  content: "\e96c";
+  color: #90929f;
+}
+.team-kit-b:before {
+  content: "\e96d";
+  color: #90929f;
+}
+.live-empty:before {
+  content: "\e96e";
+  color: #818fa3;
+}
+.favorite-empty:before {
+  content: "\e96f";
+  color: #818fa3;
+}
+.highlights-empty:before {
+  content: "\e970";
+  color: #818fa3;
+}
+.livedetails-empty:before {
+  content: "\e971";
+  color: #818fa3;
+}
+.betslip-empty:before {
+  content: "\e972";
+  color: #818fa3;
+}
+.betslip-history-empty:before {
+  content: "\e973";
+  color: #818fa3;
+}
+.outrights-empty:before {
+  content: "\e974";
+  color: #818fa3;
+}
+.horseracing-empty:before {
+  content: "\e989";
+  color: #818fa3;
+}
+.carracing-empty:before {
+  content: "\e98a";
+  color: #818fa3;
+}
+.greyhound-empty:before {
+  content: "\e98b";
+  color: #818fa3;
+}
+.mybet-empty:before {
+  content: "\e98c";
+  color: #818fa3;
+}
+.fifa:before {
+  content: "\e977";
+  color: #43a047;
+}
+.nba:before {
+  content: "\e978";
+  color: #ff9800;
+}
+.esports-nba-2ka:before {
+  content: "\e979";
+  color: #ff9800;
+}
+.esports-king-of-glory:before {
+  content: "\e975";
+  color: #c3a56c;
+}
+.esports-rocket-league:before {
+  content: "\e976";
+  color: #0f81d9;
+}
+.odds-boosts:before,
+.odds-boost:before,
+.boost:before {
+  content: "\e97a";
+  color: #f72c02;
+}
+.cash:before,
+.cash-back:before,
+.cash-back-boosts:before {
+  content: "\e97b";
+  color: #129849;
+}
+.esports-rainbow-six:before {
+  content: "\e97c";
+  color: #e1b500;
+}
+.modern-pentathlon:before,
+.equestrian:before {
+  content: "\e97d";
+  color: #b97e3a;
+}
+.skateboarding:before {
+  content: "\e97e";
+  color: #929292;
+}
+.archery:before {
+  content: "\e97f";
+  color: #ff5f54;
+}
+.fencing:before {
+  content: "\e980";
+  color: #929292;
+}
+.judo:before {
+  content: "\e981";
+  color: #1d86da;
+}
+.taekwondo:before {
+  content: "\e982";
+  color: #e84e5d;
+}
+.triathlon:before {
+  content: "\e983";
+  color: #90929f;
+}
+.weightlifting:before {
+  content: "\e984";
+  color: #929292;
+}
+.wrestling:before {
+  content: "\e985";
+  color: #1d86da;
+}
+.surfing:before {
+  content: "\e986";
+  color: #338fd6;
+}
+.canoeing:before {
+  content: "\e987";
+  color: #338fd6;
+}
+.gymnastics:before {
+  content: "\e988";
+  color: #db8e48;
+}
+.esport-apex-legends:before {
+  content: "\e98d";
+  color: #ce3233;
+}
+.esport-arena-of-valor:before {
+  content: "\e98e";
+  color: #8967c4;
+}
+.esport-brawl-stars:before {
+  content: "\e98f";
+  color: #f78a01;
+}
+.esport-clash-royale:before {
+  content: "\e990";
+  color: #0098ca;
+}
+.esport-crypto:before {
+  content: "\e991";
+  color: #f70000;
+}
+.esport-fortnite:before {
+  content: "\e992";
+  color: #0f81d9;
+}
+.esport-free-fire:before {
+  content: "\e993";
+  color: #f7a000;
+}
+.esport-game-for-peace:before {
+  content: "\e994";
+  color: #f09e01;
+}
+.esport-heroes-of-newerth:before {
+  content: "\e995";
+  color: #d7b738;
+}
+.esport-honor-of-kings:before {
+  content: "\e996";
+  color: #c3a56c;
+}
+.esport-iracing:before {
+  content: "\e997";
+  color: #ce3233;
+}
+.esport-magic-the-gathering:before {
+  content: "\e998";
+  color: #f1a722;
+}
+.esport-mobile-legends:before {
+  content: "\e999";
+  color: #c5a578;
+}
+.esport-playerunknowns-battlegrounds:before {
+  content: "\e99a";
+  color: #f09e01;
+}
+.esport-battlegrounds-mobile-india:before {
+  content: "\e99b";
+  color: #179b07;
+}
+.esport-pubg-mobile:before {
+  content: "\e99c";
+  color: #f09e01;
+}
+.esport-super-smash-bros:before {
+  content: "\e99d";
+  color: #f3ae1b;
+}
+.esport-teamfight-tactics:before {
+  content: "\e99e";
+  color: #c68950;
+}
+.esport-valorant:before {
+  content: "\e99f";
+  color: #f74452;
+}
+.esport-wild-rift:before {
+  content: "\e9a0";
+  color: #30c2f7;
+}
+.esport-warcraft3:before {
+  content: "\e9a1";
+  color: #deae1a;
+}
+
+/*-----------------------------------------------
+	#Widget Prematch Category Color 
+-----------------------------------------------*/
+.sbe-sb-widget-category.soccer {
+  border-bottom: 1px solid #1eac51;
+}
+.sbe-sb-widget-category.basketball {
+  border-bottom: 1px solid #ff9800;
+}
+.sbe-sb-widget-category.baseball,
+.sbe-sb-widget-category.basketball-3x3 {
+  border-bottom: 1px solid #ae7e49;
+}
+.sbe-sb-widget-category.icehockey {
+  border-bottom: 1px solid #50a2c6;
+}
+.sbe-sb-widget-category.tennis {
+  border-bottom: 1px solid #72bf44;
+}
+.sbe-sb-widget-category.handball {
+  border-bottom: 1px solid #a59a78;
+}
+.sbe-sb-widget-category.floorball {
+  border-bottom: 1px solid #db8e1d;
+}
+.sbe-sb-widget-category.golf {
+  border-bottom: 1px solid #57a329;
+}
+.sbe-sb-widget-category.motorsport,
+.sbe-sb-widget-category.motor-sport {
+  border-bottom: 1px solid #90929f;
+}
+.sbe-sb-widget-category.rugby,
+.sbe-sb-widget-category.rugby-union {
+  border-bottom: 1px solid #a1887f;
+}
+.sbe-sb-widget-category.aussie-rules {
+  border-bottom: 1px solid #e7685c;
+}
+.sbe-sb-widget-category.wintersports {
+  border-bottom: 1px solid #84a6bc;
+}
+.sbe-sb-widget-category.bandy {
+  border-bottom: 1px solid #f57c00;
+}
+.sbe-sb-widget-category.american-football,
+.sbe-sb-widget-category.football {
+  border-bottom: 1px solid #a1887f;
+}
+.sbe-sb-widget-category.cycling {
+  border-bottom: 1px solid #b8ab84;
+}
+.sbe-sb-widget-category.snooker {
+  border-bottom: 1px solid #ea4955;
+}
+.sbe-sb-widget-category.darts {
+  border-bottom: 1px solid #ff5f54;
+}
+.sbe-sb-widget-category.volleyball {
+  border-bottom: 1px solid #b09f6c;
+}
+.sbe-sb-widget-category.waterpolo {
+  border-bottom: 1px solid #338fd6;
+}
+.sbe-sb-widget-category.curling {
+  border-bottom: 1px solid #338fd6;
+}
+.sbe-sb-widget-category.futsal {
+  border-bottom: 1px solid #52a3b0;
+}
+.sbe-sb-widget-category.olympics {
+  border-bottom: 1px solid #d5ad1c;
+}
+.sbe-sb-widget-category.beachvolley {
+  border-bottom: 1px solid #ee8500;
+}
+.sbe-sb-widget-category.softball {
+  border-bottom: 1px solid #b97e3a;
+}
+.sbe-sb-widget-category.beachsoccer {
+  border-bottom: 1px solid #bfaf7e;
+}
+.sbe-sb-widget-category.pesapallo {
+  border-bottom: 1px solid #db8e48;
+}
+.sbe-sb-widget-category.lottery {
+  border-bottom: 1px solid #00bcd4;
+}
+.sbe-sb-widget-category.boxe {
+  border-bottom: 1px solid #d43d4b;
+}
+.sbe-sb-widget-category.specials {
+  border-bottom: 1px solid #bfaf7e;
+}
+.sbe-sb-widget-category.sailing {
+  border-bottom: 1px solid #338fd6;
+}
+.sbe-sb-widget-category.boxing {
+  border-bottom: 1px solid #d43d4b;
+}
+.sbe-sb-widget-category.horseracing,
+.sbe-sb-widget-category.horse-racing,
+.sbe-sb-widget-category.modern-pentathlon,
+.sbe-sb-widget-category.equestrian {
+  border-bottom: 1px solid #b97e3a;
+}
+.sbe-sb-widget-category.rowing {
+  border-bottom: 1px solid #0f81d9;
+}
+.sbe-sb-widget-category.athletics {
+  border-bottom: 1px solid #c66e64;
+}
+.sbe-sb-widget-category.greyhoundracing,
+.sbe-sb-widget-category.greyhound-racing {
+  border-bottom: 1px solid #b97e3a;
+}
+.sbe-sb-widget-category.sumowrestling {
+  border-bottom: 1px solid #b0a174;
+}
+.sbe-sb-widget-category.hurling {
+  border-bottom: 1px solid #189946;
+}
+.sbe-sb-widget-category.tabletennis,
+.sbe-sb-widget-category.table-tennis {
+  border-bottom: 1px solid #0c82b3;
+}
+.sbe-sb-widget-category.netball {
+  border-bottom: 1px solid #ff9800;
+}
+.sbe-sb-widget-category.yachting {
+  border-bottom: 1px solid #338fd6;
+}
+.sbe-sb-widget-category.swimming,
+.sbe-sb-widget-category.marathon-swimming {
+  border-bottom: 1px solid #338fd6;
+}
+.sbe-sb-widget-category.badminton {
+  border-bottom: 1px solid #70c2a7;
+}
+.sbe-sb-widget-category.polo {
+  border-bottom: 1px solid #189946;
+}
+.sbe-sb-widget-category.squash {
+  border-bottom: 1px solid #e1b93f;
+}
+.sbe-sb-widget-category.pool {
+  border-bottom: 1px solid #338fd6;
+}
+.sbe-sb-widget-category.chess {
+  border-bottom: 1px solid #edbd6f;
+}
+.sbe-sb-widget-category.cricket {
+  border-bottom: 1px solid #c7333f;
+}
+.sbe-sb-widget-category.bowls {
+  border-bottom: 1px solid #2a8c4c;
+}
+.sbe-sb-widget-category.fieldhockey {
+  border-bottom: 1px solid #168763;
+}
+.sbe-sb-widget-category.dog-races {
+  border-bottom: 1px solid #8d612e;
+}
+.sbe-sb-widget-category.soccer-mythical {
+  border-bottom: 1px solid #1eac51;
+}
+.sbe-sb-widget-category.world-lottery {
+  border-bottom: 1px solid #00bcd4;
+}
+.sbe-sb-widget-category.mma {
+  border-bottom: 1px solid #e84e5d;
+}
+.sbe-sb-widget-category.esport-counter-strike {
+  border-bottom: 1px solid #d49031;
+}
+.sbe-sb-widget-category.esport-league-of-legends {
+  border-bottom: 1px solid #c5923b;
+}
+.sbe-sb-widget-category.esports-dota-2,
+.sbe-sb-widget-category.esports-dota {
+  border-bottom: 1px solid #ee3b37;
+}
+.sbe-sb-widget-category.esports-overwatch {
+  border-bottom: 1px solid #fa9c1e;
+}
+.sbe-sb-widget-category.esports-heroes-storm {
+  border-bottom: 1px solid #0098ca;
+}
+.sbe-sb-widget-category.esports-hearthstone {
+  border-bottom: 1px solid #dec153;
+}
+.sbe-sb-widget-category.esports-mortal-kombat {
+  border-bottom: 1px solid #fd9e00;
+}
+.sbe-sb-widget-category.esports-worldof-tanks {
+  border-bottom: 1px solid #888;
+}
+.sbe-sb-widget-category.esports-warcraft {
+  border-bottom: 1px solid #e1b500;
+}
+.sbe-sb-widget-category.esports-smite {
+  border-bottom: 1px solid #e1b500;
+}
+.sbe-sb-widget-category.esports-starcraft {
+  border-bottom: 1px solid #84a8bd;
+}
+.sbe-sb-widget-category.esports-halo {
+  border-bottom: 1px solid #9b9b9b;
+}
+.sbe-sb-widget-category.esports-vainglory {
+  border-bottom: 1px solid #c7333f;
+}
+.sbe-sb-widget-category.esports-cross-fire {
+  border-bottom: 1px solid #c27527;
+}
+.sbe-sb-widget-category.esports-street-fighter,
+.sbe-sb-widget-category.esports-street-fighter-v {
+  border-bottom: 1px solid #fe3e00;
+}
+.sbe-sb-widget-category.esports-call-of-duty {
+  border-bottom: 1px solid #d49031;
+}
+.sbe-sb-widget-category.motorcycle,
+.sbe-sb-widget-category.moto-gp,
+.sbe-sb-widget-category.moto-2,
+.sbe-sb-widget-category.moto-3,
+.sbe-sb-widget-category.superbike {
+  border-bottom: 1px solid #90929f;
+}
+.sbe-sb-widget-category.cars,
+.sbe-sb-widget-category.nascar,
+.sbe-sb-widget-category.rally {
+  border-bottom: 1px solid #90929f;
+}
+.sbe-sb-widget-category.skating,
+.sbe-sb-widget-category.short-track,
+.sbe-sb-widget-category.figure-skating,
+.sbe-sb-widget-category.speed-skating {
+  border-bottom: 1px solid #c4dae8;
+}
+.sbe-sb-widget-category.bowling {
+  border-bottom: 1px solid #e74b48;
+}
+.sbe-sb-widget-category.bodybuilding {
+  border-bottom: 1px solid #868686;
+}
+.sbe-sb-widget-category.diving {
+  border-bottom: 1px solid #338fd6;
+}
+.sbe-sb-widget-category.alpine-skiing {
+  border-bottom: 1px solid #84a6bc;
+}
+.sbe-sb-widget-category.biathlon {
+  border-bottom: 1px solid #84a6bc;
+}
+.sbe-sb-widget-category.nordic-combined {
+  border-bottom: 1px solid #84a6bc;
+}
+.sbe-sb-widget-category.ski-jumping {
+  border-bottom: 1px solid #84a6bc;
+}
+.sbe-sb-widget-category.cross-country {
+  border-bottom: 1px solid #84a6bc;
+}
+.sbe-sb-widget-category.snowboard {
+  border-bottom: 1px solid #84a6bc;
+}
+.sbe-sb-widget-category.bobsleigh {
+  border-bottom: 1px solid #84a6bc;
+}
+.sbe-sb-widget-category.luge {
+  border-bottom: 1px solid #84a6bc;
+}
+.sbe-sb-widget-category.skeleton {
+  border-bottom: 1px solid #84a6bc;
+}
+.sbe-sb-widget-category.tekken {
+  border-bottom: 1px solid #e84e5d;
+}
+.sbe-sb-widget-category.formula,
+.sbe-sb-widget-category.formula-e,
+.sbe-sb-widget-category.indycar {
+  border-bottom: 1px solid #90929f;
+}
+.sbe-sb-widget-category.speedway {
+  border-bottom: 1px solid #9b9587;
+}
+.sbe-sb-widget-category.dtm {
+  border-bottom: 1px solid #90929f;
+}
+.sbe-sb-widget-category.fifa {
+  border-bottom: 1px solid #43a047;
+}
+.sbe-sb-widget-category.nba {
+  border-bottom: 1px solid #ff9800;
+}
+.sbe-sb-widget-category.esports-nba-2ka {
+  border-bottom: 1px solid #ff9800;
+}
+.sbe-sb-widget-category.esports-king-of-glory {
+  border-bottom: 1px solid #c3a56c;
+}
+.sbe-sb-widget-category.esports-rocket-league {
+  border-bottom: 1px solid #0f81d9;
+}
+.sbe-sb-widget-category.odds-boosts,
+.sbe-sb-widget-category.odds-boost,
+.sbe-sb-widget-category.boost {
+  border-bottom: 1px solid #f72c02;
+}
+.sbe-sb-widget-category.cash,
+.sbe-sb-widget-category.cash-back,
+.sbe-sb-widget-category.cash-back-boosts {
+  border-bottom: 1px solid #129849;
+}
+.sbe-sb-widget-category.esports-rainbow-six {
+  border-bottom: 1px solid #e1b500;
+}
+.sbe-sb-widget-category.skateboarding {
+  border-bottom: 1px solid #929292;
+}
+.sbe-sb-widget-category.archery {
+  border-bottom: 1px solid #ff5f54;
+}
+.sbe-sb-widget-category.fencing {
+  border-bottom: 1px solid #929292;
+}
+.sbe-sb-widget-category.judo {
+  border-bottom: 1px solid #1d86da;
+}
+.sbe-sb-widget-category.taekwondo {
+  border-bottom: 1px solid #e84e5d;
+}
+.sbe-sb-widget-category.triathlon {
+  border-bottom: 1px solid #90929f;
+}
+.sbe-sb-widget-category.weightlifting {
+  border-bottom: 1px solid #929292;
+}
+.sbe-sb-widget-category.wrestling {
+  border-bottom: 1px solid #1d86da;
+}
+.sbe-sb-widget-category.surfing {
+  border-bottom: 1px solid #338fd6;
+}
+.sbe-sb-widget-category.canoeing {
+  border-bottom: 1px solid #338fd6;
+}
+.sbe-sb-widget-category.gymnastics {
+  border-bottom: 1px solid #db8e48;
+}
+.sbe-sb-widget-category.esport-apex-legends {
+  border-bottom: 1px solid #ce3233;
+}
+.sbe-sb-widget-category.esport-arena-of-valor {
+  border-bottom: 1px solid #8967c4;
+}
+.sbe-sb-widget-category.esport-brawl-stars {
+  border-bottom: 1px solid #f78a01;
+}
+.sbe-sb-widget-category.esport-clash-royale {
+  border-bottom: 1px solid #0098ca;
+}
+.sbe-sb-widget-category.esport-crypto {
+  border-bottom: 1px solid #f70000;
+}
+.sbe-sb-widget-category.esport-fortnite {
+  border-bottom: 1px solid #0f81d9;
+}
+.sbe-sb-widget-category.esport-free-fire {
+  border-bottom: 1px solid #f7a000;
+}
+.sbe-sb-widget-category.esport-game-for-peace {
+  border-bottom: 1px solid #f09e01;
+}
+.sbe-sb-widget-category.esport-heroes-of-newerth {
+  border-bottom: 1px solid #d7b738;
+}
+.sbe-sb-widget-category.esport-honor-of-kings {
+  border-bottom: 1px solid #c3a56c;
+}
+.sbe-sb-widget-category.esport-iracing:before {
+  border-bottom: 1px solid #2c338a;
+}
+.sbe-sb-widget-category.esport-magic-the-gathering {
+  border-bottom: 1px solid #f1a722;
+}
+.sbe-sb-widget-category.esport-mobile-legends {
+  border-bottom: 1px solid #c5a578;
+}
+.sbe-sb-widget-category.esport-playerunknowns-battlegrounds {
+  border-bottom: 1px solid #f09e01;
+}
+.sbe-sb-widget-category.esport-battlegrounds-mobile-india {
+  border-bottom: 1px solid #179b07;
+}
+.sbe-sb-widget-category.esport-pubg-mobile {
+  border-bottom: 1px solid #f09e01;
+}
+.sbe-sb-widget-category.esport-super-smash-bros {
+  border-bottom: 1px solid #f3ae1b;
+}
+.sbe-sb-widget-category.esport-teamfight-tactics {
+  border-bottom: 1px solid #c68950;
+}
+.sbe-sb-widget-category.esport-valorant {
+  border-bottom: 1px solid #f74452;
+}
+.sbe-sb-widget-category.esport-wild-rift {
+  border-bottom: 1px solid #30c2f7;
+}
+.sbe-sb-widget-category.esport-warcraft3 {
+  border-bottom: 1px solid #deae1a;
+}
+
+/*-------------------------------------------------------
+	#Widget Mobile Title Category Background Color 
+-------------------------------------------------------*/
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title:before,
+.sbe-sb-title-bg:before {
+  display: none;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.soccer,
+.sbe-sb-title-bg.soccer {
+  background-color: #00a651 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.basketball,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.basketball-3x3,
+.sbe-sb-title-bg.basketball,
+.sbe-sb-title-bg.basketball-3x3 {
+  background-color: #eb8c00 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.baseball,
+.sbe-sb-title-bg.baseball {
+  background-color: #ae7e49 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.ice-hockey,
+.sbe-sb-title-bg.ice-hockey {
+  background-color: #50a2c6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.tennis,
+.sbe-sb-title-bg.tennis {
+  background-color: #5a9c32 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.handball,
+.sbe-sb-title-bg.handball {
+  background-color: #4195b7 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.floorball,
+.sbe-sb-title-bg.floorball {
+  background-color: #00c8be !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.golf,
+.sbe-sb-title-bg.golf {
+  background-color: #728b35 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.motorsport,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.motor-sport,
+.sbe-sb-title-bg.motorsport,
+.sbe-sb-title-bg.motor-sport {
+  background-color: #b97e3a !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.rugby,
+.sbe-sb-title-bg.rugby {
+  background-color: #00a651 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.aussie-rules,
+.sbe-sb-title-bg.aussie-rules {
+  background-color: #e7685c !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.wintersports,
+.sbe-sb-title-bg.wintersports {
+  background-color: #50a2c6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.bandy,
+.sbe-sb-title-bg.bandy {
+  background-color: #ef5350 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.american-football,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.football,
+.sbe-sb-title-bg.american-football,
+.sbe-sb-title-bg.football {
+  background-color: #a1887f !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.cycling,
+.sbe-sb-title-bg.cycling {
+  background-color: #d9c68f !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.snooker,
+.sbe-sb-title-bg.snooker {
+  background-color: #f85b36 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.darts,
+.sbe-sb-title-bg.darts {
+  background-color: #ffc107 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.volleyball,
+.sbe-sb-title-bg.volleyball {
+  background-color: #fdd835 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.waterpolo,
+.sbe-sb-title-bg.waterpolo {
+  background-color: #338fd6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.curling,
+.sbe-sb-title-bg.curling {
+  background-color: #76bbef !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.futsal,
+.sbe-sb-title-bg.futsal {
+  background-color: #65b5c2 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.olympics,
+.sbe-sb-title-bg.olympics {
+  background-color: #edbe13 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.beachvolley,
+.sbe-sb-title-bg.beachvolley {
+  background-color: #ee8500 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.softball,
+.sbe-sb-title-bg.softball {
+  background-color: #b97e3a !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.beachsoccer,
+.sbe-sb-title-bg.beachsoccer {
+  background-color: #bfaf7e !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.pesapallo,
+.sbe-sb-title-bg.pesapallo {
+  background-color: #db8e48 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.lottery,
+.sbe-sb-title-bg.lottery {
+  background-color: #00bcd4 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.boxe,
+.sbe-sb-title-bg.boxe {
+  background-color: #d43d4b !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.specials,
+.sbe-sb-title-bg.specials {
+  background-color: #bfaf7e !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.sailing,
+.sbe-sb-title-bg.sailing {
+  background-color: #338fd6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.boxing,
+.sbe-sb-title-bg.boxing {
+  background-color: #d43d4b !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.horseracing,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.modern-pentathlon,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.equestrian,
+.sbe-sb-title-bg.horseracing,
+.sbe-sb-title-bg.modern-pentathlon,
+.sbe-sb-title-bg.equestrian {
+  background-color: #b97e3a !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.rowing,
+.sbe-sb-title-bg.rowing {
+  background-color: #0f81d9 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.athletics,
+.sbe-sb-title-bg.athletics {
+  background-color: #c66e64 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.greyhoundracing,
+.sbe-sb-title-bg.greyhoundracing {
+  background-color: #b97e3a !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.sumowrestling,
+.sbe-sb-title-bg.sumowrestling {
+  background-color: #b0a174 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.hurling,
+.sbe-sb-title-bg.hurling {
+  background-color: #189946 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.tabletennis,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.table-tennis,
+.sbe-sb-title-bg.tabletennis,
+.sbe-sb-title-bg.table-tennis {
+  background-color: #0c82b3 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.netball,
+.sbe-sb-title-bg.netball {
+  background-color: #cc9725 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.yachting,
+.sbe-sb-title-bg.yachting {
+  background-color: #338fd6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.swimming,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.marathon-swimming {
+  background-color: #338fd6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.badminton,
+.sbe-sb-title-bg.badminton {
+  background-color: #70c2a7 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.polo,
+.sbe-sb-title-bg.polo {
+  background-color: #189946 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.squash,
+.sbe-sb-title-bg.squash {
+  background-color: #e1b93f !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.pool,
+.sbe-sb-title-bg.pool {
+  background-color: #338fd6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.chess,
+.sbe-sb-title-bg.chess {
+  background-color: #edbd6f !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.cricket,
+.sbe-sb-title-bg.cricket {
+  background-color: #ef5350 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.bowls,
+.sbe-sb-title-bg.bowls {
+  background-color: #2a8c4c !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.fieldhockey,
+.sbe-sb-title-bg.fieldhockey {
+  background-color: #168763 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.dog-races,
+.sbe-sb-title-bg.dog-races {
+  background-color: #8d612e !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.soccer-mythical,
+.sbe-sb-title-bg.soccer-mythical {
+  background-color: #00a651 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.world-lottery,
+.sbe-sb-title-bg.world-lottery {
+  background-color: #00bcd4 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.mma,
+.sbe-sb-title-bg.mma {
+  background-color: #e84e5d !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-counter-strike,
+.sbe-sb-title-bg.esport-counter-strike {
+  background-color: #d49031 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-league-of-legends,
+.sbe-sb-title-bg.esport-league-of-legends {
+  background-color: #c5923b !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-dota-2,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-dota,
+.sbe-sb-title-bg.esports-dota-2,
+.sbe-sb-title-bg.esports-dota {
+  background-color: #ee3b37 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-overwatch,
+.sbe-sb-title-bg.esports-overwatch {
+  background-color: #fa9c1e !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-heroes-storm,
+.sbe-sb-title-bg.esports-heroes-storm {
+  background-color: #0098ca !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-hearthstone,
+.sbe-sb-title-bg.esports-hearthstone {
+  background-color: #dec153 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-mortal-kombat,
+.sbe-sb-title-bg.esports-mortal-kombat {
+  background-color: #fd9e00 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-worldof-tanks,
+.sbe-sb-title-bg.esports-worldof-tanks {
+  background-color: #888888 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-warcraft,
+.sbe-sb-title-bg.esports-warcraft {
+  background-color: #e1b500 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-smite,
+.sbe-sb-title-bg.esports-smite {
+  background-color: #e1b500 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-starcraft,
+.sbe-sb-title-bg.esports-starcraft {
+  background-color: #84a8bd !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-halo,
+.sbe-sb-title-bg.esports-halo {
+  background-color: #9b9b9b !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-vainglory,
+.sbe-sb-title-bg.esports-vainglory {
+  background-color: #c7333f !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-cross-fire,
+.sbe-sb-title-bg.esports-cross-fire {
+  background-color: #c27527 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-street-fighter,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-street-fighter-v,
+.sbe-sb-title-bg.esports-street-fighter,
+.sbe-sb-title-bg.esports-street-fighter-v {
+  background-color: #fe3e00 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-call-of-duty,
+.sbe-sb-title-bg.esports-call-of-duty {
+  background-color: #d49031 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.motorcycle,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.moto-gp,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.moto-2,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.moto-3,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.superbike,
+.sbe-sb-title-bg.motorcycle,
+.sbe-sb-title-bg.moto-gp,
+.sbe-sb-title-bg.moto-2,
+.sbe-sb-title-bg.moto-3,
+.sbe-sb-title-bg.superbike {
+  background-color: #b97e3a !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.cars,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.nascar,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.rally,
+.sbe-sb-title-bg.cars,
+.sbe-sb-title-bg.nascar,
+.sbe-sb-title-bg.rally {
+  background-color: #868686 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.skating,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.short-track,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.figure-skating,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.speed-skating,
+.sbe-sb-title-bg.skating,
+.sbe-sb-title-bg.short-track,
+.sbe-sb-title-bg.figure-skating,
+.sbe-sb-title-bg.speed-skating {
+  background-color: #50a2c6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.bowling,
+.sbe-sb-title-bg.bowling {
+  background-color: #868686 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.bodybuilding,
+.sbe-sb-title-bg.bodybuilding {
+  background-color: #868686 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.diving,
+.sbe-sb-title-bg.diving {
+  background-color: #338fd6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.alpine-skiing,
+.sbe-sb-title-bg.alpine-skiing {
+  background-color: #50a2c6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.biathlon,
+.sbe-sb-title-bg.biathlon {
+  background-color: #50a2c6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.nordic-combined,
+.sbe-sb-title-bg.nordic-combined {
+  background-color: #50a2c6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.ski-jumping,
+.sbe-sb-title-bg.ski-jumping {
+  background-color: #50a2c6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.cross-country,
+.sbe-sb-title-bg.cross-country {
+  background-color: #50a2c6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.snowboard,
+.sbe-sb-title-bg.snowboard {
+  background-color: #50a2c6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.bobsleigh,
+.sbe-sb-title-bg.bobsleigh {
+  background-color: #50a2c6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.luge,
+.sbe-sb-title-bg.luge {
+  background-color: #50a2c6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.skeleton,
+.sbe-sb-title-bg.skeleton {
+  background-color: #50a2c6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.tekken,
+.sbe-sb-title-bg.tekken {
+  background-color: #e2633a !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.formula,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.formula-e,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.indycar,
+.sbe-sb-title-bg.formula,
+.sbe-sb-title-bg.formula-e,
+.sbe-sb-title-bg.indycar {
+  background-color: #9e9e9e !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.speedway,
+.sbe-sb-title-bg.speedway {
+  background-color: #9b9587 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.dtm,
+.sbe-sb-title-bg.dtm {
+  background-color: #90929f !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.fifa,
+.sbe-sb-title-bg.fifa {
+  background-color: #43a047 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.nba,
+.sbe-sb-title-bg.nba {
+  background-color: #ff9800 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-nba-2ka,
+.sbe-sb-title-bg.esports-nba-2ka {
+  background-color: #ff9800 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-king-of-glory,
+.sbe-sb-title-bg.esports-king-of-glory {
+  background-color: #c3a56c !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-rocket-league,
+.sbe-sb-title-bg.esports-rocket-league {
+  background-color: #0f81d9 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.odds-boosts,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.odds-boost,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.boost,
+.sbe-sb-title-bg.odds-boosts,
+.sbe-sb-title-bg.odds-boost,
+.sbe-sb-title-bg.boost {
+  background-color: #f72c02 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.cash,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.cash-back,
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.cash-back-boosts,
+.sbe-sb-title-bg.cash,
+.sbe-sb-title-bg.cash-back,
+.sbe-sb-title-bg.cash-back-boosts {
+  background-color: #129849 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esports-rainbow-six,
+.sbe-sb-title-bg.esports-rainbow-six {
+  background-color: #e1b500 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.skateboarding,
+.sbe-sb-title-bg.skateboarding {
+  background-color: #929292 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.archery,
+.sbe-sb-title-bg.archery {
+  background-color: #ff5f54 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.fencing,
+.sbe-sb-title-bg.fencing {
+  background-color: #929292 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.judo,
+.sbe-sb-title-bg.judo {
+  background-color: #1d86da !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.taekwondo,
+.sbe-sb-title-bg.taekwondo {
+  background-color: #e84e5d !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.triathlon,
+.sbe-sb-title-bg.triathlon {
+  background-color: #90929f !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.weightlifting,
+.sbe-sb-title-bg.weightlifting {
+  background-color: #929292 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.wrestling,
+.sbe-sb-title-bg.wrestling {
+  background-color: #1d86da !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.surfing,
+.sbe-sb-title-bg.surfing {
+  background-color: #338fd6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.canoeing,
+.sbe-sb-title-bg.canoeing {
+  background-color: #338fd6 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.gymnastics,
+.sbe-sb-title-bg.gymnastics {
+  background-color: #db8e48 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-apex-legends,
+.sbe-sb-title-bg.esport-apex-legends {
+  background-color: #ce3233 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-arena-of-valor,
+.sbe-sb-title-bg.esport-arena-of-valor {
+  background-color: #8967c4 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-brawl-stars,
+.sbe-sb-title-bg.esport-brawl-stars {
+  background-color: #f78a01 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-clash-royale,
+.sbe-sb-title-bg.esport-clash-royale {
+  background-color: #0098ca !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-crypto,
+.sbe-sb-title-bg.esport-crypto {
+  background-color: #f70000 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-fortnite,
+.sbe-sb-title-bg.esport-fortnite {
+  background-color: #0f81d9 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-free-fire,
+.sbe-sb-title-bg.esport-free-fire {
+  background-color: #f7a000 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-game-for-peace,
+.sbe-sb-title-bg.esport-game-for-peace {
+  background-color: #f09e01 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-heroes-of-newerth,
+.sbe-sb-title-bg.esport-heroes-of-newerth {
+  background-color: #d7b738 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-honor-of-kings,
+.sbe-sb-title-bg.esport-honor-of-kings {
+  background-color: #c3a56c !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-iracing,
+.sbe-sb-title-bg.esport-iracing {
+  background-color: #2c338a !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-magic-the-gathering,
+.sbe-sb-title-bg.esport-magic-the-gathering {
+  background-color: #f1a722 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-mobile-legends,
+.sbe-sb-title-bg.esport-mobile-legends {
+  background-color: #c5a578 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-playerunknowns-battlegrounds,
+.sbe-sb-title-bg.esport-playerunknowns-battlegrounds {
+  background-color: #f09e01 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-battlegrounds-mobile-india,
+.sbe-sb-title-bg.esport-battlegrounds-mobile-india {
+  background-color: #179b07 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-pubg-mobile,
+.sbe-sb-title-bg.esport-pubg-mobile {
+  background-color: #f09e01 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-super-smash-bros,
+.sbe-sb-title-bg.esport-super-smash-bros {
+  background-color: #f3ae1b !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-teamfight-tactics,
+.sbe-sb-title-bg.esport-teamfight-tactics {
+  background-color: #c68950 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-valorant,
+.sbe-sb-title-bg.esport-valorant {
+  background-color: #f74452 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-wild-rift,
+.sbe-sb-title-bg.esport-wild-rift {
+  background-color: #30c2f7 !important;
+}
+.sbe-sb-mb-widget .sbe-sb-mb-widget-title.esport-warcraft3,
+.sbe-sb-title-bg.esport-warcraft3 {
+  background-color: #deae1a !important;
+}
+
+/* .sbe-sb-mb-footer ul li .sbe-sb-mb-footerfavorites:before {
+  content: "\e90c";
+}
+
+.sbe-sb-mb-footer .sbe-sb-mb-footerhome:before {
+  content: "\e920";
+  background-color: red;
+} */

@@ -1,0 +1,72 @@
+@use "@/variable" as var;
+
+.ver_num {
+  width: 40%;
+  height: 100vh;
+  background-color: var.$green;
+  position: fixed;
+  .ver_num_icons_wrap {
+    padding: 20px;
+    .ver_num_icon {
+      color: #fff;
+      font-size: 35px;
+    }
+  }
+  .ver_num_loading {
+    padding: 100px 0px 0px 0px;
+    .ver_num_loading_item {
+      margin-bottom: 30px;
+    }
+    .ver_num_loading_title {
+      font-size: 25px;
+      color: #fff;
+      font-weight: 900;
+    }
+  }
+  .ver_num_success {
+    padding: 70px 0px 0px 0px;
+    .ver_num_success_img {
+    }
+    .ver_num_success_title {
+      font-size: 25px;
+      color: #fff;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+  }
+  .ver_num_wrap {
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+    .ver_num_title {
+      font-size: 30px;
+      color: #fff;
+      margin-bottom: 20px;
+      font-weight: 900;
+    }
+    .ver_num_text {
+      font-size: 13px;
+      color: #dcd8d8;
+      margin-bottom: 30px;
+    }
+    .ver_num_form {
+      width: 100%;
+      .ver_num_input_wrap {
+      }
+      .ver_num_btn {
+        padding: 15px;
+        font-size: 14px;
+        font-weight: 700;
+      }
+    }
+    .ver_num_input {
+      height: 50px;
+      .input_main {
+        background-color: transparent !important;
+        font-size: 14px !important;
+        color: #fff !important;
+        height: 45px !important;
+      }
+    }
+  }
+}

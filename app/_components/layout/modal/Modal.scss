@@ -1,0 +1,95 @@
+@use "@/variable" as var;
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  backdrop-filter: blur(5px);
+  background-color: rgba(87, 87, 87, 0.2);
+  scale: 1;
+  padding: 10px;
+  overflow-y: scroll;
+
+  .modal_content_wrap {
+    padding: 38px;
+    border-radius: 8px;
+    box-shadow: 4px 2px 15px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    width: 40%;
+
+    .modal_content_title {
+      font-size: 40px;
+      line-height: 34px;
+      color: var.$text-black;
+      text-align: center;
+      margin-bottom: 20px;
+
+      @media (max-width: 991px) {
+        font-size: 25px;
+      }
+    }
+
+    .modal_message_text {
+      font-size: 14px;
+      line-height: 24px;
+      margin-bottom: 30px;
+      color: #575757;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .modal_content_image {
+      width: 150px;
+      margin-bottom: 30px;
+    }
+
+    .success {
+      font-size: 70px;
+      color: greenyellow;
+      animation: modalImage 1s ease-in;
+    }
+
+    .failed {
+      font-size: 70px;
+      color: red;
+      animation: modalImage 1s ease-in;
+    }
+
+    .modal_btn {
+      background-color: rgb(112, 181, 9);
+      color: white;
+      max-width: 150px;
+    }
+  }
+}
+
+.modal_close {
+  @extend .modal;
+  // opacity: 0;
+  // scale: 0.1;
+  display: none;
+  z-index: -10;
+  transition: all 3 linear;
+  opacity: 0;
+}
+
+@keyframes modalImage {
+  50% {
+    transform: scale(1.5);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+
+  90% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

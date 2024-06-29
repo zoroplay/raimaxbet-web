@@ -1,0 +1,78 @@
+@use "@/variable" as var;
+
+.login_modal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+
+  .login_modal_wrap {
+    background-color: #fff;
+    width: 40%;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    padding: 0px 10px;
+    position: absolute;
+    top: 10px;
+
+    .login_modal_title_wrap {
+      align-items: center;
+      padding: 10px 0px;
+
+      .login_modal_title {
+        font-size: 18px;
+        color: black;
+        text-transform: uppercase;
+      }
+
+      .login_modal_cancel {
+        font-size: 19px;
+        color: var.$text-black;
+      }
+    }
+
+    .login_modal_form {
+      padding: 10px 0px;
+      border-bottom: 1px solid #eee;
+      border-top: 1px solid #eee;
+
+      .login_modal_form_item {
+      }
+
+      .border {
+        height: 1px;
+        width: 100%;
+        background-color: #eee;
+        margin: 20px 0px;
+      }
+
+      .login_modal_btn {
+        background-color: var.$primary-accent;
+        color: var.$color;
+        color: #1e312e;
+        font-weight: 700;
+        font-size: 14px;
+        padding: 10px;
+        height: 43px;
+      }
+    }
+
+    .forgot_pass {
+      padding: 10px 0px;
+
+      .forgot_pass_icon {
+        color: var.$primary-accent;
+        font-size: 22px;
+        margin-right: 5px;
+      }
+
+      .forgot_pass_text {
+        color: var.$primary-accent;
+        font-size: 13px;
+        font-weight: 300;
+      }
+    }
+  }
+}

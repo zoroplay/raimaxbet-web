@@ -1,0 +1,467 @@
+@use "@/variable" as var;
+
+.bet_slip {
+  width: 100%;
+
+  .bet_slip_container {
+    background-color: #fff;
+    width: 100%;
+    position: relative;
+    max-height: 90vh;
+
+    // overflow: hidden;
+    .bet_slip_wrap {
+      width: 100%;
+      padding-bottom: 50px;
+      height: fit-content;
+      // overflow-y: scroll;
+
+      .bet_slip_head {
+        background-color: var.$green;
+        padding: 5px 0px;
+        align-items: center;
+
+        .bet_slip_head_text {
+          color: #fff;
+          font-size: 14px;
+          font-weight: 300;
+          padding: 10px;
+        }
+
+        .bet_slip_head_icon {
+          color: #fff;
+          font-size: 23px;
+          padding: 0px 10px;
+        }
+      }
+
+      .search {
+        width: 100%;
+        padding: 8px;
+        align-items: center;
+        border-bottom: 1px solid black;
+
+        .search_wrap {
+          width: 80%;
+
+          .search_input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px 0 0 4px;
+            border: 1px solid #1e312e;
+            background-color: transparent;
+            outline: none;
+            color: var.$text-black;
+          }
+        }
+
+        .search_input_text {
+          padding: 11px;
+          color: var.$text-black;
+          background-color: #5b938a;
+          width: 20%;
+          border-radius: 0px 4px 4px 0px;
+          font-size: 10px;
+          font-weight: 700;
+        }
+      }
+
+      .accept {
+        padding: 10px 8px;
+        background-color: #fff;
+        border-bottom: 1px solid black;
+
+        .accept_text {
+          font-size: 13px;
+          color: var.$text-black;
+        }
+
+        .inactive_switch {
+          width: 50px;
+          height: 25px;
+          background-color: #182220;
+          border-radius: 20px;
+          position: relative;
+          transition: all 0.5s linear;
+
+          .switch_tick {
+            transition: all 0.2s linear;
+            height: 22px;
+            width: 22px;
+            position: absolute;
+            left: 2%;
+            top: 2%;
+            background-color: #fff;
+            border-radius: 50%;
+            font-size: 22px;
+          }
+        }
+
+        .active_switch {
+          background-color: #5b938a;
+
+          .switch_tick {
+            left: 51%;
+          }
+        }
+      }
+
+      .bet_slip_multi {
+        padding: 8px;
+        border-bottom: 1px solid var.$text-black;
+
+        .bet_slip_multi_text {
+          font-size: 13px;
+          font-weight: 700;
+          margin-right: 5px;
+          color: var.$text-black;
+        }
+      }
+
+      .bet_slip_combi {
+        padding: 8px;
+        border-bottom: 1px solid var.$text-black;
+        background: #f5f5f5;
+
+        .combo_text {
+          color: var.$text-black;
+        }
+
+        .bet_slip_combi_text {
+          font-size: 13px;
+          font-weight: 700;
+          margin-right: 5px;
+          align-items: center;
+
+          .bet_slip_combi_icon {
+            font-size: 24px;
+            margin-left: 4px;
+            margin-top: 4px;
+          }
+
+          .active_combi {
+            transform: rotate(180deg);
+            margin-top: -4px;
+          }
+        }
+      }
+
+      .set_bank {
+        padding: 10px 8px;
+        background-color: #f5f5f5;
+
+        .set_bank_text {
+          font-size: 13px;
+          font-weight: 700;
+          color: var.$text-black;
+
+          .set_bank_icon {
+            font-size: 18px;
+            margin-left: 5px;
+          }
+        }
+
+        .inactive_switch {
+          width: 50px;
+          height: 25px;
+          background-color: #182220;
+          border-radius: 20px;
+          position: relative;
+          transition: all 0.5s linear;
+
+          .switch_tick {
+            transition: all 0.2s linear;
+            height: 22px;
+            width: 22px;
+            position: absolute;
+            left: 2%;
+            top: 2%;
+            background-color: #fff;
+            border-radius: 50%;
+            font-size: 22px;
+          }
+        }
+
+        .active_switch {
+          background-color: #5b938a;
+
+          .switch_tick {
+            left: 51%;
+          }
+        }
+      }
+
+      .slip_item_wrap {
+        max-height: 50vh;
+        overflow-y: scroll;
+        padding-bottom: 16px;
+        height: fit-content;
+
+        .slip_item_selection {
+          font-size: 13px;
+          padding: 10px 8px 0px 8px;
+          color: var.$text-black;
+        }
+
+        .slip_item {
+          background-color: #fff;
+          padding: 6px 6px 3px 6px;
+          border-bottom: 1px solid var.$text-black;
+
+          .slip_item_win_draw {
+            align-items: center;
+
+            .slip_item_team {
+              align-items: center;
+
+              .slip_item_team_icon {
+                font-size: 22px;
+                margin-right: 3px;
+                color: #ff5044;
+                cursor: pointer;
+              }
+
+              .slip_item_team_name {
+                font-size: 13px;
+                font-weight: 700;
+              }
+            }
+          }
+
+          .slip_item_check_wrap {
+            align-items: center;
+            padding-left: 25px;
+            padding-bottom: 4px;
+
+            .slip_item_check {
+              border: 1px solid #314440;
+              background-color: #5b938a;
+              padding: 4px;
+              border-radius: 4px;
+              margin-right: 4px;
+              width: 21px;
+              height: 21px;
+              padding-top: 2px;
+            }
+
+            .slip_item_check_text {
+              font-size: 13px;
+              font-weight: 700;
+              color: var.$text-black;
+            }
+          }
+        }
+
+        .book_slip_info {
+          padding: 1px 8px;
+          width: 100%;
+          background-color: var.$green;
+
+          .metre_bar_text {
+            font-size: 13px;
+            color: #fff;
+            font-weight: 400;
+            margin: 4px 0px;
+            // text-decoration: underline;
+          }
+
+          .metre_bar_text1 {
+            @extend .metre_bar_text;
+            font-weight: normal;
+            text-decoration: none;
+          }
+        }
+      }
+
+      .slip_item_odd {
+        font-size: 12px;
+        color: #5b938a;
+        margin-bottom: 4px;
+        padding-left: 7.2%;
+      }
+
+      .slip_item_teams {
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+
+        @extend .slip_item_odd;
+        color: var.$text-black;
+        font-weight: 700;
+      }
+    }
+
+    .empty_slip {
+      padding: 25px;
+    }
+
+    .bet_slip_tab {
+      overflow-x: scroll;
+      background: var.$background-color;
+      border-top: 2px solid #727171;
+
+      .bet_slip_tab_item {
+        white-space: nowrap;
+        font-size: 12px;
+        font-weight: 300;
+        color: #fff;
+        padding: 14px 0px;
+        width: 100%;
+        border-right: 1px solid #1b1a1a;
+        cursor: pointer;
+      }
+
+      .active_tab {
+        background-color: var.$secondary-accent;
+        color: var.$background-color;
+        font-weight: 700;
+      }
+    }
+
+    .book_slip_wrap {
+      position: absolute;
+      bottom: 0%;
+      left: 0;
+      z-index: 2;
+      width: 100%;
+      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+
+      .book_slip {
+        background-color: var.$secondary-accent;
+        color: var.$background-color;
+        align-items: center;
+        width: 100%;
+        padding: 7px;
+        .use_bonus {
+          width: 16%;
+          padding-right: 7px;
+
+          .input_bonus {
+            margin-bottom: 3px;
+          }
+
+          .use_bonus_text {
+            font-size: 11px;
+            text-transform: capitalize;
+            white-space: nowrap;
+            color: var.$text-black;
+            font-weight: 700;
+          }
+        }
+
+        .book_slip_text {
+          width: 75%;
+          border-right: 1px solid black;
+          font-size: 13px;
+          color: var.$text-black;
+          height: 100%;
+          border-right: 1px solid rgba(0, 0, 0, 0.3);
+          border-left: 1px solid rgba(0, 0, 0, 0.3);
+        }
+
+        .book_slip_value_wrap {
+          width: 75%;
+          border-right: 1px solid rgba(0, 0, 0, 0.3);
+          border-left: 1px solid rgba(0, 0, 0, 0.3);
+          cursor: pointer;
+
+          .book_slip_value_bold {
+            font-size: 16px;
+            font-weight: 700;
+          }
+
+          .book_slip_value_text {
+            font-size: 13px;
+            color: var.$text-black;
+            height: 100%;
+            text-align: center;
+          }
+        }
+
+        .book_slip_book {
+          width: 25%;
+          padding: 7px 0px 7px 7px;
+          cursor: pointer;
+
+          .book_slip_icon {
+            font-size: 18px;
+          }
+
+          .book_slip_book_text {
+            font-size: 12px;
+            color: var.$text-black;
+          }
+        }
+      }
+    }
+  }
+
+  .input_stake {
+    align-items: center;
+
+    .input_stake_text {
+      color: #5b938a;
+      font-size: 13px;
+      margin-right: 6px;
+    }
+
+    .input_stake_wrap {
+      width: 100px;
+
+      .input_stake {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #1e312e;
+        border-radius: 4px;
+        outline: none;
+        text-align: right;
+        background-color: transparent;
+        color: var.$text-black;
+
+        &::placeholder {
+          padding-left: 50px;
+          color: var.$text-black;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+.bet_slip_response {
+  position: fixed;
+  bottom: 8%;
+  width: 100%;
+  height: 40px;
+  padding: 8px;
+  z-index: 5;
+
+  .bet_slip_loading {
+    width: 100%;
+
+    .bet_slip_loading_icontext {
+      .bet_slip_loading_icon {
+        margin-right: 5px;
+        color: #fff;
+      }
+
+      .bet_slip_loading_text {
+        font-size: 11px;
+        color: #fff;
+      }
+    }
+
+    .bet_slip_loading_icons {
+      .bet_slip_loading_icon {
+        color: #fff;
+        margin-left: 12px;
+      }
+
+      .bet_slip_loading_reload {
+        color: #fff;
+      }
+    }
+  }
+}

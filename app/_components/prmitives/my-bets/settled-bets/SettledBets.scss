@@ -1,0 +1,34 @@
+@use "@/variable" as var;
+
+.settled_bet {
+  .date_tab {
+    overflow-x: scroll;
+    align-items: center;
+    width: 100%;
+    background-color: var.$green;
+
+
+    .date_tab_item {
+      font-size: 13px;
+      padding: 5px 15px;
+      margin: 10px 5px;
+      height: 25px;
+      min-width: 60px;
+      color: #fff;
+      white-space: nowrap;
+      font-weight: 300;
+      cursor: pointer;
+    }
+
+    .active {
+      background: #5b938a;
+      border-radius: 12px;
+      color: var.$text-black;
+      font-weight: 400;
+    }
+  }
+
+  .show_tab_con {
+    padding: 0px 0px 5px 0px;
+  }
+}

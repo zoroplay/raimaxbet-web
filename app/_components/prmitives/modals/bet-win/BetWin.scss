@@ -1,0 +1,12 @@
+@use "@/variable" as var;
+
+.bet_win {
+  .bet_win_close {
+    color: #fff;
+    font-size: 30px;
+  }
+  .bet_win_vid {
+    height: 70vh;
+    width: 90%;
+  }
+}

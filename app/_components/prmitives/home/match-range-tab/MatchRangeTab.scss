@@ -1,0 +1,56 @@
+@use "@/variable" as var;
+
+.range {
+  width: 100%;
+  background-color: var.$green;
+  padding: 0px 3px;
+  .range_title {
+    font-size: 12px;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 8px 0px;
+    border-bottom: 1px solid rgba(141, 139, 139, 0.3);
+    font-weight: 300;
+    .range_icon {
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+  .range_option {
+    padding: 12px;
+    border-left: 1px solid rgba(141, 139, 139, 0.3);
+    border-right: 1px solid rgba(141, 139, 139, 0.3);
+
+    .range_select {
+      border: none;
+      outline: none;
+      background-color: transparent;
+
+      .range_select_item {
+        color: #b2afaf;
+      }
+    }
+  }
+  .range_wrap {
+    padding: 12px;
+    width: 100%;
+    .range_one {
+      margin-right: 5px;
+      gap: 2px;
+      cursor: pointer;
+    }
+    .range_two {
+      gap: 2px;
+      cursor: pointer;
+    }
+    .range_item {
+      height: 15px;
+      width: 3px;
+      border-radius: 2px;
+      background-color: #4d585d;
+    }
+    .active_range > .range_item {
+      background-color: var.$orange;
+    }
+  }
+}

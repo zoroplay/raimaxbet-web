@@ -1,0 +1,63 @@
+@use "@/variable.scss" as var;
+
+.bonus {
+  width: 100%;
+
+  .turnover_text {
+    font-size: 11px;
+    margin-bottom: 2px;
+    margin-top: 5px;
+    width: 100%;
+    font-weight: 700;
+  }
+  .bonus_read {
+    position: relative;
+    color: #fff;
+    font-size: 11px;
+    width: 100%;
+    text-align: center;
+    height: 28px;
+    background-color: #096b27;
+    margin-bottom: 12px;
+
+    .bonus_read_bar {
+      background-color: #5b938a;
+      height: 100%;
+      // border-top-right-radius: 8px;
+      // border-bottom-right-radius: 8px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+}
+.bonus_tab {
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  .bonus_tab_item {
+    font-size: 14px;
+    padding-bottom: 4px;
+    width: 50%;
+    border-bottom: 2px solid transparent;
+    color: #797979;
+    cursor: pointer;
+  }
+  .active {
+    border-bottom: 2px solid var.$orange;
+  }
+}
+
+.bonus_text {
+  width: 100%;
+  text-align: left;
+  font-size: 12px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  font-weight: 400;
+  color: #797979;
+}
+
+.b_text {
+  color: #797979;
+}

@@ -1,0 +1,75 @@
+@use "@/variable" as var;
+@import "/app/icons.css";
+
+.footer {
+  background-color: var.$background-color;
+  margin-top: 4px;
+  .footer_links {
+    width: 100%;
+    padding: 30px 20px 0px 20px;
+
+    .footer_links_item {
+      font-size: 15px;
+      color: #fff;
+      padding: 0px 0px 10px 0px;
+      margin: 0px 0px 10px 0px;
+      border-bottom: 2px solid
+        rgba($color: var.$btn-primary-transparent, $alpha: 0.2);
+      border-radius: 4px;
+      width: 100%;
+      transition: all 0.3s linear;
+
+      &:hover {
+        color: #888787;
+      }
+    }
+  }
+
+  .footer_socials {
+    padding: 100px 20px 0px 20px;
+
+    .footer_socials_item {
+      color: #fff;
+      font-size: 15px;
+      margin: 0px 10px;
+      transition: all 0.3s linear;
+      &:hover {
+        color: #888787;
+      }
+    }
+  }
+
+  .footer_text_wrap {
+    padding: 30px 10px 15px 10px;
+
+    .footer_text {
+      font-size: 11px;
+      color: #fff;
+      text-align: center;
+      font-weight: 300px;
+
+      span {
+        color: #c2322c;
+      }
+
+      margin-bottom: 25px;
+    }
+  }
+
+  .footer_logos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-between;
+    gap: 50px;
+    padding: 50px 0px 0px 120px;
+    .footer_logos_img {
+      object-fit: contain;
+    }
+  }
+
+  .copyright_wrap {
+    font-size: 11px;
+    color: #fff;
+    padding: 0px 0px 65px 0px;
+  }
+}

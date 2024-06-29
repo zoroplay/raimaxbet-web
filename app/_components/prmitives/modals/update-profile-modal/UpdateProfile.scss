@@ -1,0 +1,29 @@
+@use "@/variable" as var;
+
+.update_profile {
+  padding: 30px 15px;
+  background-color: #fff;
+  border-radius: 12px;
+  width: 35%;
+  .update_profile_close {
+    color: var.$text-black;
+    cursor: pointer;
+  }
+  .update_profile_title {
+    font-size: 18px;
+    padding: 10px 0px;
+    border-bottom: 1px solid #e9e9ea;
+    color: var.$text-black;
+  }
+  .update_profile_text {
+    font-size: 12px;
+    align-items: center;
+    padding: 20px 0px;
+    color: var.$text-black;
+  }
+  .update_profile_form_btn {
+    background-color: var.$orange;
+    color: var.$text-black;
+    margin-top: 30px;
+  }
+}
