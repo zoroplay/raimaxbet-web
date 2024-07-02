@@ -1,0 +1,83 @@
+@use "@/variable" as var;
+
+.bonus_aw {
+  position: relative;
+  padding: 15px;
+  background-color: var.$green;
+  min-height: 50vh;
+  color: #fff;
+  border-radius: 8px;
+  width: 40%;
+  overflow: hidden;
+  .bonus_aw_cancel {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .bonus_aw_imgw {
+    margin-bottom: 10px;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    .bonus_aw_img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .bonus_aw_hd {
+    margin-bottom: 12px;
+    font-weight: 300;
+  }
+  .bonus_aw_text {
+    margin-bottom: 25px;
+    text-align: center;
+    max-width: 230px;
+    font-size: 13px;
+    font-weight: 300;
+  }
+  .bonus_aw_res {
+    margin-bottom: 75px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 300;
+    max-width: 230px;
+  }
+  .bonus_aw_btn {
+    margin-bottom: 10px;
+    text-align: center;
+    z-index: 2;
+    max-width: 60%;
+  }
+  .bonus_aw_link {
+    text-decoration: underline;
+    font-size: 12px;
+  }
+  .float {
+    position: absolute;
+    background: #dad9d9;
+    filter: blur(100px);
+    height: 104px;
+    width: 108px;
+    left: 40%;
+    top: 70%;
+    border-radius: 50%;
+    animation: floatAnimation 15s infinite ease-in-out;
+  }
+}
+
+@keyframes floatAnimation {
+  0% {
+    transform: translateY(0%);
+  }
+
+  50% {
+    transform: translateY(-45vh);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}

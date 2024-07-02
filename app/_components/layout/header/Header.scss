@@ -1,0 +1,216 @@
+@use "@/variable" as var;
+
+.header {
+  background-color: var.$green;
+  padding: 5px 20px 0px 20px;
+  .header_wrap {
+    width: 100%;
+    .header_loggedin {
+      position: relative;
+
+      .header_loggedin_btn {
+        background-color: var.$secondary-accent;
+        color: var.$background-color;
+        text-transform: uppercase;
+        border: none;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 11px 3px;
+      }
+
+      .header_loggedin_user_wrap {
+        cursor: pointer;
+        border: 1px solid #e78b3d;
+        padding: 6px 4px;
+        border-radius: 5px;
+        margin-left: 5px;
+
+        .header_loggedin_icon {
+          background: #fff;
+          color: var.$text-black;
+          padding: 1px;
+        }
+      }
+
+      .profile_modal {
+        width: 300px;
+        position: absolute;
+        right: -8px;
+        bottom: -260px;
+        padding: 10px 5px;
+        border-radius: 0;
+        border-color: darken($color: var.$background-color, $amount: 5);
+        background-color: darken($color: var.$background-color, $amount: 5);
+        z-index: 10;
+
+        .profile_modal_wrap {
+          padding: 8px 5px;
+
+          .profile_modal_key {
+            font-size: 12px;
+            font-weight: 400;
+            color: #fff;
+            cursor: pointer;
+          }
+
+          .profile_modal_value {
+            @extend .profile_modal_key;
+          }
+
+          .num {
+            color: var.$secondary-accent;
+          }
+        }
+      }
+
+      .activeMod {
+        display: none;
+      }
+    }
+    .header_logo {
+      width: 180px;
+      height: 80px;
+      position: relative;
+      .logo {
+        position: absolute;
+        // object-fit: cover;
+      }
+    }
+    .header_form_wrap {
+      .header_form {
+        align-items: center;
+        .header_btn_wrap {
+          margin-left: 5px;
+          .logo {
+            object-fit: cover;
+          }
+
+          .header_log_btn {
+            color: var.$color;
+            font-weight: 700;
+            border-color: var.$primary-accent;
+            background-color: var.$primary-accent;
+            height: 36px;
+            width: 70px;
+          }
+
+          .header_reg_btn {
+            @extend .header_log_btn;
+            border-color: var.$secondary-accent;
+            background-color: var.$secondary-accent;
+            color: var.$background-color;
+            margin-left: 5px;
+            height: 36px;
+          }
+        }
+        .header_loggedin {
+          position: relative;
+          .header_loggedin_btn {
+            background-color: var.$secondary-accent;
+            color: var.$background-color;
+            text-transform: uppercase;
+            border: none;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 11px 3px;
+          }
+          .header_loggedin_user_wrap {
+            border: 1px solid #e78b3d;
+            padding: 6px 4px;
+            border-radius: 5px;
+            margin-left: 5px;
+            .header_loggedin_icon {
+              background: #fff;
+              color: var.$text-black;
+              padding: 1px;
+            }
+          }
+          .profile_modal {
+            width: 300px;
+            position: absolute;
+            right: -8px;
+            bottom: -260px;
+            padding: 10px 5px;
+            border-radius: 0;
+            border-color: #1e312e;
+            background-color: #1e312e;
+            z-index: 10;
+            .profile_modal_wrap {
+              padding: 8px 5px;
+              .profile_modal_key {
+                font-size: 12px;
+                font-weight: 400;
+                color: #fff;
+              }
+              .profile_modal_value {
+                @extend .profile_modal_key;
+              }
+              .num {
+                color: #60a298;
+              }
+            }
+          }
+          .activeMod {
+            display: none;
+          }
+        }
+        .header_input_wrap {
+          margin-left: 5px;
+          .header_input_wrap {
+          }
+          .header_input {
+            background-color: rgba(0, 0, 0, 0.3) !important;
+            border: none !important;
+            width: 250px;
+            .input_main {
+              color: #fff;
+              font-size: 14px;
+              background-color: transparent;
+            }
+          }
+        }
+      }
+      .forgot_header {
+        font-size: 12px;
+        font-weight: 300;
+        color: #fff;
+        margin-top: 4px;
+        cursor: pointer;
+        transition: all 0.3s linear;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  .head_links {
+    width: 100%;
+    padding-top: 20px;
+    .head_links_items {
+      .head_links_item {
+        padding: 15px;
+        .head_link_icon {
+          margin-right: 4px;
+          color: #fff;
+        }
+        .head_link_text {
+          font-size: 14px;
+          letter-spacing: 1.6px;
+          color: #fff;
+          @include var.mq("xl") {
+            font-size: 12px;
+            white-space: nowrap;
+          }
+        }
+      }
+      .active {
+        background-color: #0000004d;
+      }
+    }
+  }
+}
+
+.b_header {
+  background-color: #0000004d;
+  padding: 5px;
+}

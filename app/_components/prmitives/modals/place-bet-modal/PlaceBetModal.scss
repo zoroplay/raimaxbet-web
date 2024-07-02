@@ -1,0 +1,107 @@
+@use "@/variable" as var;
+
+.plbet {
+  width: 100%;
+  .plbet_wrap {
+    width: 100%;
+    .plbet_stake {
+      background-color: #fff;
+      height: 200px;
+      border-bottom: 1px solid black;
+      border-top: 1px solid black;
+      .plbet_stake_title {
+        font-size: 16px;
+        font-weight: 800;
+        color: var.$text-black;
+        text-transform: uppercase;
+      }
+      .plbet_stake_amount {
+        @extend .plbet_stake_title;
+        font-size: 30px;
+      }
+    }
+    .plbet_status {
+      background-color: #fff;
+      height: fit-content;
+      border-bottom: 1px solid black;
+      padding: 40px 0px;
+      .plbet_status_wrap {
+        height: 100%;
+        .plbet_status_error {
+          .plbet_status_error_text {
+            font-size: 12px;
+            color: red;
+            text-align: center;
+            padding: 0px 4px;
+          }
+        }
+        .plbet_status_icon {
+          font-size: 30px;
+          color: #fff;
+          background-color: #096b27;
+          border-radius: 50%;
+          height: 50px;
+          width: 50px;
+          margin-bottom: 5px;
+          padding: 8px;
+        }
+        .plbet_status_text {
+          font-size: 22px;
+          font-weight: 800;
+          color: red;
+        }
+        .plbet_status_info {
+          border-top: 1px solid #c8c4c4;
+          border-bottom: 1px solid #c8c4c4;
+          width: 100%;
+          padding: 15px 30px;
+          margin-top: 10px;
+          .plbet_status_info_wrap {
+            margin-bottom: 10px;
+            .plbet_status_info_text {
+              font-size: 18px;
+              color: var.$text-black;
+              .plbet_status_share_icon {
+                font-size: 16px;
+                cursor: pointer;
+              }
+
+              .plbet_status_copy {
+                align-items: center;
+
+                .plbet_status_copy_icon {
+                  margin: 0px 6px;
+                  font-size: 16px;
+                  cursor: pointer;
+                }
+
+                .plbet_status_copy_code {
+                  font-size: 16px;
+                }
+              }
+            }
+            .bold {
+              font-weight: 800;
+            }
+          }
+        }
+      }
+    }
+    .plbet_footer {
+      .plbet_confirm {
+        cursor: pointer;
+        .plbet_confirm_text {
+          padding: 15px;
+          font-size: 16px;
+          color: var.$text-black;
+          background-color: #fff;
+          width: 50%;
+        }
+        .text_bg {
+          background-color: var.$primary-accent;
+          color: var.$color;
+        }
+      }
+    }
+  }
+}

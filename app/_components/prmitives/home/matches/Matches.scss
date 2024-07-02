@@ -1,0 +1,111 @@
+@use "@/variable" as var;
+
+.matches {
+  width: 100%;
+  background-color: #f3f1f1;
+  .matches_slider_wrap {
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    height: 35px;
+    .matches_slider {
+      width: 90%;
+      .slider_item_wrap {
+        position: relative;
+        display: flex !important;
+        align-items: center;
+        gap: 1px;
+        cursor: pointer;
+        transition: all 0.3s linear;
+        padding: 6px 0px;
+
+        &:hover {
+          border-bottom: 4px solid var.$orange;
+          width: 70% !important;
+          border-radius: 1px;
+        }
+        height: 100%;
+        .matches_slider_item {
+          width: 100px;
+          white-space: nowrap;
+          color: var.$text-black;
+          font-weight: 300;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-size: 14px;
+        }
+      }
+      .active {
+        // background-color: darken($color: #e1e0e0, $amount: 10);
+        height: 100%;
+        width: 70% !important;
+        border-bottom: 4px solid var.$orange;
+        border-radius: 1px;
+      }
+    }
+  }
+  .markets_wrap {
+    width: 100%;
+    padding: 10px 0px;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    .markets_items {
+      width: 50%;
+      align-items: center;
+      .market_item_single {
+        width: 45%;
+        font-size: 13px;
+        color: var.$text-black;
+      }
+      .market_items_select {
+        width: 45%;
+        .market_select {
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          background-color: transparent;
+          outline: none;
+          width: 70%;
+          font-size: 11px;
+          font-weight: 300;
+          background-color: var.$green;
+          padding: 8px;
+          text-transform: uppercase;
+          .market_option {
+          }
+        }
+      }
+    }
+  }
+  .matches_next {
+    position: absolute;
+    right: 0;
+    color: var.$text-black;
+    width: 4%;
+    height: 100%;
+    border-left: 1px solid rgb(79, 78, 78);
+    cursor: pointer;
+    transition: all 0.3s linear;
+    &:hover {
+      background-color: darken($color: #fff, $amount: 10);
+    }
+  }
+  .matches_prev {
+    @extend .matches_next;
+    left: 0;
+    border-left: none;
+    border-right: 1px solid rgb(79, 78, 78);
+  }
+}
+
+.view_more_wrap {
+  height: 50px;
+  .view_more_text_wrap {
+    color: var.$orange;
+    padding: 15px 5px 0px 0px;
+    height: 30px;
+
+    .view_more_text {
+      margin-right: 5px;
+      font-size: 13px;
+    }
+  }
+}

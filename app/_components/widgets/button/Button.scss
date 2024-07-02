@@ -1,0 +1,23 @@
+@use "@/variable" as var;
+
+.button {
+  padding: 9px 3px;
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  border: 1px solid #fff;
+  background-color: var.$primary-accent;
+  color: var.$color;
+
+  @media (max-width: 991px) {
+    font-size: 12;
+  }
+}
+
+.invalid {
+  @extend .button;
+  opacity: 0.4;
+  cursor: not-allowed;
+}

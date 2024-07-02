@@ -1,0 +1,169 @@
+@use "@/variable" as var;
+
+.port_block {
+  width: 100%;
+  padding: 0px 20px 0px 20px;
+  .port_block_con {
+    background-color: #fff;
+    padding: 15px;
+    width: 100%;
+    .port_block_prof {
+      width: 100%;
+      .port_img_wrap {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        // overflow: hidden;
+        border: 2px solid #5b938a;
+        box-shadow: 0.5px 0.5px 3px var.$text-black;
+        margin-bottom: 20px;
+
+        .port_img {
+          border-radius: 50%;
+        }
+
+        .port_icon {
+          position: absolute;
+          bottom: 0;
+          width: 30px;
+          height: 30px;
+          right: 0;
+          background-color: #5b938a;
+          color: #fff;
+          z-index: 4;
+          border-radius: 50%;
+        }
+      }
+      .port_num_id {
+        padding: 5px;
+        border: 1px solid #e8e8e8;
+        border-radius: 4px;
+        .port_num {
+          margin: 0px 3px;
+          font-size: 15px;
+          font-weight: 800;
+          color: #797979;
+        }
+      }
+      .port_num_id_wrap {
+        width: 85%;
+
+        .port_stars {
+          margin-bottom: 15px;
+
+          .port_star {
+            margin: 0px 1.5px;
+            color: var.$orange;
+          }
+        }
+
+        .port_balance_wrap {
+          width: 100%;
+          align-items: center;
+          border: 1px solid #e8e8e8;
+          padding: 20px 30px 20px 0px;
+          border-radius: 10px;
+
+          .port_border_r {
+            border-right: 1px solid #e8e8e8;
+          }
+
+          .port_balance_texts {
+            width: 33%;
+
+            .port_balance_title {
+              font-size: 11px;
+              color: #797979;
+              margin-bottom: 7px;
+            }
+
+            .port_balance_val {
+              font-size: 14px;
+              color: var.$primary-accent;
+              font-weight: 700;
+            }
+          }
+          .port_btn {
+            background-color: var.$primary-accent;
+            color: var.$color;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 15px;
+            max-width: 200px;
+          }
+        }
+      }
+    }
+
+    .port_info {
+      width: 100%;
+      align-items: flex-start;
+      padding-top: 50px;
+      border: 1px solid #e8e8e8;
+      margin-top: 40px;
+      padding: 20px;
+      .port_acc_con {
+        width: 42%;
+        border: 1px solid #e8e8e8;
+        border-radius: 12px;
+        .port_acc_wrap {
+          width: 100%;
+
+          .port_acc {
+            width: 100%;
+            height: 45px;
+            overflow: hidden;
+            transition: all 0.4s linear;
+
+            .port_acc_seen {
+              width: 100%;
+              background-color: var.$primary-accent;
+              color: var.$color;
+              border-top-right-radius: 12px;
+              border-top-left-radius: 12px;
+              padding: 15px 10px;
+              align-items: center;
+
+              .port_acc_title {
+                font-size: 14px;
+                font-weight: 800;
+              }
+
+              .port_acc_bar {
+                font-size: 26px;
+              }
+            }
+
+            .port_acc_text {
+              width: 100%;
+              padding: 10px;
+              border-bottom: 1px solid #e8e8e8;
+              color: #797979;
+              font-size: 16px;
+              cursor: pointer;
+            }
+
+            .active_port {
+              color: var.$primary-accent;
+              background-color: rgba(
+                $color: var.$background-color,
+                $alpha: 0.2
+              );
+            }
+          }
+
+          .open {
+            height: 400px;
+          }
+        }
+      }
+      .port_val_con {
+        width: 55%;
+        border: 1px solid #e8e8e8;
+        border-radius: 12px;
+        padding: 10px;
+      }
+    }
+  }
+}

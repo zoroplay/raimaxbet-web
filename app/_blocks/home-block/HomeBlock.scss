@@ -1,0 +1,51 @@
+@use "@/variable" as var;
+
+.home {
+  width: 100%;
+  .home_left {
+    width: 18%;
+    height: fit-content;
+    padding: 0px 3px;
+    .home_left_sidebar {
+      width: 100%;
+    }
+  }
+  .home_left_open {
+    width: 4%;
+    padding: 2px;
+  }
+  .home_center {
+    width: 60%;
+  }
+  .home_center_open {
+    width: 74%;
+  }
+  .home_right {
+    width: 22%;
+    padding: 3px 0px 0px 3px;
+    height: fit-content;
+    .my_bets {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 300;
+      padding: 10px;
+      cursor: pointer;
+      margin-bottom: 3px;
+      background-color: var.$background-color;
+      &:hover {
+        background-color: lighten($color: var.$background-color, $amount: 10);
+      }
+    }
+  }
+}
+
+.fix_home {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+.fix_home_left {
+  position: fixed;
+  top: 0;
+  left: 0;
+}

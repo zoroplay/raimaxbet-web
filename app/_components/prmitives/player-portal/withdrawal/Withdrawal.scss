@@ -1,0 +1,30 @@
+@use "@/variable" as var;
+
+.withdrawal {
+  width: 100%;
+  .withdrawal_title {
+    width: 100%;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  .withdrawal_form_wrap {
+    .info_text_wrap {
+      margin-bottom: 14px;
+      .info_text {
+        font-size: 14px;
+        color: var.$green;
+        margin-bottom: 4px;
+      }
+    }
+  }
+  .withdrawal_input_wrap {
+    margin-bottom: 20px;
+  }
+  .withdrawal_btn_wrap {
+    padding: 15px;
+    color: var.$text-black;
+  }
+}

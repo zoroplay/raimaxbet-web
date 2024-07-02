@@ -1,0 +1,270 @@
+@use "@/variable" as var;
+
+.sports {
+  width: 100%;
+  padding: 20px 10px 10px 10px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  background-color: var.$green;
+  .sports_labels {
+    width: 98%;
+    margin-bottom: 5px;
+    .sports_label {
+      font-size: 12px;
+      font-weight: 300;
+      white-space: nowrap;
+      width: 20%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #fff;
+    }
+    .active {
+      color: var.$orange;
+    }
+  }
+  .sport_range {
+    width: 100%;
+    appearance: none;
+    background: transparent;
+    height: 2px;
+    outline: none;
+    margin: 1em auto;
+    width: 100%;
+
+    &::-webkit-slider-thumb {
+      appearance: none;
+      background: var.$blue;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      cursor: pointer;
+      height: 20px;
+      width: 20px;
+      margin-top: -7px;
+    }
+
+    &::-moz-range-thumb {
+      appearance: none;
+      background: var.$blue;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      cursor: pointer;
+      height: 20px;
+      width: 20px;
+    }
+
+    &::-ms-thumb {
+      appearance: none;
+      background: var.$blue;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      cursor: pointer;
+      height: 20px;
+      width: 20px;
+    }
+
+    &::-webkit-slider-runnable-track {
+      background: var.$orange;
+      border: none;
+      border-radius: 5px;
+      height: 5px;
+      cursor: pointer;
+    }
+
+    &::-moz-range-track {
+      background: #ddd;
+      border: none;
+      border-radius: 5px;
+      height: 5px;
+      cursor: pointer;
+    }
+
+    &::-ms-track {
+      background: #ddd;
+      border: none;
+      border-radius: 5px;
+      height: 5px;
+      cursor: pointer;
+    }
+  }
+}
+.slider {
+  width: 100%;
+}
+
+.sports_link_wrap {
+  border-top: 1px solid #5b5a5a;
+  background-color: var.$green;
+  .sports_link {
+    padding: 6px 10px;
+    align-items: center;
+    border-bottom: 0.5px solid rgba(91, 90, 90, 0.3);
+    cursor: pointer;
+    transition: all 0.3 ease-in;
+    color: #fff;
+    &:hover {
+      background-color: lighten($color: var.$green, $amount: 10);
+    }
+    .sports_link_left {
+      .sports_title {
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 300;
+        margin-bottom: 2px;
+      }
+    }
+    .sports_right {
+      .sports_num {
+        font-size: 12px;
+        font-weight: 300;
+      }
+    }
+    .icon_style {
+      .sbe-sb-sports-icon,
+      .sports_icon {
+        // background-color: darken($color: var.$green, $amount: 4);
+        border-radius: 50%;
+        font-size: 18px;
+        opacity: 0.7;
+      }
+      .icon {
+        color: var.$orange;
+        margin-right: 6px;
+      }
+    }
+  }
+  .sports_link_all {
+    padding: 6px 10px;
+    align-items: center;
+    border-bottom: 0.5px solid rgba(91, 90, 90, 0.3);
+    cursor: pointer;
+    transition: all 0.3 ease-in;
+    color: #fff;
+    &:hover {
+      background-color: lighten($color: var.$green, $amount: 10);
+    }
+    .sports_link_left {
+      .sports_title {
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 300;
+        margin-bottom: 2px;
+      }
+
+      .all_title {
+        font-size: 14px;
+        font-weight: 300;
+        margin-bottom: 2px;
+      }
+    }
+    .sports_right {
+      .sports_num {
+        font-size: 12px;
+        font-weight: 300;
+      }
+    }
+    .icon_style {
+      .sbe-sb-sports-icon,
+      .sports_icon {
+        // background-color: darken($color: var.$green, $amount: 4);
+        border-radius: 50%;
+        font-size: 16px;
+        opacity: 0.4;
+      }
+      .icon {
+        color: var.$orange;
+        margin-right: 6px;
+      }
+    }
+  }
+  .loading {
+    padding: 10px;
+  }
+  .sports_linksub {
+    padding: 4px 10px;
+    align-items: center;
+    border-bottom: 0.5px solid rgba(91, 90, 90, 0.3);
+    cursor: pointer;
+    transition: all 0.3 ease-in;
+    background-color: darken($color: var.$green, $amount: 2);
+
+    &:hover {
+      background-color: lighten($color: var.$green, $amount: 10);
+    }
+
+    .sports_linksub_left {
+      .sports_title_sub {
+        text-transform: capitalize;
+        font-size: 13px;
+        font-weight: 300;
+        margin-bottom: 2px;
+        width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #fff;
+      }
+    }
+
+    .sports_right_sub {
+      .sports_num_sub {
+        font-size: 10px;
+        font-weight: 300;
+        color: #fff;
+      }
+    }
+    .sbe-sb-sports-icon,
+    .sbe-sb-mb-sports-icon {
+      font-size: 12px;
+      color: #aab1b9;
+      margin-right: 6px;
+    }
+  }
+  .tour_wrap {
+    align-items: center;
+    border-bottom: 0.5px solid rgba(91, 90, 90, 0.3);
+    cursor: pointer;
+    transition: all 0.3 ease-in;
+    background-color: lighten($color: var.$green, $amount: 15);
+    .tour_wrap_item {
+      padding: 4px 10px;
+      border-bottom: 0.5px solid rgba(15, 15, 15, 0.3);
+      .sports_linksub_left {
+        .sports_title_sub {
+          text-transform: capitalize;
+          font-size: 13px;
+          font-weight: 300;
+          margin-bottom: 2px;
+          width: 150px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: #fff;
+        }
+
+        .tour_check {
+          height: 16px;
+          width: 16px;
+          margin-right: 6px;
+        }
+      }
+
+      .sports_right_sub {
+        width: 35px;
+        .sports_num_sub {
+          font-size: 10px;
+          font-weight: 300;
+          color: #fff;
+        }
+
+        .tour_item_icon {
+          margin-bottom: -3px;
+        }
+      }
+    }
+  }
+}
+
+.sbe-sb-sports-icon,
+.sbe-sb-mb-sports-icon {
+  font-size: 18px;
+  color: #aab1b9;
+  margin-right: 6px;
+}

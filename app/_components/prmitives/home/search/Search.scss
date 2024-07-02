@@ -1,0 +1,169 @@
+@use "@/variable" as var;
+
+.side_search {
+  .side_search_wrap {
+    width: 100%;
+    background-color: #fff;
+    height: 40px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    position: relative;
+
+    .side_search_input {
+      border: none;
+      background-color: transparent;
+      outline: none;
+      height: 100%;
+      width: 80%;
+      padding: 2px 5px;
+      color: var.$text-black;
+
+      &::placeholder {
+        font-size: 18px;
+      }
+    }
+
+    .side_search_icon {
+      color: var.$text-black;
+      cursor: pointer;
+      width: 20%;
+      height: 100%;
+    }
+  }
+
+  .search_con {
+    height: 21vh;
+    overflow-y: scroll;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    .search_block_input_con {
+      background-color: var.$green;
+      padding: 15px 10px;
+      width: 100%;
+
+      .trend_search {
+        margin-top: 10px;
+
+        .trend_search_title {
+          font-size: 18px;
+          color: #fff;
+          margin-bottom: 20px;
+        }
+
+        .trend_search_items {
+          gap: 10px;
+          flex-wrap: wrap;
+
+          .trend_search_item {
+            background-color: #2c3039;
+            color: #bab9b9;
+            font-size: 12px;
+            padding: 8px;
+            width: fit-content;
+            border-radius: 5px;
+          }
+        }
+      }
+
+      .history {
+        margin-top: 30px;
+
+        .history_search_wrap {
+          margin-bottom: 20px;
+
+          .history_search_title {
+            font-size: 18px;
+            color: #fff;
+          }
+
+          .history_search_clear {
+            color: #9ca0ab;
+            font-size: 15px;
+          }
+        }
+
+        .history_item_wrap {
+          .history_item {
+            align-items: center;
+
+            .history_item_icon {
+              color: #9ca0ab;
+              margin-right: 10px;
+              margin-top: 4px;
+            }
+
+            .history_item_text {
+              color: #9ca0ab;
+              font-size: 14px;
+              width: 100%;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+      }
+    }
+
+    .search_item {
+      padding: 10px 8px;
+      border-bottom: 1px solid rgb(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.3s linear;
+      position: relative;
+      overflow: hidden;
+
+      &:hover {
+        background-color: lighten($color: var.$green, $amount: 10);
+      }
+
+      &:hover .fav_item_sp {
+        color: rgb(0, 0, 0, 0.2);
+      }
+
+      .search_item_texts {
+        .search_item_teams {
+          font-size: 14px;
+          font-weight: 300;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          width: 210px;
+          overflow: hidden;
+          margin-bottom: 4px;
+          z-index: 2;
+        }
+
+        .search_item_date {
+          font-size: 14px;
+          font-weight: 300;
+          color: rgb(193, 191, 191);
+        }
+      }
+
+      .search_item_close {
+        &:hover {
+          color: rgb(120, 43, 43);
+        }
+      }
+
+      .sbe-sb-sports-icon,
+      .sports_icon {
+        position: absolute;
+        right: 0;
+        bottom: -40px;
+        font-size: 80px;
+        opacity: 0.1;
+      }
+    }
+
+    .char_wrap {
+      margin-top: 40%;
+
+      .char {
+        color: var.$text_black;
+        padding: 5px;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        font-size: 14px;
+      }
+    }
+  }
+}

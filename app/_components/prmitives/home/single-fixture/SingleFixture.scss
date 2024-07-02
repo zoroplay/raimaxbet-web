@@ -1,0 +1,249 @@
+@use "@/variable" as var;
+
+.single_fixture {
+  background-color: var.$green;
+  width: 100%;
+
+  .single_fix_header {
+    padding: 10px 6px;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 300;
+    .single_fix_cancle {
+      font-size: 18px;
+      cursor: pointer;
+    }
+  }
+  .single_fixture_time {
+    padding: 8px;
+    height: 50px;
+    border-top: 1px #363636 solid;
+
+    .fixture_time_text {
+      color: #fff;
+      font-weight: 300;
+      font-size: 12px;
+    }
+
+    .fixture_icon {
+      color: #979696;
+    }
+
+    .fixture_live_time {
+      color: #979696;
+      font-size: 12px;
+    }
+
+    .fixture_icon_star {
+      color: var.$text-black;
+    }
+
+    .live_icon {
+      background-color: #00a651;
+      animation: live 4s 0s linear infinite;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+    }
+
+    .live_text {
+      font-size: 14px;
+      color: #fff;
+      margin-right: 5px;
+      font-weight: 300;
+    }
+  }
+
+  .single_fixture_teams {
+    height: 60px;
+    border-bottom: 1px #363636 solid;
+    padding: 8px;
+
+    .team_vs {
+      width: 20%;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .fixture_team {
+      width: 40%;
+
+      .fixture_team_name {
+        margin-right: 4px;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 300;
+        text-align: center;
+      }
+
+      .fixture_score_home {
+        color: var.$orange;
+        font-size: 14px;
+        margin-left: 2px;
+      }
+
+      .fixture_score_away {
+        color: var.$orange;
+        font-size: 14px;
+        margin-right: 6px;
+      }
+
+      .fixture_icon_team {
+        color: #0cab87;
+        font-size: 20px;
+      }
+
+      .fixture_icon_team_two {
+        color: #ff9800;
+        margin-right: 4px;
+        font-size: 20px;
+      }
+    }
+  }
+
+  .single_fixture_market {
+    padding: 10px 8px;
+
+    .single_fixture_market_btn {
+      border: none;
+      background-color: #0cab87;
+      width: 48%;
+      color: var.$text-black;
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .single_fixture_select_wrap {
+      align-items: center;
+      padding-right: 8px;
+      width: 48%;
+      border-radius: 4px;
+      padding: 9px;
+
+      .select_wrap_icon {
+        color: #fff;
+      }
+
+      .select_wrap_iconr {
+        color: white;
+        padding: 8px;
+        font-size: 26px;
+      }
+
+      .select_item {
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        appearance: none;
+        color: #fff;
+        font-size: 12px;
+
+        .select_option {
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    .active {
+      background-color: var.$orange;
+    }
+  }
+
+  .market_wrap {
+    .market_wrap_item {
+      //   height: 44px;
+      overflow: hidden;
+
+      .market_item_drop {
+        padding: 10px 8px;
+        border-top: 1px #363636 solid;
+        border-bottom: 1px #fff solid;
+
+        .market_item_drop_text {
+          font-size: 12px;
+          color: #fff;
+          font-weight: 300;
+        }
+
+        .market_item_drop_icon {
+          color: #fff;
+          transition: all 0.3s linear;
+        }
+
+        .active {
+          transform: rotate(180deg);
+        }
+      }
+
+      .market_item_odd {
+        padding: 10px 8px;
+        border-top: 1px #363636 solid;
+        border-bottom: 1px #363636 solid;
+        align-items: center;
+
+        .sbe-sb-mb-event-cashout {
+          color: var.$orange;
+          margin-right: 4px;
+          font-size: 20px;
+        }
+
+        .market_item_odd_text {
+          font-size: 11px;
+          color: #fff;
+          margin-bottom: 2px;
+        }
+      }
+
+      .market_item_odd_values {
+        background-color: #fff;
+        padding: 8px;
+
+        .market_item_odd_values_border {
+          width: 100%;
+          border-radius: 5px;
+          overflow: hidden;
+          // background-color: var.$green;
+        }
+
+        .market_item_odd_value {
+          width: 100%;
+          background-color: var.$green;
+          color: var.$orange;
+          padding: 10px;
+          font-size: 12px;
+          border-bottom: 1px solid rgba(245, 245, 245, 0.4);
+          border-right: 1px solid rgba(245, 245, 245, 0.4);
+          // &:first-child {
+          //   border-top-left-radius: 5px;
+          //   border-bottom-left-radius: 5px;
+          // }
+
+          // &:last-child {
+          //   border-top-right-radius: 5px;
+          //   border-bottom-right-radius: 5px;
+          // }
+          .market_item_odd_valueText {
+            font-size: 11px;
+            text-align: center;
+            margin-bottom: 3px;
+            white-space: nowrap;
+          }
+        }
+
+        .acive_odd_item {
+          @extend .market_item_odd_values;
+          background: var.$orange;
+          color: var.$text-black;
+        }
+      }
+    }
+
+    .active {
+      height: fit-content;
+    }
+  }
+}

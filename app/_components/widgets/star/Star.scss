@@ -1,0 +1,49 @@
+@use "@/variable" as var;
+
+.table_item_btm_icon {
+  font-size: 18px;
+  color: var.$text-black;
+  margin-right: 12px;
+  font-weight: 600;
+  height: 18px;
+  width: 18px;
+  cursor: pointer;
+
+  .star_wrap {
+    position: relative;
+    margin-right: 12px;
+
+    .star_wrap_item {
+      position: absolute;
+      top: -10px;
+      left: -4px;
+      color: #dab820;
+      font-size: 20px;
+    }
+
+    .star_wrap_item_anim {
+      @extend .star_wrap_item;
+      animation: star 1s 0s ease-in-out;
+    }
+  }
+}
+
+@keyframes star {
+  0% {
+    opacity: 1;
+    scale: 1;
+    filter: blur(0px);
+  }
+
+  50% {
+    opacity: 0.5;
+    scale: 2;
+    filter: blur(10px);
+  }
+
+  100% {
+    opacity: 0;
+    scale: 3;
+    filter: blur(50px);
+  }
+}

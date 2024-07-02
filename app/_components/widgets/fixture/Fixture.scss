@@ -1,0 +1,299 @@
+@use "@/variable" as var;
+
+.fixture {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  height: 45px;
+  .fixture_timeevent_wrap {
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    padding-right: 5px;
+    @include var.mq("lg") {
+      overflow-x: scroll;
+    }
+    .fixture_time_wrap {
+      height: 100%;
+      border-right: 1px solid rgba(0, 0, 0, 0.2);
+      padding: 0px 4px;
+      width: 12%;
+      min-width: 12%;
+      // @include var.mq("xl") {
+      margin-right: 4px;
+      // }
+
+      .fixture_time_txt {
+        font-size: 10px;
+        color: var.$text-black;
+        margin: 0px 2px;
+        white-space: nowrap;
+      }
+
+      .fixture_time_live {
+        font-size: 11px;
+        color: #00a651;
+        position: relative;
+        white-space: nowrap;
+        min-width: 24px;
+
+        &::before {
+          content: "";
+          position: absolute;
+          height: 5px;
+          width: 1px;
+          background-color: #00a651;
+          top: -3px;
+          right: -3px;
+          border-radius: 50%;
+          animation: live 4s 0s linear infinite;
+        }
+      }
+
+      .fixture_time_live_status {
+        width: 40px;
+        font-size: 9px;
+        text-align: start;
+        color: #00a651;
+        margin-top: 2px;
+        white-space: nowrap;
+        overflow-x: scroll;
+        @include var.mq("xl") {
+          width: 25px;
+        }
+      }
+    }
+    .fixture_event_wrap {
+      cursor: pointer;
+      .fixture_event {
+        font-size: 11px;
+        color: var.$text-black;
+        font-weight: 600;
+        width: 105px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: left;
+        padding-right: 4px;
+        @include var.mq("lg") {
+          width: 80px;
+        }
+      }
+      .fixture_event_right {
+        font-size: 11px;
+        color: var.$text-black;
+        font-weight: 600;
+        width: 105px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-left: 4px;
+        text-align: right;
+        @include var.mq("lg") {
+          width: 80px;
+        }
+      }
+      .fixture_score {
+        font-size: 14px;
+        color: var.$orange;
+        padding: 5px;
+        width: 25px;
+        height: 25px;
+      }
+      .vs {
+        font-size: 12px;
+        margin: 0px 4px;
+        color: var.$orange;
+        height: 25px;
+      }
+      .team_logo_wrap {
+        position: relative;
+        width: 25px;
+        height: 20px;
+        .team_logo {
+          position: absolute;
+          width: 80%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+    .fixture_sta_wrap {
+      margin-left: 4px;
+      .fixture_sta_icon {
+        font-size: 18px;
+        color: var.$text-black;
+        margin-right: 6px;
+        font-weight: 600;
+        height: 18px;
+        width: 18px;
+        cursor: pointer;
+        .star_wrap {
+          position: relative;
+          margin-right: 12px;
+
+          .star_wrap_item {
+            position: absolute;
+            top: -10px;
+            left: -4px;
+            color: #dab820;
+            font-size: 20px;
+          }
+
+          .star_wrap_item_anim {
+            @extend .star_wrap_item;
+            animation: star 1s 0s ease-in-out;
+          }
+        }
+      }
+      .sbe-sb-mb-event-cashout {
+        color: #868686;
+        margin: 0px 10px 0px 0px;
+        font-size: 20px;
+      }
+
+      .sbe-sb-mb-event-statistics {
+        color: #868686;
+        font-size: 14px;
+        position: relative;
+        cursor: pointer;
+      }
+    }
+  }
+  .fixture_odds_wrap {
+    width: 50%;
+    height: 100%;
+    .odds_wrap {
+      width: 45%;
+      height: 100%;
+      align-items: center;
+      .odds_con_itm {
+        width: 100%;
+        height: 80%;
+        .odds_item {
+          height: 100%;
+          background: rgba($color: var.$primary-accent, $alpha: 0.2);
+          color: var.$primary-accent;
+          text-align: center;
+          font-size: 10px;
+          font-weight: 700;
+          line-height: 24px;
+          cursor: pointer;
+          border-right: 4px solid #f3f1f1;
+          .odds_item_lock {
+            color: darken($color: var.$orange, $amount: 25);
+          }
+        }
+
+        .oddsIncrease {
+          @extend .odds_item;
+
+          position: relative;
+
+          &::before {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            content: "";
+            width: 0;
+            height: 0;
+            border-top: 8px solid #3abd23;
+            border-left: 8px solid transparent;
+          }
+        }
+
+        .oddsDecrease {
+          @extend .odds_item;
+          position: relative;
+
+          &::before {
+            position: absolute;
+            bottom: 2px;
+            left: 2px;
+            content: "";
+            width: 0;
+            height: 0;
+            border-bottom: 8px solid #f00000;
+            border-right: 8px solid transparent;
+          }
+        }
+
+        .acive_odd_item {
+          @extend .odds_item;
+          background: var.$primary-accent;
+          color: var.$color;
+        }
+
+        .selector_wrap {
+          @extend .odds_item;
+          position: relative;
+
+          .selected {
+            color: #fff;
+          }
+
+          .selector_items {
+            position: absolute;
+            height: fit-content;
+            background-color: var.$green;
+            width: 100%;
+            top: 0;
+            z-index: 2;
+
+            .selector_item {
+              height: 40px;
+              border-bottom: 1px solid #5d5d5e;
+              color: var.$orange;
+            }
+
+            .activ {
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+    .odds_market {
+      width: 10%;
+      height: 100%;
+      font-size: 12px;
+      color: var.$text-black;
+      cursor: pointer;
+      .odds_market_txt {
+        font-size: 11px;
+      }
+    }
+  }
+}
+
+@keyframes live {
+  0% {
+    background-color: #05ff7e;
+  }
+
+  50% {
+    background-color: #02793c;
+  }
+
+  100% {
+    background-color: #05ff7e;
+  }
+}
+
+@keyframes star {
+  0% {
+    opacity: 1;
+    scale: 1;
+    filter: blur(0px);
+  }
+
+  50% {
+    opacity: 0.5;
+    scale: 2;
+    filter: blur(10px);
+  }
+
+  100% {
+    opacity: 0;
+    scale: 3;
+    filter: blur(50px);
+  }
+}

@@ -1,0 +1,37 @@
+@use "@/variable" as var;
+
+.tabs {
+  width: 100%;
+  background-color: var.$green;
+  align-items: stretch;
+  .tabs_items {
+    .tabs_item {
+      padding: 12px;
+      border-right: 1px solid rgb(24, 24, 24, 0.4);
+      font-size: 12px;
+      font-weight: 300;
+      transition: all 0.3s linear;
+      cursor: pointer;
+      &:hover {
+        background-color: lighten($color: var.$green, $amount: 10);
+      }
+    }
+    .active {
+      background-color: lighten($color: var.$green, $amount: 10);
+    }
+  }
+  .tabs_option {
+    padding: 12px;
+    border-left: 1px solid rgba(141, 139, 139, 0.3);
+    .tabs_select {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      .tabs_select_item {
+        color: #b2afaf;
+        font-size: 12px;
+        font-weight: 300;
+      }
+    }
+  }
+}

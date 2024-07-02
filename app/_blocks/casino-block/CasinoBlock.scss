@@ -1,0 +1,272 @@
+@use "@/variable" as var;
+
+.provider {
+  overflow-x: scroll;
+  padding: 20px;
+  background-color: #0000004d;
+  .provider_item {
+    margin-right: 40px;
+    white-space: nowrap;
+    text-transform: capitalize;
+    font-weight: 300;
+    font-size: 14px;
+  }
+  .active_provider_item {
+    @extend .provider_item;
+  }
+}
+
+.banner_wrap {
+  padding: 20px 5px;
+  background-color: #dbd9d9;
+}
+
+.cas_body {
+  background-color: #dbd9d9;
+  padding: 5px;
+  .cas_wrap {
+    padding: 25px;
+    background-color: #fff;
+    .cas_block {
+      .cas_block_sort {
+        .cas_block_sort_text {
+          font-size: 18px;
+          columns: var.$text-black;
+          margin-bottom: 20px;
+        }
+      }
+
+      .card_wrap {
+        overflow: hidden;
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-content: space-between;
+        gap: 15px;
+
+        .cas_block_game_card {
+          background-color: #f9f9f9;
+          width: 100%;
+          cursor: pointer;
+        }
+
+        .cas_block_game_search {
+          width: 100%;
+          align-items: start;
+
+          .cas_block_game_text {
+            margin-left: 10px;
+            width: 50%;
+
+            .cas_block_search_title {
+              font-size: 13px;
+              font-weight: 300;
+              margin-bottom: 2px;
+              width: 237px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+
+            .cas_block_search_sub {
+              font-size: 11px;
+              color: #777;
+              margin-bottom: 8px;
+            }
+
+            .cas_block_search_btn1 {
+              width: 150px;
+              background-color: #5b938a;
+              border: none;
+              color: var.$text-black;
+              text-transform: uppercase;
+              font-weight: 700;
+              font-size: 12px;
+              margin-bottom: 5px;
+            
+            }
+
+            .cas_block_search_btn2 {
+              @extend .cas_block_search_btn1;
+              background-color: var.$orange;
+            }
+          }
+        }
+      }
+
+      .search {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+
+    .search_bg {
+      background-color: #262735;
+      color: #fff;
+      padding: 10px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .all_cat_wrap {
+      background-color: #262735;
+
+      .all_cat_item {
+        padding: 8px 6px;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        align-items: center;
+
+        .all_cat_text {
+          font-size: 12px;
+          margin-left: 5px;
+          color: #fff;
+          text-transform: uppercase;
+        }
+      }
+    }
+    .cas_tab {
+      position: relative;
+      background-color: var.$green;
+      padding: 8px 0px;
+      min-height: 40px;
+      background-color: var.$text-black;
+      border-top: 1px solid #727171;
+      border-bottom: 1px solid #727171;
+
+      .cas_tab_all {
+        position: absolute;
+        // left: 0;
+        top: 0;
+        height: 98%;
+        padding-left: 6px;
+        padding-right: 6px;
+        background-color: var.$text-black;
+        border-right: 1px solid #1b1a1a;
+
+        .cas_tab_all_icon {
+          font-size: 26px;
+          color: #dab820;
+        }
+
+        .cas_tab_all_text {
+          font-size: 11px;
+          color: #fff;
+          font-weight: 300;
+        }
+      }
+
+      .cas_tab_scroll {
+        overflow-x: scroll;
+        align-items: flex-start;
+        padding-left: 15px;
+        padding-right: 75px;
+
+        &::-webkit-scrollbar {
+          height: 1px;
+        }
+
+        .cas_tab_scroll_item {
+          padding: 0px 7px;
+          cursor: pointer;
+
+          .cas_tab_scroll_icon {
+            font-size: 26px;
+            color: var.$orange;
+          }
+
+          .cas_tab_scroll_text {
+            font-size: 11px;
+            white-space: nowrap;
+            color: #fff;
+            font-weight: 300;
+            text-transform: uppercase;
+          }
+        }
+      }
+
+      .cas_tab_srch {
+        @extend .cas_tab_all;
+        right: 15px;
+        top: 5px;
+        font-size: 24px;
+        color: var.$text-black;
+        transition: all 0.3s ease-in-out;
+        overflow: hidden;
+        width: 30px;
+        height: 28px;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 50%;
+        cursor: pointer;
+
+        .cas_tab_srch_inp {
+          background-color: transparent;
+          transition: opacity 0.8s ease-in-out;
+          //   display: none;
+          opacity: 0;
+          border: none;
+          height: 100%;
+          width: 87%;
+          outline: none;
+
+          &::placeholder {
+            color: var.$text-black;
+          }
+        }
+
+        .cas_tab_srch_icon {
+          color: var.$text-black;
+          font-size: 18px;
+        }
+      }
+
+      .search_active {
+        width: 100%;
+        border-left: none;
+        background-color: #dbd9d9;
+        color: #dab820;
+        height: 100%;
+        border-radius: 0% !important;
+        top: 0px;
+        right: 0px;
+        border-left: 1px solid var.$text-black;
+
+        .cas_tab_srch_inp {
+          //   display: block;
+          opacity: 1;
+        }
+      }
+    }
+
+    .casino_block_gameitem_text {
+      width: 100%;
+      text-transform: uppercase;
+      columns: var.$text-black;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .infinite-scroll-component {
+      width: 100% !important;
+    }
+
+    .view_more_text_wrap {
+      color: var.$orange;
+      padding: 15px 5px 0px 0px;
+
+      .view_more_text {
+        margin-right: 5px;
+        font-size: 13px;
+      }
+    }
+
+    .active {
+      .cas_tab_scroll_icon {
+        color: var.$orange;
+      }
+
+      .cas_tab_scroll_text {
+        color: #fff;
+      }
+    }
+  }
+}

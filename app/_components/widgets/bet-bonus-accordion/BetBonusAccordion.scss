@@ -1,0 +1,62 @@
+@use "@/variable" as var;
+
+.acc_bb_wrap {
+  height: 35px;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px 0px;
+  .acc_bb_top {
+    margin-bottom: 20px;
+    .acc_bb_title {
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .acc_bb_title_icon {
+      margin-top: 2px;
+    }
+    .active_icon {
+      transform: rotate(180deg);
+    }
+  }
+  .acc_bb_bold {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  .acc_bb_text {
+    font-size: 12px;
+  }
+  .turnover_text {
+    font-size: 11px;
+    margin-bottom: 2px;
+    margin-top: 20px;
+    width: 100%;
+    font-weight: 700;
+  }
+
+  .bonus_read {
+    position: relative;
+    color: #fff;
+    font-size: 11px;
+    width: 100%;
+    text-align: center;
+    height: 28px;
+    background-color: #096b27;
+    margin-bottom: 12px;
+
+    .bonus_read_bar {
+      background-color: #5b938a;
+      height: 100%;
+      // border-top-right-radius: 8px;
+      // border-bottom-right-radius: 8px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+.active_b_acc {
+  height: fit-content;
+}

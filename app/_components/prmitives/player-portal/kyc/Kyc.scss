@@ -1,0 +1,20 @@
+@use "@/variable" as var;
+
+.kyc {
+  width: 100%;
+  border: 1px solid #e8e8e8;
+  padding: 8px;
+  background-color: #f8f8f8;
+  .kyc_title {
+    color: #797979;
+    font-size: 13px;
+    margin: 8px 0px;
+    text-align: center;
+  }
+  .kyc_btn {
+    background-color: #5b938a;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var.$text-black;
+  }
+}

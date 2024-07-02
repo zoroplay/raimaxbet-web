@@ -1,0 +1,444 @@
+@font-face {
+    font-family: 'sbe-sb-app';
+    src: url('../public/sbe-sb-app.eot?5mq567');
+    src: url('../public/sbe-sb-app.eot?5mq567#iefix') format('embedded-opentype'),
+        url('../public/sbe-sb-app.ttf?5mq567') format('truetype'),
+        url('../public/sbe-sb-app.woff?5mq567') format('woff'),
+        url('../public/sbe-sb-app.svg?5mq567#sbe-sb-app') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="sbe-app-"],
+[class*=" sbe-app-"] {
+    font-family: 'sbe-sb-app' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sbe-app-bet-search:before {
+    content: "\e900";
+}
+
+.sbe-app-clear-betslip:before {
+    content: "\e901";
+}
+
+.sbe-app-delete:before {
+    content: "\e902";
+}
+
+.sbe-app-collapsed-arrow:before {
+    content: "\e903";
+}
+
+.sbe-app-expand-arrow:before {
+    content: "\e904";
+}
+
+.sbe-app-favorite-o:before {
+    content: "\e905";
+}
+
+.sbe-app-favorite:before {
+    content: "\e906";
+}
+
+.sbe-app-help-ov:before {
+    content: "\e907";
+}
+
+.sbe-app-last-minute-bets:before {
+    content: "\e908";
+}
+
+.sbe-app-live-now:before {
+    content: "\e909";
+}
+
+.sbe-app-lock:before {
+    content: "\e90a";
+}
+
+.sbe-app-match-time:before {
+    content: "\e90b";
+}
+
+.sbe-app-my-favourites:before {
+    content: "\e90c";
+}
+
+.sbe-app-notification:before {
+    content: "\e90d";
+}
+
+.sbe-app-odd-dw:before {
+    content: "\e90e";
+}
+
+.sbe-app-odd-dw-bet:before {
+    content: "\e90f";
+}
+
+.sbe-app-odd-up:before {
+    content: "\e910";
+}
+
+.sbe-app-odd-up-bet:before {
+    content: "\e911";
+}
+
+.sbe-app-print:before {
+    content: "\e912";
+}
+
+.sbe-app-quick-links:before {
+    content: "\e913";
+}
+
+.sbe-app-slide-left:before {
+    content: "\e914";
+}
+
+.sbe-app-slide-right:before {
+    content: "\e915";
+}
+
+.sbe-app-sound-off:before {
+    content: "\e916";
+}
+
+.sbe-app-sound-on:before {
+    content: "\e917";
+}
+
+.sbe-app-statistics:before {
+    content: "\e918";
+}
+
+.sbe-app-upcoming:before {
+    content: "\e919";
+}
+
+.sbe-app-view-50:before {
+    content: "\e91a";
+}
+
+.sbe-app-view-100:before {
+    content: "\e91b";
+}
+
+.sbe-app-arrow-left:before {
+    content: "\e91c";
+}
+
+.sbe-app-arrow-right:before {
+    content: "\e91d";
+}
+
+.sbe-app-minus:before {
+    content: "\e91e";
+}
+
+.sbe-app-plus:before {
+    content: "\e91f";
+}
+
+.sbe-app-bet-home:before {
+    content: "\e920";
+}
+
+.sbe-app-menu:before {
+    content: "\e921";
+}
+
+.sbe-app-dealer:before {
+    content: "\e922";
+}
+
+.sbe-app-user:before {
+    content: "\e923";
+}
+
+.sbe-app-coupon:before {
+    content: "\e924";
+}
+
+.sbe-app-flashback:before {
+    content: "\e925";
+}
+
+.sbe-app-history:before {
+    content: "\e926";
+}
+
+.sbe-app-bet:before {
+    content: "\e927";
+}
+
+.sbe-app-bet-new:before {
+    content: "\e928";
+}
+
+.sbe-app-bet-live:before {
+    content: "\e929";
+}
+
+.sbe-app-info-ov:before {
+    content: "\e92a";
+}
+
+.sbe-app-warning-ov:before {
+    content: "\e92b";
+}
+
+.sbe-app-delete-ov:before {
+    content: "\e92c";
+}
+
+.sbe-app-plus-ov:before {
+    content: "\e92d";
+}
+
+.sbe-app-minus-ov:before {
+    content: "\e92e";
+}
+
+.sbe-app-check-ov:before {
+    content: "\e92f";
+}
+
+.sbe-app-check:before {
+    content: "\e930";
+}
+
+.sbe-app-team:before {
+    content: "\e931";
+}
+
+.sbe-app-cash:before {
+    content: "\e932";
+}
+
+.sbe-app-oldtime:before {
+    content: "\e933";
+}
+
+.sbe-app-freebet:before {
+    content: "\e934";
+}
+
+.sbe-app-bookbet:before {
+    content: "\e935";
+}
+
+.sbe-app-boxbet:before {
+    content: "\e936";
+}
+
+.sbe-app-odd-full:before {
+    content: "\e937";
+}
+
+.sbe-app-odd-w:before {
+    content: "\e938";
+}
+
+.sbe-app-date:before {
+    content: "\e939";
+}
+
+.sbe-app-live-stream:before {
+    content: "\e93a";
+}
+
+.sbe-app-betslip-ch:before {
+    content: "\e93b";
+}
+
+.sbe-app-top-winn:before {
+    content: "\e93c";
+}
+
+.sbe-app-negotiations:before {
+    content: "\e93d";
+}
+
+.sbe-app-spin:before {
+    content: "\e93e";
+}
+
+.sbe-app-live-stream-o:before {
+    content: "\e93f";
+}
+
+.sbe-app-coupon-bet:before {
+    content: "\e940";
+}
+
+.sbe-app-filter:before {
+    content: "\e941";
+}
+
+.sbe-app-sorting:before {
+    content: "\e942";
+}
+
+.sbe-app-sorting-top:before {
+    content: "\e943";
+}
+
+.sbe-app-sorting-bottom:before {
+    content: "\e944";
+}
+
+.sbe-app-shortcode:before {
+    content: "\e945";
+}
+
+.sbe-app-barcode:before {
+    content: "\e946";
+}
+
+.sbe-app-bookmark:before {
+    content: "\e947";
+}
+
+.sbe-app-logout:before {
+    content: "\e948";
+}
+
+.sbe-app-scale-in:before {
+    content: "\e949";
+}
+
+.sbe-app-scale-out:before {
+    content: "\e94a";
+}
+
+.sbe-app-keyboard:before {
+    content: "\e94b";
+}
+
+.sbe-app-live-tracker:before {
+    content: "\e94c";
+}
+
+.sbe-app-add-user:before {
+    content: "\e94d";
+}
+
+.sbe-app-refresh:before {
+    content: "\e94e";
+}
+
+.sbe-app-off:before {
+    content: "\e94f";
+}
+
+.sbe-app-table:before {
+    content: "\e950";
+}
+
+.sbe-app-settings:before {
+    content: "\e951";
+}
+
+.sbe-app-battle:before {
+    content: "\e952";
+}
+
+.sbe-app-tips:before {
+    content: "\e953";
+}
+
+.sbe-app-quiz:before {
+    content: "\e954";
+}
+
+.sbe-app-aistat:before {
+    content: "\e955";
+}
+
+.sbe-app-timeline:before {
+    content: "\e956";
+}
+
+.sbe-app-allsport:before {
+    content: "\e957";
+}
+
+.sbe-app-incompatible:before {
+    content: "\e958";
+}
+
+.sbe-app-help:before {
+    content: "\e959";
+}
+
+.sbe-app-betbuilder:before {
+    content: "\e95a";
+}
+
+.sbe-app-more-h:before {
+    content: "\e95b";
+}
+
+.sbe-app-more-v:before {
+    content: "\e95c";
+}
+
+.sbe-app-help-o:before {
+    content: "\e95d";
+}
+
+.sbe-app-cash-o:before {
+    content: "\e95e";
+}
+
+.sbe-app-arrow-dw:before {
+    content: "\e95f";
+}
+
+.sbe-app-arrow-up:before {
+    content: "\e960";
+}
+
+.sbe-app-log-tracker:before {
+    content: "\e961";
+}
+
+.sbe-app-scoreboard:before {
+    content: "\e962";
+}
+
+.sbe-app-game-bingo:before {
+    content: "\e963";
+}
+
+.sbe-app-predict:before {
+    content: "\e964";
+}
+
+.sbe-app-previewgame:before {
+    content: "\e965";
+}
+
+.sbe-app-worldcup:before {
+    content: "\e966";
+}
+
+.sbe-app-app-icon-eye-show:before {
+    content: "\e967";
+}
+
+.sbe-app-app-icon-eye-hide:before {
+    content: "\e968";
+}

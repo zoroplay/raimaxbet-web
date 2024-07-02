@@ -1,0 +1,12 @@
+@use "@/variable" as var;
+
+.pay_verify {
+  height: 50vh;
+  width: 100%;
+  .pay_verify_text {
+    color: var.$text-black;
+    font-size: 13px;
+    text-align: center;
+    padding-top: 20px;
+  }
+}

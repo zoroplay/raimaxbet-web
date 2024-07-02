@@ -1,0 +1,52 @@
+@use "@/variable" as var;
+
+.book_bet_slip {
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  .book_slip_title_wrap {
+    background-color: #5b9289;
+    width: 100%;
+    padding: 10px;
+    .book_slip_title {
+      font-size: 13px;
+      color: var.$text-black;
+    }
+    .book_slip_icon {
+      color: #fff;
+    }
+  }
+  .book_bet_slip_texts {
+    border-bottom: 1px solid #2f3c4d;
+    padding: 10px;
+    .book_bet_slip_text1 {
+      font-size: 11px;
+      text-align: center;
+      color: var.$text-black;
+      margin-bottom: 30px;
+    }
+    .book_bet_slip_text2 {
+      @extend .book_bet_slip_text1;
+    }
+    .book_bet_slip_text3 {
+      @extend .book_bet_slip_text1;
+      font-size: 24px;
+    }
+    .book_bet_slip_text4 {
+      @extend .book_bet_slip_text1;
+      font-size: 12px;
+      text-decoration: underline;
+    }
+  }
+  .book_slip_btn_wrap {
+    padding: 10px;
+    width: 100%;
+    .book_slip_btn {
+      background-color: #5b9289;
+      color: #fff;
+    }
+  }
+  .book_bet_slip_load {
+    padding: 50px;
+  }
+}

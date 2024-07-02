@@ -1,0 +1,45 @@
+@use "@/variable" as var;
+
+.confirm_bet_coupon {
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+
+  .confirm_coupon_title_wrap {
+    background-color: #5b9289;
+    width: 100%;
+    padding: 10px;
+
+    .confirm_coupon_title {
+      font-size: 13px;
+      color: var.$text-black;
+    }
+
+    .confirm_coupon_icon {
+      color: #fff;
+    }
+  }
+
+  .confirm_bet_coupon_texts {
+    border-bottom: 1px solid #e5e6e8;
+    padding: 10px;
+
+    .confirm_bet_coupon_text1 {
+      font-size: 11px;
+      text-align: center;
+      color: var.$text-black;
+      margin-bottom: 10px;
+    }
+  }
+
+  .confirm_coupon_btn_wrap {
+    padding: 10px;
+    width: 100%;
+
+    .confirm_coupon_btn {
+      background-color: #5b9289;
+      color: #fff;
+      max-width: 150px;
+    }
+  }
+}

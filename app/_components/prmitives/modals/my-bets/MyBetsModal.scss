@@ -1,0 +1,30 @@
+@use "@/variable" as var;
+
+.mybets {
+  padding-bottom: 44px;
+  background-color: #fff;
+  width: 50%;
+  height: 70%;
+  padding: 50px 10px 10px 10px;
+  border-radius: 12px;
+  position: relative;
+  .mybets_close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    color: var.$text-black;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  .mybets_tabs {
+    border-radius: 0px !important;
+    .select_tab_item {
+      border: none;
+    }
+  }
+  .mybets_wrap {
+    overflow-y: scroll;
+    height: 100%;
+    border-radius: 6px;
+  }
+}

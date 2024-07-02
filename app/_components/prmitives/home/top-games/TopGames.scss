@@ -1,0 +1,54 @@
+@use "@/variable" as var;
+
+.topgames {
+  width: 100%;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    width: 10px;
+    margin-top: 20px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 0px;
+    border: 3px solid #f1f1f1;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  background-color: #f4f4f4;
+  padding: 2px 2px 0px 2px;
+  .topgame {
+    align-items: center;
+    padding: 5px 8px;
+    background-color: #e1e0e0;
+    border-right: 1px solid rgb(255, 255, 255, 0.4);
+    &:hover {
+      background-color: darken($color: #e1e0e0, $amount: 10);
+    }
+    cursor: pointer;
+    .topgame_img_wrap {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+      .topgame_img {
+        position: absolute;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .topgame_text {
+      font-size: 12px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: var.$text-black;
+    }
+  }
+  .active {
+    background-color: darken($color: #e1e0e0, $amount: 10);
+  }
+}

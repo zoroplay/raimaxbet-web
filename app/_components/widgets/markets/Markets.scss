@@ -1,0 +1,69 @@
+@use "@/variable" as var;
+
+.pre_market {
+  width: 100%;
+  padding: 10px 0px;
+  align-items: center !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  .pre_market_texts {
+    width: 50%;
+    padding-left: 10px;
+    .pre_market_text {
+      color: var.$text-black;
+      font-size: 12px;
+      margin-right: 10px;
+    }
+  }
+  .pre_market_items {
+    width: 50%;
+    .pre_market_item {
+      width: 45%;
+      .pre_market_name {
+        width: 100%;
+        color: var.$text-black;
+        font-size: 12px;
+        text-transform: uppercase;
+        .selector_pre_wrap {
+          position: relative;
+
+          .selected {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 0px 8px;
+            color: var.$text-black;
+          }
+
+          .selector_pre_items {
+            position: absolute;
+            height: fit-content;
+            background-color: #f4f4f4;
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            top: 0;
+            z-index: 2;
+            border-radius: 4px;
+
+            .selector_pre_item {
+              color: #fff;
+              height: 40px;
+              border-bottom: 1px solid rgba(93, 93, 94, 0.2);
+              font-size: 11px;
+              font-weight: 600;
+              // padding: 4px 25px;
+              color: var.$text-black;
+            }
+
+            .activ {
+              color: var.$orange;
+            }
+          }
+        }
+      }
+    }
+    .more {
+      width: 10%;
+      color: var.$text-black;
+      font-size: 12px;
+    }
+  }
+}

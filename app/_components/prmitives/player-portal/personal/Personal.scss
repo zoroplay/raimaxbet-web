@@ -1,0 +1,18 @@
+@use "@/variable" as var;
+
+.personal {
+  width: 100%;
+  .personal_form_wrap {
+    border: 1px solid #e8e8e8;
+    padding: 8px;
+    border-radius: 4px;
+    .personal_input_wrap {
+      width: 100%;
+    }
+  }
+  .personal_input_btn {
+    background-color: var.$orange;
+    color: var.$text-black;
+    font-weight: 700;
+  }
+}

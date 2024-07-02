@@ -1,0 +1,335 @@
+@use "@/variable" as var;
+.single_mark_wrap {
+  background-color: #fff;
+  padding: 4px;
+  .market_name_sing {
+    font-size: 13px;
+    color: var.$text-black;
+    padding: 5px 0px;
+    align-items: center;
+    font-weight: 300;
+    cursor: pointer;
+    span {
+      margin-right: 4px;
+    }
+  }
+  .table_item_single {
+    width: 100%;
+    position: relative;
+    border-bottom: 1px solid rgba(234, 236, 239, 0.1);
+
+    .table_odd_wrap {
+      width: 100%;
+      z-index: 1;
+
+      .odds_wrap {
+        width: 100%;
+        .market_item_odd_valueText {
+          font-size: 8px;
+          text-align: center;
+          margin-bottom: -10px;
+          white-space: nowrap;
+          overflow-x: scroll;
+          width: 100px;
+          font-weight: 300;
+          text-align: center;
+        }
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          width: 100%;
+          margin-right: 1px;
+          border-radius: 5px;
+          // overflow: hidden;
+          background: var.$green;
+          flex-wrap: wrap;
+
+          .odds_item {
+            width: 100%;
+            padding: 10px 15px;
+            height: 48px;
+            border-right: 1px solid var.$text-black;
+            border-bottom: 1px solid var.$text-black;
+            // background: #0d9737;
+            color: var.$orange;
+            text-align: center;
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 24px;
+            cursor: pointer;
+            overflow: hidden;
+            .odds_item_lock {
+              color: darken($color: var.$orange, $amount: 25);
+            }
+          }
+          .oddsIncrease {
+            @extend .odds_item;
+
+            position: relative;
+
+            &::before {
+              position: absolute;
+              top: 2px;
+              right: 2px;
+              content: "";
+              width: 0;
+              height: 0;
+              border-top: 8px solid #3abd23;
+              border-left: 8px solid transparent;
+            }
+          }
+
+          .oddsDecrease {
+            @extend .odds_item;
+            position: relative;
+
+            &::before {
+              position: absolute;
+              bottom: 2px;
+              left: 2px;
+              content: "";
+              width: 0;
+              height: 0;
+              border-bottom: 8px solid #f00000;
+              border-right: 8px solid transparent;
+            }
+          }
+          .acive_odd_item {
+            @extend .odds_item;
+            background: var.$orange;
+            color: var.$text-black;
+          }
+          .acive_odd_item1 {
+            @extend .acive_odd_item;
+            border-bottom-left-radius: 5px;
+            border-top-left-radius: 5px;
+          }
+
+          .acive_odd_item2 {
+            @extend .acive_odd_item;
+            border-bottom-right-radius: 5px;
+            border-top-right-radius: 5px;
+          }
+          .selector_wrap {
+            @extend .odds_item;
+            position: relative;
+            .selected {
+              color: #fff;
+            }
+            .selector_items {
+              position: absolute;
+              height: fit-content;
+              background-color: var.$green;
+              width: 100%;
+              top: 0;
+              z-index: 2;
+              .selector_item {
+                height: 40px;
+                border-bottom: 1px solid #5d5d5e;
+                color: var.$orange;
+              }
+              .activ {
+                color: #fff;
+              }
+            }
+          }
+        }
+        .odds_con_itm {
+          width: 100%;
+          margin-right: 1px;
+          border-radius: 5px;
+          // overflow: hidden;
+          background: var.$green;
+          flex-wrap: wrap;
+
+          // &:first-child {
+          //   background-color: var.$green;
+          //   border-top-left-radius: 5px;
+          //   border-bottom-left-radius: 5px;
+          // }
+
+          // &:last-child {
+          //   border-top-right-radius: 5px;
+          //   border-bottom-right-radius: 5px;
+          // }
+
+          .odds_item {
+            width: 100%;
+            padding: 10px 15px;
+            height: 48px;
+            border-right: 1px solid var.$text-black;
+            // background: #0d9737;
+            color: var.$orange;
+            text-align: center;
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 24px;
+            cursor: pointer;
+            overflow: hidden;
+
+            .odds_item_lock {
+              color: darken($color: var.$orange, $amount: 25);
+            }
+          }
+          .oddsIncrease {
+            @extend .odds_item;
+
+            position: relative;
+
+            &::before {
+              position: absolute;
+              top: 2px;
+              right: 2px;
+              content: "";
+              width: 0;
+              height: 0;
+              border-top: 8px solid #3abd23;
+              border-left: 8px solid transparent;
+            }
+          }
+
+          .oddsDecrease {
+            @extend .odds_item;
+            position: relative;
+
+            &::before {
+              position: absolute;
+              bottom: 2px;
+              left: 2px;
+              content: "";
+              width: 0;
+              height: 0;
+              border-bottom: 8px solid #f00000;
+              border-right: 8px solid transparent;
+            }
+          }
+          .acive_odd_item {
+            @extend .odds_item;
+            background: var.$orange;
+            color: var.$text-black;
+          }
+          .acive_odd_item1 {
+            @extend .acive_odd_item;
+            border-bottom-left-radius: 5px;
+            border-top-left-radius: 5px;
+          }
+
+          .acive_odd_item2 {
+            @extend .acive_odd_item;
+            border-bottom-right-radius: 5px;
+            border-top-right-radius: 5px;
+          }
+          .selector_wrap {
+            @extend .odds_item;
+            position: relative;
+            .selected {
+              color: #fff;
+            }
+            .selector_items {
+              position: absolute;
+              height: fit-content;
+              background-color: var.$green;
+              width: 100%;
+              top: 0;
+              z-index: 2;
+              .selector_item {
+                height: 40px;
+                border-bottom: 1px solid #5d5d5e;
+                color: var.$orange;
+              }
+              .activ {
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
+    .table_item_btm {
+      align-items: center;
+      margin-top: 12px;
+
+      .table_item_btm_lft {
+        .table_item_btm_txt_wrap {
+          margin-right: 12px;
+          .table_item_btm_txt {
+            font-size: 11px;
+            color: var.$text-black;
+            margin: 0px 2px;
+          }
+          .table_item_btm_live {
+            font-size: 11px;
+            margin-right: 6px;
+            color: #00a651;
+            position: relative;
+            &::before {
+              content: "";
+              position: absolute;
+              height: 5px;
+              width: 2px;
+              background-color: #00a651;
+              top: -1.5px;
+              right: -3px;
+              border-radius: 50%;
+              animation: live 4s 0s linear infinite;
+            }
+          }
+          .table_item_btm_live_status {
+            font-size: 11px;
+            margin-right: 12px;
+            color: #00a651;
+          }
+        }
+      }
+
+      .table_item_btm_rgt {
+        .table_item_btm_txt {
+          font-size: 12px;
+          color: var.$text-black;
+          margin: 0px 2px;
+        }
+        .table_item_btm_icon {
+          font-size: 13px;
+          color: var.$text-black;
+        }
+      }
+    }
+  }
+}
+
+.sbe-sb-mb-event-statistics {
+  font-size: 13px;
+  .sbe-app-statistics {
+    // width: 20%;
+  }
+}
+
+@keyframes live {
+  0% {
+    background-color: #05ff7e;
+  }
+  50% {
+    background-color: #02793c;
+  }
+  100% {
+    background-color: #05ff7e;
+  }
+}
+
+@keyframes star {
+  0% {
+    opacity: 1;
+    scale: 1;
+    filter: blur(0px);
+  }
+  50% {
+    opacity: 0.5;
+    scale: 2;
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 0;
+    scale: 3;
+    filter: blur(50px);
+  }
+}
