@@ -42,6 +42,9 @@ export const INITIATE_DEPOSIT = "/user/wallet/initiate-deposit?source=mobile";
 export const INITIATE_TRANSFER = "/auth/initiate-transfer";
 export const VERIFY_PAYMENT = "/user/wallet/verify-payment";
 
+// Notifications
+export const USER_NOTIFICATIONS = "/notification/user";
+
 // Withdrawals
 export const ALL_BANKS = "/utilities/list-banks";
 export const GET_BANK_ACCOUNT = "/user/wallet/bank-accounts";

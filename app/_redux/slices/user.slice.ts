@@ -3,7 +3,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface UserState {
   user: null | any;
   token: null | string;
-  activeBonus: null
+  activeBonus: null;
+  isFirstLogin: boolean;
   // refreshToken: null | string;
 }
 
@@ -11,6 +12,7 @@ const initialState: UserState = {
   user: null,
   token: null,
   activeBonus: null,
+  isFirstLogin: false,
   // refreshToken: null,
 };
 
@@ -18,6 +20,12 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    openIsFirstLogin(state: UserState) {
+      state.isFirstLogin = true;
+    },
+    closeIsFirstLogin(state: UserState) {
+      state.isFirstLogin = false;
+    },
     updateUser(state: UserState, action: PayloadAction<any>) {
       const userObj = action.payload;
       const newState = { ...state };
@@ -35,9 +43,15 @@ const userSlice = createSlice({
       const newState = { ...state };
       newState.activeBonus = action.payload;
       return newState;
-    }
+    },
   },
 });
 
-export const { updateUser, logoutUser, setBonus } = userSlice.actions;
+export const {
+  updateUser,
+  logoutUser,
+  setBonus,
+  closeIsFirstLogin,
+  openIsFirstLogin,
+} = userSlice.actions;
 export default userSlice.reducer;

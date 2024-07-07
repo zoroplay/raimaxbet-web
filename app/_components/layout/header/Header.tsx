@@ -24,7 +24,11 @@ import { useAppDispatch, useAppSelector } from "@/_hooks";
 import { useRouter, useSearchParams } from "next/navigation";
 import { closeComponentModal, openModal } from "@/_redux/slices/modal.slice";
 import { BiSolidUser } from "react-icons/bi";
-import { logoutUser, updateUser } from "@/_redux/slices/user.slice";
+import {
+  logoutUser,
+  openIsFirstLogin,
+  updateUser,
+} from "@/_redux/slices/user.slice";
 import { updateSportsbookGlobalVariable } from "@/_redux/slices/sport.slice";
 import {
   updateCoupon,
@@ -237,7 +241,7 @@ const Header = () => {
   }, [search, dispatch, isSuccessFindBookedBet]);
 
   useEffect(() => {
-    data?.success &&
+    if (data?.success) {
       dispatch(
         openModal({
           title: "Login Successful",
@@ -245,8 +249,9 @@ const Header = () => {
           success: true,
         })
       );
-
-    data?.success && dispatch(closeComponentModal());
+      dispatch(openIsFirstLogin());
+      dispatch(closeComponentModal());
+    }
 
     (data?.success === false || isError) &&
       dispatch(
@@ -258,7 +263,7 @@ const Header = () => {
           success: false,
         })
       );
-  }, [isSuccess, isError, error, dispatch]);
+  }, [isSuccess, isError, error, dispatch, data?.success, data?.error]);
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {
