@@ -325,7 +325,7 @@ const Fixture = ({
                       width: `${100 / marketSingle?.outcomes?.length}%`,
                       fontSize:
                         market?.specifier !== "" || data?.odds?.length > 3
-                          ? "9px"
+                          ? "12px"
                           : "",
                     }}
                     onClick={() => {
@@ -396,7 +396,7 @@ const Fixture = ({
                         ? 100 / market?.outcomes?.length
                         : 100 / (market?.outcomes?.length + 1)
                     }%`,
-                    fontSize: market?.specifier !== "" ? "9px" : "",
+                    fontSize: market?.specifier !== "" ? "12px" : "",
                   }}
                 >
                   <div
@@ -454,7 +454,7 @@ const Fixture = ({
                         }%`,
                         fontSize:
                           market?.specifier !== "" || data?.odds?.length > 3
-                            ? "9px"
+                            ? "12px"
                             : "",
                       }}
                       onClick={() => {

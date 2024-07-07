@@ -76,7 +76,7 @@ const links = [
   },
   {
     icon: <MdOutlinePayments />,
-    link: "",
+    link: "/player-portal/deposits",
     title: "DEPOSITS",
   },
   {
