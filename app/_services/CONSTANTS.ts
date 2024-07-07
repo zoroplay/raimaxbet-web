@@ -21,7 +21,7 @@ export const FIXTURE_SINGLE = "/sports/match";
 export const TOP_TOURNAMENT = "/sports/top-bets";
 export const CHANGE_ODDS = "/sports/get-odds";
 export const SLIDERS = "/sports/mobile/sliders?banner_type=mobile";
-export const GLOBALVAR = "/utilities/globalvariables";
+export const GLOBALVAR = "/auth/globalvariables";
 export const BONUSLIST = "/utilities/bonuslist?section=onliners";
 export const GET_FIXTURE_BY_DATE = "/sports/get-fixtures-by-date";
 // export const GROUP_BY_SPORTS = "/sports/group-fixtures-by-sport";
@@ -39,6 +39,7 @@ export const GET_BY_TOP_CATEGORY = "/casino/web-games";
 // Deposits
 export const GET_ALL_PAYMENT = "/utilities/payment-methods";
 export const INITIATE_DEPOSIT = "/user/wallet/initiate-deposit?source=mobile";
+export const INITIATE_TRANSFER = "/auth/initiate-transfer";
 export const VERIFY_PAYMENT = "/user/wallet/verify-payment";
 
 // Withdrawals
