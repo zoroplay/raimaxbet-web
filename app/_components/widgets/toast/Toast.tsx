@@ -38,12 +38,10 @@ const Toast = (props: Props) => {
           data.data.map((item: any) => {
             toast(item.description, {
               position: "top-right",
-              autoClose: false,
+              autoClose: 10000,
               hideProgressBar: false,
-              closeOnClick: true,
               pauseOnHover: true,
               draggable: true,
-              progress: undefined,
               theme: "light",
               transition: Bounce,
               onClose: function name() {
