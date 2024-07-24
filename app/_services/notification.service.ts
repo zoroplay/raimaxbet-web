@@ -25,7 +25,7 @@ const notificationApiSlice = apiSlice.injectEndpoints({
     userNotifications: builder.mutation({
       query: (body) => ({
         url: `${process.env.NEXT_PUBLIC_NEW_API}${USER_NOTIFICATIONS}`,
-        method: "POST",
+        method: "GET",
       }),
     }),
     setNotifications: builder.mutation({
