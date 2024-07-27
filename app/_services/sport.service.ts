@@ -27,28 +27,28 @@ const sportApiSlice = apiSlice.injectEndpoints({
     // Get sports
     getSports: builder.query({
       query: (param) => ({
-        url: `https://sports.api.sportsbookengine.com/api/v2${GET_SPORTS}?period=${param}&timeoffset=+1`,
+        url: `${process.env.NEXT_PUBLIC_NEW_API}${GET_SPORTS}?period=${param}&timeoffset=+1`,
         method: "GET",
       }),
     }),
 
     getSportCategories: builder.query({
       query: (param) => ({
-        url: `https://sports.api.sportsbookengine.com/api/v2${GET_SPORT_CATEGORY}/${param}?period=all&timeoffset=+1`,
+        url: `${process.env.NEXT_PUBLIC_NEW_API}${GET_SPORT_CATEGORY}/${param}?period=all&timeoffset=+1`,
         method: "GET",
       }),
     }),
 
     getFixturesByCategory: builder.query({
       query: (param) => ({
-        url: `https://sports.api.sportsbookengine.com/api/v2${GET_FIXTURES_BY_CATEGORY}/${param}?period=all&timeoffset=+1`,
+        url: `${process.env.NEXT_PUBLIC_NEW_API}${GET_FIXTURES_BY_CATEGORY}/${param}?period=all&timeoffset=+1`,
         method: "GET",
       }),
     }),
 
     getSportTournaments: builder.query({
       query: (param) => ({
-        url: `https://sports.api.sportsbookengine.com/api/v2${GET_TOURNAMENTS}/${param}?period=all&timeoffset=+1`,
+        url: `${process.env.NEXT_PUBLIC_NEW_API}${GET_TOURNAMENTS}/${param}?period=all&timeoffset=+1`,
         method: "GET",
       }),
     }),
@@ -64,7 +64,7 @@ const sportApiSlice = apiSlice.injectEndpoints({
     // Get upcoming fixtures
     getUpcoming: builder.query({
       query: ({ sid, type, page, userId, favourite }) => ({
-        url: `https://sports.api.sportsbookengine.com/api/v2${UPCOMING_FIXTURES}/${sid}?${type}=1&page=${page}&timeoffset=+1`,
+        url: `${process.env.NEXT_PUBLIC_NEW_API}${UPCOMING_FIXTURES}/${sid}?${type}=1&page=${page}&timeoffset=+1`,
         method: "GET",
       }),
     }),
@@ -72,7 +72,9 @@ const sportApiSlice = apiSlice.injectEndpoints({
     // Get upcoming fixtures
     getFavourite: builder.query({
       query: ({ page = 1, userId, favourite }) => ({
-        url: `https://sports.api.sportsbookengine.com/api/v2${UPCOMING_FIXTURES}/${1}?${"upcoming"}=1&page=${page}&timeoffset=+1&favourite=${favourite}&userId=${userId}`,
+        url: `${
+          process.env.NEXT_PUBLIC_NEW_API
+        }${UPCOMING_FIXTURES}/${1}?${"upcoming"}=1&page=${page}&timeoffset=+1&favourite=${favourite}&userId=${userId}`,
         method: "GET",
       }),
       providesTags: ["Favourite"],
@@ -81,7 +83,7 @@ const sportApiSlice = apiSlice.injectEndpoints({
     // Get single fixture
     getSingleFixture: builder.query({
       query: (param) => ({
-        url: `https://sports.api.sportsbookengine.com/api/v2${FIXTURE_SINGLE}/${param}?timeoffset=+1`,
+        url: `${process.env.NEXT_PUBLIC_NEW_API}${FIXTURE_SINGLE}/${param}?timeoffset=+1`,
         method: "GET",
       }),
     }),
@@ -121,7 +123,7 @@ const sportApiSlice = apiSlice.injectEndpoints({
     // Get fixtures by tournament
     getFixturesByTournament: builder.query({
       query: ({ tid, sid }) => ({
-        url: `https://sports.api.sportsbookengine.com/api/v2${FIXTURE}/${tid}?sportID=${sid}&source=mobile&timeoffset=+1`,
+        url: `${process.env.NEXT_PUBLIC_NEW_API}${FIXTURE}/${tid}?sportID=${sid}&source=mobile&timeoffset=+1`,
         method: "GET",
       }),
     }),
@@ -129,14 +131,14 @@ const sportApiSlice = apiSlice.injectEndpoints({
     // Get live fixtures
     getLiveFixtures: builder.query({
       query: ({ sid }) => ({
-        url: `https://sports.api.sportsbookengine.com/api/v2${LIVE_FIXTURES}/${sid}?source=mobile&markets=1`,
+        url: `${process.env.NEXT_PUBLIC_NEW_API}${LIVE_FIXTURES}/${sid}?source=mobile&markets=1`,
         method: "GET",
       }),
     }),
 
     getLiveCount: builder.query({
       query: ({ sid }) => ({
-        url: `https://sports.api.sportsbookengine.com/api/v2${LIVE_COUNT}/${sid}`,
+        url: `${process.env.NEXT_PUBLIC_NEW_API}${LIVE_COUNT}/${sid}`,
         method: "GET",
       }),
     }),
@@ -152,7 +154,7 @@ const sportApiSlice = apiSlice.injectEndpoints({
     // Search event
     searchEvent: builder.query({
       query: ({ search, page = 1 }) => ({
-        url: `https://sports.api.sportsbookengine.com/api/v2${UPCOMING_FIXTURES}/0?markets=1&upcoming=1&page=${page}&search=${search}&timeoffset=+1`,
+        url: `${process.env.NEXT_PUBLIC_NEW_API}${UPCOMING_FIXTURES}/0?markets=1&upcoming=1&page=${page}&search=${search}&timeoffset=+1`,
         method: "GET",
       }),
     }),
@@ -160,7 +162,7 @@ const sportApiSlice = apiSlice.injectEndpoints({
     // Favourites
     favourite: builder.mutation({
       query: ({ userId, competitor1, competitor2, action = "add" }) => ({
-        url: `https://sports.api.sportsbookengine.com/api/v2${FAVOURITE}`,
+        url: `${process.env.NEXT_PUBLIC_NEW_API}${FAVOURITE}`,
         method: "POST",
         body: {
           clientId: process.env.NEXT_PUBLIC_CLIENT_ID,

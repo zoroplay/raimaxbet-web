@@ -31,7 +31,7 @@ const BetAccordion = ({ data }: any) => {
     isSuccess,
     isLoading,
     isError,
-  } = useReBetQuery(data?.betslip_id, {
+  } = useReBetQuery(data?.betslipId, {
     // skip,
   });
 

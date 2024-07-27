@@ -179,7 +179,7 @@ const Header = () => {
     if (user.token) {
       setMode(1);
       setGroup(user.user?.group);
-      setToken(user.user?.auth_code);
+      setToken(user.user?.authCode);
     }
   }, [user]);
 

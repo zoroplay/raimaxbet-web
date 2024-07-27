@@ -18,14 +18,14 @@ export const GET_FIXTURES_BY_CATEGORY = "/sports/get-fixtures-by-category";
 export const LIVE_COUNT = "/sports/live/games/count";
 export const FIXTURE = "/sports/get-fixtures";
 export const FIXTURE_SINGLE = "/sports/match";
-export const TOP_TOURNAMENT = "/sports/top-bets";
+export const TOP_TOURNAMENT = "/admin/sports/top-bets";
 export const CHANGE_ODDS = "/sports/get-odds";
 export const SLIDERS = "/sports/mobile/sliders?banner_type=mobile";
 export const GLOBALVAR = "/auth/globalvariables";
 export const BONUSLIST = "/utilities/bonuslist?section=onliners";
 export const GET_FIXTURE_BY_DATE = "/sports/get-fixtures-by-date";
 // export const GROUP_BY_SPORTS = "/sports/group-fixtures-by-sport";
-export const TOP_BETS = "/sports/top-bets";
+export const TOP_BETS = "/admin/sports/top-bets";
 export const EVENT_SEARCH = "/sports/search";
 export const FAVOURITE = "/sports/sports/add-favourite";
 
