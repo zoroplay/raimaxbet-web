@@ -1,6 +1,6 @@
 {
-  "name": "frapapa-destop",
-  "version": "0.1.0",
+  "name": "raimax-web",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev -p 8050",

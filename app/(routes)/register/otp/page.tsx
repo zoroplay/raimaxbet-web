@@ -94,7 +94,7 @@ const Page = () => {
       dispatch(
         openModal({
           title: "Registration Successful",
-          message: "You have succesfuly registered on Frapapa Bet",
+          message: "You have succesfuly registered on Raimax Bet",
           success: true,
         })
       );
