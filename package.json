@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 8084",
+    "dev": "next dev -p 8050",
     "build": "next build",
-    "start": "next start -p 8085",
+    "start": "next start -p 8050",
     "lint": "next lint"
   },
   "dependencies": {
@@ -16,6 +16,7 @@
     "dotenv": "^16.3.1",
     "eslint": "8.49.0",
     "eslint-config-next": "^13.5.2",
+    "final-form": "^4.20.10",
     "framer-motion": "^10.16.4",
     "mqtt": "^5.3.1",
     "next": "^14.1.1",
