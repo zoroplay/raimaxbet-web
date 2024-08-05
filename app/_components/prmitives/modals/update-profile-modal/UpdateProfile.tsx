@@ -89,7 +89,7 @@ const UpdateProfile = () => {
                 name="email"
                 component={Input}
                 label="Email"
-                Placeholder="123@frapapa.com"
+                Placeholder="123@raimax.bet"
                 validate={required("Email Name")}
               />
             </div>

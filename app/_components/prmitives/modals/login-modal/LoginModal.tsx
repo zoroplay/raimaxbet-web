@@ -11,6 +11,7 @@ import { useAppDispatch } from "@/_hooks";
 import { closeComponentModal, openModal } from "@/_redux/slices/modal.slice";
 import Link from "next/link";
 import { formattedPhoneNumber } from "@/_utils/helpers";
+import { openIsFirstLogin } from "@/_redux/slices/user.slice";
 
 interface LoginModalProp {
   setIsLoginModal?: Dispatch<SetStateAction<boolean>>;
@@ -33,7 +34,7 @@ const LoginModal = ({ setIsLoginModal }: LoginModalProp) => {
 
   useEffect(() => {
     if (data) {
-      data?.success &&
+      if (data?.success) {
         dispatch(
           openModal({
             title: "Login Successful",
@@ -41,6 +42,8 @@ const LoginModal = ({ setIsLoginModal }: LoginModalProp) => {
             success: true,
           })
         );
+        dispatch(openIsFirstLogin());
+      }
 
       data?.success && dispatch(closeComponentModal());
 

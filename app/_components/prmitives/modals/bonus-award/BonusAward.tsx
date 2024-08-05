@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import "./BonusAward.scss";
 import Image from "next/image";

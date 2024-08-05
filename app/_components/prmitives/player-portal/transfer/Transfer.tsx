@@ -20,11 +20,12 @@ const Transfer = () => {
 
   const onSubmit = (values: any) => {
     console.log("Submitting", values);
-    rtkMutation(transferMutation, {
-      amount: values.amount,
-      pin: values.pin,
-      toUsername: values.toUsername,
-    });
+    dispatch(
+      openModal({
+        component: "ConfirmTransfer",
+        data: { ...values },
+      })
+    );
   };
 
   // handle request response
@@ -47,7 +48,7 @@ const Transfer = () => {
   }, [isSuccess, data?.success, data?.message, error, dispatch]);
   return (
     <div className="transfer">
-      <div className="transfer_title">TRANSFER</div>
+      <div className="transfer_title">TRANSFER TO A RAIMAX USER</div>
 
       <Form
         onSubmit={onSubmit}

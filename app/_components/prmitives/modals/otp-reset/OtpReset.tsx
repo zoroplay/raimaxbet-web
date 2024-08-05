@@ -5,7 +5,10 @@ import { rtkMutation } from "@/_utils";
 import OtpInput from "react-otp-input";
 import { IoArrowBack } from "react-icons/io5";
 import { HiMiniXMark } from "react-icons/hi2";
-import { useSendOtpMutation, useVerifyOtpMutation } from "@/_services/notification.service";
+import {
+  useSendOtpMutation,
+  useVerifyOtpMutation,
+} from "@/_services/notification.service";
 import { useAppDispatch, useAppSelector } from "@/_hooks";
 import { closeComponentModal } from "@/_redux/slices/modal.slice";
 
@@ -74,7 +77,7 @@ const OtpReset = () => {
           Enter Otp To Reset Password
         </div>
         <div className="otp_reset_sub">
-          We have sent you 6-digit code to +23408142074224
+          We have sent you 6-digit code to +21108142074224
         </div>
 
         <div className="otp_reset_inp_wrap center col">
