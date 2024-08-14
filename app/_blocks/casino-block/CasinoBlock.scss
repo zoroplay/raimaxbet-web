@@ -20,7 +20,21 @@
   padding: 20px 5px;
   background-color: #dbd9d9;
 }
+.select_balance_btn_wrap {
+  padding: 10px;
+  width: 100%;
 
+  .select_balance_btn_cancel {
+    background-color: var.$red-dark !important;
+    color: #fff;
+    max-width: 150px;
+  }
+  .select_balance_btn {
+    background-color: var.$primary-accent !important;
+    color: #fff;
+    max-width: 150px;
+  }
+}
 .cas_body {
   background-color: #dbd9d9;
   padding: 5px;
@@ -82,7 +96,6 @@
               font-weight: 700;
               font-size: 12px;
               margin-bottom: 5px;
-            
             }
 
             .cas_block_search_btn2 {

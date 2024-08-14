@@ -9,6 +9,7 @@ import {
   useGetGamesBySearchQuery,
   useGetAllGamesQuery,
   useGetAllTopCategoriesQuery,
+  useGetGameUrlMutation,
 } from "@/_services/casino.service";
 import { useRouter, useParams } from "next/navigation";
 import { Banner, Button, Empty } from "@/_components";
@@ -33,8 +34,14 @@ const CasinoBlocks = () => {
   const [gameId, setGameId] = useState<number>(3);
   const [input, setInput] = useState("");
   const [gamesData, setGamesData] = useState([]);
+  const [getGameUrl, { isLoading, isSuccess, isError, data: gameData, error }] =
+    useGetGameUrlMutation();
   //   const [topCategoryId, setTopCategoryId] = useState<number>(12);
-  const [topCategory, setTopCategory] = useState<string>("All games");
+  const [topCategory, setTopCategory] = useState<any>({
+    id: 1,
+    slug: "all",
+    name: "All",
+  });
   const [active, setActive] = useState("pushgaming");
   const [, setActiveId] = useState<number>(1);
   const [isSearch, setIsSearch] = useState(false);
@@ -48,15 +55,18 @@ const CasinoBlocks = () => {
 
   const { data: categories } = useGetAllCategoriesByProviderSlugQuery(active);
   const { data: searchGames } = useGetGamesBySearchQuery(input);
-  const { data: games, refetch: refetchGames } =
-    useGetGamesByTopCategoryQuery(gameId);
+  // const { data: games, refetch: refetchGames } =
+  //   useGetGamesByTopCategoryQuery(gameId);
   const { data: allGames, refetch: refetchAllGames } =
     useGetAllGamesQuery(count);
   const { data: topCategories } = useGetAllTopCategoriesQuery("");
 
-  const gameDataToShow =
-    topCategory === "All games" ? allGames?.games?.data : games?.data;
-
+  // const gameDataToShow =
+  //   topCategory === "All games" ? allGames?.games?.data : games?.data;
+  const { data: games, refetch: refetchGames } = useGetAllGamesByCategoryQuery({
+    catId: topCategory?.id,
+    input,
+  });
   // console.log(gameDataToShow, "games");
 
   const router = useRouter();
@@ -105,26 +115,41 @@ const CasinoBlocks = () => {
   };
   useEffect(() => {
     setGamesData((prev: any) => {
-      if (gameDataToShow) {
-        return uniqueGames(prev, gameDataToShow);
+      if (games) {
+        return uniqueGames(prev, games.games);
       } else {
         return prev;
       }
     });
-  }, [gameDataToShow]);
+  }, [games]);
 
   useEffect(() => {
     refetchGames();
-    refetchAllGames();
+    // refetchAllGames();
   }, [gameId]);
 
   const handleMore = () => {
     setCount((prev) => prev + 1);
   };
-
-  const viewDetails = ({ provider, id }: { provider: string; id: number }) => {
+  useEffect(() => {
+    if (isSuccess && gameData) {
+      window.open(gameData?.url);
+    }
+    if (isError) {
+    }
+  }, [isSuccess, isError, gameData, error]);
+  const viewDetails = ({ id, type }: { id: number; type: string }) => {
     if (token) {
-      router.push(`/game/play/live-casino/${provider}/${id}`);
+      getGameUrl({
+        gameId: id,
+        username: user?.user.username,
+        userId: user.user?.id || 0,
+        demo: user.user ? false : true,
+        isMobile: false,
+        homeUrl: process.env.NEXT_PUBLIC_SITE_URL,
+        authCode: user.user?.authCode || "demo",
+        balance_type: type,
+      });
     } else {
       dispatch(openModal({ component: "LoginModal" }));
     }
@@ -213,7 +238,7 @@ const CasinoBlocks = () => {
               <div className="cas_block_sort">
                 {!input && (
                   <div className="cas_block_sort_text">
-                    {topCategory.toUpperCase()}
+                    {topCategory?.slug.toUpperCase()}
                   </div>
                 )}
                 {/* <div>
@@ -268,8 +293,8 @@ const CasinoBlocks = () => {
                                 className="cas_block_search_btn1"
                                 onClick={() =>
                                   viewDetails({
-                                    provider: item?.provider_id?.toLowerCase(),
-                                    id: item?.game_id,
+                                    id: item?.id,
+                                    type: "real",
                                   })
                                 }
                               />
@@ -280,16 +305,7 @@ const CasinoBlocks = () => {
                     : gamesData
                         ?.filter((item: any) => item?.category?.status !== 0)
                         ?.map((item: any, i: number) => (
-                          <div
-                            key={i}
-                            className="cas_block_game_card"
-                            onClick={() =>
-                              viewDetails({
-                                provider: item?.provider_id?.toLowerCase(),
-                                id: item?.game_id,
-                              })
-                            }
-                          >
+                          <div key={i} className="cas_block_game_card">
                             <img
                               src={
                                 item?.image_path?.length > 1
@@ -312,6 +328,39 @@ const CasinoBlocks = () => {
                             />
                             <div className="casino_block_gameitem_text">
                               {item?.title}
+                            </div>
+                            <div className="select_balance_btn_wrap between">
+                              <Button
+                                text={
+                                  user && user.user?.casinoBonusBalance > 0
+                                    ? "Bonus"
+                                    : "Demo"
+                                }
+                                type="button"
+                                loading={isLoading}
+                                className="select_balance_btn_cancel"
+                                onClick={() => {
+                                  viewDetails({
+                                    id: item?.id,
+                                    type:
+                                      user && user.user?.casinoBonusBalance > 0
+                                        ? "bonus"
+                                        : "demo",
+                                  });
+                                }}
+                              />
+                              <Button
+                                text="REAL MONEY"
+                                type="submit"
+                                loading={isLoading}
+                                className="confirm_coupon_btn"
+                                onClick={() => {
+                                  viewDetails({
+                                    type: "real",
+                                    id: item?.id,
+                                  });
+                                }}
+                              />
                             </div>
                             {/* <div className="cas_block_game_text">
                       <p>{item?.title?.slice(0, 9)}</p>
