@@ -24,9 +24,9 @@ const authApiSlice = apiSlice.injectEndpoints({
       onQueryStarted: async (credentials, { dispatch, queryFulfilled }) => {
         try {
           const { data } = await queryFulfilled;
-          const {token} = data.data;
-          const {data: user} = data
-          
+          const { token } = data.data;
+          const { data: user } = data;
+
           dispatch(
             updateUser({
               token,
@@ -47,15 +47,15 @@ const authApiSlice = apiSlice.injectEndpoints({
     login: builder.mutation({
       query: (userData) => ({
         url: `${process.env.NEXT_PUBLIC_NEW_API}${LOGIN}`,
-        body: userData,
+        body: { ...userData, clientId: process.env.NEXT_PUBLIC_CLIENT_ID },
         method: "POST",
       }),
       onQueryStarted: async (credentials, { dispatch, queryFulfilled }) => {
         try {
           const { data } = await queryFulfilled;
-          const {token} = data.data;
-          const {data: user} = data
-          
+          const { token } = data.data;
+          const { data: user } = data;
+
           // delete user.token;
           // console.log(data, 'login');
 
@@ -97,7 +97,7 @@ const authApiSlice = apiSlice.injectEndpoints({
     // Verify user mutation
     verifyUser: builder.mutation({
       query: (user) => ({
-        url:`${process.env.NEXT_PUBLIC_NEW_API}${VERIFY_USER}`,
+        url: `${process.env.NEXT_PUBLIC_NEW_API}${VERIFY_USER}`,
         body: user,
         method: "POST",
       }),

@@ -17,10 +17,7 @@ import {
   updateCoupon,
   updateWinnings,
 } from "@/_redux/slices/betslip.slice";
-import {
-  useFindWithBetslipMutation,
-  useFindWithCodeQuery,
-} from "@/_services/bet.service";
+import { useFindWithBetslipMutation } from "@/_services/bet.service";
 import { BetMetreBar, Empty } from "@/_components";
 import { formatNumber, multibetCombination } from "@/_utils/helpers";
 import { rtkMutation, slugify } from "@/_utils";

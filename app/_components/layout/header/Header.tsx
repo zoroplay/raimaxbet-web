@@ -24,11 +24,7 @@ import { useAppDispatch, useAppSelector } from "@/_hooks";
 import { useRouter, useSearchParams } from "next/navigation";
 import { closeComponentModal, openModal } from "@/_redux/slices/modal.slice";
 import { BiSolidUser } from "react-icons/bi";
-import {
-  logoutUser,
-  openIsFirstLogin,
-  updateUser,
-} from "@/_redux/slices/user.slice";
+import { logoutUser, updateUser } from "@/_redux/slices/user.slice";
 import { updateSportsbookGlobalVariable } from "@/_redux/slices/sport.slice";
 import {
   updateCoupon,
@@ -37,7 +33,7 @@ import {
   updateWinnings,
 } from "@/_redux/slices/betslip.slice";
 import MD5 from "crypto-js/md5";
-import { useFindWithCodeQuery } from "@/_services/bet.service";
+import { useFindWithCodeMutation } from "@/_services/bet.service";
 import {
   useGetBonusListQuery,
   useGetGlobalVariableQuery,
@@ -80,7 +76,7 @@ const links = [
   },
   {
     icon: <MdOutlinePayments />,
-    link: "/player-portal/deposits",
+    link: "",
     title: "DEPOSITS",
   },
   {
@@ -130,10 +126,10 @@ const Header = () => {
     skip: !user.token,
   });
   const shouldQueryFire = slipCode !== undefined && slipCode !== null;
-  const { data: withCodeData, isSuccess: isSuccessFindBookedBet } =
-    useFindWithCodeQuery(slipCode, {
-      skip: !shouldQueryFire,
-    });
+  const [
+    findWithBetSlip,
+    { data: withCodeData, isSuccess: isSuccessFindBookedBet },
+  ] = useFindWithCodeMutation();
 
   // console.log(user.token, "user");
 
@@ -168,7 +164,7 @@ const Header = () => {
 
   useEffect(() => {
     refetch();
-    dispatch(updateSportsbookGlobalVariable(global));
+    dispatch(updateSportsbookGlobalVariable(global?.data));
   }, [global, dispatch]);
 
   useEffect(() => {
@@ -217,11 +213,17 @@ const Header = () => {
     couponUpdate.selections = withCodeData?.data?.selections;
 
     if (searchCode) {
-      setSlipCode(searchCode);
+      findWithBetSlip(searchCode);
     }
+
     isSuccessFindBookedBet &&
       withCodeData?.success &&
-      dispatch(updateCoupon(couponUpdate));
+      dispatch(
+        updateCoupon({
+          ...withCodeData?.data,
+          globalVars: SportsbookGlobalVariable,
+        })
+      );
     isSuccessFindBookedBet &&
       withCodeData?.success &&
       dispatch(
@@ -241,7 +243,7 @@ const Header = () => {
   }, [search, dispatch, isSuccessFindBookedBet]);
 
   useEffect(() => {
-    if (data?.success) {
+    data?.success &&
       dispatch(
         openModal({
           title: "Login Successful",
@@ -249,9 +251,8 @@ const Header = () => {
           success: true,
         })
       );
-      dispatch(openIsFirstLogin());
-      dispatch(closeComponentModal());
-    }
+
+    data?.success && dispatch(closeComponentModal());
 
     (data?.success === false || isError) &&
       dispatch(
@@ -263,7 +264,7 @@ const Header = () => {
           success: false,
         })
       );
-  }, [isSuccess, isError, error, dispatch, data?.success, data?.error]);
+  }, [isSuccess, isError, error, dispatch]);
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {

@@ -3,72 +3,58 @@ import React, { useState, useEffect } from "react";
 import "../../../iconstwo.css";
 import "./BetAccordion.scss";
 import { BiChevronDown } from "react-icons/bi";
-import {
-  formatNumber,
-  getPlacedBetStatus,
-  multibetCombination,
-} from "@/_utils/helpers";
+import { formatNumber, multibetCombination } from "@/_utils/helpers";
 import { dayMonthTime, rtkMutation } from "@/_utils";
 import { Button } from "..";
-import { useReBetQuery } from "@/_services/bet.service";
+import { useFindWithCodeMutation } from "@/_services/bet.service";
 import { useAppDispatch, useAppSelector } from "@/_hooks";
 import { openModal } from "@/_redux/slices/modal.slice";
 import { updateCoupon } from "@/_redux/slices/betslip.slice";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 
 const BetAccordion = ({ data }: any) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [skip, setSkip] = useState(true);
 
   const dispatch = useAppDispatch();
-  const { coupon } = useAppSelector((state) => state.betslip);
+  const { coupon, SportsbookGlobalVariable } = useAppSelector(
+    (state) => state.betslip
+  );
   const selections = coupon.selections;
 
   // const [isQueryRefetched, setIsQueryRefetched] = useState(true);
 
-  const {
-    data: newData,
-    isSuccess,
-    isLoading,
-    isError,
-  } = useReBetQuery(data?.betslipId, {
-    // skip,
-  });
+  const [findWithBetSlip, { data: withBetslipData, isLoading, isSuccess }] =
+    useFindWithCodeMutation();
 
-
-  const handleClick = () => {
-    // setTimeout(() => {
-    if (newData?.message === "found") {
-      if (selections.length >= 1) {
-        dispatch(
-          openModal({
-            component: "ConfirmFind",
-            data: {
-              withBetslipData: newData?.coupon,
-            },
-          })
-        );
-      } else if (newData?.coupon?.selections?.length >= 1) {
-        dispatch(updateCoupon(newData?.coupon));
-        dispatch(openModal({ modalState: "betslip" }));
-      } else if (newData?.coupon?.selections?.length < 1) {
-        dispatch(
-          openModal({
-            title: "Selection Is Empty",
-            message: "Event is no longer active",
-          })
-        );
-      }
-    } else {
+  const handleCashout = (param: boolean) => {
+    if (param) {
       dispatch(
         openModal({
-          title: "An Error Occured",
-          message: "Please try again",
+          component: "VerifyCashoutModal",
+          data: param,
         })
       );
     }
-    // }, 2000);
   };
+
+  useEffect(() => {
+    withBetslipData?.success &&
+      withBetslipData?.data?.selections &&
+      dispatch(
+        updateCoupon({
+          ...withBetslipData?.data,
+          globalVars: SportsbookGlobalVariable,
+        })
+      );
+    withBetslipData?.success === false &&
+      dispatch(
+        openModal({
+          title: "Not Found",
+          message: withBetslipData?.message,
+        })
+      );
+  }, [withBetslipData]);
 
   return (
     <div className="bet_acc">
@@ -100,7 +86,26 @@ const BetAccordion = ({ data }: any) => {
           >
             {data?.statusDescription}
           </div>
-        </div>
+        </div>{" "}
+        {data?.statusDescription === "Pending" && (
+          <div className="bet_acc_cowrap end">
+            <Button
+              className="co_acc_btn"
+              onClick={() => handleCashout(data)}
+              disabled={!data?.cashOutAmount}
+              text={
+                data?.cashOutAmount && data?.cashOutAmount > 0
+                  ? `Cashout: ${data?.cashOutAmount.toFixed(2)}`
+                  : "Cashout Unavailable"
+              }
+              // loading={isLoading}
+              // onClick={() => {
+              //   setSkip(false);
+              //   handleClick();
+              // }}
+            />
+          </div>
+        )}
       </div>
       {isOpen && data?.selections && (
         <>
@@ -125,7 +130,9 @@ const BetAccordion = ({ data }: any) => {
                     {item?.outcomeName}
                   </div>
                 </div>
-                <div className="bet_acc_market_odd">{item?.odds.toFixed(2) || "--"}</div>
+                <div className="bet_acc_market_odd">
+                  {item?.odds.toFixed(2) || "--"}
+                </div>
               </div>
               <div className="bet_acc_market_textwrap between">
                 <div className="bet_acc_market_text">{`${item?.marketName} : ${item?.outcomeName}`}</div>
@@ -142,8 +149,7 @@ const BetAccordion = ({ data }: any) => {
                           : "",
                     }}
                   >
-                    {data?.status &&
-                      item?.score}
+                    {data?.status && item?.score}
                   </span>{" "}
                   {`${item?.eventName && item?.eventName?.replace("-", "vs")} 
                   ${
@@ -190,16 +196,19 @@ const BetAccordion = ({ data }: any) => {
             </div>
           ))}
           <div className="bet_acc_stake_detail_wrap">
-          {data?.betType && data?.betType === 'Combo' &&
-            <div className="bet_acc_stake_detail bottom between">
-              <div className="bet_acc_stake_text">
-                1 X NGN {data?.stake} {multibetCombination(data?.selections)}
+            {data?.betType && data?.betType === "Combo" && (
+              <div className="bet_acc_stake_detail bottom between">
+                <div className="bet_acc_stake_text">
+                  1 X NGN {data?.stake} {multibetCombination(data?.selections)}
+                </div>
+                <div className="bet_acc_stake_text">NGN {data?.stake}</div>
               </div>
-              <div className="bet_acc_stake_text">NGN {data?.stake}</div>
-            </div>}
+            )}
             <div className="bet_acc_stake_detail between">
               <div className="bet_acc_stake_text">Odds</div>
-              <div className="bet_acc_stake_text">{data?.totalOdd.toFixed(2)}</div>
+              <div className="bet_acc_stake_text">
+                {data?.totalOdd.toFixed(2)}
+              </div>
             </div>
             <div className="bet_acc_stake_detail between">
               <div className="bet_acc_stake_text">Total Stake</div>
@@ -211,7 +220,8 @@ const BetAccordion = ({ data }: any) => {
                 {"NGN " + formatNumber(data?.possibleWin)}
               </div>
             </div>
-            {data?.statusDescription === "Pending" && (
+            {(data?.statusDescription === "Pending" ||
+              data?.pendingGames > data?.selections.length) && (
               <div className="bet_acc_btn_wrap">
                 <Button
                   className="bet_acc_btn"
@@ -219,7 +229,7 @@ const BetAccordion = ({ data }: any) => {
                   loading={isLoading}
                   onClick={() => {
                     setSkip(false);
-                    handleClick();
+                    findWithBetSlip(data?.betslipId);
                   }}
                 />
               </div>

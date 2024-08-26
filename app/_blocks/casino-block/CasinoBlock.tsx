@@ -138,23 +138,26 @@ const CasinoBlocks = () => {
     if (isError) {
     }
   }, [isSuccess, isError, gameData, error]);
-  const viewDetails = ({ id, type }: { id: number; type: string }) => {
+
+  const viewDetails = ({ id, type }: { id: any; type: string }) => {
     if (token) {
       getGameUrl({
         gameId: id,
-        username: user?.user.username,
+        username: user.user?.username || "guest",
         userId: user.user?.id || 0,
-        demo: user.user ? false : true,
-        isMobile: false,
+        demo: type === "demo" ? true : false,
+        isMobile: true,
         homeUrl: process.env.NEXT_PUBLIC_SITE_URL,
         authCode: user.user?.authCode || "demo",
-        balance_type: type,
+        balanceType: type,
       });
     } else {
       dispatch(openModal({ component: "LoginModal" }));
     }
   };
-
+  const getImagePath = (game: any) => {
+    return `https://firebasestorage.googleapis.com/v0/b/iron-envelope-405217.appspot.com/o/casino%2F${game.title}.png?alt=media`;
+  };
   return (
     <>
       {/* <div className="provider start">
@@ -263,12 +266,8 @@ const CasinoBlocks = () => {
                         ?.filter((item: any) => item?.category?.status !== 0)
                         ?.map((item: any, i: number) => (
                           <div key={i} className="cas_block_game_search start">
-                            <img
-                              src={
-                                item?.image_path?.length > 1
-                                  ? item?.image_path
-                                  : casino
-                              }
+                            <Image
+                              src={getImagePath(item)}
                               onError={(
                                 e: React.ChangeEvent<HTMLImageElement>
                               ) => {
@@ -307,11 +306,7 @@ const CasinoBlocks = () => {
                         ?.map((item: any, i: number) => (
                           <div key={i} className="cas_block_game_card">
                             <img
-                              src={
-                                item?.image_path?.length > 1
-                                  ? item?.image_path
-                                  : casino
-                              }
+                              src={getImagePath(item)}
                               onError={(
                                 e: React.ChangeEvent<HTMLImageElement>
                               ) => {
