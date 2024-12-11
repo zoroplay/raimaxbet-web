@@ -31,10 +31,10 @@ const betApiSlice = apiSlice.injectEndpoints({
 
     // place a bet
     placeBet: builder.mutation({
-      query: ({data, param=0}) => ({
+      query: ({ data, param = 0 }) => ({
         url: `${process.env.NEXT_PUBLIC_NEW_API}${PLACE_BET}/${process.env.NEXT_PUBLIC_CLIENT_ID}`,
         method: "POST",
-        body: {...data, isBooking: param},
+        body: { ...data, isBooking: param },
       }),
       invalidatesTags: ["User", "Bet"],
     }),
@@ -42,17 +42,23 @@ const betApiSlice = apiSlice.injectEndpoints({
     // Bet list
     betList: builder.mutation({
       query: (body) => ({
-        url: `${process.env.NEXT_PUBLIC_NEW_API}${BET_LIST}?page=${body.page ? body.page : 1}`,
+        url: `${process.env.NEXT_PUBLIC_NEW_API}${BET_LIST}?page=${
+          body.page ? body.page : 1
+        }`,
         method: "POST",
         body,
       }),
     }),
 
     // Get coupons with code
-    findWithCode: builder.query({
+    findWithCode: builder.mutation({
       query: (code) => ({
-        url: `${process.env.NEXT_PUBLIC_NEW_API}${FIND_WITH_BOOKING_CODE}/${process.env.NEXT_PUBLIC_CLIENT_ID}?code=${code}`,
-        method: "GET",
+        url: `${process.env.NEXT_PUBLIC_NEW_API}${FIND_WITH_BOOKING_CODE}`,
+        method: "POST",
+        body: {
+          clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
+          betslipId: code,
+        },
       }),
     }),
     // Get coupons with bet slip id
@@ -62,8 +68,8 @@ const betApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: {
           clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
-          betslipId: code
-        }
+          betslipId: code,
+        },
       }),
     }),
 
@@ -92,9 +98,8 @@ export const {
   useBookBetMutation,
   usePlaceBetMutation,
   useFindWithBetslipMutation,
-  useFindWithCodeQuery,
+  useFindWithCodeMutation,
   useGetOpenBetsQuery,
   useGetSettledBetsMutation,
   useReBetQuery,
-
 } = betApiSlice;

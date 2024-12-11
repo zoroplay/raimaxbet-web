@@ -11,7 +11,7 @@ const baseQuery = fetchBaseQuery({
     headers.set("Content-Type", "application/json");
     const typedGetState = getState() as RootState;
     const token = typedGetState.user.token;
-    // console.log(`Token: ${token}`);
+    console.log(`Token: ${token}`);
     if (token) {
       headers.set("authorization", `Bearer ${token}`);
     }

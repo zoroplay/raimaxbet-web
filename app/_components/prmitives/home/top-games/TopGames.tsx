@@ -18,7 +18,7 @@ const TopGames = () => {
   useEffect(() => {
     if (data) {
       const obj: { [key in number]: boolean } = {};
-      data?.forEach((_: unknown, idx: number) => {
+      data?.data?.forEach((_: unknown, idx: number) => {
         obj[idx] = false;
       });
       setIsActive(obj);
@@ -26,18 +26,18 @@ const TopGames = () => {
   }, [data]);
 
   const getImageURL = (name: string) => {
-    if (name.includes('Qualification CAF')) {
-      return '/images/qualification.JPG'
+    if (name.includes("Qualification CAF")) {
+      return "/images/qualification.JPG";
     } else {
-      return `https://firebasestorage.googleapis.com/v0/b/iron-envelope-405217.appspot.com/o/Top%20Leagues%2F${name}.png?alt=media`
+      return `https://firebasestorage.googleapis.com/v0/b/iron-envelope-405217.appspot.com/o/Top%20Leagues%2F${name}.png?alt=media`;
     }
-  }
+  };
 
   // console.log(data, "topTour");
   return (
     <div className="topgames start">
       {data &&
-        data?.map((tournament: any, idx: number) => (
+        data?.data?.map((tournament: any, idx: number) => (
           <div
             onClick={() => {
               // router.push(
@@ -48,10 +48,7 @@ const TopGames = () => {
               dispatch(
                 updateFixtures({
                   name: "top",
-                  info: [
-                    tournament?.tournament?.category?.sport_id,
-                    tournament?.tournament?.provider_id,
-                  ],
+                  info: [tournament?.sportID, tournament?.tournamentID],
                 })
               );
               setIsActive((prev) => {
@@ -71,11 +68,11 @@ const TopGames = () => {
               <Image
                 className="topgame_img_wrap"
                 fill
-                src={getImageURL(tournament?.tournament?.name)}
+                src={getImageURL(tournament?.tournamentName)}
                 alt="icon"
               />
             </div>
-            <div className="topgame_text">{tournament?.tournament?.name}</div>
+            <div className="topgame_text">{tournament?.tournamentName}</div>
           </div>
         ))}
     </div>

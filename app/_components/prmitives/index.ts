@@ -25,6 +25,7 @@ export { default as BookBetslip } from "./modals/book-betslip/BookBetslip";
 export { default as MyBetsModal } from "./modals/my-bets/MyBetsModal";
 export { default as ChangePassword } from "./modals/change-password/ChangePassword";
 export { default as ConfirmFind } from "./modals/confirm-find/ConfirmFind";
+export { default as ConfirmTransfer } from "./modals/confirm-transfer/ConfirmTransfer";
 export { default as DepositModal } from "./modals/deposit-modal/DepositModal";
 export { default as DepositModBonus } from "./modals/deposit-modal-bonus/DepositModBonus";
 export { default as DepositPaymentModal } from "./modals/deposit-payment-modal/DepositPaymentModal";

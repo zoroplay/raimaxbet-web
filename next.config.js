@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    domains: ["https://maxbet247.ng"],
     remotePatterns: [
       {
         protocol: "https",
@@ -9,7 +10,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "web.raimax.bet",
+        hostname: "maxbet247.ng",
         pathname: "**",
       },
       {

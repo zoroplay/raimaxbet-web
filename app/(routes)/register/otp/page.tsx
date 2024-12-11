@@ -70,7 +70,7 @@ const Page = () => {
 
   const onSubmit = (value: { [key in string]: string | number }) => {
     rtkMutation(verifyOtpMutation, {
-      clientID: 1,
+      clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
       phoneNumber: registerDetails.phone,
       code: value.code,
     });
@@ -94,7 +94,7 @@ const Page = () => {
       dispatch(
         openModal({
           title: "Registration Successful",
-          message: "You have succesfuly registered on Frapapa Bet",
+          message: "You have succesfuly registered on Raimax Bet",
           success: true,
         })
       );
@@ -169,7 +169,7 @@ const Page = () => {
                 isSuccess && countDown60();
                 setIsRegistered(false);
                 rtkMutation(sendOtpMutation, {
-                  clientID: 1,
+                  clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
                   phoneNumber: registerDetails.phone,
                 });
               }}

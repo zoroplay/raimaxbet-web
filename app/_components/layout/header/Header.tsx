@@ -33,7 +33,7 @@ import {
   updateWinnings,
 } from "@/_redux/slices/betslip.slice";
 import MD5 from "crypto-js/md5";
-import { useFindWithCodeQuery } from "@/_services/bet.service";
+import { useFindWithCodeMutation } from "@/_services/bet.service";
 import {
   useGetBonusListQuery,
   useGetGlobalVariableQuery,
@@ -76,7 +76,7 @@ const links = [
   },
   {
     icon: <MdOutlinePayments />,
-    link: "/player-portal/deposits",
+    link: "",
     title: "DEPOSITS",
   },
   {
@@ -126,10 +126,10 @@ const Header = () => {
     skip: !user.token,
   });
   const shouldQueryFire = slipCode !== undefined && slipCode !== null;
-  const { data: withCodeData, isSuccess: isSuccessFindBookedBet } =
-    useFindWithCodeQuery(slipCode, {
-      skip: !shouldQueryFire,
-    });
+  const [
+    findWithBetSlip,
+    { data: withCodeData, isSuccess: isSuccessFindBookedBet },
+  ] = useFindWithCodeMutation();
 
   // console.log(user.token, "user");
 
@@ -164,7 +164,7 @@ const Header = () => {
 
   useEffect(() => {
     refetch();
-    dispatch(updateSportsbookGlobalVariable(global));
+    dispatch(updateSportsbookGlobalVariable(global?.data));
   }, [global, dispatch]);
 
   useEffect(() => {
@@ -175,7 +175,7 @@ const Header = () => {
     if (user.token) {
       setMode(1);
       setGroup(user.user?.group);
-      setToken(user.user?.auth_code);
+      setToken(user.user?.authCode);
     }
   }, [user]);
 
@@ -213,11 +213,17 @@ const Header = () => {
     couponUpdate.selections = withCodeData?.data?.selections;
 
     if (searchCode) {
-      setSlipCode(searchCode);
+      findWithBetSlip(searchCode);
     }
+
     isSuccessFindBookedBet &&
       withCodeData?.success &&
-      dispatch(updateCoupon(couponUpdate));
+      dispatch(
+        updateCoupon({
+          ...withCodeData?.data,
+          globalVars: SportsbookGlobalVariable,
+        })
+      );
     isSuccessFindBookedBet &&
       withCodeData?.success &&
       dispatch(

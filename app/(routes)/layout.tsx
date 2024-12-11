@@ -1,10 +1,12 @@
 // RootLayout.js
-import { Header, Footer, Modal } from "@/_components";
+import { Header, Footer, Modal, Toast } from "@/_components";
 import React from "react";
 import "./globals.scss";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import ReduxProvider from "@/_provider/redux-provider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -13,7 +15,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Frapapa | Sports Betting",
+  title: "Raimax | Sports Betting",
   description: "Sports Betting, Bonus Wins",
 };
 
@@ -30,6 +32,8 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <Toast />
+          <ToastContainer />
         </ReduxProvider>
       </body>
     </html>

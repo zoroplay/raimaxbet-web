@@ -9,4 +9,5 @@ export { default as Pagination } from "./pagination/Pagination";
 export { default as BetAccordion } from "./bet-accordion/BetAccordion";
 export { default as Star } from "./star/Star";
 export { default as BetBonusAccordion } from "./bet-bonus-accordion/BetBonusAccordion";
+export { default as Toast } from "./toast/Toast";
 export { default as GroupedMarket } from "./grouped-market/GroupedMarket";

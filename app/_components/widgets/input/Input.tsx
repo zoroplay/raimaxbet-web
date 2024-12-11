@@ -86,7 +86,7 @@ InputProp | FieldRenderProps<any>) => {
             <div className="num_text_icon" style={{ color: color }}>
               <MdPhoneIphone />
             </div>
-            <span style={{ color: color }}>+234</span>
+            <span style={{ color: color }}>+211</span>
           </div>
         )}
         {select ? (

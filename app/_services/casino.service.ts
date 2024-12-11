@@ -19,8 +19,8 @@ const casinoApiSlice = apiSlice.injectEndpoints({
 
     // All casino games by categories
     getAllGamesByCategory: builder.query({
-      query: (id) => ({
-        url: `${ALL_GAMES_BY_CATEGORY}/${id}`,
+      query: ({ catId, input }) => ({
+        url: `${process.env.NEXT_PUBLIC_NEW_API}/games/${process.env.NEXT_PUBLIC_CLIENT_ID}/list?categoryId=${catId}`,
         method: "GET",
       }),
     }),
@@ -30,6 +30,14 @@ const casinoApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: ALL_TOP_CATEGORIES,
         method: "GET",
+      }),
+    }),
+
+    getGameUrl: builder.mutation({
+      query: (body) => ({
+        url: `${process.env.NEXT_PUBLIC_NEW_API}/games/${process.env.NEXT_PUBLIC_CLIENT_ID}/start`,
+        method: "POST",
+        body,
       }),
     }),
 
@@ -66,4 +74,5 @@ export const {
   useGetAllGamesQuery,
   useGetAllTopCategoriesQuery,
   useGetGamesBySearchQuery,
+  useGetGameUrlMutation,
 } = casinoApiSlice;

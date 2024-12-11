@@ -1,6 +1,6 @@
 import { openModal } from "@/_redux/slices/modal.slice";
 import apiSlice from "./api/api";
-import { SEND_OTP, VERIFY_OTP } from "./CONSTANTS";
+import { SEND_OTP, USER_NOTIFICATIONS, VERIFY_OTP } from "./CONSTANTS";
 import { updateUser } from "@/_redux/slices/user.slice";
 
 const notificationApiSlice = apiSlice.injectEndpoints({
@@ -22,8 +22,24 @@ const notificationApiSlice = apiSlice.injectEndpoints({
         method: "POST",
       }),
     }),
+    userNotifications: builder.mutation({
+      query: (body) => ({
+        url: `${process.env.NEXT_PUBLIC_NEW_API}${USER_NOTIFICATIONS}`,
+        method: "GET",
+      }),
+    }),
+    setNotifications: builder.mutation({
+      query: (body) => ({
+        url: `${process.env.NEXT_PUBLIC_NEW_API}${USER_NOTIFICATIONS}/${body.id}`,
+        method: "PUT",
+      }),
+    }),
   }),
 });
 
-export const { useSendOtpMutation, useVerifyOtpMutation } =
-  notificationApiSlice;
+export const {
+  useSendOtpMutation,
+  useVerifyOtpMutation,
+  useUserNotificationsMutation,
+  useSetNotificationsMutation,
+} = notificationApiSlice;

@@ -77,7 +77,7 @@ const Page = () => {
     dispatch(setRegisterDetails(payload));
 
     rtkMutation(sendOtpMutation, {
-      clientID: 1,
+      clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
       phoneNumber: payload.phone, // submit phone number to receive OTP
     });
   };
